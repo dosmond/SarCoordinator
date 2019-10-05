@@ -8,13 +8,13 @@ export const environment = {
   googleMapsApiKey: '',
   backend: 'http://localhost:4200', // Put your backend here
   firebaseConfig : {
-    apiKey: "AIzaSyAHmq5riFJzZXics37k_BiudN_-GC4VuKU",
-    authDomain: "dash-pract.firebaseapp.com",
-    databaseURL: "https://dash-pract.firebaseio.com",
-    projectId: "dash-pract",
-    storageBucket: "dash-pract.appspot.com",
-    messagingSenderId: "1085542055343",
-    appId: "1:1085542055343:web:b4f27b22836c1bf42e035a",
-    measurementId: "G-021CBKGB66"
+    apiKey: "AIzaSyAikEee3dYc1JrLcL1umiXgaI0MQRpEdiE",
+    authDomain: "sar-solutions.firebaseapp.com",
+    databaseURL: "https://sar-solutions.firebaseio.com",
+    projectId: "sar-solutions",
+    storageBucket: "sar-solutions.appspot.com",
+    messagingSenderId: "615606149986",
+    appId: "1:615606149986:web:8ba0bc245536168ccec23b",
+    measurementId: "G-VY44QHQS2F"
   }
 };
