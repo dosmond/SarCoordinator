@@ -40,6 +40,10 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  toCreateAccount() {
+    this.router.navigate(['/register']);
+  }
+
   toggleVisibility() {
     if (this.visible) {
       this.inputType = 'password';

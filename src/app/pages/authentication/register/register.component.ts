@@ -34,6 +34,10 @@ export class RegisterComponent implements OnInit {
     this.router.navigate(['/']);
   }
 
+  toLogin() {
+    this.router.navigate(['/login']);
+  }
+
   toggleVisibility() {
     if (this.visible) {
       this.inputType = 'password';
