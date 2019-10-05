@@ -28,11 +28,16 @@ export class GoogleMapsComponent implements OnInit , OnDestroy{
    * _basemap sets type of map
    * _loaded provides map loaded status
    */
-  private _zoom = 10;
-  private _center: Array<number> = [0.1278, 51.5074];
-  private _basemap = "streets";
+  private _zoom = 16;
+  private _center: Array<number> = [-111.8493978, 40.7661535];
+  private _basemap = "satellite";
   private _loaded = false;
   private _view: esri.MapView = null;
+  private _map: esri.Map = null;
+
+  get map(): esri.Map {
+    return this._map;
+  }
 
   get mapLoaded(): boolean {
     return this._loaded;
@@ -70,7 +75,7 @@ export class GoogleMapsComponent implements OnInit , OnDestroy{
   async initializeMap() {
     try {
       // Load the modules for the ArcGIS API for JavaScript
-      const [EsriMap, EsriMapView, EsriGraphicsLayer, EsriPoint, EsriSimpleMarkerSymbol, EsriGraphic, EsriPolyline, EsriLineSymbol] = await loadModules([
+      const [EsriMap, EsriMapView] = await loadModules([
         "esri/Map",
         "esri/views/MapView",
         "esri/layers/GraphicsLayer",
@@ -87,33 +92,7 @@ export class GoogleMapsComponent implements OnInit , OnDestroy{
       };
 
       const map: esri.Map = new EsriMap(mapProperties);
-      const gL = new EsriGraphicsLayer();
-      map.add(gL);
-      const m = new EsriSimpleMarkerSymbol();
-      const p = new EsriPoint({latitude: 40.7661535, longitude: -111.8493978})
-      const g = new EsriGraphic({geometry: p, symbol: m});
-
-      
-      const poly = new EsriPolyline({
-        type: 'poyline', 
-        paths:[[-111.8493978, 40.7661535], [-111.8493, 40.766], [-111.849, 40.7669],[-111.847, 40.768]] 
-      });
-
-    
-      const lineSymbol = new EsriLineSymbol({
-        type: 'simple-line', 
-        color: [226, 119, 40], 
-        width: 1});
-
-      const lineGraphic = new EsriGraphic({
-        geometry: poly,
-        symbol: lineSymbol
-      });
-
-      gL.add(g);
-      gL.add(lineGraphic);
-
-
+     
 
       // Initialize the MapView
       const mapViewProperties: esri.MapViewProperties = {
@@ -124,11 +103,50 @@ export class GoogleMapsComponent implements OnInit , OnDestroy{
       };
 
       this._view = new EsriMapView(mapViewProperties);
+      this._map = map;
       await this._view.when();
       return this._view;
     } catch (error) {
       console.log("EsriLoader: ", error);
     }
+  }
+
+  async addPathOnMap() {
+    const [EsriGraphicsLayer, EsriPoint, EsriSimpleMarkerSymbol, EsriGraphic, EsriPolyline, EsriLineSymbol] = await loadModules([
+      "esri/layers/GraphicsLayer",
+      "esri/geometry/Point",
+      'esri/symbols/SimpleMarkerSymbol',
+      'esri/Graphic',
+      'esri/geometry/Polyline',
+      'esri/symbols/LineSymbol'
+    ]);
+    const map: esri.Map = this.map;
+
+    const gL = new EsriGraphicsLayer();
+    map.add(gL);
+    const m = new EsriSimpleMarkerSymbol();
+    const p = new EsriPoint({latitude: 40.7661535, longitude: -111.8493978})
+    const g = new EsriGraphic({geometry: p, symbol: m});
+
+    
+    const poly = new EsriPolyline({
+      type: 'poyline', 
+      paths:[[-111.8493978, 40.7661535], [-111.8493, 40.766], [-111.849, 40.7669],[-111.847, 40.768]] 
+    });
+
+  
+    const lineSymbol = new EsriLineSymbol({
+      type: 'simple-line', 
+      color: [226, 119, 40], 
+      width: 1});
+
+    const lineGraphic = new EsriGraphic({
+      geometry: poly,
+      symbol: lineSymbol
+    });
+
+    gL.add(g);
+    gL.add(lineGraphic);
   }
 
   ngOnInit() {

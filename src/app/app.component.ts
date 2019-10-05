@@ -191,7 +191,7 @@ export class AppComponent {
         position: 70,
         subItems: [
           {
-            name: 'Google Maps',
+            name: 'Esri Map',
             routeOrFunction: '/maps/google-maps',
             position: 0
           }
