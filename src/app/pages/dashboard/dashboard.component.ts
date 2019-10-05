@@ -67,15 +67,15 @@ export class DashboardComponent implements OnInit {
   audienceOverviewOptions: AudienceOverviewWidgetOptions[] = [];
   recentSalesData$: Observable<ChartData>;
   recentSalesOptions: RecentSalesWidgetOptions = {
-    title: 'Recent Sales',
-    subTitle: 'See who bought what in realtime'
+    title: 'Cases',
+    subTitle: 'A view of all cases'
   };
   recentSalesTableOptions = {
     pageSize: 5,
     columns: [
-      { name: 'Product', property: 'name', visible: true, isModelProperty: true },
-      { name: '$ Price', property: 'price', visible: true, isModelProperty: true },
-      { name: 'Time ago', property: 'timestamp', visible: true, isModelProperty: true },
+      { name: 'Case', property: 'name', visible: true, isModelProperty: true },
+      { name: 'Victim', property: 'person', visible: true, isModelProperty: true },
+      { name: 'Status', property: 'status', visible: true, isModelProperty: true },
     ]
   };
   recentSalesTableData$: Observable<any[]>;

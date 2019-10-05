@@ -91,54 +91,24 @@ export const audienceOverviewSessionDurationDemoLabels = () => {
 
 export const recentSalesTableDemoData = [
   {
-    name: 'Apple iPhone 8',
-    price: '$899.99',
-    timestamp: now.clone().subtract(2, 'minutes').fromNow()
+    name: '1',
+    person: 'Mike Wright',
+    status: "active"
   },
   {
-    name: 'USB-C Cable',
-    price: '$8.99',
-    timestamp: now.clone().subtract(6, 'minutes').fromNow()
+    name: '2',
+    person: 'Kunaal Kumar',
+    status: "active"
   },
   {
-    name: 'Apple MacBook Pro',
-    price: '$1299.99',
-    timestamp: now.clone().subtract(14, 'minutes').fromNow()
+    name: '3',
+    person: 'Sunny Siu',
+    status: "active"
   },
   {
-    name: 'Samsung Galaxy S9',
-    price: '$799.99',
-    timestamp: now.clone().subtract(17, 'minutes').fromNow()
-  },
-  {
-    name: 'Lightning to USB-C Adapter',
-    price: '$16.99',
-    timestamp: now.clone().subtract(25, 'minutes').fromNow()
-  },
-  {
-    name: 'Samsung Galaxy S8 256GB',
-    price: '$599.99',
-    timestamp: now.clone().subtract(42, 'minutes').fromNow()
-  },
-  {
-    name: 'Apple iPhone X',
-    price: '$1099.99',
-    timestamp: now.clone().subtract(87, 'minutes').fromNow()
-  },
-  {
-    name: 'Apple iPhone 7 128GB',
-    price: '$699.99',
-    timestamp: now.clone().subtract(97, 'minutes').fromNow()
-  },
-  {
-    name: 'Apple Mac Pro',
-    price: '$999.99',
-    timestamp: now.clone().subtract(104, 'minutes').fromNow()
-  },
-  {
-    name: 'Samsung DEX',
-    price: '$54.99',
-    timestamp: now.clone().subtract(150, 'minutes').fromNow()
+    name: '4',
+    person: 'Daniel Osmond',
+    status: "active"
   }
 ];
 
