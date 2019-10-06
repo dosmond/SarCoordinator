@@ -1,25 +1,188 @@
-[debug] [2019-10-05T20:07:21.958Z] ----------------------------------------------------------------------
-[debug] [2019-10-05T20:07:21.961Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\mikea\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
-[debug] [2019-10-05T20:07:21.961Z] CLI Version:   7.4.0
-[debug] [2019-10-05T20:07:21.961Z] Platform:      win32
-[debug] [2019-10-05T20:07:21.961Z] Node Version:  v10.15.3
-[debug] [2019-10-05T20:07:21.963Z] Time:          Sat Oct 05 2019 14:07:21 GMT-0600 (Mountain Daylight Time)
-[debug] [2019-10-05T20:07:21.963Z] ----------------------------------------------------------------------
+[debug] [2019-10-06T01:09:43.035Z] ----------------------------------------------------------------------
+[debug] [2019-10-06T01:09:43.038Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\dosmo\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2019-10-06T01:09:43.038Z] CLI Version:   7.4.0
+[debug] [2019-10-06T01:09:43.038Z] Platform:      win32
+[debug] [2019-10-06T01:09:43.038Z] Node Version:  v10.16.3
+[debug] [2019-10-06T01:09:43.041Z] Time:          Sat Oct 05 2019 19:09:43 GMT-0600 (Mountain Daylight Time)
+[debug] [2019-10-06T01:09:43.041Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2019-10-05T20:07:21.971Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2019-10-05T20:07:21.971Z] > authorizing via signed-in user
+[debug] [2019-10-06T01:09:43.058Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-10-06T01:09:43.060Z] > authorizing via signed-in user
+[debug] [2019-10-06T01:09:43.060Z] [iam] checking project sar-solutions for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2019-10-06T01:09:43.063Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/sar-solutions:testIamPermissions  
+
+[debug] [2019-10-06T01:09:46.389Z] <<< HTTP RESPONSE 200
+[debug] [2019-10-06T01:09:46.399Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/sar-solutions  
+ 
+[debug] [2019-10-06T01:09:47.504Z] <<< HTTP RESPONSE 200
 [info] 
-     ######## #### ########  ######## ########     ###     ######  ########
-     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
-     ######    ##  ########  ######   ########  #########  ######  ######
-     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
-     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+[info] === Deploying to 'sar-solutions'...
+[info] 
+[info] i  deploying firestore, functions, hosting
+[info] Running command: npm --prefix "$RESOURCE_DIR" run lint
+[info] Running command: npm --prefix "$RESOURCE_DIR" run build
+[info] +  functions: Finished running predeploy script.
+[info] i  firestore: checking firestore.rules for compilation errors...
+[info] i  firestore: reading indexes from firestore.indexes.json...
+[debug] [2019-10-06T01:10:12.918Z] >>> HTTP REQUEST POST https://firebaserules.googleapis.com/v1/projects/sar-solutions:test  
 
-You're about to initialize a Firebase project in this directory:
+[debug] [2019-10-06T01:10:14.399Z] <<< HTTP RESPONSE 200
+[info] +  firestore: rules file firestore.rules compiled successfully
+[debug] [2019-10-06T01:10:14.406Z] > [functions] package.json contents: {
+  "name": "functions",
+  "scripts": {
+    "lint": "tslint --project tsconfig.json",
+    "build": "tsc",
+    "serve": "npm run build && firebase serve --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "8"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "firebase-admin": "^8.0.0",
+    "firebase-functions": "^3.1.0"
+  },
+  "devDependencies": {
+    "tslint": "^5.12.0",
+    "typescript": "^3.2.2"
+  },
+  "private": true
+}
+[info] i  functions: ensuring necessary APIs are enabled...
+[debug] [2019-10-06T01:10:14.409Z] >>> HTTP REQUEST GET https://serviceusage.googleapis.com/v1/projects/sar-solutions/services/cloudfunctions.googleapis.com  
+ 
+[debug] [2019-10-06T01:10:14.410Z] >>> HTTP REQUEST GET https://serviceusage.googleapis.com/v1/projects/sar-solutions/services/runtimeconfig.googleapis.com  
+ 
+[debug] [2019-10-06T01:10:17.531Z] <<< HTTP RESPONSE 200
+[debug] [2019-10-06T01:10:17.568Z] <<< HTTP RESPONSE 200
+[info] +  functions: all necessary APIs are enabled
+[debug] [2019-10-06T01:10:17.572Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/sar-solutions/adminSdkConfig  
+ 
+[debug] [2019-10-06T01:10:17.841Z] <<< HTTP RESPONSE 200
+[debug] [2019-10-06T01:10:17.845Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/sar-solutions/versions  
 
-  C:\Users\mikea\sarsolutions
+[debug] [2019-10-06T01:10:19.286Z] <<< HTTP RESPONSE 200
+[info] i  firestore: uploading rules firestore.rules...
+[debug] [2019-10-06T01:10:19.295Z] >>> HTTP REQUEST POST https://firebaserules.googleapis.com/v1/projects/sar-solutions/rulesets  
 
-Before we get started, keep in mind:
+[debug] [2019-10-06T01:10:19.296Z] >>> HTTP REQUEST GET https://firestore.googleapis.com/v1beta2/projects/sar-solutions/databases/(default)/collectionGroups/-/indexes  
+ 
+[debug] [2019-10-06T01:10:19.586Z] <<< HTTP RESPONSE 200
+[debug] [2019-10-06T01:10:19.587Z] [rules] created ruleset projects/sar-solutions/rulesets/a63a5f91-b241-46cd-9db0-d74d989866d4
+[debug] [2019-10-06T01:10:20.280Z] <<< HTTP RESPONSE 200
+[debug] [2019-10-06T01:10:20.281Z] >>> HTTP REQUEST GET https://firestore.googleapis.com/v1beta2/projects/sar-solutions/databases/(default)/collectionGroups/-/fields?filter=indexConfig.usesAncestorConfig=false  
+ 
+[debug] [2019-10-06T01:10:21.130Z] <<< HTTP RESPONSE 200
+[info] +  firestore: deployed indexes in firestore.indexes.json successfully
+[info] i  functions: preparing functions directory for uploading...
+[debug] [2019-10-06T01:10:21.142Z] >>> HTTP REQUEST GET https://runtimeconfig.googleapis.com/v1beta1/projects/sar-solutions/configs  
+ 
+[debug] [2019-10-06T01:10:21.631Z] <<< HTTP RESPONSE 200
+[info] i  hosting[sar-solutions]: beginning deploy...
+[info] i  hosting[sar-solutions]: found 106 files in dist
+[debug] [2019-10-06T01:10:22.074Z] [hosting] hash cache [ZGlzdA] load error: lines is not defined
+[debug] [2019-10-06T01:10:24.998Z] [hosting] hash cache [ZGlzdA] stored for 106 files
+[debug] [2019-10-06T01:10:24.999Z] [hosting][hash queue][FINAL]
+[debug] [2019-10-06T01:10:25.000Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/sar-solutions/versions/cd0afb7d1739f229:populateFiles  
+ <request body omitted>
+[debug] [2019-10-06T01:10:26.677Z] <<< HTTP RESPONSE 200
+[debug] [2019-10-06T01:10:26.702Z] [hosting][populate queue][FINAL]
+[debug] [2019-10-06T01:10:26.703Z] [hosting] uploads queued: 12
+[debug] [2019-10-06T01:12:24.030Z] [uploadQueue] Retrying task 851c20e1ea1eb9068dd4fa595b16bb7660c08efcc06f9c30c51e6e7bff534112
+[debug] [2019-10-06T01:12:55.687Z] [uploadQueue] Retrying task 493f567562b9689aab03aa912be66f8ac549a771677f88aad453579ad36e9db3
+[debug] [2019-10-06T01:12:59.820Z] [uploadQueue] Retrying task 4a6af418f4e515cdd5956d3fd50a733317f6adbfeb9a60023a240d5adf95c0f4
+[debug] [2019-10-06T01:13:06.820Z] [uploadQueue] Retrying task ab83bdcfc42e26f1e5716b4607be959e83b5dfa798cd60ce1fe714cb761e2fe6
+[debug] [2019-10-06T01:13:07.240Z] [uploadQueue] Retrying task 04a62f7326845bf00fe03e64ea1ee18a4a7e2cda14ceb3ab9b68e011c9f1d87b
+[debug] [2019-10-06T01:13:09.198Z] [uploadQueue] Retrying task 342d9b129f301ea423a8f79c49e8171f21b6ae81711b155ead5405e502cd3d79
+[debug] [2019-10-06T01:13:12.659Z] [uploadQueue] Retrying task 81525c65446089990d5a79739d8272a35e8e585dd70b73325e06e3d62c447e28
+[debug] [2019-10-06T01:13:16.246Z] [uploadQueue] Retrying task 493f567562b9689aab03aa912be66f8ac549a771677f88aad453579ad36e9db3
+[debug] [2019-10-06T01:13:21.670Z] [uploadQueue] Retrying task 4a6af418f4e515cdd5956d3fd50a733317f6adbfeb9a60023a240d5adf95c0f4
+[debug] [2019-10-06T01:13:23.705Z] [uploadQueue] Retrying task 04a62f7326845bf00fe03e64ea1ee18a4a7e2cda14ceb3ab9b68e011c9f1d87b
+[debug] [2019-10-06T01:13:26.817Z] [uploadQueue] Retrying task 16f015e56b92dc1eb9ec8646ccc2169d8e23d4dcaa87e8c78a8ce3ce837258fa
+[debug] [2019-10-06T01:13:38.738Z] [uploadQueue] Retrying task aaaabcca16fc46c218832fbb6a2f5d696a76529321cd5687544937863c39b452
+[debug] [2019-10-06T01:13:41.326Z] [uploadQueue] Retrying task 851c20e1ea1eb9068dd4fa595b16bb7660c08efcc06f9c30c51e6e7bff534112
+[debug] [2019-10-06T01:13:50.838Z] [uploadQueue] Retrying task aaaabcca16fc46c218832fbb6a2f5d696a76529321cd5687544937863c39b452
+[debug] [2019-10-06T01:14:01.150Z] [uploadQueue] Retrying task 851c20e1ea1eb9068dd4fa595b16bb7660c08efcc06f9c30c51e6e7bff534112
+[debug] [2019-10-06T01:14:34.659Z] [uploadQueue] Retrying task 81525c65446089990d5a79739d8272a35e8e585dd70b73325e06e3d62c447e28
+[debug] [2019-10-06T01:14:51.069Z] ----------------------------------------------------------------------
+[debug] [2019-10-06T01:14:51.072Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\dosmo\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2019-10-06T01:14:51.073Z] CLI Version:   7.4.0
+[debug] [2019-10-06T01:14:51.073Z] Platform:      win32
+[debug] [2019-10-06T01:14:51.073Z] Node Version:  v10.16.3
+[debug] [2019-10-06T01:14:51.075Z] Time:          Sat Oct 05 2019 19:14:51 GMT-0600 (Mountain Daylight Time)
+[debug] [2019-10-06T01:14:51.075Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-10-06T01:14:51.089Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-10-06T01:14:51.091Z] > authorizing via signed-in user
+[debug] [2019-10-06T01:14:51.091Z] [iam] checking project sar-solutions for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2019-10-06T01:14:51.093Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/sar-solutions:testIamPermissions  
 
-  * You are initializing in an existing Firebase project directory
+[debug] [2019-10-06T01:14:58.264Z] <<< HTTP RESPONSE 200
+[debug] [2019-10-06T01:14:58.273Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/sar-solutions  
+ 
+[debug] [2019-10-06T01:15:10.300Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'sar-solutions'...
+[info] 
+[info] i  deploying firestore, functions, hosting
+[info] Running command: npm --prefix "$RESOURCE_DIR" run lint
+[info] Running command: npm --prefix "$RESOURCE_DIR" run build
+[info] +  functions: Finished running predeploy script.
+[info] i  firestore: checking firestore.rules for compilation errors...
+[info] i  firestore: reading indexes from firestore.indexes.json...
+[debug] [2019-10-06T01:16:08.125Z] >>> HTTP REQUEST POST https://firebaserules.googleapis.com/v1/projects/sar-solutions:test  
 
+[debug] [2019-10-06T01:16:13.626Z] <<< HTTP RESPONSE 200
+[info] +  firestore: rules file firestore.rules compiled successfully
+[debug] [2019-10-06T01:16:13.632Z] > [functions] package.json contents: {
+  "name": "functions",
+  "scripts": {
+    "lint": "tslint --project tsconfig.json",
+    "build": "tsc",
+    "serve": "npm run build && firebase serve --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "8"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "firebase-admin": "^8.0.0",
+    "firebase-functions": "^3.1.0"
+  },
+  "devDependencies": {
+    "tslint": "^5.12.0",
+    "typescript": "^3.2.2"
+  },
+  "private": true
+}
+[info] i  functions: ensuring necessary APIs are enabled...
+[debug] [2019-10-06T01:16:13.637Z] >>> HTTP REQUEST GET https://serviceusage.googleapis.com/v1/projects/sar-solutions/services/cloudfunctions.googleapis.com  
+ 
+[debug] [2019-10-06T01:16:13.638Z] >>> HTTP REQUEST GET https://serviceusage.googleapis.com/v1/projects/sar-solutions/services/runtimeconfig.googleapis.com  
+ 
+[debug] [2019-10-06T01:16:22.403Z] <<< HTTP RESPONSE 200
+[debug] [2019-10-06T01:16:26.975Z] <<< HTTP RESPONSE 200
+[info] +  functions: all necessary APIs are enabled
+[debug] [2019-10-06T01:16:26.979Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/sar-solutions/adminSdkConfig  
+ 
+[debug] [2019-10-06T01:16:34.062Z] <<< HTTP RESPONSE 200
+[debug] [2019-10-06T01:16:34.067Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/sar-solutions/versions  
+
+[debug] [2019-10-06T01:17:05.412Z] Error: Client network socket disconnected before secure TLS connection was established
+    at TLSSocket.onConnectEnd (_tls_wrap.js:1095:19)
+    at Object.onceWrapper (events.js:286:20)
+    at TLSSocket.emit (events.js:203:15)
+    at TLSSocket.EventEmitter.emit (domain.js:448:20)
+    at endReadableNT (_stream_readable.js:1145:12)
+    at process._tickCallback (internal/process/next_tick.js:63:19)
+[error] 
+[error] Error: Server Error. Client network socket disconnected before secure TLS connection was established

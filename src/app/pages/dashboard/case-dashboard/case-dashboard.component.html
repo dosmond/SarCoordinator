@@ -1,0 +1,14 @@
+<fury-page [fxLayoutGap]="gap" class="dashboard" fxLayout="column">
+    <div [fxLayoutGap]="gap" fxFlex="noshrink" fxLayout="column" fxLayout.gt-lg="row">
+        <div fxLayout="column" [fxLayoutGap]="gap" [fxFlex]="col(2)">
+    
+          <div fxFlex="grow" class="route-animations-elements">
+            <case-data-widget 
+                [options]="caseDataOptions"
+                [tableOptions]="caseDataTableOptions"
+                [tableData]="volunteers$ | async">
+            </case-data-widget>
+          </div>
+        </div>
+      </div>
+</fury-page>

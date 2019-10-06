@@ -93,22 +93,26 @@ export const recentSalesTableDemoData = [
   {
     name: '1',
     person: 'Mike Wright',
-    status: "active"
+    status: "active",
+    caseid: '1',
   },
   {
     name: '2',
     person: 'Kunaal Kumar',
-    status: "active"
+    status: "active",
+    caseid: '2',
   },
   {
     name: '3',
     person: 'Sunny Siu',
-    status: "active"
+    status: "active",
+    caseid: '3',
   },
   {
     name: '4',
     person: 'Daniel Osmond',
-    status: "active"
+    status: "active",
+    caseid: '4',
   }
 ];
 

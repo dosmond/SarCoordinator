@@ -1,17 +1,15 @@
 import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import * as Chart from 'chart.js';
 import { ChartData } from 'chart.js';
-import defaultsDeep from 'lodash-es/defaultsDeep';
-import { defaultChartOptions } from '../../../../../@fury/shared/chart-widget/chart-widget-defaults';
 import { ListColumn } from '../../../../../@fury/shared/list/list-column.model';
-import { RecentSalesWidgetOptions } from './recent-sales-widget-options.interface';
+import { CaseDataWidgetOptions } from './case-data-widget-options.interface';
 
 @Component({
-  selector: 'fury-recent-sales-widget',
-  templateUrl: './recent-sales-widget.component.html',
-  styleUrls: ['./recent-sales-widget.component.scss']
+  selector: 'case-data-widget',
+  templateUrl: './case-data-widget.component.html',
+  styleUrls: ['./case-data-widget.component.scss']
 })
-export class RecentSalesWidgetComponent implements OnInit {
+export class CaseDataWidgetComponent implements OnInit {
 
   @Input() tableOptions: {
     pageSize: number;
@@ -19,7 +17,7 @@ export class RecentSalesWidgetComponent implements OnInit {
   };
   @Input() tableData: any[];
   @Input() chartData: ChartData;
-  @Input() options: RecentSalesWidgetOptions;
+  @Input() options: CaseDataWidgetOptions;
 
   @ViewChild('canvas', { read: ElementRef, static: true }) canvas: ElementRef;
 
