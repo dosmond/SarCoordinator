@@ -21,6 +21,15 @@ export interface Tracks {
   }]
 }
 
+export interface Shift {
+  caseId:string,
+  endTime,
+  startTime,
+  totalTime: number,
+  user: string,
+  path: [Geolocation]
+}
+
 @Component({
   selector: 'fury-google-maps',
   templateUrl: './google-maps.component.html',
@@ -44,9 +53,10 @@ export class GoogleMapsComponent implements OnInit , OnDestroy{
   private _loaded = false;
   private _view: esri.MapView = null;
   private _map: esri.Map = null;
-  paths = [];
-  locations = {paths: []};
   tracks: Tracks = null;
+  shifts: Shift[] = null;
+  mapPath: number[][] = null;
+  graphicsLayer;
 
   // get paths() {
   //   return this._paths;
@@ -110,7 +120,7 @@ export class GoogleMapsComponent implements OnInit , OnDestroy{
 
       const map: esri.Map = new EsriMap(mapProperties);
      
-
+      
       // Initialize the MapView
       const mapViewProperties: esri.MapViewProperties = {
         container: this.mapViewEl.nativeElement,
@@ -128,14 +138,32 @@ export class GoogleMapsComponent implements OnInit , OnDestroy{
     }
   }
 
+
+  async extractPath(val) {
+    this.shifts = val;
+    let i;
+    for(i= 0; i<this.shifts.length; i++){
+      let path = this.shifts[i].path;
+      this.mapPath = [];
+      let pt;
+      for(pt of path){
+        let point: number[] = [pt.longitude, pt.latitude]
+        this.mapPath.push(point);
+      }
+      await this.addPathOnMap();
+    }
+  }
+
+  /*
+  * 
+  */
   async addPathOnMap() {
     
-    this.locationService.getPaths()
-    .subscribe((data: Tracks)=>this.tracks = {
-      paths : data['paths']
-    });
+    // this.locationService.getPaths()
+    // .subscribe((data: Tracks)=>this.tracks = {
+    //   paths : data['paths']
+    // });
 
-    this.paths = this.locations.paths;
     const [EsriGraphicsLayer, EsriPoint, EsriSimpleMarkerSymbol, EsriGraphic, EsriPolyline, EsriLineSymbol] = await loadModules([
       "esri/layers/GraphicsLayer",
       "esri/geometry/Point",
@@ -151,14 +179,12 @@ export class GoogleMapsComponent implements OnInit , OnDestroy{
     const m = new EsriSimpleMarkerSymbol();
     const p = new EsriPoint({latitude: 40.7661535, longitude: -111.8493978})
     const g = new EsriGraphic({geometry: p, symbol: m});
-
     
     const poly = new EsriPolyline({
       type: 'poyline', 
-      paths:[[-111.8493978, 40.7661535], [-111.8493, 40.766], [-111.849, 40.7669],[-111.847, 40.768]] 
+      paths: this.mapPath 
     });
 
-  
     const lineSymbol = new EsriLineSymbol({
       type: 'simple-line', 
       color: [226, 119, 40], 
@@ -174,6 +200,7 @@ export class GoogleMapsComponent implements OnInit , OnDestroy{
   }
 
   ngOnInit() {
+
     // Initialize MapView and return an instance of MapView
     this.initializeMap().then(mapView => {
       // The map has been initialized
@@ -181,6 +208,9 @@ export class GoogleMapsComponent implements OnInit , OnDestroy{
       this._loaded = this._view.ready;
       this.mapLoadedEvent.emit(true);
     });
+
+    this.locationService.getPathsDirect()
+    .subscribe(val => this.extractPath(val));
   }
 
   ngOnDestroy() {
