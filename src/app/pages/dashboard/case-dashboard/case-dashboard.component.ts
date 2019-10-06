@@ -62,7 +62,7 @@ export class CaseDashboardComponent implements OnInit {
     this.caseId = this.router.parseUrl(this.router.url).root.children.primary.segments[1].path;
     this.caseDataOptions = {
       title: `Case ID: ${this.caseId}`,
-      subTitle: 'A view of all cases'
+      subTitle: 'All Volunteers on this case'
     };
     this.dashboardService.getCaseData(this.caseId).subscribe(res => {
       this.data = [(res as ICase)];

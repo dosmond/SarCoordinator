@@ -3,6 +3,8 @@ import * as Chart from 'chart.js';
 import { ChartData } from 'chart.js';
 import { ListColumn } from '../../../../../@fury/shared/list/list-column.model';
 import { CaseDataWidgetOptions } from './case-data-widget-options.interface';
+import { CaseDashboardService } from '../../case-dashboard/case-dashboard.service';
+import { ICase } from 'src/app/models/ICase';
 
 @Component({
   selector: 'case-data-widget',
@@ -18,25 +20,30 @@ export class CaseDataWidgetComponent implements OnInit {
   @Input() tableData: any[];
   @Input() chartData: ChartData;
   @Input() options: CaseDataWidgetOptions;
+  @Input() caseId: string;
 
   @ViewChild('canvas', { read: ElementRef, static: true }) canvas: ElementRef;
 
   chart: Chart;
-
+  data : ICase[];
   isLoading: boolean;
 
-  constructor() {
+  constructor(private dashboardService : CaseDashboardService) {
   }
 
   ngOnInit() {
   }
 
 
-  reload() {
+  async reload() {
     this.isLoading = true;
-
     setTimeout(() => {
       this.isLoading = false;
-    }, 2000);
+    }, 1000);
+    this.dashboardService.getCaseData(this.caseId).subscribe(res => {
+      this.data = [(res as ICase)];
+      console.log(this.data);
+      this.tableData = this.data[0].volunteers;
+    });
   }
 }
