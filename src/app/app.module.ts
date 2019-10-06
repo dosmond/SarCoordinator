@@ -13,6 +13,8 @@ import { PendingInterceptorModule } from '../@fury/shared/loading-indicator/pend
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldDefaultOptions } from '@angular/material/form-field';
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
+import { AngularFireModule } from "@angular/fire";
+import { AngularFirestoreModule } from "@angular/fire/firestore";
 
 @NgModule({
   imports: [
@@ -39,6 +41,8 @@ import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
     // ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
 
     NgxAuthFirebaseUIModule.forRoot(environment.firebaseConfig),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule,
   ],
   declarations: [AppComponent],
   bootstrap: [AppComponent],

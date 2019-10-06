@@ -10,6 +10,25 @@ import {
 } from "@angular/core";
 import { loadModules } from "esri-loader";
 import esri = __esri; // Esri TypeScript Types
+import { LocationDataService } from './location-data.service';
+
+export interface Tracks {
+  paths: [{
+    locations: [{
+      latitude: number,
+      longitude: number
+    }]
+  }]
+}
+
+export interface Shift {
+  caseId:string,
+  endTime,
+  startTime,
+  totalTime: number,
+  user: string,
+  path: [Geolocation]
+}
 
 @Component({
   selector: 'fury-google-maps',
@@ -34,6 +53,14 @@ export class GoogleMapsComponent implements OnInit , OnDestroy{
   private _loaded = false;
   private _view: esri.MapView = null;
   private _map: esri.Map = null;
+  tracks: Tracks = null;
+  shifts: Shift[] = null;
+  mapPath: number[][] = null;
+  graphicsLayer;
+
+  // get paths() {
+  //   return this._paths;
+  // }
 
   get map(): esri.Map {
     return this._map;
@@ -70,7 +97,7 @@ export class GoogleMapsComponent implements OnInit , OnDestroy{
     return this._basemap;
   }
 
-  constructor() {}
+  constructor(private locationService: LocationDataService) {}
 
   async initializeMap() {
     try {
@@ -110,7 +137,36 @@ export class GoogleMapsComponent implements OnInit , OnDestroy{
     }
   }
 
+  refresh(){
+    this.locationService.getPathsDirect()
+    .subscribe(val => this.extractPath(val));
+  }
+
+  async extractPath(val) {
+    this.shifts = val;
+    let i;
+    for(i= 0; i<this.shifts.length; i++){
+      let path = this.shifts[i].path;
+      this.mapPath = [];
+      let pt;
+      for(pt of path){
+        let point: number[] = [pt.longitude, pt.latitude]
+        this.mapPath.push(point);
+      }
+      await this.addPathOnMap();
+    }
+  }
+
+  /*
+  * 
+  */
   async addPathOnMap() {
+    
+    // this.locationService.getPaths()
+    // .subscribe((data: Tracks)=>this.tracks = {
+    //   paths : data['paths']
+    // });
+
     const [EsriGraphicsLayer, EsriPoint, EsriSimpleMarkerSymbol, EsriGraphic, EsriPolyline, EsriLineSymbol] = await loadModules([
       "esri/layers/GraphicsLayer",
       "esri/geometry/Point",
@@ -126,14 +182,12 @@ export class GoogleMapsComponent implements OnInit , OnDestroy{
     const m = new EsriSimpleMarkerSymbol();
     const p = new EsriPoint({latitude: 40.7661535, longitude: -111.8493978})
     const g = new EsriGraphic({geometry: p, symbol: m});
-
     
     const poly = new EsriPolyline({
       type: 'poyline', 
-      paths:[[-111.8493978, 40.7661535], [-111.8493, 40.766], [-111.849, 40.7669],[-111.847, 40.768], [111,-40]] 
+      paths: this.mapPath 
     });
 
-  
     const lineSymbol = new EsriLineSymbol({
       type: 'simple-line', 
       color: [226, 119, 40], 
@@ -149,6 +203,7 @@ export class GoogleMapsComponent implements OnInit , OnDestroy{
   }
 
   ngOnInit() {
+
     // Initialize MapView and return an instance of MapView
     this.initializeMap().then(mapView => {
       // The map has been initialized
@@ -156,6 +211,8 @@ export class GoogleMapsComponent implements OnInit , OnDestroy{
       this._loaded = this._view.ready;
       this.mapLoadedEvent.emit(true);
     });
+
+
   }
 
   ngOnDestroy() {
