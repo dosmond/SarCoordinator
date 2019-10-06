@@ -10,6 +10,16 @@ import {
 } from "@angular/core";
 import { loadModules } from "esri-loader";
 import esri = __esri; // Esri TypeScript Types
+import { LocationDataService } from './location-data.service';
+
+export interface Tracks {
+  paths: [{
+    locations: [{
+      latitude: number,
+      longitude: number
+    }]
+  }]
+}
 
 @Component({
   selector: 'fury-google-maps',
@@ -34,6 +44,13 @@ export class GoogleMapsComponent implements OnInit , OnDestroy{
   private _loaded = false;
   private _view: esri.MapView = null;
   private _map: esri.Map = null;
+  paths = [];
+  locations = {paths: []};
+  tracks: Tracks = null;
+
+  // get paths() {
+  //   return this._paths;
+  // }
 
   get map(): esri.Map {
     return this._map;
@@ -70,7 +87,7 @@ export class GoogleMapsComponent implements OnInit , OnDestroy{
     return this._basemap;
   }
 
-  constructor() {}
+  constructor(private locationService: LocationDataService) {}
 
   async initializeMap() {
     try {
@@ -112,6 +129,13 @@ export class GoogleMapsComponent implements OnInit , OnDestroy{
   }
 
   async addPathOnMap() {
+    
+    this.locationService.getPaths()
+    .subscribe((data: Tracks)=>this.tracks = {
+      paths : data['paths']
+    });
+
+    this.paths = this.locations.paths;
     const [EsriGraphicsLayer, EsriPoint, EsriSimpleMarkerSymbol, EsriGraphic, EsriPolyline, EsriLineSymbol] = await loadModules([
       "esri/layers/GraphicsLayer",
       "esri/geometry/Point",
