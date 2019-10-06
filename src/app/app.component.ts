@@ -80,7 +80,7 @@ export class AppComponent {
         name: 'Map',
         icon: 'map',
         position: 70,
-        routeOrFunction: '/maps/google-maps',
+        routeOrFunction: 'apps/maps',
         badge: '3',
         badgeColor: '#4CAF50'
       }

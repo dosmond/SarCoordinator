@@ -92,8 +92,7 @@ export class GoogleMapsComponent implements OnInit , OnDestroy{
       };
 
       const map: esri.Map = new EsriMap(mapProperties);
-     
-
+    
       // Initialize the MapView
       const mapViewProperties: esri.MapViewProperties = {
         container: this.mapViewEl.nativeElement,
@@ -131,14 +130,14 @@ export class GoogleMapsComponent implements OnInit , OnDestroy{
     
     const poly = new EsriPolyline({
       type: 'poyline', 
-      paths:[[-111.8493978, 40.7661535], [-111.8493, 40.766], [-111.849, 40.7669],[-111.847, 40.768]] 
+      paths:[[-111.8493978, 40.7661535], [-111.8493, 40.766], [-111.849, 40.7669],[-111.847, 40.768], [111,-40]] 
     });
 
   
     const lineSymbol = new EsriLineSymbol({
       type: 'simple-line', 
       color: [226, 119, 40], 
-      width: 1});
+      width: 5});
 
     const lineGraphic = new EsriGraphic({
       geometry: poly,
