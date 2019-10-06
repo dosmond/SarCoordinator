@@ -11,7 +11,7 @@ import { RecentSalesWidgetOptions } from './recent-sales-widget-options.interfac
   templateUrl: './recent-sales-widget.component.html',
   styleUrls: ['./recent-sales-widget.component.scss']
 })
-export class RecentSalesWidgetComponent implements OnInit, AfterViewInit {
+export class RecentSalesWidgetComponent implements OnInit {
 
   @Input() tableOptions: {
     pageSize: number;
@@ -33,23 +33,6 @@ export class RecentSalesWidgetComponent implements OnInit, AfterViewInit {
   ngOnInit() {
   }
 
-  ngAfterViewInit() {
-    this.chart = new Chart(this.canvas.nativeElement.getContext('2d'), {
-      type: 'line',
-      data: this.chartData,
-      options: defaultsDeep({
-        tooltips: {
-          mode: 'index',
-          intersect: false,
-        },
-        elements: {
-          point: {
-            radius: 0
-          }
-        }
-      }, defaultChartOptions)
-    });
-  }
 
   reload() {
     this.isLoading = true;

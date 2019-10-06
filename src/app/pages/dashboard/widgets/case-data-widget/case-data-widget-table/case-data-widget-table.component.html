@@ -15,7 +15,7 @@
 
     <tr *matHeaderRowDef="visibleColumns" mat-header-row></tr>
     <!--suppress UnnecessaryLabelJS -->
-    <tr *matRowDef="let row; columns: visibleColumns;" mat-row (click)='navigate(row)'></tr>
+    <tr *matRowDef="let row; columns: visibleColumns;" mat-row></tr>
   </table>
 
   <mat-paginator [pageSize]="pageSize" class="paginator"></mat-paginator>

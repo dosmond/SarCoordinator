@@ -6,7 +6,7 @@
 export const environment = {
   production: false,
   googleMapsApiKey: '',
-  backend: 'http://localhost:4200', // Put your backend here
+  backend: 'https://us-central1-sar-solutions.cloudfunctions.net', // Put your backend here
   firebaseConfig : {
     apiKey: "AIzaSyAikEee3dYc1JrLcL1umiXgaI0MQRpEdiE",
     authDomain: "sar-solutions.firebaseapp.com",

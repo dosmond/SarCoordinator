@@ -17,43 +17,7 @@ export class ToolbarNotificationsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.notifications = [
-      {
-        icon: 'notifications',
-        name: 'This is a notification',
-        time: 'few sec ago',
-        read: false,
-        colorClass: ''
-      },
-      {
-        icon: 'shopping_basket',
-        name: 'User bought your template',
-        time: '23 min ago',
-        read: false,
-        colorClass: 'primary'
-      },
-      {
-        icon: 'eject',
-        name: 'Server Crashed',
-        time: 'an hour ago',
-        read: false,
-        colorClass: 'accent'
-      },
-      {
-        icon: 'cached',
-        name: 'New user registered',
-        time: '6 hours ago',
-        read: true,
-        colorClass: ''
-      },
-      {
-        icon: 'code',
-        name: 'John added you as friend',
-        time: 'yesterday',
-        read: true,
-        colorClass: ''
-      }
-    ];
+    this.notifications = [];
   }
 
   markAsRead(notification) {

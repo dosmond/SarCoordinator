@@ -77,16 +77,10 @@ export class AppComponent {
         position: 35
       },
       {
-        name: 'Maps',
+        name: 'Map',
         icon: 'map',
         position: 70,
-        subItems: [
-          {
-            name: 'Esri Map',
-            routeOrFunction: '/maps/google-maps',
-            position: 0
-          }
-        ],
+        routeOrFunction: '/maps/google-maps',
         badge: '3',
         badgeColor: '#4CAF50'
       }

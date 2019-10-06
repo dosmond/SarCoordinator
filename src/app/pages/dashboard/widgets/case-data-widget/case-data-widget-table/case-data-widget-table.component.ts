@@ -9,11 +9,11 @@ import { ListColumn } from '../../../../../../@fury/shared/list/list-column.mode
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'fury-recent-sales-widget-table',
-  templateUrl: './recent-sales-widget-table.component.html',
-  styleUrls: ['./recent-sales-widget-table.component.scss']
+  selector: 'case-data-widget-table',
+  templateUrl: './case-data-widget-table.component.html',
+  styleUrls: ['./case-data-widget-table.component.scss']
 })
-export class RecentSalesWidgetTableComponent implements OnInit, AfterViewInit {
+export class CaseDataWidgetTableComponent implements OnInit, AfterViewInit {
 
   @Input() columns: ListColumn[];
   @Input() pageSize = 10;

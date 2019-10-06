@@ -37,9 +37,13 @@ const routes: Routes = [
         loadChildren: './pages/apps/chat/chat.module#ChatModule',
       },
       {
-        path: 'maps/google-maps',
+        path: 'apps/maps',
         loadChildren: './pages/maps/google-maps/google-maps.module#GoogleMapsModule',
       },
+      {
+        path: 'case-dashboard/:caseid',
+        loadChildren: './pages/dashboard/case-dashboard/case-dashboard.module#CaseDashboardModule',
+      }
     ]
   }
 ];

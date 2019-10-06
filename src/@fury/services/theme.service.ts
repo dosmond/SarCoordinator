@@ -26,7 +26,7 @@ export class ThemeService {
     map(theme => theme[1])
   );
   private _configSubject = new BehaviorSubject<ThemeConfig>({
-    navigation: 'side',
+    navigation: 'top',
     sidenavUserVisible: true,
     toolbarVisible: true,
     toolbarPosition: 'fixed',
