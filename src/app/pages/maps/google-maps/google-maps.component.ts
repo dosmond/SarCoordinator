@@ -138,6 +138,10 @@ export class GoogleMapsComponent implements OnInit , OnDestroy{
     }
   }
 
+  refresh(){
+    this.locationService.getPathsDirect()
+    .subscribe(val => this.extractPath(val));
+  }
 
   async extractPath(val) {
     this.shifts = val;
@@ -209,8 +213,7 @@ export class GoogleMapsComponent implements OnInit , OnDestroy{
       this.mapLoadedEvent.emit(true);
     });
 
-    this.locationService.getPathsDirect()
-    .subscribe(val => this.extractPath(val));
+
   }
 
   ngOnDestroy() {
