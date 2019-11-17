@@ -8,7 +8,9 @@ import { GoogleMapsComponent } from './google-maps.component';
   imports: [
     CommonModule,
     GoogleMapsRoutingModule,
-    AgmCoreModule
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBGHIUzjo5snwJIpHLMH_PEgNd5O7ltNTg'
+    })
   ],
   declarations: [GoogleMapsComponent]
 })
