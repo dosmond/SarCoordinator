@@ -1,3 +1,4 @@
+import { LoggedInGuard } from './pages/authentication/logged-in-guard';
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './layout/layout.component';
@@ -22,29 +23,35 @@ const routes: Routes = [
       {
         path: '',
         loadChildren: './pages/dashboard/dashboard.module#DashboardModule',
-        pathMatch: 'full'
+        pathMatch: 'full',
+        canActivate: [LoggedInGuard]
       },
       {
         path: 'apps/inbox',
         loadChildren: './pages/apps/inbox/inbox.module#InboxModule',
+        canActivate: [LoggedInGuard]
       },
       {
         path: 'apps/calendar',
         loadChildren: './pages/apps/calendar/calendar.module#CalendarAppModule',
+        canActivate: [LoggedInGuard]
       },
       {
         path: 'apps/chat',
         loadChildren: './pages/apps/chat/chat.module#ChatModule',
+        canActivate: [LoggedInGuard]
       },
       {
         path: 'apps/maps',
         loadChildren: './pages/maps/google-maps/google-maps.module#GoogleMapsModule',
+        canActivate: [LoggedInGuard]
       },
       {
         path: 'case-dashboard/:caseid',
         loadChildren: './pages/dashboard/case-dashboard/case-dashboard.module#CaseDashboardModule',
+        canActivate: [LoggedInGuard]
       }
-    ]
+    ],
   }
 ];
 

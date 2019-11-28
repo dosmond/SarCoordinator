@@ -1,58 +1,96 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
-import { fadeInUpAnimation } from '../../../../@fury/animations/fade-in-up.animation';
+import {Component, EventEmitter, Inject, Input, OnInit, Output, PLATFORM_ID, ViewEncapsulation} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {MatFormFieldAppearance, ThemePalette} from '@angular/material';
+import {AuthProcessService, AuthProvider} from '../auth-service';
+import {Subscription} from 'rxjs';
+import {isPlatformBrowser} from '@angular/common';
 
 @Component({
-  selector: 'fury-login',
+  selector: 'login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  animations: [fadeInUpAnimation]
+  encapsulation: ViewEncapsulation.None,
 })
 export class LoginComponent implements OnInit {
 
-  form: FormGroup;
+  @Input() logoUrl: string;
+  @Input() providers: string[] | string = AuthProvider.ALL; //  google, facebook, twitter, github as array or all as one single string
+  @Input() appearance: MatFormFieldAppearance;
+  @Input() registrationEnabled = true;
+  @Input() resetPasswordEnabled = true;
+  @Input() messageOnAuthSuccess: string;
+  @Input() messageOnAuthError: string;
 
-  inputType = 'password';
-  visible = false;
+  // i18n
+  @Input() titleText = 'LOGIN TO YOUR ACCOUNT';
+  @Input() rememberMeText = 'Remember Me';
+  @Input() loginButtonText = 'LOGIN';
+  @Input() orLabelText = 'OR';
+  @Input() forgotPasswordText = 'Forgot Password?';
+  @Input() dontHaveAnAccountText = 'Don\'t have an account?';
+  @Input() createAccountButtonText = 'Create an account';
 
-  providers: string[] = ["google"];
+  // i18n email
+  @Input() emailText = 'Email';
+  @Input() emailErrorRequiredText = 'Email is required';
+  @Input() emailErrorPatternText = 'Please enter a valid email address';
 
-  constructor(private router: Router,
-              private fb: FormBuilder,
-              private cd: ChangeDetectorRef,
-              private snackbar: MatSnackBar
-  ) {
+  // i18n password
+  @Input() passwordText = 'Password';
+  @Input() passwordErrorRequiredText = 'Password is required';
+
+  // Events
+  @Output() onSuccess: any;
+  @Output() onError: any;
+  @Output() onCreateAccountRequested: EventEmitter<void> = new EventEmitter<void>();
+  @Output() onResetPasswordRequested: EventEmitter<void> = new EventEmitter<void>();
+
+  loginForm: FormGroup;
+  authProviders = AuthProvider;
+  onErrorSubscription: Subscription;
+  authenticationError = false;
+
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: Object,
+    public authProcess: AuthProcessService,
+    private _formBuilder: FormBuilder) {
+    this.onSuccess = authProcess.onSuccessEmitter;
+    this.onError = authProcess.onErrorEmitter;
+  }
+
+  get color(): string | ThemePalette {
+    return this.authenticationError ? 'warn' : 'primary';
+  }
+
+  get colorAccent(): string | ThemePalette {
+    return this.authenticationError ? 'warn' : 'accent';
   }
 
   ngOnInit() {
-    this.form = this.fb.group({
-      email: ['', Validators.required],
+
+    if (isPlatformBrowser(this.platformId)) {
+      this.onErrorSubscription = this.onError.subscribe(() => this.authenticationError = true);
+    }
+
+    this.updateAuthSnackbarMessages();
+
+    this.loginForm = this._formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
     });
   }
 
-  send() {
-    this.router.navigate(['/']);
-    this.snackbar.open('Lucky you! Looks like you didn\'t need a password or email address! For a real application we provide validators to prevent this. ;)', 'LOL THANKS', {
-      duration: 10000
-    });
+  public updateAuthSnackbarMessages(): void {
+    this.authProcess.messageOnAuthSuccess = this.messageOnAuthSuccess;
+    this.authProcess.messageOnAuthError = this.messageOnAuthError;
   }
 
-  toCreateAccount() {
-    this.router.navigate(['/register']);
-  }
-
-  toggleVisibility() {
-    if (this.visible) {
-      this.inputType = 'password';
-      this.visible = false;
-      this.cd.markForCheck();
-    } else {
-      this.inputType = 'text';
-      this.visible = true;
-      this.cd.markForCheck();
-    }
+  async login() {
+    return await this.authProcess.signInWith(this.authProviders.EmailAndPassword,
+      {
+        email: this.loginForm.get('email').value,
+        password: this.loginForm.get('password').value
+      }
+    )
   }
 }

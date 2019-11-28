@@ -1,3 +1,5 @@
+import { LoggedInGuard } from './pages/authentication/logged-in-guard';
+import { AuthProcessService } from './pages/authentication/auth-service';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -12,7 +14,7 @@ import { environment } from '../environments/environment';
 import { PendingInterceptorModule } from '../@fury/shared/loading-indicator/pending-interceptor.module';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldDefaultOptions } from '@angular/material/form-field';
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarConfig } from '@angular/material/snack-bar';
-import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
+import { NgxAuthFirebaseUIModule, NgxAuthFirebaseUIConfigToken } from 'ngx-auth-firebaseui';
 import { AngularFireModule } from "@angular/fire";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
 
@@ -40,7 +42,7 @@ import { AngularFirestoreModule } from "@angular/fire/firestore";
     // Register a Service Worker (optional)
     // ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
 
-    NgxAuthFirebaseUIModule.forRoot(environment.firebaseConfig),
+    NgxAuthFirebaseUIModule.forRoot(environment.firebaseConfig, () => "sar-solutions", environment.config),
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
   ],
@@ -60,8 +62,13 @@ import { AngularFirestoreModule } from "@angular/fire/firestore";
         horizontalPosition: 'end',
         verticalPosition: 'bottom'
       } as MatSnackBarConfig
-    }
+    },
+    AuthProcessService,
+    LoggedInGuard
   ]
 })
 export class AppModule {
+  constructor(_auth: AuthProcessService) {
+    _auth.listenToUserEvents();
+  }
 }

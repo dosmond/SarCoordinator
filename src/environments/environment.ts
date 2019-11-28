@@ -15,6 +15,10 @@ export const environment = {
     storageBucket: "sar-solutions.appspot.com",
     messagingSenderId: "615606149986",
     appId: "1:615606149986:web:8ba0bc245536168ccec23b",
-    measurementId: "G-VY44QHQS2F"
+    measurementId: "G-VY44QHQS2F",
+  },
+  config : {
+    authGuardFallbackURL: 'login',
+    authGuardLoggedInURL: 'register', 
   }
 };
