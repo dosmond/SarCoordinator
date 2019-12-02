@@ -1,6 +1,9 @@
 <fury-card>
   <fury-card-header>
     <fury-card-header-heading>{{ options.title }}</fury-card-header-heading>
+    <fury-card-header-subheading *ngIf="options.mp">{{ options.mp }}</fury-card-header-subheading>
+    <fury-card-header-subheading *ngIf="options.rp">{{ options.rp }}</fury-card-header-subheading>
+    <fury-card-header-subheading *ngIf="options.rpPhone">{{ options.rpPhone }}</fury-card-header-subheading>
     <fury-card-header-subheading *ngIf="options.subTitle">{{ options.subTitle }}</fury-card-header-subheading>
 
     <fury-card-header-actions>

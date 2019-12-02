@@ -62,6 +62,9 @@ export class CaseDashboardComponent implements OnInit {
     this.caseId = this.router.parseUrl(this.router.url).root.children.primary.segments[1].path;
     this.caseDataOptions = {
       title: `Case ID: ${this.caseId}`,
+      mp: 'Missing Person: Mike Wright',
+      rp: 'Reporting Person: Barack Obama',
+      rpPhone: 'RP Contact Phone: 555-1234567',
       subTitle: 'All Volunteers on this case'
     };
     this.dashboardService.getCaseData(this.caseId).subscribe(res => {

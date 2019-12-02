@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit} from "@angular/core";
 import { LocationDataService } from './location-data.service';
-import { MapsAPILoader } from '@agm/core';
 
 export interface Tracks {
   paths: [{
@@ -96,7 +95,7 @@ export class GoogleMapsComponent implements OnInit, AfterViewInit {
     new google.maps.Polyline({
       path: p,
       strokeWeight: 2,
-      strokeColor: this.getRandomColor()
+      strokeColor: '#ff0000'
     }).setMap(this.map);
   }
 

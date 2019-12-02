@@ -8,7 +8,8 @@ import { GoogleMapsComponent } from './google-maps.component';
     CommonModule,
     GoogleMapsRoutingModule,
   ],
-  declarations: [GoogleMapsComponent]
+  declarations: [GoogleMapsComponent],
+  exports:[GoogleMapsComponent]
 })
 export class GoogleMapsModule {
 }
