@@ -69,8 +69,8 @@ export class CaseDashboardComponent implements OnInit {
     };
     this.dashboardService.getCaseData(this.caseId).subscribe(res => {
       this.data = [(res as ICase)];
-      console.log(this.data);
-      this.volunteers$ = of(this.data[0].volunteers);
+      console.log(this.data[0][0].volunteers);
+      this.volunteers$ = of(this.data[0][0].volunteers);
     });
   }
 
