@@ -17,8 +17,8 @@ export class LoggedInGuard implements CanActivate {
     return this.authProcess.afa.user.pipe(
       map(user => {
         if (user) {
-            console.log("From logged-in-component");
-            console.log(user);
+            //console.log("From logged-in-component");
+            //console.log(user);
             return true;
         } else {
             this.router.navigate([`/login`], { queryParams: { redirectUrl: state.url }});

@@ -52,26 +52,6 @@ export class AppComponent {
         pathMatchExact: true
       },
       {
-        name: 'Calendar',
-        routeOrFunction: '/apps/calendar',
-        icon: 'date_range',
-        position: 20
-      },
-      {
-        name: 'Inbox',
-        routeOrFunction: '/apps/inbox',
-        icon: 'inbox',
-        position: 25
-      },
-      {
-        name: 'Chat',
-        routeOrFunction: '/apps/chat',
-        icon: 'chat',
-        position: 30,
-        badge: '14',
-        badgeColor: '#009688'
-      },
-      {
         name: 'USER INTERFACE',
         type: 'subheading',
         position: 35

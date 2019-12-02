@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthProcessService } from '../../../pages/authentication/auth-service';
 
 @Component({
   selector: 'fury-toolbar-user',
@@ -9,7 +10,7 @@ export class ToolbarUserComponent implements OnInit {
 
   isOpen: boolean;
 
-  constructor() { }
+  constructor(private auth : AuthProcessService) { }
 
   ngOnInit() {
   }
@@ -22,4 +23,7 @@ export class ToolbarUserComponent implements OnInit {
     this.isOpen = false;
   }
 
+  logout(){
+    this.auth.signOut();
+  }
 }
