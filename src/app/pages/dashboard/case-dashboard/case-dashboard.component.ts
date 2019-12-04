@@ -16,6 +16,8 @@ export class CaseDashboardComponent implements OnInit {
   private static isInitialLoad = true;
   data : ICase[];
   caseId : string;
+  missingPerson : string;
+  reporterName : string;
   volunteers$: Observable<any[]>;
   caseDataOptions: CaseDataWidgetOptions;
   caseDataTableOptions = {
@@ -55,22 +57,32 @@ export class CaseDashboardComponent implements OnInit {
     return `1 1 calc(${100 / colAmount}% - ${this._gap - (this._gap / colAmount)}px)`;
   }
 
-  /**
-   * Everything implemented here is purely for Demo-Demonstration and can be removed and replaced with your implementation
-   */
   ngOnInit() {
     this.caseId = this.router.parseUrl(this.router.url).root.children.primary.segments[1].path;
+
+    // Initialize to avoid errors.
     this.caseDataOptions = {
-      title: `Case ID: ${this.caseId}`,
-      mp: 'Missing Person: Mike Wright',
-      rp: 'Reporting Person: Barack Obama',
-      rpPhone: 'RP Contact Phone: 555-1234567',
-      subTitle: 'All Volunteers on this case'
+      title: ``,
+      mp: ``,
+      rp: '',
+      rpPhone: '',
+      subTitle: ''
     };
+
     this.dashboardService.getCaseData(this.caseId).subscribe(res => {
       this.data = [(res as ICase)];
-      console.log(this.data[0][0].volunteers);
+      console.log(this.data[0][0].missingPersonName[0]);
+      this.missingPerson = this.data[0][0].missingPersonName[0];
+      this.reporterName = this.data[0][0].reporterName;
       this.volunteers$ = of(this.data[0][0].volunteers);
+
+      this.caseDataOptions = {
+        title: `Case ID: ${this.caseId}`,
+        mp: `Missing Person: ${this.missingPerson}`,
+        rp: `Reporting Person: ${this.reporterName}`,
+        rpPhone: 'RP Contact Phone: 555-1234567',
+        subTitle: 'All Volunteers on this case'
+      };
     });
   }
 
