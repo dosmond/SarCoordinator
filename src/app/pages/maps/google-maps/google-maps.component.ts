@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit} from "@angular/core";
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Input} from "@angular/core";
 import { LocationDataService } from './location-data.service';
 
 export interface Tracks {
@@ -34,8 +34,10 @@ export class GoogleMapsComponent implements OnInit, AfterViewInit {
   @ViewChild('mapContainer', {static: false}) gmap: ElementRef;
   map: google.maps.Map;
 
-  lat: number = 40.7686947;
-  lng: number = -111.8449681;
+  @Input('height') height = "35vh";
+  @Input("lat") lat = 40.7686947;
+  @Input("lng") lng = -111.8449681;
+  zoom: number = 15;
   coordinates = new google.maps.LatLng(this.lat, this.lng);
   mapType: string = 'terrain';
   mapOptions: google.maps.MapOptions = {
@@ -45,58 +47,38 @@ export class GoogleMapsComponent implements OnInit, AfterViewInit {
   };
   tracks: Tracks = null;
   shifts: Shift[] = null;
-  mapPath: number[][] = null;
+  mapPath: any[] = [{}];
 
 
   constructor(private locationService: LocationDataService) {}
 
-  ngOnInit() {
-    
-
-  }
+  ngOnInit() {}
 
   ngAfterViewInit(): void {
-    this.mapInitializer();
-
     this.locationService.getPathsDirect()
     .subscribe(val => this.extractPath(val));
   }
 
-  mapInitializer() {
-    this.map = new google.maps.Map(this.gmap.nativeElement, this.mapOptions);
-   }
-
   extractPath(val) {
+    console.log(val);
     this.shifts = val;
     let i;
     for(i= 0; i<this.shifts.length; i++){
-      let path:google.maps.LatLng[] = [];
-    //   let path = this.shifts[i].path;
-    //  // await this.addPathOnMap(path)
-    //   this.mapPath = [];
-       let pt;
-       for(pt of this.shifts[i].path){ //geolocation
-        let latlong: google.maps.LatLng = new google.maps.LatLng({
+      let path: any[] = [];
+
+      let pt;
+      for(pt of this.shifts[i].path){ //geolocation
+        let latlong: {} = {
           lat: pt._lat,
           lng: pt._long
-        });
+        };
         path.push(latlong);
-    //     let point: number[] = [pt.longitude, pt.latitude]
-    //     this.mapPath.push(point);
-       }
-      this.addPathOnMap(path);
-    }
-  }
+      }
+      let color = this.getRandomColor();
 
-  /*
-  * Adds a single path on the map as a polyline
-  */
-  addPathOnMap(p: google.maps.LatLng[]) {
-    new google.maps.Polyline({
-      path: p,
-      strokeWeight: 2,
-      strokeColor: '#ff0000'
-    }).setMap(this.map);
+      this.mapPath.push({path: path, color: color});
+    }
+    console.log(this.mapPath);
   }
 
   getRandomColor() {
@@ -106,6 +88,10 @@ export class GoogleMapsComponent implements OnInit, AfterViewInit {
       color += letters[Math.floor(Math.random() * 16)];
     }
     return color;
+  }
+
+  log(thing){
+    console.log(thing);
   }
 
 }

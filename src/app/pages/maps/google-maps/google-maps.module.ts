@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { AgmCoreModule } from '@agm/core'
 import { GoogleMapsRoutingModule } from './google-maps-routing.module';
 import { GoogleMapsComponent } from './google-maps.component';
 
@@ -7,6 +8,7 @@ import { GoogleMapsComponent } from './google-maps.component';
   imports: [
     CommonModule,
     GoogleMapsRoutingModule,
+    AgmCoreModule,
   ],
   declarations: [GoogleMapsComponent],
   exports:[GoogleMapsComponent]

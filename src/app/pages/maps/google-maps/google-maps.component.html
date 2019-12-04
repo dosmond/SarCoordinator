@@ -1,1 +1,9 @@
-<div #mapContainer id="map"></div>
+<agm-map [style.height]='height' [mapTypeId]="'terrain'" [latitude]="lat" [longitude]="lng" [zoom]="zoom">
+    <ng-container *ngFor="let paths of mapPath; index as i">
+        <agm-polyline *ngIf='paths' [strokeColor]="paths.color">
+            <ng-container *ngFor="let path of paths.path">
+                <agm-polyline-point *ngIf="path.lat" [latitude]="path.lat" [longitude]='path.lng'></agm-polyline-point>
+            </ng-container>
+        </agm-polyline>
+    </ng-container>
+</agm-map>

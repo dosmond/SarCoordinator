@@ -8,16 +8,15 @@
                 [tableData]="volunteers$ | async">
             </case-data-widget>
           </div>
-          <div fxFlex="grow">
-            <fury-google-maps></fury-google-maps>
-          </div>
           
         </div>
         
       </div>
       <div fxLayout="column" [fxLayoutGap]="gap" [fxFlex]="col(2)">
   
-
+        <div fxFlex="grow">
+          <fury-google-maps></fury-google-maps>
+        </div>
   
       </div>
 </fury-page>
