@@ -19,6 +19,9 @@ export class CaseDashboardComponent implements OnInit {
   missingPerson : string;
   reporterName : string;
   volunteers$: Observable<any[]>;
+  mapOptions = {
+    zoom : 15
+  }
   caseDataOptions: CaseDataWidgetOptions;
   caseDataTableOptions = {
     pageSize: 5,
@@ -43,7 +46,7 @@ export class CaseDashboardComponent implements OnInit {
      */
     if (/Edge/.test(navigator.userAgent)) {
       if (CaseDashboardComponent.isInitialLoad) {
-        this.router.navigate(['/apps/chat']).then(() => {
+        this.router.navigate(['/apps/maps']).then(() => {
           this.router.navigate(['/']);
         });
 

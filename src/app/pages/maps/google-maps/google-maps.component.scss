@@ -9,10 +9,16 @@
 
 // .agm-map-container-inner {
 //   height: 100%;
-// }
+//}
 
 #map {
   height: 100%;
   width: 100%;
   margin: 20px;
+ }
+
+ .full {
+  height: "35vh" !important;
+  width: 100%;
+  margin: 0;
  }

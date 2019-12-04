@@ -56,14 +56,6 @@ export class AppComponent {
         type: 'subheading',
         position: 35
       },
-      {
-        name: 'Map',
-        icon: 'map',
-        position: 70,
-        routeOrFunction: 'apps/maps',
-        badge: '3',
-        badgeColor: '#4CAF50'
-      }
     ]);
   }
 }

@@ -35,9 +35,10 @@ export class GoogleMapsComponent implements OnInit, AfterViewInit {
   map: google.maps.Map;
 
   @Input('height') height = "35vh";
-  @Input("lat") lat = 40.7686947;
-  @Input("lng") lng = -111.8449681;
-  zoom: number = 15;
+  @Input("lat") lat : number; 
+  @Input("lng") lng : number;  
+  @Input("caseId") caseId : string;
+  @Input("zoom") zoom: number;
   coordinates = new google.maps.LatLng(this.lat, this.lng);
   mapType: string = 'terrain';
   mapOptions: google.maps.MapOptions = {
@@ -52,7 +53,14 @@ export class GoogleMapsComponent implements OnInit, AfterViewInit {
 
   constructor(private locationService: LocationDataService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    if(!this.lat && !this.lng){
+      this.lat = 40.7686947;
+      this.lng = -111.8449681;
+    }
+    if(!this.zoom)
+      this.zoom = 15;
+  }
 
   ngAfterViewInit(): void {
     this.locationService.getPathsDirect()
@@ -60,7 +68,6 @@ export class GoogleMapsComponent implements OnInit, AfterViewInit {
   }
 
   extractPath(val) {
-    console.log(val);
     this.shifts = val;
     let i;
     for(i= 0; i<this.shifts.length; i++){
@@ -78,7 +85,6 @@ export class GoogleMapsComponent implements OnInit, AfterViewInit {
 
       this.mapPath.push({path: path, color: color});
     }
-    console.log(this.mapPath);
   }
 
   getRandomColor() {

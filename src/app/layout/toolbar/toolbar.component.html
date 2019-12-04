@@ -3,24 +3,15 @@
     <fury-toolbar-sidenav-mobile-toggle (openSidenav)="openSidenav.emit()"></fury-toolbar-sidenav-mobile-toggle>
 
     <div [fxShow.gt-sm]="topNavigation$ | async" [fxShow.xs]="false" [routerLink]="['/']" class="toolbar-logo" fxShow>
-      <img src='../../../assets/logo.svg' alt='sar coordinator logo' height='50px'>
+      <img src='../../../assets/logo.svg' alt='sar coordinator logo' height='50px' margin='0px'>
     </div>
 
-    <fury-toolbar-search-bar fxFlex="500px" fxHide fxShow.gt-md></fury-toolbar-search-bar>
   </div>
 
   <div fxLayout="row">
 
-    <fury-toolbar-fullscreen-toggle class="toolbar-button"></fury-toolbar-fullscreen-toggle>
-
-    <fury-toolbar-search fxHide fxShow.gt-sm fxHide.gt-md class="toolbar-button"></fury-toolbar-search>
-
-    <fury-toolbar-notifications class="toolbar-button"></fury-toolbar-notifications>
-
     <fury-toolbar-user class="toolbar-button"></fury-toolbar-user>
 
-    <fury-toolbar-quickpanel-toggle (openQuickPanel)="openQuickPanel.emit()"
-                                    class="toolbar-button"></fury-toolbar-quickpanel-toggle>
   </div>
 </div>
 
