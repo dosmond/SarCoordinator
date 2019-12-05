@@ -1,0 +1,38 @@
+        <div [@fadeInUpStagger] fxLayout="column" fxLayoutAlign="start center">
+      
+          <div class="card" fadeInUpStaggerElement>
+            <mat-horizontal-stepper #stepper="matHorizontalStepper" [linear]="true">
+              <mat-step [stepControl]="accountFormGroup">
+                <form [formGroup]="accountFormGroup">
+                  <ng-template matStepLabel>Create Account</ng-template>
+      
+                  <div class="heading">Create Volunteer</div>
+                  <div class="subheading">Set up the basic info for your new volunteer</div>
+      
+                  <div class="content" fxLayout="column" fxLayoutGap="8px">      
+                    <mat-form-field fxFlex="auto">
+                      <mat-label>Name</mat-label>
+                      <input formControlName="name" matInput required>
+                      <mat-hint>Volunteer Name</mat-hint>
+                    </mat-form-field>
+
+                    <mat-form-field fxFlex="auto">
+                        <mat-label>E-Mail</mat-label>
+                        <input formControlName="email" matInput required>
+                        <mat-hint align="end">example@example.com</mat-hint>
+                    </mat-form-field>
+                  </div>
+      
+                  <div class="actions" fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="8px">
+                    <button (click)="stepper.reset()" [disabled]="accountFormGroup.pristine" color="primary" mat-button
+                            type="button">RESET
+                    </button>
+                    <button (click)="submit()" [disabled]="accountFormGroup.invalid" color="primary" 
+                            mat-raised-button matStepperNext>CREATE
+                    </button>
+                  </div>
+                </form>
+              </mat-step>
+            </mat-horizontal-stepper>
+          </div>
+        </div>
