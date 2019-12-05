@@ -42,7 +42,7 @@ import { AngularFirestoreModule } from "@angular/fire/firestore";
     // Register a Service Worker (optional)
     // ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
 
-    NgxAuthFirebaseUIModule.forRoot(environment.firebaseConfig, () => "sar-solutions", environment.config),
+    NgxAuthFirebaseUIModule.forRoot(environment.firebaseConfig),
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
   ],

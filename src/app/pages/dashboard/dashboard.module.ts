@@ -15,8 +15,8 @@ import { SalesSummaryWidgetModule } from './widgets/sales-summary-widget/sales-s
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
 import { DashboardService } from './dashboard.service';
+import { VolunteerFormModule } from '../forms/volunteer-form/volunteer-form.module';
 import { FurySharedModule } from '../../../@fury/fury-shared.module';
-import { CaseDashboardComponent } from './case-dashboard/case-dashboard.component';
 
 @NgModule({
   imports: [
@@ -36,7 +36,8 @@ import { CaseDashboardComponent } from './case-dashboard/case-dashboard.componen
     RecentSalesWidgetModule,
     AdvancedPieChartWidgetModule,
     MapsWidgetModule,
-    MarketWidgetModule
+    MarketWidgetModule,
+    VolunteerFormModule
   ],
   declarations: [DashboardComponent],
   providers: [DashboardService]

@@ -146,6 +146,9 @@ export class AuthProcessService implements ISignInProcess {
     return this.user.reload();
   }
 
+  createUserWithEmail(email: string){
+  }
+
   // Search for an error message.
   // Consumers of this library are given the possibility to provide a function in case they want to instrument message based on error properties.
   getMessageOnAuthError(error: any) {
