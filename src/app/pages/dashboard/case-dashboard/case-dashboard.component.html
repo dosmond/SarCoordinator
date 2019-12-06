@@ -10,7 +10,7 @@
           </div>
         </div>
       </div>
-      <div fxLayout="column" [fxLayoutGap]="gap" [fxFlex]="col(2)">
+      <div fxFill fxLayout="column" fxLayoutAlign='end' [fxLayoutGap]="gap" [fxFlex]="col(2)">
         <div fxFlex="grow">
           <fury-google-maps [zoom]="mapOptions.zoom"></fury-google-maps>
         </div>

@@ -14,6 +14,7 @@ import { CaseDataWidgetOptions } from '../widgets/case-data-widget/case-data-wid
 export class CaseDashboardComponent implements OnInit {
 
   private static isInitialLoad = true;
+  height = "100%"
   data : ICase[];
   caseId : string;
   missingPerson : string;
@@ -74,7 +75,6 @@ export class CaseDashboardComponent implements OnInit {
 
     this.dashboardService.getCaseData(this.caseId).subscribe(res => {
       this.data = [(res as ICase)];
-      console.log(this.data[0][0].missingPersonName[0]);
       this.missingPerson = this.data[0][0].missingPersonName[0];
       this.reporterName = this.data[0][0].reporterName;
       this.volunteers$ = of(this.data[0][0].volunteers);
