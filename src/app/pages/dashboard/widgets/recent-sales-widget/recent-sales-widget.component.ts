@@ -1,8 +1,6 @@
 import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import * as Chart from 'chart.js';
 import { ChartData } from 'chart.js';
-import defaultsDeep from 'lodash-es/defaultsDeep';
-import { defaultChartOptions } from '../../../../../@fury/shared/chart-widget/chart-widget-defaults';
 import { ListColumn } from '../../../../../@fury/shared/list/list-column.model';
 import { RecentSalesWidgetOptions } from './recent-sales-widget-options.interface';
 
@@ -31,6 +29,7 @@ export class RecentSalesWidgetComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(this.tableData)
   }
 
 

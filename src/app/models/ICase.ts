@@ -1,6 +1,7 @@
 import { IUser } from './IUser';
 
 export interface ICase {
+    caseId : string;
     description: string;
     equipmentUsed: string[];
     missingPersonName: string;

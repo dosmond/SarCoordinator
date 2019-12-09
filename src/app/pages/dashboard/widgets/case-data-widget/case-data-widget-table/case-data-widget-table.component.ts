@@ -45,10 +45,10 @@ export class CaseDataWidgetTableComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.dataSource = new MatTableDataSource();
-
+    this.data$.subscribe(res => console.log(res))
     this.data$.pipe(
       filter(Boolean)
-    ).subscribe((values) => this.dataSource.data = values);
+    ).subscribe((values : any[]) => this.dataSource.data = values);
   }
 
   ngAfterViewInit() {

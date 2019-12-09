@@ -9,14 +9,14 @@
     <div fxLayout="column" [fxLayoutGap]="gap" [fxFlex]="col(2)">
 
       <div fxFlex="grow" class="route-animations-elements">
-        <fury-recent-sales-widget [options]="recentSalesOptions" [chartData]="recentSalesData$ | async"
+        <fury-recent-sales-widget [options]="recentSalesOptions"
                                   [tableOptions]="recentSalesTableOptions"
-                                  [tableData]="recentSalesTableData$ | async"></fury-recent-sales-widget>
+                                  [tableData]="tableDataObservable$ | async"></fury-recent-sales-widget>
       </div>
 
-      <div fxLayoutAlign="end">
-        <button mat-raised-button color="primary" (click)="openVolunteerDialog()">Add Volunteer</button>
-      </div>
+      <!--<div fxLayoutAlign="end">
+        <button mat-raised-button color="primary" (click)="openVolunteerDialog()">Add Volunteer</button> 
+      </div> -->
 
     </div>
 

@@ -5,8 +5,6 @@ import { of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from '../../../../environments/environment';
 import {
-  recentSalesChartDemoLabels,
-  recentSalesChartDemoValues,
   recentSalesTableDemoData,
 
 } from '../../demo-data/widget-demo-data';

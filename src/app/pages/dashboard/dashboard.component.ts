@@ -1,7 +1,7 @@
+import { ICases } from 'src/app/models/ICases';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ChartData } from 'chart.js';
-import { Observable, ReplaySubject } from 'rxjs';
+import { Observable, of, ReplaySubject } from 'rxjs';
 import { RecentSalesWidgetOptions } from './widgets/recent-sales-widget/recent-sales-widget-options.interface';
 import { DashboardService } from './dashboard.service';
 import { MatDialog } from '@angular/material/dialog'
@@ -15,7 +15,8 @@ import { VolunteerFormDialogComponent } from '../forms/volunteer-form/volunteer-
 export class DashboardComponent implements OnInit {
 
   private static isInitialLoad = true;
-  recentSalesData$: Observable<ChartData>;
+  data : any;
+  caseData : any;
   recentSalesOptions: RecentSalesWidgetOptions = {
     title: 'Cases',
     subTitle: 'A view of all cases'
@@ -23,12 +24,11 @@ export class DashboardComponent implements OnInit {
   recentSalesTableOptions = {
     pageSize: 5,
     columns: [
-      { name: 'Case', property: 'name', visible: true, isModelProperty: true },
-      { name: 'Victim', property: 'person', visible: true, isModelProperty: true },
-      { name: 'Status', property: 'status', visible: true, isModelProperty: true },
+      { name: 'Case', property: 'caseId', visible: true, isModelProperty: true },
     ]
   };
-  recentSalesTableData$: Observable<any[]>;
+  tableData: {};
+  tableDataObservable$ : Observable<any>;
 
   /**
    * Needed for the Layout
@@ -59,12 +59,20 @@ export class DashboardComponent implements OnInit {
     return `1 1 calc(${100 / colAmount}% - ${this._gap - (this._gap / colAmount)}px)`;
   }
 
-  /**
-   * Everything implemented here is purely for Demo-Demonstration and can be removed and replaced with your implementation
-   */
   ngOnInit() {
-    this.recentSalesTableData$ = this.dashboardService.getRecentSalesTableData();
-    this.recentSalesData$ = this.dashboardService.getRecentSalesData();
+    this.tableData = {};
+    this.tableDataObservable$ = of([{}]);
+    this.dashboardService.getRecentSalesTableData().subscribe((res) => {
+      this.data = (res as ICases[]);
+      console.log(this.data)
+      this.tableDataObservable$ = of(this.data.caseIds)
+      
+      //console.log(this.data)
+      //this.tableData = (this.data.caseIds as ICases[]);
+      //console.log(this.tableData)
+      //this.tableDataObservable$ = of();
+      //this.tableDataObservable$.subscribe(res => console.log(res))
+    });
   }
 
   openVolunteerDialog(): void {

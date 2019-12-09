@@ -40,15 +40,15 @@ export class RecentSalesWidgetTableComponent implements OnInit, AfterViewInit {
   }
 
   navigate(row: any){
-    this.router.navigate([`case-dashboard/${row.caseid}`]);
+    this.router.navigate([`case-dashboard/${row.caseId}`]);
   }
 
   ngOnInit() {
     this.dataSource = new MatTableDataSource();
-
+    this.data$.subscribe(res => console.log(res))
     this.data$.pipe(
       filter(Boolean)
-    ).subscribe((values) => this.dataSource.data = values);
+    ).subscribe((values : any[]) => this.dataSource.data = values);
   }
 
   ngAfterViewInit() {

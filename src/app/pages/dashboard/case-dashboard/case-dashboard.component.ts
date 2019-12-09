@@ -15,7 +15,7 @@ export class CaseDashboardComponent implements OnInit {
 
   private static isInitialLoad = true;
   height = "100%"
-  data : ICase[];
+  data : ICase;
   caseId : string;
   missingPerson : string;
   reporterName : string;
@@ -74,10 +74,11 @@ export class CaseDashboardComponent implements OnInit {
     };
 
     this.dashboardService.getCaseData(this.caseId).subscribe(res => {
-      this.data = [(res as ICase)];
-      this.missingPerson = this.data[0][0].missingPersonName[0];
-      this.reporterName = this.data[0][0].reporterName;
-      this.volunteers$ = of(this.data[0][0].volunteers);
+      this.data = (res as ICase);
+      console.log(this.data)
+      this.missingPerson = this.data.missingPersonName[0];
+      this.reporterName = this.data.reporterName;
+      this.volunteers$ = of(this.data.volunteers);
 
       this.caseDataOptions = {
         title: `Case ID: ${this.caseId}`,
