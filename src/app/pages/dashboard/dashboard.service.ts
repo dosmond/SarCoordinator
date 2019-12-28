@@ -1,9 +1,6 @@
-import { ThemeConfig } from './../../../@fury/services/theme.service';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ChartData } from 'chart.js';
 import { of, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 import { volunteerDummyData } from '../demo-data/widget-demo-data';
 
