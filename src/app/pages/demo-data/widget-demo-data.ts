@@ -6,3 +6,20 @@ export const recentSalesTableDemoData = [
     ],
   }
 ];
+
+export const volunteerDummyData = [
+  {
+    volunteers : [
+      {    
+        name: "Daniel Osmond",
+        roles: "Employee",
+        badgeNumber: "L100"
+      },
+      {    
+        name: "Mike Wright",
+        roles: "Employee",
+        badgeNumber: "L101",
+      },
+    ]
+  }
+];

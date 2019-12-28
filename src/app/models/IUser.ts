@@ -1,5 +1,5 @@
 export interface IUser {
     name: string;
-    role: string;
+    roles: string[];
     badgeNumber: string;
 }

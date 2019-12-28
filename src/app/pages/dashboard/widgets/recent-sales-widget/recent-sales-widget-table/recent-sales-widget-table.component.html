@@ -15,9 +15,17 @@
 
     <tr *matHeaderRowDef="visibleColumns" mat-header-row></tr>
     <!--suppress UnnecessaryLabelJS -->
-    <tr *matRowDef="let row; columns: visibleColumns;" mat-row (click)='navigate(row)'></tr>
+    <div *ngIf="clickable; else notClickable">
+      <tr *matRowDef="let row; columns: visibleColumns;" mat-row (click)='navigate(row)'></tr>
+    </div>
+
+    <ng-template  #notClickable>
+      <tr *matRowDef="let row; columns: visibleColumns;" mat-row></tr>
+    </ng-template>
+
+    
   </table>
-
   <mat-paginator [pageSize]="pageSize" class="paginator"></mat-paginator>
-
 </fury-list>
+
+

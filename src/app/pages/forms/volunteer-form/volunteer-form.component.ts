@@ -59,4 +59,8 @@ export class VolunteerFormDialogComponent implements OnInit {
     this.auth.createUserWithEmail(this.accountFormGroup.controls["email"].value)
     this.dialogRef.close();
   }
+
+  cancel(){
+    this.dialogRef.close();
+  }
 }

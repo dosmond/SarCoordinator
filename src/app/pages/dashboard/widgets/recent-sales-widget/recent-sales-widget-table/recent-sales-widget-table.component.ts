@@ -35,6 +35,8 @@ export class RecentSalesWidgetTableComponent implements OnInit, AfterViewInit {
     this.subject$.next(value);
   };
 
+  @Input() clickable : boolean = true;
+
   get visibleColumns() {
     return this.columns.filter(column => column.visible).map(column => column.property);
   }
@@ -45,7 +47,6 @@ export class RecentSalesWidgetTableComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.dataSource = new MatTableDataSource();
-    this.data$.subscribe(res => console.log(res))
     this.data$.pipe(
       filter(Boolean)
     ).subscribe((values : any[]) => this.dataSource.data = values);

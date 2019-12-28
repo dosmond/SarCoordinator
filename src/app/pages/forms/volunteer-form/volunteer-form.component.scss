@@ -10,12 +10,9 @@
 }
 
 .card {
-  margin: $spacing;
   max-width: 100%;
   border-radius: $border-radius;
   overflow: hidden;
-
-  @include mat-elevation(10);
 
   .heading {
     @include mat-typography-level-to-styles($config, title);

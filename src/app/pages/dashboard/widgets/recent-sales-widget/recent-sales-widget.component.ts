@@ -12,8 +12,9 @@ import { RecentSalesWidgetOptions } from './recent-sales-widget-options.interfac
 export class RecentSalesWidgetComponent implements OnInit {
 
   @Input() tableOptions: {
+    clickable : boolean;
     pageSize: number;
-    columns: ListColumn[]
+    columns: ListColumn[];
   };
   @Input() tableData: any[];
   @Input() chartData: ChartData;
@@ -28,10 +29,7 @@ export class RecentSalesWidgetComponent implements OnInit {
   constructor() {
   }
 
-  ngOnInit() {
-    console.log(this.tableData)
-  }
-
+  ngOnInit() {}
 
   reload() {
     this.isLoading = true;

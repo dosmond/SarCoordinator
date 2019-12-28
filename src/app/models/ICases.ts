@@ -1,4 +1,4 @@
-import { ICaseId } from './ICaseId';
+import { ICase } from './ICase';
 export interface ICases {
-    caseIds : ICaseId[],
+    cases : ICase[];
 }

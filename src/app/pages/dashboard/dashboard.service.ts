@@ -5,7 +5,7 @@ import { ChartData } from 'chart.js';
 import { of, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
-import { recentSalesTableDemoData } from '../demo-data/widget-demo-data';
+import { volunteerDummyData } from '../demo-data/widget-demo-data';
 
 /**
  * @class DashboardService
@@ -23,9 +23,13 @@ export class DashboardService {
   }
 
   getRecentSalesTableData() {
-    // Simulating request from local data
     return this.http.get("https://us-central1-sar-solutions.cloudfunctions.net/getCasesWeb");
-    //return of(recentSalesTableDemoData);
+
+  }
+
+  // Currently using dummy data
+  getVolunteerTableData() {
+    return of(volunteerDummyData);
   }
 
   getCaseData(caseId: string){

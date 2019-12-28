@@ -28,7 +28,7 @@ export class CaseDashboardComponent implements OnInit {
     pageSize: 5,
     columns: [
       { name: 'Volunteer', property: 'name', visible: true, isModelProperty: true },
-      { name: 'Role', property: 'role', visible: true, isModelProperty: true },
+      { name: 'Role', property: 'roles', visible: true, isModelProperty: true },
       { name: 'Badge Number', property: 'badgeNumber', visible: true, isModelProperty: true },
     ]
   };
@@ -75,7 +75,6 @@ export class CaseDashboardComponent implements OnInit {
 
     this.dashboardService.getCaseData(this.caseId).subscribe(res => {
       this.data = (res as ICase);
-      console.log(this.data)
       this.missingPerson = this.data.missingPersonName[0];
       this.reporterName = this.data.reporterName;
       this.volunteers$ = of(this.data.volunteers);
@@ -84,7 +83,7 @@ export class CaseDashboardComponent implements OnInit {
         title: `Case ID: ${this.caseId}`,
         mp: `Missing Person: ${this.missingPerson}`,
         rp: `Reporting Person: ${this.reporterName}`,
-        rpPhone: 'RP Contact Phone: 555-1234567',
+        rpPhone: 'RP Contact Phone: 555-123-4567',
         subTitle: 'All Volunteers on this case'
       };
     });
