@@ -24,8 +24,6 @@ $theme-warn: mat-palette($mat-red, $theme-warn-hue);
 
   @import "./pages/apps/inbox/inbox.component.theme";
   @import "./pages/apps/chat/chat.component.theme";
-  @import "./pages/forms/form-wizard/form-wizard.component.theme";
-  @import "./pages/coming-soon/coming-soon.component.theme";
   @import "./layout/config-panel/config-panel.component.theme";
 }
 
@@ -40,8 +38,6 @@ $theme-warn: mat-palette($mat-red, $theme-warn-hue);
 
   @import "./pages/apps/inbox/inbox.component.theme";
   @import "./pages/apps/chat/chat.component.theme";
-  @import "./pages/forms/form-wizard/form-wizard.component.theme";
-  @import "./pages/coming-soon/coming-soon.component.theme";
   @import "./layout/config-panel/config-panel.component.theme";
 }
 
@@ -56,8 +52,6 @@ $theme-warn: mat-palette($mat-red, $theme-warn-hue);
 
   @import "./pages/apps/inbox/inbox.component.theme";
   @import "./pages/apps/chat/chat.component.theme";
-  @import "./pages/forms/form-wizard/form-wizard.component.theme";
-  @import "./pages/coming-soon/coming-soon.component.theme";
   @import "./layout/config-panel/config-panel.component.theme";
 }
 
@@ -72,7 +66,5 @@ $theme-warn: mat-palette($mat-red, $theme-warn-hue);
 
   @import "./pages/apps/inbox/inbox.component.theme";
   @import "./pages/apps/chat/chat.component.theme";
-  @import "./pages/forms/form-wizard/form-wizard.component.theme";
-  @import "./pages/coming-soon/coming-soon.component.theme";
   @import "./layout/config-panel/config-panel.component.theme";
 }
