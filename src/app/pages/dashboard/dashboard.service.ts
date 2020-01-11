@@ -36,15 +36,10 @@ export class DashboardService {
   }
 
   getCaseData(caseId: string, token : string){
-    //console.log(token);
     let httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/json',
-        'Authorization': token,
-      })
+      headers : new HttpHeaders().set("Authorization", token)
     };
     
-    return this.http.get(`${this.url}/getCaseData?caseId=${caseId}`);
-
+    return this.http.get(`${this.url}/getCaseData?caseId=${caseId}`, httpOptions);
   }
 }
