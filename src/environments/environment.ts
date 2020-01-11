@@ -5,7 +5,7 @@
 
 export const environment = {
   production: false,
-  googleMapsApiKey: '',
+  googleMapsApiKey: 'AIzaSyByOXfLbhUK_vk992hLIpLgxe_ye3Zmf1g',
   backend: 'https://us-central1-sar-solutions.cloudfunctions.net', // Put your backend here
   firebaseConfig : {
     apiKey: "AIzaSyAikEee3dYc1JrLcL1umiXgaI0MQRpEdiE",

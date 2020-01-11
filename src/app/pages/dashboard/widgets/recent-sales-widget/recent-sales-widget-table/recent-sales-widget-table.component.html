@@ -8,9 +8,25 @@
     <ng-container *ngFor="let column of columns">
       <ng-container *ngIf="column.isModelProperty" [matColumnDef]="column.property">
         <th *matHeaderCellDef mat-header-cell mat-sort-header> {{ column.name }}</th>
-        <td *matCellDef="let row" mat-cell>{{ row[column.property] }}</td>
+        <div *ngIf="column.property != 'actions'; else actions">
+          <td *matCellDef="let row" mat-cell>{{ row[column.property] }}</td>
+        </div>
+        
+        <ng-template #actions>
+          <td *matCellDef="let row" mat-cell>
+            <button mat-raised-button color="warn"> Delete </button>
+          </td>
+        </ng-template>
+
       </ng-container>
     </ng-container>
+
+    <ng-container [matColumnDef]="actions">
+      <th *matHeaderCellDef mat-header-cell mat-sort-header> Actions </th>
+      <td *matCellDef="let row" mat-cell>
+        
+      </td>
+    </ng-container> 
 
 
     <tr *matHeaderRowDef="visibleColumns" mat-header-row></tr>
