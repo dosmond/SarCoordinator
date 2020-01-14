@@ -11,6 +11,10 @@
       "**/node_modules/**"
     ],
     "rewrites": [
+			{
+				"source": "/getCases",
+     		"function": "getCases"
+			},
       {
         "source": "**",
         "destination": "/index.html"
