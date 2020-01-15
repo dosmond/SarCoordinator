@@ -18,6 +18,10 @@
         <button mat-raised-button color="primary" (click)="openVolunteerDialog()">Add Volunteer</button> 
       </div>
 
+      <div fxLayoutAlign="end">
+        <button mat-raised-button color="primary" (click)="openPdfDialog()">Test pdf viewer</button> 
+      </div>
+
       <div fxFlex="grow" class="route-animations-elements">
         <fury-recent-sales-widget [options]="volunteerOptions"
                                   [tableOptions]="volunteerTableOptions"

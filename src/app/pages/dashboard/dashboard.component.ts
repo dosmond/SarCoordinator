@@ -1,3 +1,4 @@
+import { PdfGenComponent } from './../pdf-gen/pdf-gen.component';
 import { AuthProcessService } from './../authentication/auth-service';
 import { ICases } from 'src/app/models/ICases';
 import { ICase } from 'src/app/models/ICase';
@@ -113,6 +114,16 @@ export class DashboardComponent implements OnInit {
   openVolunteerDialog(): void {
     const dialogRef = this.dialog.open(VolunteerFormDialogComponent, {
       width: '30vw'});
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+
+  openPdfDialog(): void {
+    const dialogRef = this.dialog.open(PdfGenComponent, {
+      width: '80vw',
+      height: '80vh'});
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');

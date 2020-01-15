@@ -1,3 +1,4 @@
+import { ReportFormModule } from './../pdf-gen/pdf-gen.module';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MaterialModule } from '../../../@fury/shared/material-components.module';
@@ -27,7 +28,8 @@ import { FurySharedModule } from '../../../@fury/fury-shared.module';
     RecentSalesWidgetModule,
     AdvancedPieChartWidgetModule,
     MapsWidgetModule,
-    VolunteerFormModule
+    VolunteerFormModule,
+    ReportFormModule
   ],
   declarations: [DashboardComponent],
   providers: [DashboardService]

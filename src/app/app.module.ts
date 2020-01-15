@@ -47,9 +47,9 @@ import { PdfGenComponent } from './pages/pdf-gen/pdf-gen.component';
     NgxAuthFirebaseUIModule.forRoot(environment.firebaseConfig),
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
-    PdfViewerModule,
+  
   ],
-  declarations: [AppComponent, PdfGenComponent],
+  declarations: [AppComponent],
   bootstrap: [AppComponent],
   providers: [
     {
