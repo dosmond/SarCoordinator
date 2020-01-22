@@ -85,6 +85,10 @@ export class LoginComponent implements OnInit {
     this.authProcess.messageOnAuthError = this.messageOnAuthError;
   }
 
+  async resetPassword() {
+    
+  }
+
   async login() {
     return await this.authProcess.signInWith(this.authProviders.EmailAndPassword,
       {

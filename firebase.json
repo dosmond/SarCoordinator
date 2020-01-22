@@ -11,9 +11,17 @@
       "**/node_modules/**"
     ],
     "rewrites": [
+			{
+				"source": "/getCases",
+     		"function": "getCases"
+			},
+			{
+				"source": "/getCaseData1",
+				"function": "getCaseData1"
+      },
       {
-        "source": "**",
-        "destination": "/index.html"
+        "source": "/getCasesWeb",
+        "function": "getCasesWeb"
       }
     ]
   },
