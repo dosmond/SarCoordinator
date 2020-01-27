@@ -16,8 +16,7 @@ import { volunteerDummyData } from '../demo-data/widget-demo-data';
 @Injectable()
 export class DashboardService {
 
-  url = environment.backend;
-
+  url = "https://sarcoordinator.com";
   
 
 
@@ -27,7 +26,7 @@ export class DashboardService {
   }
 
   getRecentSalesTableData() {
-    return this.http.get("https://us-central1-sar-solutions.cloudfunctions.net/getCasesWeb");
+    return this.http.get(`${this.url}/getCasesWeb`);
   }
 
   // Currently using dummy data
@@ -40,6 +39,6 @@ export class DashboardService {
       headers : new HttpHeaders().set("Authorization", token)
     };
     
-    return this.http.get(`${this.url}/getCaseData?caseId=${caseId}`, httpOptions);
+    return this.http.get(`${this.url}/getCaseData1?caseId=${caseId}`, httpOptions);
   }
 }
