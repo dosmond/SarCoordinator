@@ -1,5 +1,4 @@
 <div class="container">
-    <pre>{{ myForm.value | json }}</pre>
     <!-- Little trick to center the inputs to the viewer -->
     <div class="form-container">
         <form id="input-form" [formGroup]="myForm" novalidate>
@@ -8,7 +7,7 @@
             <div *ngFor="let input of inputList">
                 
                 <!-- Insert an input accordingly and get the style/position from the component -->
-                <input type="text"
+                <input [type]="input.type"
                     [name]="input.name"
                     [formControlName]="input.name" 
                     [value]="input.value" 

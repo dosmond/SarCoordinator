@@ -6,4 +6,5 @@ export class Input {
     width: number;
     height: number;
     value: any;
+    checked: boolean;
 }

@@ -1,8 +1,8 @@
+import { PdfData } from './../../models/PdfData';
 import { Input } from './../../models/Input';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { PDFDocumentProxy } from 'ng2-pdf-viewer';
-import { PDFAnnotationData } from 'pdfjs-dist';
 
 @Component({
   selector: 'pdf-gen',
@@ -34,7 +34,7 @@ export class PdfGenComponent implements OnInit {
     };
   }
 
-  private createInput(annotation: PDFAnnotationData, rect: number[] = null) {
+  private createInput(annotation: PdfData, rect: number[] = null) {
     let formControl = new FormControl(annotation.buttonValue || '');
 
     const input = new Input();
@@ -43,6 +43,10 @@ export class PdfGenComponent implements OnInit {
     if (annotation.fieldType === 'Tx') {
         input.type = 'text';
         input.value = annotation.buttonValue || '';
+    }else if(annotation.fieldType ="Btn") {
+      console.log(annotation);
+      input.type = "checkbox";
+      input.checked = true;
     }
 
     // Calculate all the positions and sizes
@@ -52,13 +56,13 @@ export class PdfGenComponent implements OnInit {
         input.height = (rect[1] - rect[3]);
         input.width = (rect[2] - rect[0]);
     }
-
+    
     this.inputList.push(input);
-    console.log(this.inputList)
+    //console.log(this.inputList)
     return formControl;
   }
 
-  private addInput(annotation: PDFAnnotationData, rect: number[] = null): void {
+  private addInput(annotation: PdfData, rect: number[] = null): void {
     // add input to page
     this.myForm.addControl(annotation.fieldName, this.createInput(annotation, rect));
   }
@@ -77,8 +81,8 @@ export class PdfGenComponent implements OnInit {
 
             // ugly cast due to missing typescript definitions
             // please contribute to complete @types/pdfjs-dist
-            const annotations = (<any>ann) as PDFAnnotationData[];
-
+            const annotations = (<any>ann) as PdfData[];
+            console.log(ann)
             annotations
                 .filter(a => a.subtype === 'Widget') // get the form field annotation only
                 .forEach(a => {
