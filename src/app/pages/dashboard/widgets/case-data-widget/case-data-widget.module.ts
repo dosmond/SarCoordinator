@@ -6,6 +6,7 @@ import { LoadingOverlayModule } from '../../../../../@fury/shared/loading-overla
 import { MaterialModule } from '../../../../../@fury/shared/material-components.module';
 import { CaseDataWidgetTableComponent } from './case-data-widget-table/case-data-widget-table.component';
 import { CaseDataWidgetComponent } from './case-data-widget.component';
+import { ReportFormModule } from 'src/app/pages/pdf-gen/pdf-gen.module';
 
 @NgModule({
   imports: [
@@ -14,6 +15,7 @@ import { CaseDataWidgetComponent } from './case-data-widget.component';
 
     // Core
     LoadingOverlayModule,
+    ReportFormModule,
     FuryCardModule,
     ListModule
   ],

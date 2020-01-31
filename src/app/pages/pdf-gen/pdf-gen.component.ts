@@ -41,6 +41,8 @@ export class PdfGenComponent implements OnInit {
     input.name = annotation.fieldName;
 
     if (annotation.fieldType === 'Tx') {
+        if(annotation.fieldName == "description")
+          input.multiLine = true;
         input.type = 'text';
         input.value = annotation.buttonValue || '';
     }else if(annotation.fieldType ="Btn") {

@@ -120,14 +120,4 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  openPdfDialog(): void {
-    const dialogRef = this.dialog.open(PdfGenComponent, {
-      width: '80vw',
-      height: '80vh'});
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    });
-  }
-
 }

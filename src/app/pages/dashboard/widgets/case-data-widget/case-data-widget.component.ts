@@ -5,6 +5,8 @@ import { ListColumn } from '../../../../../@fury/shared/list/list-column.model';
 import { CaseDataWidgetOptions } from './case-data-widget-options.interface';
 import { CaseDashboardService } from '../../case-dashboard/case-dashboard.service';
 import { ICase } from 'src/app/models/ICase';
+import { MatDialog } from '@angular/material';
+import { PdfGenComponent } from 'src/app/pages/pdf-gen/pdf-gen.component';
 
 @Component({
   selector: 'case-data-widget',
@@ -28,7 +30,8 @@ export class CaseDataWidgetComponent implements OnInit {
   data : ICase[];
   isLoading: boolean;
 
-  constructor(private dashboardService : CaseDashboardService) {
+  constructor(private dashboardService : CaseDashboardService,
+    private dialog: MatDialog,) {
   }
 
   ngOnInit() {
@@ -44,6 +47,17 @@ export class CaseDataWidgetComponent implements OnInit {
       this.data = [(res as ICase)];
       console.log(this.data);
       this.tableData = this.data[0].volunteers;
+    });
+  }
+
+  
+  openPdfDialog(): void {
+    const dialogRef = this.dialog.open(PdfGenComponent, {
+      width: '80vw',
+      height: '80vh'});
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
     });
   }
 }

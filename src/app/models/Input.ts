@@ -7,4 +7,5 @@ export class Input {
     height: number;
     value: any;
     checked: boolean;
+    multiLine : boolean;
 }

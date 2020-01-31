@@ -13,6 +13,7 @@ import { ICredentials, ISignInProcess } from './auth-interfaces';
 
 import UserCredential = firebase.auth.UserCredential;
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 export enum AuthProvider {
   ALL = 'all',
@@ -46,6 +47,7 @@ export class AuthProcessService implements ISignInProcess {
     public afa: AngularFireAuth,
     private _snackBar: MatSnackBar,
     private router: Router,
+    private http: HttpClient,
     @Inject(MAT_SNACK_BAR_DEFAULT_OPTIONS) private _matSnackBarConfig: MatSnackBarConfig
   ) {}
 
@@ -152,6 +154,7 @@ export class AuthProcessService implements ISignInProcess {
   }
 
   createUserWithEmail(email: string){
+    
   }
 
   // Search for an error message.

@@ -5,14 +5,13 @@
         
             <!-- Cycle through all the inputs -->
             <div *ngFor="let input of inputList">
-                
+
                 <!-- Insert an input accordingly and get the style/position from the component -->
-                <input [type]="input.type"
+                    <input [type]="input.type"
                     [name]="input.name"
                     [formControlName]="input.name" 
                     [value]="input.value" 
                     [ngStyle]="getInputPosition(input)">
-                    
             </div>
         </form>
     </div>
