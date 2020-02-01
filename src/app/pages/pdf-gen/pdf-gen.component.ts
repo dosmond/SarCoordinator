@@ -1,8 +1,10 @@
 import { PdfData } from './../../models/PdfData';
-import { Input } from './../../models/Input';
+import { IInput } from './../../models/Input';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { PDFDocumentProxy } from 'ng2-pdf-viewer';
+import { AuthProcessService } from '../authentication/auth-service';
+import { PdfService } from './pdf-gen.service';
 
 @Component({
   selector: 'pdf-gen',
@@ -15,17 +17,19 @@ export class PdfGenComponent implements OnInit {
   readonly dpiRatio = 96 / 72;
   public myForm: FormGroup;
 
-  public inputList: Input[] = [];
+  public inputList: IInput[] = [];
 
+  @Input() caseId: string;
 
-  constructor(private _fb: FormBuilder) {
+  constructor(private _fb: FormBuilder,
+              private afa: AuthProcessService,
+              private service: PdfService) {
     this.myForm = this._fb.group({});
  }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
-  public getInputPosition(input: Input): any {
+  public getInputPosition(input: IInput): any {
     return {
         top: `${input.top}px`,
         left: `${input.left}px`,
@@ -37,7 +41,7 @@ export class PdfGenComponent implements OnInit {
   private createInput(annotation: PdfData, rect: number[] = null) {
     let formControl = new FormControl(annotation.buttonValue || '');
 
-    const input = new Input();
+    const input = new IInput();
     input.name = annotation.fieldName;
 
     if (annotation.fieldType === 'Tx') {
@@ -99,5 +103,15 @@ export class PdfGenComponent implements OnInit {
                 });
         });
     }
+  }
+
+  submitReport(){
+    this.afa.getIdToken().then(token => {
+      this.service.postReport(this.myForm, token, this.caseId)
+    })
+  }
+
+  cancelReport(){
+
   }
 }

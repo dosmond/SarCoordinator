@@ -1,4 +1,4 @@
-export class Input {
+export class IInput {
     name: string;
     type: string;
     top: number;

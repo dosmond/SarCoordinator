@@ -84,13 +84,15 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.caseDataObservable$ = of([{}]);
-    this.dashboardService.getRecentSalesTableData().subscribe((res) => {
-      this.data = (res as ICaseIds);
-      let tokenData : Promise<string> = this.aps.getIdToken();
-      let token = "";
-      let cases : ICases = {cases : []};
-      tokenData.then(id => {
-        token = id;
+    let tokenData : Promise<string> = this.aps.getIdToken();
+    let token = "";
+    let cases : ICases = {cases : []};
+    tokenData.then(id => {
+      token = id;
+      this.dashboardService.getRecentSalesTableData(token).subscribe((res) => {
+        this.data = (res as ICaseIds);
+      
+        
         this.data.caseIds.forEach(element => {
           this.dashboardService.getCaseData(element.caseId, token).subscribe(res => {
 
@@ -104,11 +106,14 @@ export class DashboardComponent implements OnInit {
           })
         });
       })
+
+      this.dashboardService.getVolunteerTableData(token).subscribe(res => {
+        this.volunteerDataObservable$ = of(res[0].volunteers);
+      })
+
     });
 
-    this.dashboardService.getVolunteerTableData().subscribe(res => {
-      this.volunteerDataObservable$ = of(res[0].volunteers);
-    })
+
   }
 
   openVolunteerDialog(): void {
@@ -116,7 +121,7 @@ export class DashboardComponent implements OnInit {
       width: '30vw'});
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      console.log('The dialog was closed', result);
     });
   }
 

@@ -5,6 +5,7 @@ import { Observable, of, from } from 'rxjs';
 import { CaseDashboardService } from './case-dashboard.service';
 import { ICase } from 'src/app/models/ICase';
 import { CaseDataWidgetOptions } from '../widgets/case-data-widget/case-data-widget-options.interface';
+import { AuthProcessService } from '../../authentication/auth-service';
 
 @Component({
   selector: 'case-dashboard',
@@ -40,6 +41,7 @@ export class CaseDashboardComponent implements OnInit {
   gap = `${this._gap}px`;
 
   constructor(private dashboardService: CaseDashboardService,
+              private afa: AuthProcessService,
               private router: Router) {
     /**
      * Edge wrong drawing fix
@@ -73,20 +75,24 @@ export class CaseDashboardComponent implements OnInit {
       subTitle: ''
     };
 
-    this.dashboardService.getCaseData(this.caseId).subscribe(res => {
-      this.data = (res as ICase);
-      this.missingPerson = this.data.missingPersonName[0];
-      this.reporterName = this.data.reporterName;
-      this.volunteers$ = of(this.data.volunteers);
-
-      this.caseDataOptions = {
-        title: `Case ID: ${this.caseId}`,
-        mp: `Missing Person: ${this.missingPerson}`,
-        rp: `Reporting Person: ${this.reporterName}`,
-        rpPhone: 'RP Contact Phone: 555-123-4567',
-        subTitle: 'All Volunteers on this case'
-      };
-    });
+    this.afa.getIdToken().then(res => {
+      let token = res
+      this.dashboardService.getCaseData(this.caseId, token).subscribe(res => {
+        this.data = (res as ICase);
+        this.missingPerson = this.data.missingPersonName[0];
+        this.reporterName = this.data.reporterName;
+        this.volunteers$ = of(this.data.volunteers);
+  
+        this.caseDataOptions = {
+          title: `Case ID: ${this.caseId}`,
+          mp: `Missing Person: ${this.missingPerson}`,
+          rp: `Reporting Person: ${this.reporterName}`,
+          rpPhone: 'RP Contact Phone: 555-123-4567',
+          subTitle: 'All Volunteers on this case'
+        };
+      });
+    })
+    
   }
 
   

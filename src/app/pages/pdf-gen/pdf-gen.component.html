@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" >
     <!-- Little trick to center the inputs to the viewer -->
     <div class="form-container">
         <form id="input-form" [formGroup]="myForm" novalidate>
@@ -16,4 +16,9 @@
         </form>
     </div>
     <pdf-viewer id="viewer" [src]="pdfSrc" (after-load-complete)="loadComplete($event)"></pdf-viewer>
+    
+    <div class="submitButton">
+        <button mat-raised-button color="primary" (click)="submitReport()">Save</button>
+        <button mat-raised-button color="warn" (click)="cancelReport()">Cancel</button>
+    </div>
 </div>

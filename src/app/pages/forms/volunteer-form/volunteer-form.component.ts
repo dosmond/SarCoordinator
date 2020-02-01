@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit, Inject } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, Inject, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { fadeInUpStaggerAnimation } from '../../../../@fury/animations/fade-in-up.animation';
@@ -31,7 +31,8 @@ export class VolunteerFormDialogComponent implements OnInit {
 
   ngOnInit() {
     this.accountFormGroup = this.fb.group({
-      name: [null, Validators.required],
+      firstName: [null, Validators.required],
+      lastName: [null, Validators.required],
       email: [null, Validators.required],
     });
   }
@@ -55,12 +56,26 @@ export class VolunteerFormDialogComponent implements OnInit {
     this.snackbar.open('Hooray! You successfully created your account.', null, {
       duration: 5000
     });
-    console.log(this.accountFormGroup.controls["email"].value)
-    this.auth.createUserWithEmail(this.accountFormGroup.controls["email"].value)
-    this.dialogRef.close();
+
+    this.auth.getIdToken().then(token => {
+      let controls = this.accountFormGroup.controls
+
+      this.auth.createUserWithEmailAndName(token,
+                                           {firstName: controls["firstName"].value,
+                                            lastName: controls["lastName"].value,
+                                            email: controls["email"].value}).subscribe(res => {
+                                              
+                                            })
+
+      this.dialogRef.close({firstName: controls["firstName"].value,
+      lastName: controls["lastName"].value,
+      email: controls["email"].value,
+      created: true});
+    })
   }
 
   cancel(){
-    this.dialogRef.close();
+    console.log(this.accountFormGroup)
+    this.dialogRef.close({created: false});
   }
 }

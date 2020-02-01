@@ -7,6 +7,7 @@ import { CaseDashboardService } from '../../case-dashboard/case-dashboard.servic
 import { ICase } from 'src/app/models/ICase';
 import { MatDialog } from '@angular/material';
 import { PdfGenComponent } from 'src/app/pages/pdf-gen/pdf-gen.component';
+import { AuthProcessService } from 'src/app/pages/authentication/auth-service';
 
 @Component({
   selector: 'case-data-widget',
@@ -31,6 +32,7 @@ export class CaseDataWidgetComponent implements OnInit {
   isLoading: boolean;
 
   constructor(private dashboardService : CaseDashboardService,
+    private afa: AuthProcessService,
     private dialog: MatDialog,) {
   }
 
@@ -43,11 +45,13 @@ export class CaseDataWidgetComponent implements OnInit {
     setTimeout(() => {
       this.isLoading = false;
     }, 1000);
-    this.dashboardService.getCaseData(this.caseId).subscribe(res => {
-      this.data = [(res as ICase)];
-      console.log(this.data);
-      this.tableData = this.data[0].volunteers;
-    });
+    this.afa.getIdToken().then(token => {
+      this.dashboardService.getCaseData(this.caseId, token).subscribe(res => {
+        this.data = [(res as ICase)];
+        console.log(this.data);
+        this.tableData = this.data[0].volunteers;
+      });
+    })
   }
 
   

@@ -13,7 +13,8 @@ import { ICredentials, ISignInProcess } from './auth-interfaces';
 
 import UserCredential = firebase.auth.UserCredential;
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 export enum AuthProvider {
   ALL = 'all',
@@ -34,6 +35,8 @@ export class AuthProcessService implements ISignInProcess {
   // Replace emailConfirmationSent and emailToConfirm.
   user$: Observable<User>;
   user: User;
+
+  url : string = environment.backend
 
   messageOnAuthSuccess: string;
   messageOnAuthError: messageOnAuthErrorType;
@@ -153,8 +156,12 @@ export class AuthProcessService implements ISignInProcess {
     return this.user.reload();
   }
 
-  createUserWithEmail(email: string){
-    
+  createUserWithEmailAndName(token, form){
+    let httpOptions = {
+      headers : new HttpHeaders().set("Authorization", token)
+    };
+    console.log(form)
+    return this.http.post(`${this.url}/postUser`, form, httpOptions)
   }
 
   // Search for an error message.

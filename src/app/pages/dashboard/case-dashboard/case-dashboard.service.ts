@@ -1,4 +1,4 @@
-import { HttpClient} from '@angular/common/http';
+import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ChartData } from 'chart.js';
 import { of } from 'rxjs';
@@ -29,7 +29,10 @@ export class CaseDashboardService {
     return of(recentSalesTableDemoData);
   }
 
-  getCaseData(caseId: string){
-    return this.http.get(`${this.url}/getCaseData?caseId=${caseId}`);
+  getCaseData(caseId: string, token: string){
+    let httpOptions = {
+      headers : new HttpHeaders().set("Authorization", token)
+    };
+    return this.http.get(`${this.url}/getCaseData?caseId=${caseId}`, httpOptions);
   }
 }
