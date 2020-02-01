@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Input} from "@angular/core";
 import { LocationDataService } from './location-data.service';
+import { AuthProcessService } from '../../authentication/auth-service';
 
 export interface Tracks {
   paths: [{
@@ -51,7 +52,8 @@ export class GoogleMapsComponent implements OnInit, AfterViewInit {
   mapPath: any[] = [{}];
 
 
-  constructor(private locationService: LocationDataService) {}
+  constructor(private locationService: LocationDataService,
+              private aps: AuthProcessService) {}
 
   ngOnInit() {
     if(!this.lat && !this.lng){
@@ -63,24 +65,29 @@ export class GoogleMapsComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.locationService.getPathsDirect()
-    .subscribe(val => this.extractPath(val));
+
+    this.aps.getIdToken().then(token =>{
+      this.locationService.getPaths(this.caseId, token).subscribe(val => {
+        this.extractPath(val)
+      })
+    })
   }
 
   extractPath(val) {
-    this.shifts = val;
     let i;
-    for(i= 0; i<this.shifts.length; i++){
+    for(i= 0; i< val.paths.length; i++){
       let path: any[] = [];
 
       let pt;
-      for(pt of this.shifts[i].path){ //geolocation
+
+      val.paths[i].forEach(pt => {
         let latlong: {} = {
-          lat: pt._lat,
-          lng: pt._long
+          lat: pt.latitude,
+          lng: pt.longitude
         };
         path.push(latlong);
-      }
+      });
+
       let color = this.getRandomColor();
 
       this.mapPath.push({path: path, color: color});

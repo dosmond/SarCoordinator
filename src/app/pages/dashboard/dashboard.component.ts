@@ -47,7 +47,6 @@ export class DashboardComponent implements OnInit {
       { name: 'Volunteer', property: 'name', visible: true, isModelProperty: true },
       { name: 'Role', property: 'roles', visible: true, isModelProperty: true },
       { name: 'Badge Number', property: 'badgeNumber', visible: true, isModelProperty: true },
-      { name: 'Actions', property: 'actions', visible: true, isModelProperty: true },
     ]
   };
   volunteerDataObservable$ : Observable<any>;
@@ -107,8 +106,9 @@ export class DashboardComponent implements OnInit {
         });
       })
 
-      this.dashboardService.getVolunteerTableData(token).subscribe(res => {
-        this.volunteerDataObservable$ = of(res[0].volunteers);
+      this.dashboardService.getVolunteers(token).subscribe(res => {
+        let data = {volunteers: res}
+        this.volunteerDataObservable$ = of(data.volunteers);
       })
 
     });

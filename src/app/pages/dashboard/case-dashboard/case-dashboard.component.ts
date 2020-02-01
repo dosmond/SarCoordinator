@@ -31,6 +31,7 @@ export class CaseDashboardComponent implements OnInit {
       { name: 'Volunteer', property: 'name', visible: true, isModelProperty: true },
       { name: 'Role', property: 'roles', visible: true, isModelProperty: true },
       { name: 'Badge Number', property: 'badgeNumber', visible: true, isModelProperty: true },
+      { name: 'Actions', property: 'actions', visible: true, isModelProperty: true },
     ]
   };
   
