@@ -13,6 +13,7 @@ import { DashboardComponent } from './dashboard.component';
 import { DashboardService } from './dashboard.service';
 import { VolunteerFormModule } from '../forms/volunteer-form/volunteer-form.module';
 import { FurySharedModule } from '../../../@fury/fury-shared.module';
+import { CreateCaseFormModule } from '../forms/create-case-form/create-case-form.module';
 
 @NgModule({
   imports: [
@@ -29,6 +30,7 @@ import { FurySharedModule } from '../../../@fury/fury-shared.module';
     AdvancedPieChartWidgetModule,
     MapsWidgetModule,
     VolunteerFormModule,
+    CreateCaseFormModule,
     ReportFormModule
   ],
   declarations: [DashboardComponent],
