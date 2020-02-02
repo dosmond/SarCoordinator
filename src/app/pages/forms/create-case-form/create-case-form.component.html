@@ -1,0 +1,53 @@
+<div [@fadeInUpStagger] fxLayout="column" fxLayoutAlign="start center">
+    <div class="card">
+      <form [formGroup]="caseFormGroup">
+        <ng-template matStepLabel>Create Case</ng-template>
+  
+        <div class="heading">Create Case</div>
+        <div class="subheading">Set up new case with all known information</div>
+  
+        <div class="content" fxLayout="column" fxLayoutGap="8px">      
+          <mat-form-field fxFlex="auto">
+            <mat-label>Case Number</mat-label>
+            <input formControlName="caseNumber" matInput required>
+          </mat-form-field>
+  
+          <mat-form-field fxFlex="auto">
+            <mat-label>Case Name</mat-label>
+            <input formControlName="caseName" matInput>
+          </mat-form-field>
+
+          <mat-form-field fxFlex="auto">
+            <mat-label>Location and Description</mat-label>
+            <input formControlName="locationAndDescription" matInput>
+          </mat-form-field>
+
+          <mat-form-field fxFlex="auto">
+            <mat-label>Subject Name</mat-label>
+            <input formControlName="subjectName" matInput>
+          </mat-form-field>
+
+          <mat-form-field fxFlex="auto">
+            <mat-label>RP Name</mat-label>
+            <input formControlName="subjectName" matInput>
+            <mat-hint>Reporting Person Name</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field fxFlex="auto">
+            <mat-label>RP Phone</mat-label>
+            <input formControlName="subjectName" matInput>
+            <mat-hint>Reporting Person Phone Number</mat-hint>
+          </mat-form-field>
+        </div>
+  
+        <div class="actions" fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="8px">
+          <button (click)="cancel()" color="primary" mat-button
+                  type="button">Cancel
+          </button>
+          <button (click)="submit()" [disabled]="caseFormGroup.invalid" color="primary" 
+                  mat-raised-button>CREATE
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>

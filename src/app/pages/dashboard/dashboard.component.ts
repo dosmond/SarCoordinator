@@ -10,6 +10,7 @@ import { RecentSalesWidgetOptions } from './widgets/recent-sales-widget/recent-s
 import { DashboardService } from './dashboard.service';
 import { MatDialog } from '@angular/material/dialog'
 import { VolunteerFormDialogComponent } from '../forms/volunteer-form/volunteer-form.component';
+import { CreateCaseFormDialogComponent } from '../forms/create-case-form/create-case-form.component';
 
 @Component({
   selector: 'fury-dashboard',
@@ -118,6 +119,15 @@ export class DashboardComponent implements OnInit {
 
   openVolunteerDialog(): void {
     const dialogRef = this.dialog.open(VolunteerFormDialogComponent, {
+      width: '30vw'});
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed', result);
+    });
+  }
+
+  openCreateCaseDialog(): void{
+    const dialogRef = this.dialog.open(CreateCaseFormDialogComponent, {
       width: '30vw'});
 
     dialogRef.afterClosed().subscribe(result => {
