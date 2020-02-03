@@ -17,10 +17,6 @@ const routes: Routes = [
     loadChildren: './pages/authentication/forgot-password/forgot-password.module#ForgotPasswordModule',
   },
   {
-    path: 'finish-sign-up',
-    loadChildren: './pages/authentication/finish-sign-up/finish-sign-up.module#FinishSignUpModule',
-  },
-  {
     path: '',
     component: LayoutComponent,
     children: [

@@ -12,5 +12,5 @@ export interface ISignInProcess {
 
   signInWith(provider: AuthProvider, credentials?: ICredentials): any;
 
-  resetPassword(email: string): any;
+  resetPasswordEmail(email: string): any;
 }

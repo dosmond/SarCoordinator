@@ -62,7 +62,6 @@ export class AuthProcessService implements ISignInProcess {
     );
   }
 
-
   getIdToken() {
     return this.afa.auth.currentUser.getIdToken();
   }
@@ -73,7 +72,7 @@ export class AuthProcessService implements ISignInProcess {
    * @param email - the email to reset
    * @returns
    */
-  public resetPassword(email: string) {
+  public resetPasswordEmail(email: string) {
     return this.afa.auth.sendPasswordResetEmail(email)
       .then(() => console.log('Password reset email sent'))
       .catch((error) => this.notifyError(error));
@@ -160,6 +159,7 @@ export class AuthProcessService implements ISignInProcess {
     let httpOptions = {
       headers : new HttpHeaders().set("Authorization", token)
     };
+    form["roles"] = ["volunteer"];
     console.log(form)
     return this.http.post(`${this.url}/postUser`, form, httpOptions)
   }
