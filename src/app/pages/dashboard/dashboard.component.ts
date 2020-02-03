@@ -83,6 +83,10 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.refresh();
+  }
+
+  refresh() {
     this.caseDataObservable$ = of([{}]);
     let tokenData : Promise<string> = this.aps.getIdToken();
     let token = "";
@@ -131,6 +135,7 @@ export class DashboardComponent implements OnInit {
       width: '30vw'});
 
     dialogRef.afterClosed().subscribe(result => {
+      this.refresh();
       console.log('The dialog was closed', result);
     });
   }

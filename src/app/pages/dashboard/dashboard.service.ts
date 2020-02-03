@@ -16,7 +16,7 @@ import { volunteerDummyData } from '../demo-data/widget-demo-data';
 @Injectable()
 export class DashboardService {
 
-  url = "https://us-central1-sar-solutions.cloudfunctions.net/";
+  url = "https://us-central1-sar-solutions.cloudfunctions.net";
   
 
 
@@ -45,5 +45,13 @@ export class DashboardService {
   getVolunteers(token: string) {
     const url = `${this.url}/getVolunteers`
     return this.http.get(url, {headers: {'Authorization': token}})
+  }
+
+  postCase(token: string, userId: string, form){
+    let httpOptions = {
+      headers : new HttpHeaders().set("Authorization", token)
+    };
+
+    return this.http.post(`${this.url}/postCase?userId=${userId}`,form, httpOptions);
   }
 }

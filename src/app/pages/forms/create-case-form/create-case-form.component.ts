@@ -6,6 +6,7 @@ import { fadeInRightAnimation } from '../../../../@fury/animations/fade-in-right
 import { scaleInAnimation } from '../../../../@fury/animations/scale-in.animation';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog'
 import { AuthProcessService } from '../../authentication/auth-service';
+import { DashboardService } from '../../dashboard/dashboard.service';
 
 @Component({
   selector: 'fury-create-case-form',
@@ -23,14 +24,15 @@ export class CreateCaseFormDialogComponent implements OnInit {
               private cd: ChangeDetectorRef,
               private snackbar: MatSnackBar,
               private auth: AuthProcessService,
-              public dialogRef: MatDialogRef<CreateCaseFormDialogComponent>) {}
+              public dialogRef: MatDialogRef<CreateCaseFormDialogComponent>,
+              private dashboardService: DashboardService) {}
 
   ngOnInit() {
     this.caseFormGroup = this.fb.group({
       caseNumber: [null, Validators.required],
-      caseName: '',
+      caseName: [null, Validators.required],
       locationAndDescription: '',
-      subjectName: '',
+      subjectName: [null, Validators.required],
       rpName: '',
       rpPhone: ''
     });
@@ -46,9 +48,22 @@ export class CreateCaseFormDialogComponent implements OnInit {
     });
 
     this.auth.getIdToken().then(token => {
-      //TODO hit create case endpoint. 
+      let controls = this.caseFormGroup.controls;
+      let date = new Date();
+      let now = (date.getMonth()+1) + ' ' + date.getDate() + ' ' + date.getFullYear();
       
-      this.dialogRef.close();
+      this.dashboardService.postCase(token, 'AmA2e16pJYMBFjijOvDb',
+        {
+          caseNumber: controls['caseNumber'].value,
+          caseName: controls['caseName'].value,
+          date: now,
+          description: controls['locationAndDescription'].value,
+          missingPersonName: [controls['subjectName'].value],
+          reporterName: controls['rpName'].value
+        }).subscribe(res => {
+          this.dialogRef.close();
+        });
+      
     })
   }
 
