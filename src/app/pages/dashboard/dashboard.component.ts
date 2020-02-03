@@ -116,13 +116,4 @@ export class DashboardComponent implements OnInit {
 
   }
 
-  openVolunteerDialog(): void {
-    const dialogRef = this.dialog.open(VolunteerFormDialogComponent, {
-      width: '30vw'});
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed', result);
-    });
-  }
-
 }

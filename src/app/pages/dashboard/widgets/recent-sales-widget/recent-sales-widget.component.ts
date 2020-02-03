@@ -3,6 +3,8 @@ import * as Chart from 'chart.js';
 import { ChartData } from 'chart.js';
 import { ListColumn } from '../../../../../@fury/shared/list/list-column.model';
 import { RecentSalesWidgetOptions } from './recent-sales-widget-options.interface';
+import { VolunteerFormDialogComponent } from 'src/app/pages/forms/volunteer-form/volunteer-form.component';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'fury-recent-sales-widget',
@@ -26,7 +28,7 @@ export class RecentSalesWidgetComponent implements OnInit {
 
   isLoading: boolean;
 
-  constructor() {
+  constructor(public dialog: MatDialog) {
   }
 
   ngOnInit() {}
@@ -37,5 +39,14 @@ export class RecentSalesWidgetComponent implements OnInit {
     setTimeout(() => {
       this.isLoading = false;
     }, 2000);
+  }
+
+  openVolunteerDialog(): void {
+    const dialogRef = this.dialog.open(VolunteerFormDialogComponent, {
+      width: '30vw'});
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed', result);
+    });
   }
 }
