@@ -63,13 +63,15 @@ export class VolunteerFormDialogComponent implements OnInit {
       this.auth.createUserWithEmailAndName(token,
                                            {firstName: controls["firstName"].value,
                                             lastName: controls["lastName"].value,
-                                            email: controls["email"].value}).subscribe(res => {
+                                            email: controls["email"].value,
+                                            roles: ["volunteer"]}).subscribe(res => {
                                               
                                             })
 
       this.dialogRef.close({firstName: controls["firstName"].value,
       lastName: controls["lastName"].value,
       email: controls["email"].value,
+      roles: ["volunteer"],
       created: true});
     })
   }
