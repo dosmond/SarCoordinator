@@ -14,28 +14,28 @@
   
           <mat-form-field fxFlex="auto">
             <mat-label>Case Name</mat-label>
-            <input formControlName="caseName" matInput>
-          </mat-form-field>
-
-          <mat-form-field fxFlex="auto">
-            <mat-label>Location and Description</mat-label>
-            <input formControlName="locationAndDescription" matInput>
+            <input formControlName="caseName" matInput required>
           </mat-form-field>
 
           <mat-form-field fxFlex="auto">
             <mat-label>Subject Name</mat-label>
-            <input formControlName="subjectName" matInput>
+            <input formControlName="subjectName" matInput required>
           </mat-form-field>
 
           <mat-form-field fxFlex="auto">
-            <mat-label>RP Name</mat-label>
-            <input formControlName="subjectName" matInput>
+            <mat-label>Location and Description</mat-label>
+            <input formControlName="locationAndDescription" matInput required>
+          </mat-form-field>
+
+          <mat-form-field fxFlex="auto">
+            <mat-label>Reporter Name</mat-label>
+            <input formControlName="rpName" matInput required>
             <mat-hint>Reporting Person Name</mat-hint>
           </mat-form-field>
 
           <mat-form-field fxFlex="auto">
-            <mat-label>RP Phone</mat-label>
-            <input formControlName="subjectName" matInput>
+            <mat-label>Reporter Phone</mat-label>
+            <input formControlName="rpPhone" matInput>
             <mat-hint>Reporting Person Phone Number</mat-hint>
           </mat-form-field>
         </div>
