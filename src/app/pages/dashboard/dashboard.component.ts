@@ -83,20 +83,16 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.refresh();
+    this.refreshCases();
+    this.refreshVolunteers();
   }
 
-  refresh() {
+  refreshCases() {
     this.caseDataObservable$ = of([{}]);
-    let tokenData : Promise<string> = this.aps.getIdToken();
-    let token = "";
     let cases : ICases = {cases : []};
-    tokenData.then(id => {
-      token = id;
+    this.aps.getIdToken().then(token => {
       this.dashboardService.getRecentSalesTableData(token).subscribe((res) => {
         this.data = (res as ICaseIds);
-      
-        
         this.data.caseIds.forEach(element => {
           this.dashboardService.getCaseData(element.caseId, token).subscribe(res => {
 
@@ -111,23 +107,16 @@ export class DashboardComponent implements OnInit {
         });
       })
 
+
+    });
+  }
+
+  refreshVolunteers(){
+    this.aps.getIdToken().then(token => {
       this.dashboardService.getVolunteers(token).subscribe(res => {
         let data = {volunteers: res}
         this.volunteerDataObservable$ = of(data.volunteers);
       })
-
-    });
-
-
-  }
-
-  openCreateCaseDialog(): void{
-    const dialogRef = this.dialog.open(CreateCaseFormDialogComponent, {
-      width: '30vw'});
-
-    dialogRef.afterClosed().subscribe(result => {
-      this.refresh();
-      console.log('The dialog was closed', result);
-    });
+    })
   }
 }

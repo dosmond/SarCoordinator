@@ -33,6 +33,6 @@ export class CaseDashboardService {
     let httpOptions = {
       headers : new HttpHeaders().set("Authorization", token)
     };
-    return this.http.get(`${this.url}/getCaseData?caseId=${caseId}`, httpOptions);
+    return this.http.get(`${this.url}getCaseData?caseId=${caseId}`, httpOptions);
   }
 }

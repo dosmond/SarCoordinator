@@ -1,10 +1,11 @@
-import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
 import * as Chart from 'chart.js';
 import { ChartData } from 'chart.js';
 import { ListColumn } from '../../../../../@fury/shared/list/list-column.model';
 import { RecentSalesWidgetOptions } from './recent-sales-widget-options.interface';
 import { VolunteerFormDialogComponent } from 'src/app/pages/forms/volunteer-form/volunteer-form.component';
 import { MatDialog } from '@angular/material';
+import { CreateCaseFormDialogComponent } from 'src/app/pages/forms/create-case-form/create-case-form.component';
 
 @Component({
   selector: 'fury-recent-sales-widget',
@@ -21,12 +22,15 @@ export class RecentSalesWidgetComponent implements OnInit {
   @Input() tableData: any[];
   @Input() chartData: ChartData;
   @Input() options: RecentSalesWidgetOptions;
+  @Output() refreshCase = new EventEmitter<any>();
+  @Output() refreshVolunteers = new EventEmitter<any>();
 
   @ViewChild('canvas', { read: ElementRef, static: true }) canvas: ElementRef;
 
   chart: Chart;
 
   isLoading: boolean;
+
 
   constructor(public dialog: MatDialog) {
   }
@@ -36,9 +40,26 @@ export class RecentSalesWidgetComponent implements OnInit {
   reload() {
     this.isLoading = true;
 
+    if(this.options.title == "Cases")
+      this.refreshCase.emit()
+    else {
+      console.log(this.options.title)
+      this.refreshVolunteers.emit()
+    }
+
+      
+      
     setTimeout(() => {
       this.isLoading = false;
     }, 2000);
+  }
+
+  emitRefreshCase(){
+    this.refreshCase.emit()
+  }
+
+  emitRefreshVolunteers(){
+    this.refreshVolunteers.emit()
   }
 
   openVolunteerDialog(): void {
@@ -46,7 +67,19 @@ export class RecentSalesWidgetComponent implements OnInit {
       width: '30vw'});
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed', result);
+      if(result != undefined && result.created == true)
+        this.refreshVolunteers.emit()
+    });
+  }
+
+  openCreateCaseDialog(): void{
+    const dialogRef = this.dialog.open(CreateCaseFormDialogComponent, {
+      width: '30vw'});
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result != undefined && result.created == true)
+        this.refreshCase.emit();
     });
   }
 }
+;

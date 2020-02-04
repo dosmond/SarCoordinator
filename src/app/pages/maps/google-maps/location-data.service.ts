@@ -18,7 +18,7 @@ export interface Shift {
 })
 export class LocationDataService {
 
-  baseUrl = 'https://us-central1-sar-solutions.cloudfunctions.net/';
+  baseUrl = 'https://us-central1-sar-solutions.cloudfunctions.net';
 
   constructor(private http: HttpClient, private firestore: AngularFirestore) { }
 
@@ -27,6 +27,6 @@ export class LocationDataService {
       headers : new HttpHeaders().set("Authorization", token)
     };
     
-    return this.http.get(`${this.baseUrl}getPaths?caseId=${caseId}`, httpOptions);
+    return this.http.get(`${this.baseUrl}/getPaths?caseId=${caseId}`, httpOptions);
   }
 }
