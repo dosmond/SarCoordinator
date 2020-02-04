@@ -1,7 +1,8 @@
+import * as jsPDF from 'jspdf'
 import { PdfData } from './../../models/PdfData';
 import { IInput } from './../../models/Input';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { PDFDocumentProxy } from 'ng2-pdf-viewer';
 import { AuthProcessService } from '../authentication/auth-service';
 import { PdfService } from './pdf-gen.service';
@@ -16,7 +17,7 @@ export class PdfGenComponent implements OnInit {
   pdfSrc = "../../../assets/incident_form.pdf";
   readonly dpiRatio = 96 / 72;
   public myForm: FormGroup;
-
+  fullPdf : PDFDocumentProxy;
   public inputList: IInput[] = [];
 
   @Input() caseId: string;
@@ -47,10 +48,11 @@ export class PdfGenComponent implements OnInit {
     if (annotation.fieldType === 'Tx') {
         if(annotation.fieldName == "description")
           input.multiLine = true;
+        else
+          input.multiLine = false;
         input.type = 'text';
         input.value = annotation.buttonValue || '';
     }else if(annotation.fieldType ="Btn") {
-      console.log(annotation);
       input.type = "checkbox";
       input.checked = true;
     }
@@ -74,6 +76,7 @@ export class PdfGenComponent implements OnInit {
   }
 
   loadComplete(pdf: PDFDocumentProxy): void {
+    this.fullPdf = pdf
     for (let i = 1; i <= pdf.numPages; i++) {
 
         // track the current page
@@ -88,7 +91,6 @@ export class PdfGenComponent implements OnInit {
             // ugly cast due to missing typescript definitions
             // please contribute to complete @types/pdfjs-dist
             const annotations = (<any>ann) as PdfData[];
-            console.log(ann)
             annotations
                 .filter(a => a.subtype === 'Widget') // get the form field annotation only
                 .forEach(a => {
@@ -107,11 +109,34 @@ export class PdfGenComponent implements OnInit {
 
   submitReport(){
     this.afa.getIdToken().then(token => {
-      this.service.postReport(this.myForm, token, this.caseId)
+      this.service.postReport(this.myForm.getRawValue(), token, this.caseId)
     })
+    this.downloadAsPDF();
   }
 
   cancelReport(){
-
+  
   }
+
+  @ViewChild('pdf', {static: false}) pdfTable: ElementRef;
+
+
+  downloadAsPDF() {
+    const doc = new jsPDF();
+    const specialElementHandlers = {
+      '#editor': function (element, renderer) {
+        return true;
+      }
+    };
+
+    const pdfTable = this.pdfTable.nativeElement;
+
+    doc.fromHTML(pdfTable.innerHTML, 15, 15, {
+      width: 190,
+      'elementHandlers': specialElementHandlers
+    });
+
+    doc.save('tableToPdf.pdf');
+  }
+
 }
