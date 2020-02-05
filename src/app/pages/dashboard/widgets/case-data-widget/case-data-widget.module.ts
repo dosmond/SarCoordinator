@@ -7,6 +7,7 @@ import { MaterialModule } from '../../../../../@fury/shared/material-components.
 import { CaseDataWidgetTableComponent } from './case-data-widget-table/case-data-widget-table.component';
 import { CaseDataWidgetComponent } from './case-data-widget.component';
 import { ReportFormModule } from 'src/app/pages/pdf-gen/pdf-gen.module';
+import { AddVolunteersModule } from '../../../add-volunteers/add-volunteers.module';
 
 @NgModule({
   imports: [
@@ -16,6 +17,7 @@ import { ReportFormModule } from 'src/app/pages/pdf-gen/pdf-gen.module';
     // Core
     LoadingOverlayModule,
     ReportFormModule,
+    AddVolunteersModule,
     FuryCardModule,
     ListModule
   ],

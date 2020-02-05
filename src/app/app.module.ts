@@ -19,7 +19,6 @@ import { AngularFireModule } from "@angular/fire";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { PdfViewerModule } from "ng2-pdf-viewer";
 import { PdfGenComponent } from './pages/pdf-gen/pdf-gen.component';
-import { AddVolunteersComponent } from './pages/add-volunteers/add-volunteers.component';
 
 @NgModule({
   imports: [
@@ -50,7 +49,7 @@ import { AddVolunteersComponent } from './pages/add-volunteers/add-volunteers.co
     AngularFirestoreModule,
   
   ],
-  declarations: [AppComponent, AddVolunteersComponent],
+  declarations: [AppComponent],
   bootstrap: [AppComponent],
   providers: [
     {

@@ -58,7 +58,7 @@ export class CaseDataWidgetComponent implements OnInit {
   openAddVolunteersDialog(): void {
     const dialogRef = this.dialog.open(AddVolunteersComponent, {
       width: '80vw',
-      height: '80vh'});
+      height: '60vh'});
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
