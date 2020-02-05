@@ -1,5 +1,4 @@
 import { PdfViewerModule } from 'ng2-pdf-viewer';
-import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer'
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { PdfGenComponent } from './pdf-gen.component';
@@ -15,7 +14,6 @@ import { PdfService } from './pdf-gen.service';
     ReactiveFormsModule,
     PdfViewerModule,
     MaterialModule,
-    NgxExtendedPdfViewerModule
   ],
   declarations: [PdfGenComponent],
   entryComponents: [PdfGenComponent],
