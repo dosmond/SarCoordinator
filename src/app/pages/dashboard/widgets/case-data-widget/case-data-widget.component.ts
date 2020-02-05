@@ -7,6 +7,7 @@ import { CaseDashboardService } from '../../case-dashboard/case-dashboard.servic
 import { ICase } from 'src/app/models/ICase';
 import { MatDialog } from '@angular/material';
 import { PdfGenComponent } from 'src/app/pages/pdf-gen/pdf-gen.component';
+import { AddVolunteersComponent } from 'src/app/pages/add-volunteers/add-volunteers.component'
 import { AuthProcessService } from 'src/app/pages/authentication/auth-service';
 
 @Component({
@@ -54,7 +55,16 @@ export class CaseDataWidgetComponent implements OnInit {
     })
   }
 
-  
+  openAddVolunteersDialog(): void {
+    const dialogRef = this.dialog.open(AddVolunteersComponent, {
+      width: '80vw',
+      height: '80vh'});
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+
   openPdfDialog(): void {
     const dialogRef = this.dialog.open(PdfGenComponent, {
       width: '80vw',
