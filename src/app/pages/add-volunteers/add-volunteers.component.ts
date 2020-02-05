@@ -17,7 +17,7 @@ import { Observable, of} from 'rxjs';
 export class AddVolunteersComponent implements OnInit {
 
   selectedVolunteers = [];
-  volunteers = [];
+  volunteers = ["Guy1", "Guy2"];
   caseId: string;
   volunteerDataObservable$ : Observable<any>;
 
