@@ -54,6 +54,7 @@ export class CaseDataWidgetComponent implements OnInit {
     })
   }
 
+  addVolunteer() {}
   
   openPdfDialog(): void {
     const dialogRef = this.dialog.open(PdfGenComponent, {
