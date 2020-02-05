@@ -11,21 +11,15 @@
       <div fxFlex="grow" class="route-animations-elements">
         <fury-recent-sales-widget [options]="caseOptions"
                                   [tableOptions]="caseTableOptions"
-                                  [tableData]="caseDataObservable$ | async"></fury-recent-sales-widget>
-      </div>
-
-      <div fxLayoutAlign="end">
-        <button mat-raised-button color="primary" (click)="openCreateCaseDialog()">Create New Case</button> 
+                                  [tableData]="caseDataObservable$ | async"
+                                  (refreshCase)="refreshCases()"></fury-recent-sales-widget>
       </div>
 
       <div fxFlex="grow" class="route-animations-elements">
         <fury-recent-sales-widget [options]="volunteerOptions"
                                   [tableOptions]="volunteerTableOptions"
-                                  [tableData]="volunteerDataObservable$ | async"></fury-recent-sales-widget>
-      </div>
-
-      <div fxLayoutAlign="end">
-        <button mat-raised-button color="primary" (click)="openVolunteerDialog()">Add New Volunteer</button> 
+                                  [tableData]="volunteerDataObservable$ | async"
+                                  (refreshVolunteers)="refreshVolunteers()"></fury-recent-sales-widget>
       </div>
 
     </div>

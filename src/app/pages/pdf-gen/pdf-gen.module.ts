@@ -14,7 +14,6 @@ import { PdfService } from './pdf-gen.service';
     ReactiveFormsModule,
     PdfViewerModule,
     MaterialModule,
-    
   ],
   declarations: [PdfGenComponent],
   entryComponents: [PdfGenComponent],

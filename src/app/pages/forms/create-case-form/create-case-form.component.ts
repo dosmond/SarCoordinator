@@ -39,19 +39,15 @@ export class CreateCaseFormDialogComponent implements OnInit {
   }
 
   onNoClick(): void {
-    this.dialogRef.close();
+    this.dialogRef.close({created: false});
   }
 
   submit() {
-    this.snackbar.open('Case created successfully!', null, {
-      duration: 5000
-    });
-
     this.auth.getIdToken().then(token => {
       let controls = this.caseFormGroup.controls;
       let date = new Date();
       let now = (date.getMonth()+1) + ' ' + date.getDate() + ' ' + date.getFullYear();
-      
+      console.log("made it")
       this.dashboardService.postCase(token, 'AmA2e16pJYMBFjijOvDb',
         {
           caseNumber: controls['caseNumber'].value,
@@ -61,10 +57,12 @@ export class CreateCaseFormDialogComponent implements OnInit {
           missingPersonName: [controls['subjectName'].value],
           reporterName: controls['rpName'].value
         }).subscribe(res => {
-          this.dialogRef.close();
+          this.dialogRef.close({created: true});
+          this.snackbar.open('Case created successfully!', null, {
+            duration: 5000
+          });
         });
-      
-    })
+    });
   }
 
   cancel(){

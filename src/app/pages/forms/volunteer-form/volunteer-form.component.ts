@@ -34,6 +34,8 @@ export class VolunteerFormDialogComponent implements OnInit {
       firstName: [null, Validators.required],
       lastName: [null, Validators.required],
       email: [null, Validators.required],
+      badgeNum: [null],
+      phoneNum: [null]
     });
   }
 
@@ -63,14 +65,19 @@ export class VolunteerFormDialogComponent implements OnInit {
       this.auth.createUserWithEmailAndName(token,
                                            {firstName: controls["firstName"].value,
                                             lastName: controls["lastName"].value,
-                                            email: controls["email"].value}).subscribe(res => {
-                                              
-                                            })
+                                            email: controls["email"].value,
+                                            phoneNumber: controls["phoneNum"].value,
+                                            badgeNum: controls["badgeNum"].value,
+                                            roles: ["volunteer"]}).subscribe(res => {
 
-      this.dialogRef.close({firstName: controls["firstName"].value,
-      lastName: controls["lastName"].value,
-      email: controls["email"].value,
-      created: true});
+          this.dialogRef.close({firstName: controls["firstName"].value,
+          lastName: controls["lastName"].value,
+          email: controls["email"].value,
+          phoneNumber: controls["phoneNum"].value,
+          badgeNum: controls["badgeNum"].value,
+          roles: ["volunteer"],
+          created: true});
+        })
     })
   }
 

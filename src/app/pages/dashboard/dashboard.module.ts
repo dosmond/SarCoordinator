@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ReportFormModule } from './../pdf-gen/pdf-gen.module';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
@@ -31,7 +32,8 @@ import { CreateCaseFormModule } from '../forms/create-case-form/create-case-form
     MapsWidgetModule,
     VolunteerFormModule,
     CreateCaseFormModule,
-    ReportFormModule
+    ReportFormModule,
+    HttpClientModule
   ],
   declarations: [DashboardComponent],
   providers: [DashboardService]
