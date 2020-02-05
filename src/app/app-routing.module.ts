@@ -47,7 +47,7 @@ const routes: Routes = [
         canActivate: [LoggedInGuard]
       },
       {
-        path: 'case-dashboard/:caseid',
+        path: 'case-dashboard',
         loadChildren: './pages/dashboard/case-dashboard/case-dashboard.module#CaseDashboardModule',
         canActivate: [LoggedInGuard]
       }

@@ -6,7 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Observable, ReplaySubject } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import { ListColumn } from '../../../../../../@fury/shared/list/list-column.model';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'case-data-widget-table',
@@ -40,7 +40,7 @@ export class CaseDataWidgetTableComponent implements OnInit, AfterViewInit {
   }
 
   navigate(row: any){
-    this.router.navigate([`case-dashboard/${row.caseid}`]);
+    this.router.navigate([`case-dashboard/${row.caseId}`]);
   }
 
   ngOnInit() {
@@ -51,7 +51,6 @@ export class CaseDataWidgetTableComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
 

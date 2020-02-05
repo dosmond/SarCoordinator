@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ChartData } from 'chart.js';
 import { Observable, of, from } from 'rxjs';
 import { CaseDashboardService } from './case-dashboard.service';
@@ -43,7 +43,8 @@ export class CaseDashboardComponent implements OnInit {
 
   constructor(private dashboardService: CaseDashboardService,
               private afa: AuthProcessService,
-              private router: Router) {
+              private router: Router,
+              private routeParse: ActivatedRoute) {
     /**
      * Edge wrong drawing fix
      * Navigate anywhere and on Promise right back
@@ -65,7 +66,7 @@ export class CaseDashboardComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.caseId = this.router.parseUrl(this.router.url).root.children.primary.segments[1].path;
+    this.caseId = this.routeParse.snapshot.queryParamMap.get("caseId")
 
     // Initialize to avoid errors.
     this.caseDataOptions = {
