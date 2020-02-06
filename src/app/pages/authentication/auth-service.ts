@@ -159,7 +159,7 @@ export class AuthProcessService implements ISignInProcess {
     let httpOptions = {
       headers : new HttpHeaders().set("Authorization", token)
     };
-    return this.http.post(`${this.url}postUser`, form, httpOptions)
+    return this.http.post(`${this.url}/postUser`, form, httpOptions)
   }
 
   // Search for an error message.
