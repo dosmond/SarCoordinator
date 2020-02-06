@@ -1,0 +1,25 @@
+<fury-card>
+  <fury-card-header>
+    <fury-card-header-heading>{{ options.title }}</fury-card-header-heading>
+    <fury-card-header-subheading *ngIf="options.subTitle">{{ options.subTitle }}</fury-card-header-subheading>
+
+    <fury-card-header-actions class="actions">
+      <button mat-raised-button color="primary" (click)="addVolunteers()">
+        <mat-icon> person_add</mat-icon>
+        Assign
+      </button>
+      <button mat-icon-button (click)="cancel()">
+        <mat-icon> cancel</mat-icon>
+      </button>
+    </fury-card-header-actions>
+  </fury-card-header>
+
+  <fury-card-content class="card-content">
+    <add-volunteers-widget-table [data]="tableData" [columns]="tableOptions?.columns"
+                                    [pageSize]="tableOptions?.pageSize" [clickable]="tableOptions?.clickable"
+                                    [(selection)]="selection"></add-volunteers-widget-table>
+
+  </fury-card-content>
+
+  <fury-loading-overlay [isLoading]="isLoading"></fury-loading-overlay>
+</fury-card>

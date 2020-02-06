@@ -1,0 +1,51 @@
+<fury-list [hideHeader]="true" class="list" fxFlex="grow" fxLayout="column">
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>
+  <table [dataSource]="dataSource" class="table" mat-table matSort>
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+    <!-- Model Properties Column -->
+   <ng-container *ngFor="let column of columns">
+      <ng-container *ngIf="column.isModelProperty" [matColumnDef]="column.property">
+        <div *ngIf="column.name=='select'">
+          <th mat-header-cell *matHeaderCellDef>
+            <mat-checkbox (change)="$event ? masterToggle() : null"
+                          [checked]="selection.hasValue() && isAllSelected()"
+                          [indeterminate]="selection.hasValue() && !isAllSelected()"
+                          [aria-label]="checkboxLabel()">
+            </mat-checkbox>
+          </th>
+          <td mat-cell *matCellDef="let row">
+            <mat-checkbox (click)="$event.stopPropagation()"
+                          (change)="$event ? selection.toggle(row) : null"
+                          [checked]="selection.isSelected(row)"
+                          [aria-label]="checkboxLabel(row)">
+            </mat-checkbox>
+          </td>
+        </div>
+        <div *ngIf="column.name !='select'">
+          <th *matHeaderCellDef mat-header-cell mat-sort-header> {{ column.name }}</th>
+          <td *matCellDef="let row" mat-cell>{{ row[column.property] }}</td>
+        </div>
+      </ng-container>
+    </ng-container>
+
+
+    <tr *matHeaderRowDef="visibleColumns" mat-header-row></tr>
+    <!--suppress UnnecessaryLabelJS -->
+    <div *ngIf="clickable; else notClickable">
+      <tr *matRowDef="let row; columns: visibleColumns;" mat-row (click)='navigate(row)'></tr>
+    </div>
+
+    <ng-template  #notClickable>
+      <tr *matRowDef="let row; columns: visibleColumns;" mat-row></tr>
+    </ng-template>
+
+    
+  </table>
+  <mat-paginator [pageSize]="pageSize" class="paginator"></mat-paginator>
+</fury-list>
+
+

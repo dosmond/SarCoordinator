@@ -66,6 +66,7 @@ export class FuryCardHeaderSubTitle {
 export class FuryCardHeaderActions {
 }
 
+
 // noinspection TsLint
 @Directive({
   selector: 'fury-card-actions',

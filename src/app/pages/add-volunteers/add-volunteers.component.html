@@ -1,15 +1,22 @@
-<div class="container" #pdf>
-    <!-- Little trick to center the inputs to the viewer -->
-    <div class="form-container">
-            <!-- Cycle through all the inputs -->
-            <div *ngFor="let vol of volunteers">
-                <mat-checkbox>{{vol}}</mat-checkbox>
-            </div>
-    </div>
+<fury-page [fxLayoutGap]="gap" class="dashboard" fxLayout="column">
 
-    
-    <div class="addButton">
-        <button mat-raised-button color="primary" (click)="addVolunteers()">Save</button>
-        <button mat-raised-button color="warn" (click)="cancel()">Cancel</button>
+    <!-- FIRST ROW -->
+  
+    <!-- END FIRST ROW -->
+  
+    <div [fxLayoutGap]="gap" fxFlex="noshrink" fxLayout="column" fxLayout.gt-lg="row">
+  
+      <div fxLayout="column" [fxLayoutGap]="gap" [fxFlex]="col(2)">
+  
+        <div fxFlex="grow" class="route-animations-elements">
+          <add-volunteers-widget [options]="volunteerOptions"
+                                    [tableOptions]="volunteerTableOptions"
+                                    [tableData]="volunteerDataObservable$ | async"
+                                    (addVolunteer)="addVolunteers($event)"
+                                    (canceller)="cancel()"></add-volunteers-widget>
+        </div>
+  
+      </div>
     </div>
-</div>
+  </fury-page>
+

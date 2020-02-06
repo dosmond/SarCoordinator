@@ -1,10 +1,10 @@
 <div class="sidenav" fxLayout="column">
   <div class="sidenav-toolbar" fxLayout="row" fxLayoutAlign="start center">
     <div class="sidenav-toolbar-icon">
-
+    
     </div>
     <div [routerLink]="['/']" class="sidenav-toolbar-logo">
- 
+      
     </div>
 
 
@@ -20,20 +20,12 @@
 
   <fury-scrollbar class="sidenav-items" fxFlex="auto">
     <div *ngIf="sidenavUserVisible$ | async" class="sidenav-user">
+      <img class="sidenav-user-image" src="../../../assets/logoV5.png" alt="">
       <!--<img class="sidenav-user-image" src="assets/img/avatars/default.jpg">-->
-      <h4 class="sidenav-user-name">Daniel Osmond</h4>
-      <h5 class="sidenav-user-email">dosmond37@gmail.com</h5>
+      <h4 class="sidenav-user-name">{{userName}}</h4>
+      <h5 class="sidenav-user-email">{{userEmail}}</h5>
 
       <div class="sidenav-user-icons" fxLayout="row">
-        <a [routerLink]="['/tables/all-in-one-table']" mat-icon-button>
-          <mat-icon>assignment</mat-icon>
-        </a>
-        <a [routerLink]="['/apps/calendar']" mat-icon-button>
-          <mat-icon>date_range</mat-icon>
-        </a>
-        <a [routerLink]="['/login']" mat-icon-button>
-          <mat-icon>exit_to_app</mat-icon>
-        </a>
       </div>
     </div>
 

@@ -33,6 +33,13 @@ export class CaseDashboardService {
     let httpOptions = {
       headers : new HttpHeaders().set("Authorization", token)
     };
-    return this.http.get(`${this.url}getCaseData?caseId=${caseId}`, httpOptions);
+    return this.http.get(`${this.url}/getCaseData?caseId=${caseId}`, httpOptions);
+  }
+
+  deleteVolunteerFromRow(token: string, caseId: string, userId: string){
+    let httpOptions = {
+      headers : new HttpHeaders().set("Authorization", token)
+    };
+    return this.http.delete(`${this.url}/deleteVolunteerFromCase?caseId=${caseId}&userId=${userId}`, httpOptions);
   }
 }

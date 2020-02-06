@@ -21,7 +21,8 @@
 
   <fury-card-content class="card-content">
     <case-data-widget-table [data]="tableData" [columns]="tableOptions?.columns"
-                                    [pageSize]="tableOptions?.pageSize"></case-data-widget-table>
+                                    [pageSize]="tableOptions?.pageSize"
+                                    (deleteRow)="deleteRow($event)"></case-data-widget-table>
 
   </fury-card-content>
 

@@ -14,7 +14,7 @@
         
         <ng-template #actions>
           <td *matCellDef="let row" mat-cell>
-            <button mat-raised-button color="warn"> Remove </button>
+            <button mat-raised-button color="warn" (click)="removeVolunteer(row)"> Remove </button>
           </td>
         </ng-template>
 

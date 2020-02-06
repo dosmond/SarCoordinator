@@ -10,12 +10,18 @@ export class AddVolunteersService {
 
     constructor(private http: HttpClient){}
 
-    putVolunteers(token: string, caseId: string, volunteerIds: string[]){
+    getVolunteers(token: string) {
+        let httpOptions = {
+            headers : new HttpHeaders().set("Authorization", token)
+        };
+        return this.http.get(`${this.url}/getVolunteers`, httpOptions)
+      }
+
+    putVolunteers(token: string, caseId: string, volunteerIds){
         let httpOptions = {
             headers : new HttpHeaders().set("Authorization", token)
           };
 
-        let volunteers = {volunteers: volunteerIds};
-        return this.http.put(`${this.url}/putVolunteers?caseId=${caseId}`, volunteers, httpOptions);
+        return this.http.put(`${this.url}/putVolunteers?caseId=${caseId}`, volunteerIds, httpOptions);
     }
 }

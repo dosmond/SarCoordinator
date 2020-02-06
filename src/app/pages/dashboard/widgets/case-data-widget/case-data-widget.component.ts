@@ -49,16 +49,26 @@ export class CaseDataWidgetComponent implements OnInit {
     this.afa.getIdToken().then(token => {
       this.dashboardService.getCaseData(this.caseId, token).subscribe(res => {
         this.data = [(res as ICase)];
-        console.log(this.data);
         this.tableData = this.data[0].volunteers;
       });
+    })
+  }
+
+  deleteRow(row){
+    this.afa.getIdToken().then(token => {
+      this.dashboardService.deleteVolunteerFromRow(token, this.caseId, row.userId).subscribe(res => {
+        this.reload()
+      })
     })
   }
 
   openAddVolunteersDialog(): void {
     const dialogRef = this.dialog.open(AddVolunteersComponent, {
       width: '80vw',
-      height: '60vh'});
+      height: '60vh',
+      data: {
+        caseId : this.caseId
+      }});
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
