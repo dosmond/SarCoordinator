@@ -66,6 +66,7 @@ export class SidenavComponent implements OnInit, OnDestroy {
 
   initUserInfo(){
     let userInfo = this.afa.getUser()
+    console.log(userInfo)
     this.userName = userInfo.displayName
     this.userEmail = userInfo.email
   }
