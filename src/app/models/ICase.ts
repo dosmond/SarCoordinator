@@ -8,4 +8,6 @@ export interface ICase {
     reporterName: string;
     volunteers: IUser[];
     date: string;
+    isOpen: boolean;
+    status: string;
 }

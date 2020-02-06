@@ -33,6 +33,7 @@ export class DashboardComponent implements OnInit {
       { name: 'Case Id', property: 'caseId', visible: false, isModelProperty: true},
       { name: 'Missing Person(s)', property: 'missingPersonName', visible: true, isModelProperty: true },
       { name: 'Date', property: 'date', visible: true, isModelProperty: true },
+      { name: "Status", property: 'status', visible: true, isModelProperty: true}
     ]
   };
   caseDataObservable$ : Observable<any>;
@@ -95,9 +96,12 @@ export class DashboardComponent implements OnInit {
         this.data = (res as ICaseIds);
         this.data.caseIds.forEach(element => {
           this.dashboardService.getCaseData(element.caseId, token).subscribe(res => {
-
             let cdata = (res as ICase);
             cdata.caseId = element.caseId
+            if(cdata.isOpen)
+              cdata.status = "Open"
+            else
+              cdata.status = "Closed"
             cdata.date = new Date(cdata.date).toLocaleString();
             cases.cases.push(cdata);
 

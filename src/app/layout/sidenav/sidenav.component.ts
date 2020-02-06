@@ -69,5 +69,4 @@ export class SidenavComponent implements OnInit, OnDestroy {
     this.userName = userInfo.displayName
     this.userEmail = userInfo.email
   }
-
 }
