@@ -4,10 +4,8 @@ import { FuryCardModule } from '../../../../../@fury/shared/card/card.module';
 import { ListModule } from '../../../../../@fury/shared/list/list.module';
 import { LoadingOverlayModule } from '../../../../../@fury/shared/loading-overlay/loading-overlay.module';
 import { MaterialModule } from '../../../../../@fury/shared/material-components.module';
-import { CaseDataWidgetTableComponent } from './case-data-widget-table/case-data-widget-table.component';
-import { CaseDataWidgetComponent } from './case-data-widget.component';
-import { ReportFormModule } from 'src/app/pages/pdf-gen/pdf-gen.module';
-import { AddVolunteersModule } from '../../../add-volunteers/add-volunteers.module';
+import { AddVolunteersWidgetComponent } from './add-volunteers-widget.component';
+import { AddVolunteersWidgetTableComponent } from './add-volunteers-widget-table/add-volunteers-widget-table.component';
 
 @NgModule({
   imports: [
@@ -16,13 +14,11 @@ import { AddVolunteersModule } from '../../../add-volunteers/add-volunteers.modu
 
     // Core
     LoadingOverlayModule,
-    ReportFormModule,
-    AddVolunteersModule,
     FuryCardModule,
     ListModule
   ],
-  declarations: [CaseDataWidgetComponent, CaseDataWidgetTableComponent],
-  exports: [CaseDataWidgetComponent]
+  declarations: [AddVolunteersWidgetComponent, AddVolunteersWidgetTableComponent],
+  exports: [AddVolunteersWidgetComponent]
 })
-export class CaseDataWidgetModule {
+export class AddVolunteersWidgetModule {
 }

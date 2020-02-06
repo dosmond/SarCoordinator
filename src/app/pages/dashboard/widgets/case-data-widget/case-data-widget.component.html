@@ -7,8 +7,8 @@
     <fury-card-header-subheading *ngIf="options.subTitle">{{ options.subTitle }}</fury-card-header-subheading>
 
     <fury-card-header-actions>
-      <button mat-icon-button (click)="addVolunteer()">
-        <mat-icon> group_add</mat-icon>
+      <button mat-icon-button (click)="openAddVolunteersDialog()">
+        <mat-icon>group_add</mat-icon>
       </button>
       <button mat-icon-button (click)="reload()">
         <mat-icon>refresh</mat-icon>
@@ -21,7 +21,8 @@
 
   <fury-card-content class="card-content">
     <case-data-widget-table [data]="tableData" [columns]="tableOptions?.columns"
-                                    [pageSize]="tableOptions?.pageSize"></case-data-widget-table>
+                                    [pageSize]="tableOptions?.pageSize"
+                                    (deleteRow)="deleteRow($event)"></case-data-widget-table>
 
   </fury-card-content>
 

@@ -66,6 +66,10 @@ export class AuthProcessService implements ISignInProcess {
     return this.afa.auth.currentUser.getIdToken();
   }
 
+  getUser() {
+    return this.afa.auth.currentUser;
+  }
+
   /**
    * Reset the password of the ngx-auth-firebaseui-user via email
    *

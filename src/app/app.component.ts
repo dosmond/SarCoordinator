@@ -39,7 +39,7 @@ export class AppComponent {
 
     this.sidenavService.addItems([
       {
-        name: 'APPS',
+        name: 'PAGES',
         position: 5,
         type: 'subheading',
         customClass: 'first-subheading'
@@ -51,11 +51,11 @@ export class AppComponent {
         position: 10,
         pathMatchExact: true
       },
-      {
-        name: 'USER INTERFACE',
-        type: 'subheading',
-        position: 35
-      },
+      // {
+      //   name: 'USER INTERFACE',
+      //   type: 'subheading',
+      //   position: 35
+      // },
     ]);
   }
 }

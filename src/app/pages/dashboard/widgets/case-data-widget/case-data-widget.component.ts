@@ -7,6 +7,7 @@ import { CaseDashboardService } from '../../case-dashboard/case-dashboard.servic
 import { ICase } from 'src/app/models/ICase';
 import { MatDialog } from '@angular/material';
 import { PdfGenComponent } from 'src/app/pages/pdf-gen/pdf-gen.component';
+import { AddVolunteersComponent } from 'src/app/pages/add-volunteers/add-volunteers.component'
 import { AuthProcessService } from 'src/app/pages/authentication/auth-service';
 
 @Component({
@@ -48,14 +49,32 @@ export class CaseDataWidgetComponent implements OnInit {
     this.afa.getIdToken().then(token => {
       this.dashboardService.getCaseData(this.caseId, token).subscribe(res => {
         this.data = [(res as ICase)];
-        console.log(this.data);
         this.tableData = this.data[0].volunteers;
       });
     })
   }
 
-  addVolunteer() {}
-  
+  deleteRow(row){
+    this.afa.getIdToken().then(token => {
+      this.dashboardService.deleteVolunteerFromRow(token, this.caseId, row.userId).subscribe(res => {
+        this.reload()
+      })
+    })
+  }
+
+  openAddVolunteersDialog(): void {
+    const dialogRef = this.dialog.open(AddVolunteersComponent, {
+      width: '80vw',
+      height: '60vh',
+      data: {
+        caseId : this.caseId
+      }});
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+
   openPdfDialog(): void {
     const dialogRef = this.dialog.open(PdfGenComponent, {
       width: '80vw',

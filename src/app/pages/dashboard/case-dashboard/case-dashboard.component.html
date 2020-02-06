@@ -3,6 +3,7 @@
         <div fxLayout="column" [fxLayoutGap]="gap" [fxFlex]="col(2)">
           <div fxFlex="grow" class="route-animations-elements">
             <case-data-widget 
+                [caseId]="caseId"
                 [options]="caseDataOptions"
                 [tableOptions]="caseDataTableOptions"
                 [tableData]="volunteers$ | async">

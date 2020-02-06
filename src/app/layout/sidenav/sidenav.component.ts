@@ -1,3 +1,6 @@
+import { UserInfo } from 'firebase/app';
+import { PageLayoutSimpleRoutingModule } from './../../pages/page-layouts/page-layout-simple/page-layout-simple-routing.module';
+import { AuthProcessService } from 'src/app/pages/authentication/auth-service';
 import { Component, HostBinding, HostListener, Input, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -23,17 +26,23 @@ export class SidenavComponent implements OnInit, OnDestroy {
   @HostBinding('class.expanded')
   expanded: boolean;
 
+  userName : string
+  userEmail: string
+
   items$: Observable<SidenavItem[]>;
 
   constructor(private router: Router,
               private sidenavService: SidenavService,
-              private themeService: ThemeService) {
+              private themeService: ThemeService,
+              private afa: AuthProcessService) {
   }
 
   ngOnInit() {
     this.items$ = this.sidenavService.items$.pipe(
       map((items: SidenavItem[]) => this.sidenavService.sortRecursive(items, 'position'))
     );
+
+    this.initUserInfo()
   }
 
   toggleCollapsed() {
@@ -54,4 +63,11 @@ export class SidenavComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
   }
+
+  initUserInfo(){
+    let userInfo = this.afa.getUser()
+    this.userName = userInfo.displayName
+    this.userEmail = userInfo.email
+  }
+
 }
