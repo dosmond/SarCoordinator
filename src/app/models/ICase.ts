@@ -7,7 +7,7 @@ export interface ICase {
     missingPersonName: string;
     reporterName: string;
     volunteers: IUser[];
-    date: string;
+    date: any;
     isOpen: boolean;
     status: string;
 }
