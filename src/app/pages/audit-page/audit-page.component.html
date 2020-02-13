@@ -1,0 +1,13 @@
+<fury-page [fxLayoutGap]="gap" class="dashboard" fxLayout="column">
+    <div [fxLayoutGap]="gap" fxFlex="noshrink" fxLayout="column" fxLayout.gt-lg="row">
+        <div fxLayout="column" [fxLayoutGap]="gap" [fxFlex]="col(2)">
+          <div fxFlex="grow" class="route-animations-elements">
+            <audit-page-widget [options]="auditPageOptions"
+                                [tableOptions]="auditPageTableOptions"
+                                [tableData]="volunteerDataObservable$ | async"
+                                (refreshVolunteers)="refreshVolunteers()">
+            </audit-page-widget>
+          </div>
+        </div>
+      </div>
+</fury-page>

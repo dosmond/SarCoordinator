@@ -51,6 +51,13 @@ export class AppComponent {
         position: 10,
         pathMatchExact: true
       },
+      {
+        name: 'Audit',
+        routeOrFunction: '/audit',
+        icon: 'show_chart',
+        position: 15,
+        pathMatchExact: true
+      },
       // {
       //   name: 'USER INTERFACE',
       //   type: 'subheading',

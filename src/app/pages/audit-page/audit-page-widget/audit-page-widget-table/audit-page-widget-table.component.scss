@@ -1,0 +1,14 @@
+@import "var";
+
+.list {
+  box-shadow: none;
+  border-radius: 0;
+}
+
+.red {
+  & td{
+    color: white;
+    background-color: salmon;
+  }
+
+}

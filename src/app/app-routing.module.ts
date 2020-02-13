@@ -50,6 +50,11 @@ const routes: Routes = [
         path: 'case-dashboard',
         loadChildren: './pages/dashboard/case-dashboard/case-dashboard.module#CaseDashboardModule',
         canActivate: [LoggedInGuard]
+      },
+      {
+        path: 'audit',
+        loadChildren: './pages/audit-page/audit-page.module#AuditPageModule',
+        canActivate: [LoggedInGuard]
       }
     ],
   }

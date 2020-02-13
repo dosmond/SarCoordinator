@@ -17,8 +17,6 @@ import { MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarConfig } from '@angular/mater
 import { NgxAuthFirebaseUIModule, NgxAuthFirebaseUIConfigToken } from 'ngx-auth-firebaseui';
 import { AngularFireModule } from "@angular/fire";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
-import { PdfViewerModule } from "ng2-pdf-viewer";
-import { PdfGenComponent } from './pages/pdf-gen/pdf-gen.component';
 
 @NgModule({
   imports: [

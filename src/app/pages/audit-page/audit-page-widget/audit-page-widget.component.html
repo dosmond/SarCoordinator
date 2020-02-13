@@ -1,0 +1,15 @@
+<fury-card>
+    <fury-card-header>
+      <fury-card-header-heading>{{ options.title }}</fury-card-header-heading>
+      <fury-card-header-subheading *ngIf="options.subTitle">{{ options.subTitle }}</fury-card-header-subheading>
+    </fury-card-header>
+  
+    <fury-card-content class="card-content">
+        <audit-page-widget-table [data]="tableData" [columns]="tableOptions?.columns"
+                                      [pageSize]="tableOptions?.pageSize"
+                                      [(selection)]="selection"></audit-page-widget-table>
+  
+    </fury-card-content>
+  
+    <fury-loading-overlay [isLoading]="isLoading"></fury-loading-overlay>
+</fury-card>
