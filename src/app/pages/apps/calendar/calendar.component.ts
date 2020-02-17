@@ -90,8 +90,6 @@ export class CalendarComponent implements OnInit {
   handleEvent(action: string, event: CalendarEvent<any>): void {
     const eventCopy = clone(event);
 
-    console.log(event);
-
     const dialogRef = this.dialog.open(CalendarEditComponent, {
       data: event
     });

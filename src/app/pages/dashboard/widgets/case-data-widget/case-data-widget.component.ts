@@ -71,7 +71,6 @@ export class CaseDataWidgetComponent implements OnInit {
       }});
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
     });
   }
 
@@ -81,7 +80,6 @@ export class CaseDataWidgetComponent implements OnInit {
       height: '80vh'});
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
     });
   }
 }

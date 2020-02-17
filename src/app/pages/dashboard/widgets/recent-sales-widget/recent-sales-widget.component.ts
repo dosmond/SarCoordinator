@@ -46,7 +46,6 @@ export class RecentSalesWidgetComponent implements OnInit {
     if(this.options.title == "Cases")
       this.refreshCase.emit()
     else {
-      console.log(this.options.title)
       this.refreshVolunteers.emit()
     }
 

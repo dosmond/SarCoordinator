@@ -66,7 +66,6 @@ export class PdfGenComponent implements OnInit {
     }
     
     this.inputList.push(input);
-    //console.log(this.inputList)
     return formControl;
   }
 

@@ -14,7 +14,6 @@ export class PdfService {
         let httpOptions = {
             headers : new HttpHeaders().set("Authorization", token)
           };
-          console.log(report, token, caseId)
         //this.http.post(`${this.url}/postReport?caseId=${caseId}`, report, httpOptions)
     }
 }

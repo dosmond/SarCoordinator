@@ -51,7 +51,6 @@ export class DashboardService {
     let httpOptions = {
       headers : new HttpHeaders().set("Authorization", token)
     };
-    console.log("Made it")
     return this.http.post(`${this.url}/postCase?userId=${userId}`,form, httpOptions);
   }
 }
