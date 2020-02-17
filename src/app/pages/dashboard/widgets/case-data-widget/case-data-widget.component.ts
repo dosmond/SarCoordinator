@@ -9,6 +9,8 @@ import { MatDialog } from '@angular/material';
 import { PdfGenComponent } from 'src/app/pages/pdf-gen/pdf-gen.component';
 import { AddVolunteersComponent } from 'src/app/pages/add-volunteers/add-volunteers.component'
 import { AuthProcessService } from 'src/app/pages/authentication/auth-service';
+import { IncidentReportComponent } from 'src/app/pages/incident-report/incident-report.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'case-data-widget',
@@ -34,7 +36,8 @@ export class CaseDataWidgetComponent implements OnInit {
 
   constructor(private dashboardService : CaseDashboardService,
     private afa: AuthProcessService,
-    private dialog: MatDialog,) {
+    private dialog: MatDialog,
+    private router: Router) {
   }
 
   ngOnInit() {
@@ -76,12 +79,13 @@ export class CaseDataWidgetComponent implements OnInit {
   }
 
   openPdfDialog(): void {
-    const dialogRef = this.dialog.open(PdfGenComponent, {
-      width: '80vw',
-      height: '80vh'});
+    // const dialogRef = this.dialog.open(IncidentReportComponent, {
+    //   width: '80vw',
+    //   height: '80vh'});
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    });
+    // dialogRef.afterClosed().subscribe(result => {
+    //   console.log('The dialog was closed');
+    // });
+    this.router.navigate(['./'])
   }
 }

@@ -1,0 +1,38 @@
+body {
+  box-sizing: border-box;
+  padding: 10px
+}
+
+table {
+    border-collapse: collapse;
+    box-sizing: border-box;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+th, td {
+    padding: 5px;
+    font-size: 75%;
+}
+
+#print-section
+{
+  margin: 0px;
+  padding: 0px;
+  width: 670px; /* width: 7in; */
+  height: 900px; /* or height: 9.5in; */
+  clear: both;
+  background-color: white;
+  page-break-after: always;
+  position: relative;
+  //padding: 10px;
+}
+
+#report-container
+{ 
+  padding: 10px;
+  height: 100%;
+  box-sizing: border-box
+}

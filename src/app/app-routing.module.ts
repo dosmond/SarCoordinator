@@ -2,8 +2,15 @@ import { LoggedInGuard } from './pages/authentication/logged-in-guard';
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './layout/layout.component';
+import { IncidentReportComponent } from './pages/incident-report/incident-report.component';
 
 const routes: Routes = [
+  {
+    path: 'report/:id', component: IncidentReportComponent //for cases when user navigates from case dashboard
+  },
+  {
+    path: 'report', component: IncidentReportComponent //When navigating to it from side bar
+  },
   {
     path: 'login',
     loadChildren: './pages/authentication/login/login.module#LoginModule',

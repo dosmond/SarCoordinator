@@ -6,7 +6,7 @@
 
   <div [fxLayoutGap]="gap" fxFlex="noshrink" fxLayout="column" fxLayout.gt-lg="row">
 
-    <div fxLayout="column" [fxLayoutGap]="gap" [fxFlex]="col(2)">
+    <div id="parentdiv" fxLayout="column" [fxLayoutGap]="gap" [fxFlex]="col(2)">
 
       <div fxFlex="grow" class="route-animations-elements">
         <fury-recent-sales-widget [options]="caseOptions"
@@ -15,13 +15,12 @@
                                   (refreshCase)="refreshCases()"></fury-recent-sales-widget>
       </div>
 
-      <div fxFlex="grow" class="route-animations-elements">
+      <div  fxFlex="grow" class="route-animations-elements">
         <fury-recent-sales-widget [options]="volunteerOptions"
                                   [tableOptions]="volunteerTableOptions"
                                   [tableData]="volunteerDataObservable$ | async"
                                   (refreshVolunteers)="refreshVolunteers()"></fury-recent-sales-widget>
       </div>
-
     </div>
 
   </div>

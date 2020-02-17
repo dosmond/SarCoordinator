@@ -1,0 +1,20 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { MaterialModule } from 'src/@fury/shared/material-components.module';
+import { IncidentReportComponent } from './incident-report.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NgxPrintModule } from 'ngx-print';
+import { FurySharedModule } from '../../../@fury/fury-shared.module';
+
+@NgModule({
+    imports: [
+      CommonModule,
+      MaterialModule,
+      ReactiveFormsModule,
+      NgxPrintModule,
+      FurySharedModule
+    ],
+    declarations: [IncidentReportComponent],
+    entryComponents: [IncidentReportComponent],
+  })
+  export class IncidentReportModule {}

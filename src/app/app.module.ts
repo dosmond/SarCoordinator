@@ -19,6 +19,7 @@ import { AngularFireModule } from "@angular/fire";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { PdfViewerModule } from "ng2-pdf-viewer";
 import { PdfGenComponent } from './pages/pdf-gen/pdf-gen.component';
+import { IncidentReportModule } from './pages/incident-report/incident-report.module';
 
 @NgModule({
   imports: [
@@ -47,6 +48,7 @@ import { PdfGenComponent } from './pages/pdf-gen/pdf-gen.component';
     NgxAuthFirebaseUIModule.forRoot(environment.firebaseConfig),
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
+    IncidentReportModule
   
   ],
   declarations: [AppComponent],
