@@ -5,6 +5,7 @@ import { IncidentReportComponent } from './incident-report.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxPrintModule } from 'ngx-print';
 import { FurySharedModule } from '../../../@fury/fury-shared.module';
+import { IncidentReportService } from './incident-report.service';
 
 @NgModule({
     imports: [
@@ -16,5 +17,6 @@ import { FurySharedModule } from '../../../@fury/fury-shared.module';
     ],
     declarations: [IncidentReportComponent],
     entryComponents: [IncidentReportComponent],
+    providers: [IncidentReportService]
   })
   export class IncidentReportModule {}

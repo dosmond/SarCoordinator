@@ -6,12 +6,6 @@ import { IncidentReportComponent } from './pages/incident-report/incident-report
 
 const routes: Routes = [
   {
-    path: 'report/:id', component: IncidentReportComponent //for cases when user navigates from case dashboard
-  },
-  {
-    path: 'report', component: IncidentReportComponent //When navigating to it from side bar
-  },
-  {
     path: 'login',
     loadChildren: './pages/authentication/login/login.module#LoginModule',
   },
@@ -56,6 +50,11 @@ const routes: Routes = [
       {
         path: 'case-dashboard',
         loadChildren: './pages/dashboard/case-dashboard/case-dashboard.module#CaseDashboardModule',
+        canActivate: [LoggedInGuard]
+      },
+      {
+        path:'reports',
+        component: IncidentReportComponent,
         canActivate: [LoggedInGuard]
       }
     ],

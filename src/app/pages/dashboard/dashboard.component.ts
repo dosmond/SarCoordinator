@@ -11,9 +11,6 @@ import { DashboardService } from './dashboard.service';
 import { MatDialog } from '@angular/material/dialog'
 import { VolunteerFormDialogComponent } from '../forms/volunteer-form/volunteer-form.component';
 import { CreateCaseFormDialogComponent } from '../forms/create-case-form/create-case-form.component';
-import * as jsPDF from 'jspdf';
-import html2canvas from 'html2canvas';
-import domtoimage from 'dom-to-image';
 
 @Component({
   selector: 'fury-dashboard',
@@ -129,79 +126,4 @@ export class DashboardComponent implements OnInit {
     })
   }
 
-
-
-htmltoPDF()
-{
-    // parentdiv is the html element which has to be converted to PDF
-    html2canvas(document.querySelector("#parentdiv")).then(canvas => {
-
-      var pdf = new jsPDF('p', 'pt', [canvas.width, canvas.height]);
-
-      var imgData  = canvas.toDataURL("image/jpeg", 1.0);
-      pdf.addImage(imgData,0,0,canvas.width, canvas.height);
-      pdf.save('converteddoc.pdf');
-
-  });
-
-}
-
-downloadPDF()
-{
-
-  var node = document.getElementById('parentdiv');
-
-  var img;
-  var filename;
-  var newImage;
-
-
-  domtoimage.toPng(node, { bgcolor: '#fff' })
-
-    .then(function(dataUrl) {
-
-      img = new Image();
-      img.src = dataUrl;
-      newImage = img.src;
-
-      img.onload = function(){
-
-      var pdfWidth = img.width;
-      var pdfHeight = img.height;
-
-        // FileSaver.saveAs(dataUrl, 'my-pdfimage.png'); // Save as Image
-
-        var doc;
-
-        if(pdfWidth > pdfHeight)
-        {
-          doc = new jsPDF('l', 'px', [pdfWidth , pdfHeight]);
-        }
-        else
-        {
-          doc = new jsPDF('p', 'px', [pdfWidth , pdfHeight]);
-        }
-
-
-        var width = doc.internal.pageSize.getWidth();
-        var height = doc.internal.pageSize.getHeight();
-
-
-        doc.addImage(newImage, 'PNG',  10, 10, width, height);
-        filename = 'mypdf_' + '.pdf';
-        doc.save(filename);
-
-      };
-
-
-    })
-    .catch(function(error) {
-
-     // Error Handling
-
-    });
-
-
-
-}
 }
