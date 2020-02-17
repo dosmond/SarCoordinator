@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild, Output, EventEmitter, AfterViewInit, OnChanges } from '@angular/core';
 import * as Chart from 'chart.js';
 import { ChartData } from 'chart.js';
 import { ListColumn } from '../../../../../@fury/shared/list/list-column.model';
@@ -12,7 +12,7 @@ import { CreateCaseFormDialogComponent } from 'src/app/pages/forms/create-case-f
   templateUrl: './recent-sales-widget.component.html',
   styleUrls: ['./recent-sales-widget.component.scss']
 })
-export class RecentSalesWidgetComponent implements OnInit {
+export class RecentSalesWidgetComponent implements OnInit, OnChanges {
 
   @Input() tableOptions: {
     clickable : boolean;
@@ -36,8 +36,13 @@ export class RecentSalesWidgetComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  ngOnChanges() {
     if(this.tableData == null || this.tableData.length == 0)
       this.isLoading=true;
+    else
+      this.isLoading=false;
   }
 
   reload() {

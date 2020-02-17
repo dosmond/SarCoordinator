@@ -91,7 +91,6 @@ export class DashboardComponent implements OnInit {
 
   refreshCases() {
     this.caseloading = true;
-    this.caseDataObservable$ = of([{}]);
     let cases : ICases = {cases : []};
     this.aps.getIdToken().then(token => {
       this.dashboardService.getRecentSalesTableData(token).subscribe((res) => {
@@ -111,7 +110,6 @@ export class DashboardComponent implements OnInit {
 
             if(cases.cases.length == this.data.caseIds.length)
               this.caseDataObservable$ = of(cases.cases);
-            this.caseloading = false;
           })
         });
       })
