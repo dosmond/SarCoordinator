@@ -69,4 +69,9 @@ export class SidenavComponent implements OnInit, OnDestroy {
     this.userName = userInfo.displayName
     this.userEmail = userInfo.email
   }
+
+  logout(){
+    this.afa.signOut();
+    this.router.navigate(["/login"])
+  }
 }
