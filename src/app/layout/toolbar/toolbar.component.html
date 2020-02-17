@@ -1,17 +1,17 @@
-<div class="toolbar" fxLayout="row" fxLayoutAlign="space-between">
+<div  fxLayout="row" fxLayoutAlign="space-between">
   <div fxLayout="row" fxLayoutAlign="start center">
     <fury-toolbar-sidenav-mobile-toggle (openSidenav)="openSidenav.emit()"></fury-toolbar-sidenav-mobile-toggle>
 
-    <div [fxShow.gt-sm]="topNavigation$ | async" [fxShow.xs]="false" [routerLink]="['/']" class="toolbar-logo" fxShow>
+    <!-- <div [fxShow.gt-sm]="topNavigation$ | async" [fxShow.xs]="false" [routerLink]="['/']" class="toolbar-logo" fxShow>
       <img src='../../../assets/logoV5.png' alt='sar coordinator logo' height='50px' margin='0px'>
-    </div>
+    </div> -->
 
   </div>
 
-  <div fxLayout="row">
+  <!-- <div fxLayout="row">
 
     <fury-toolbar-user class="toolbar-button"></fury-toolbar-user>
 
-  </div>
+  </div> -->
 </div>
 

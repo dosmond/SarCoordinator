@@ -6,11 +6,14 @@ import { CaseDashboardService } from './case-dashboard.service';
 import { ICase } from 'src/app/models/ICase';
 import { CaseDataWidgetOptions } from '../widgets/case-data-widget/case-data-widget-options.interface';
 import { AuthProcessService } from '../../authentication/auth-service';
+import { fadeInUpStaggerAnimation } from 'src/@fury/animations/fade-in-up.animation';
+import { fadeInRightAnimation } from 'src/@fury/animations/fade-in-right.animation';
 
 @Component({
   selector: 'case-dashboard',
   templateUrl: './case-dashboard.component.html',
-  styleUrls: ['./case-dashboard.component.scss']
+  styleUrls: ['./case-dashboard.component.scss'],
+  animations: [fadeInUpStaggerAnimation, fadeInRightAnimation]
 })
 export class CaseDashboardComponent implements OnInit {
 

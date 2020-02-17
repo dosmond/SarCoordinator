@@ -35,7 +35,10 @@ export class RecentSalesWidgetComponent implements OnInit {
   constructor(public dialog: MatDialog) {
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    if(this.tableData == null || this.tableData.length == 0)
+      this.isLoading=true;
+  }
 
   reload() {
     this.isLoading = true;

@@ -1,3 +1,8 @@
+import { ScrollbarModule } from './../../../@fury/shared/scrollbar/scrollbar.module';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { FuryCardModule } from './../../../@fury/shared/card/card.module';
+import { BreadcrumbsModule } from './../../../@fury/shared/breadcrumbs/breadcrumbs.module';
+import { BarChartWidgetModule } from './../dashboard/widgets/bar-chart-widget/bar-chart-widget.module';
 import { AuditPageService } from './audit-page.service';
 import { AuditPageWidgetModule } from './audit-page-widget/audit-page-widget.module';
 import { AuditPageRoutingModule } from './audit-page-routing.module';
@@ -18,6 +23,11 @@ import { FurySharedModule } from '../../../@fury/fury-shared.module';
     FurySharedModule,
     AuditPageRoutingModule,
     AuditPageWidgetModule,
+    BarChartWidgetModule,
+    BreadcrumbsModule,
+    FuryCardModule,
+    DragDropModule,
+    ScrollbarModule
   ],
   declarations: [AuditPageComponent],
   providers: [AuditPageService, DatePipe]

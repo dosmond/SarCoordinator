@@ -6,11 +6,14 @@ import { AuditPageWidgetOptions } from './audit-page-widget/audit-page-widget-op
 import { Observable, of } from 'rxjs';
 import { DatePipe } from '@angular/common'
 import { ICaseId } from 'src/app/models/ICaseId';
+import { fadeInUpStaggerAnimation } from 'src/@fury/animations/fade-in-up.animation';
+import { fadeInRightAnimation } from 'src/@fury/animations/fade-in-right.animation';
 
 @Component({
   selector: 'audit-page',
   templateUrl: './audit-page.component.html',
-  styleUrls: ['./audit-page.component.scss']
+  styleUrls: ['./audit-page.component.scss'],
+  animations: [fadeInUpStaggerAnimation, fadeInRightAnimation]
 })
 export class AuditPageComponent implements OnInit {
 
@@ -30,6 +33,15 @@ export class AuditPageComponent implements OnInit {
       { name: 'Phone Number', property: 'phoneNumber', visible: false, isModelProperty: true },
     ]
   };
+
+  // salesData$: Observable<ChartData>;
+  // totalSalesOptions: BarChartWidgetOptions = {
+  //   title: 'Total Sales',
+  //   gain: 16.3,
+  //   subTitle: 'compared to last month',
+  //   background: '#3F51B5',
+  //   color: '#FFFFFF'
+  // };
 
   constructor(private afa: AuthProcessService,
               private auditService : AuditPageService,

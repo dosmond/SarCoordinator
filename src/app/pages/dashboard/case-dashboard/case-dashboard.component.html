@@ -1,21 +1,33 @@
-<fury-page [fxLayoutGap]="gap" class="dashboard" fxLayout="column">
-    <div [fxLayoutGap]="gap" fxFlex="noshrink" fxLayout="column" fxLayout.gt-lg="row">
-        <div fxLayout="column" [fxLayoutGap]="gap" [fxFlex]="col(2)">
-          <div fxFlex="grow" class="route-animations-elements">
-            <case-data-widget 
-                [caseId]="caseId"
-                [options]="caseDataOptions"
-                [tableOptions]="caseDataTableOptions"
-                [tableData]="volunteers$ | async">
-            </case-data-widget>
+<fury-page-layout mode="card" >
+  <fury-page-layout-header>
+    <fury-breadcrumbs [@fadeInRight] current="Case Dashboard"></fury-breadcrumbs>
+  </fury-page-layout-header>
+  <fury-page-layout-content [@fadeInUpStagger]
+                            cdkDropListGroup
+                            fxLayout="column"
+                            fxLayout.lt-sm="column"
+                            fxLayoutAlign="start start"
+                            fxLayoutGap="24px">
+
+
+        <case-data-widget fxFill fadeInUpStaggerElement
+            [caseId]="caseId"
+            [options]="caseDataOptions"
+            [tableOptions]="caseDataTableOptions"
+            [tableData]="volunteers$ | async"
+            style="margin: 1em">
+        </case-data-widget>
+
+
+        <div fxFill fxLayout="column" fxLayoutAlign='end' [fxLayoutGap]="gap" [fxFlex]="col(2)" >
+          <div fxFlex="grow">
+            <fury-google-maps [caseId]="caseId" [zoom]="mapOptions.zoom"></fury-google-maps>
           </div>
         </div>
-      </div>
-      <div fxFill fxLayout="column" fxLayoutAlign='end' [fxLayoutGap]="gap" [fxFlex]="col(2)" >
-        <div fxFlex="grow">
-          <fury-google-maps [caseId]="caseId" [zoom]="mapOptions.zoom"></fury-google-maps>
-        </div>
-      </div>
-</fury-page>
+
+  </fury-page-layout-content>
+
+  
+</fury-page-layout>
 
 
