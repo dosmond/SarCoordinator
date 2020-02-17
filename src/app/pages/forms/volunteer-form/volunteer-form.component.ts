@@ -82,7 +82,6 @@ export class VolunteerFormDialogComponent implements OnInit {
   }
 
   cancel(){
-    console.log(this.accountFormGroup)
     this.dialogRef.close({created: false});
   }
 }
