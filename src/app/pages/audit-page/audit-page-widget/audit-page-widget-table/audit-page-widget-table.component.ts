@@ -19,10 +19,8 @@ export class AuditPageWidgetTableComponent implements OnInit, AfterViewInit {
 
   @Input() columns: ListColumn[];
   @Input() pageSize = 10;
-  /**
-   * Simulating a service with HTTP that returns Observables
-   * You probably want to remove this and do all requests in a service with HTTP
-   */
+  @Input() threshold: number;
+
   subject$: ReplaySubject<any[]> = new ReplaySubject<any[]>(1);
   data$: Observable<any[]> = this.subject$.asObservable();
   dataSource: MatTableDataSource<any> | null;

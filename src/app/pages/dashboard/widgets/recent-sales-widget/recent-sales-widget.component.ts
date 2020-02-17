@@ -29,7 +29,7 @@ export class RecentSalesWidgetComponent implements OnInit {
 
   chart: Chart;
 
-  isLoading: boolean;
+  @Input() isLoading: boolean;
 
 
   constructor(public dialog: MatDialog) {

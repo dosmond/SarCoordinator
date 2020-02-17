@@ -31,8 +31,23 @@ export class AuditPageService {
     return this.http.delete(`${this.url}/deleteVolunteerFromCase?caseId=${caseId}&userId=${userId}`, httpOptions);
   }
 
-  getVolunteers(token: string) {
-    const url = `${this.url}/getVolunteers`
-    return this.http.get(url, {headers: {'Authorization': token}})
+  getVolunteers(token: string, dates?) {
+    if(dates === undefined)
+      return this.http.get(`${this.url}/getVolunteers`, {headers: {'Authorization': token}})
+    else{
+      if(dates.endDate == null)
+        return this.http.get(`${this.url}/getVolunteers?startDate=${dates.startDate}`, {headers: {'Authorization': token}})
+      else
+        return this.http.get(`${this.url}/getVolunteers?startDate=${dates.startDate}&endDate=${dates.endDate}`, {headers: {'Authorization': token}})
+    }
+  }
+
+  getCaseCount(token: string, dates){
+    if(dates.endDate == null)
+      return this.http.get(`${this.url}/getCases?startDate=${dates.startDate}`, {headers: {'Authorization': token}})
+    else if(dates.startDate != null)
+      return this.http.get(`${this.url}/getCases?startDate=${dates.startDate}&endDate=${dates.endDate}`, {headers: {'Authorization': token}})
+    else
+      return this.http.get(`${this.url}/getCases?endDate=${dates.endDate}`, {headers: {'Authorization': token}})
   }
 }

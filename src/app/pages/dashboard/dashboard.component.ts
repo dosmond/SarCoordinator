@@ -20,8 +20,9 @@ import { CreateCaseFormDialogComponent } from '../forms/create-case-form/create-
 export class DashboardComponent implements OnInit {
 
   private static isInitialLoad = true;
+  caseloading: boolean;
+  volunteerloading: boolean;
   data : any;
-
   caseOptions: RecentSalesWidgetOptions = {
     title: 'Cases',
     subTitle: 'A view of all cases'
@@ -89,6 +90,7 @@ export class DashboardComponent implements OnInit {
   }
 
   refreshCases() {
+    this.caseloading = true;
     this.caseDataObservable$ = of([{}]);
     let cases : ICases = {cases : []};
     this.aps.getIdToken().then(token => {
@@ -107,6 +109,7 @@ export class DashboardComponent implements OnInit {
 
             if(cases.cases.length == this.data.caseIds.length)
               this.caseDataObservable$ = of(cases.cases);
+            this.caseloading = false;
           })
         });
       })
@@ -116,10 +119,12 @@ export class DashboardComponent implements OnInit {
   }
 
   refreshVolunteers(){
+    this.volunteerloading = true;
     this.aps.getIdToken().then(token => {
       this.dashboardService.getVolunteers(token).subscribe(res => {
         let data = {volunteers: res}
         this.volunteerDataObservable$ = of(data.volunteers);
+        this.volunteerloading = false;
       })
     })
   }

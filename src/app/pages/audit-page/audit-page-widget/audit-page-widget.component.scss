@@ -19,3 +19,9 @@
   }
   display: inline-flex
 }
+
+.spacing {
+  & mat-form-field {
+    padding: 10px
+  }
+}

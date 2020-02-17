@@ -1,3 +1,4 @@
+import { ReactiveFormsModule } from '@angular/forms';
 import { AuditPageWidgetTableComponent } from './audit-page-widget-table/audit-page-widget-table.component';
 import { AuditPageWidgetComponent } from './audit-page-widget.component';
 import { CommonModule } from '@angular/common';
@@ -15,7 +16,8 @@ import { MaterialModule } from '../../../../@fury/shared/material-components.mod
     // Core
     LoadingOverlayModule,
     FuryCardModule,
-    ListModule
+    ListModule,
+    ReactiveFormsModule
   ],
   declarations: [AuditPageWidgetComponent, AuditPageWidgetTableComponent],
   exports: [AuditPageWidgetComponent]

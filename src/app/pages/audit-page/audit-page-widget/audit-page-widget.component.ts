@@ -1,5 +1,6 @@
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuditPageService } from './../audit-page.service';
-import { Component, OnInit, ElementRef, ViewChild, Input } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, Input, Output, EventEmitter } from '@angular/core';
 import { AuthProcessService } from '../../authentication/auth-service';
 import { ICase } from 'src/app/models/ICase';
 import { AuditPageWidgetOptions } from './audit-page-widget-options';
@@ -19,19 +20,29 @@ export class AuditPageWidgetComponent implements OnInit {
       @Input() tableData: any[];
       @Input() chartData: ChartData;
       @Input() options: AuditPageWidgetOptions;
+      @Input() threshold: number
       @Input() caseId: string;
-    
+      @Output() queryDates = new EventEmitter();
       @ViewChild('canvas', { read: ElementRef, static: true }) canvas: ElementRef;
     
+      minDate: Date;
+      maxDate: Date;
+      dateFormGroup: FormGroup;
       chart: Chart;
       data : ICase[];
       isLoading: boolean;
     
       constructor(private auditService : AuditPageService,
-                private afa: AuthProcessService) {
+                private afa: AuthProcessService,
+                private fb: FormBuilder) {
       }
     
       ngOnInit() {
+        this.dateFormGroup = this.fb.group({
+          threshold: [null, Validators.required],
+          startDate: [null, Validators.required],
+          endDate: [null],
+        });
       }
     
     
@@ -54,5 +65,17 @@ export class AuditPageWidgetComponent implements OnInit {
             this.reload()
           })
         })
+      }
+
+      updateMin(date){
+        this.minDate = date.value
+      }
+
+      updateMax(date){
+        this.maxDate = date.value
+      }
+
+      submit(){
+        this.queryDates.emit(this.dateFormGroup.value)
       }
 }

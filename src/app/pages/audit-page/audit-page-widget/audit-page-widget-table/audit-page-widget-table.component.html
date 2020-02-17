@@ -36,7 +36,7 @@
     <tr *matHeaderRowDef="visibleColumns" mat-header-row></tr>
     <!--suppress UnnecessaryLabelJS -->
     <div *ngIf="clickable; else notClickable">
-      <tr [ngClass]="{red : row['phoneNumber']==None}" *matRowDef="let row; columns: visibleColumns;" mat-row></tr>
+      <tr [ngClass]="{red : (row['percent'] < threshold)}" *matRowDef="let row; columns: visibleColumns;" mat-row></tr>
     </div>
 
     <ng-template  #notClickable>

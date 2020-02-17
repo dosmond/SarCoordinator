@@ -12,14 +12,16 @@
         <fury-recent-sales-widget [options]="caseOptions"
                                   [tableOptions]="caseTableOptions"
                                   [tableData]="caseDataObservable$ | async"
-                                  (refreshCase)="refreshCases()"></fury-recent-sales-widget>
+                                  (refreshCase)="refreshCases()"
+                                  [isLoading]="caseloading"></fury-recent-sales-widget>
       </div>
 
       <div fxFlex="grow" class="route-animations-elements">
         <fury-recent-sales-widget [options]="volunteerOptions"
                                   [tableOptions]="volunteerTableOptions"
                                   [tableData]="volunteerDataObservable$ | async"
-                                  (refreshVolunteers)="refreshVolunteers()"></fury-recent-sales-widget>
+                                  (refreshVolunteers)="refreshVolunteers()"
+                                  [isLoading]="volunteerloading"></fury-recent-sales-widget>
       </div>
 
     </div>

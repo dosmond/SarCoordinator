@@ -5,7 +5,9 @@
             <audit-page-widget [options]="auditPageOptions"
                                 [tableOptions]="auditPageTableOptions"
                                 [tableData]="volunteerDataObservable$ | async"
-                                (refreshVolunteers)="refreshVolunteers()">
+                                [threshold]="threshold"
+                                (refreshVolunteers)="refreshVolunteers()"
+                                (queryDates)="refreshWithDates($event)">
             </audit-page-widget>
           </div>
         </div>
