@@ -104,7 +104,9 @@ export class DashboardComponent implements OnInit {
               cdata.status = "Open"
             else
               cdata.status = "Closed"
-            cdata.date = new Date(cdata.date).toLocaleString();
+						var d = new Date(0);
+						d.setUTCSeconds(cdata.date);
+            cdata.date = d.toDateString();
             cases.cases.push(cdata);
 
             if(cases.cases.length == this.data.caseIds.length)
