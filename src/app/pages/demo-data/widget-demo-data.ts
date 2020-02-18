@@ -23,3 +23,15 @@ export const volunteerDummyData = [
     ]
   }
 ];
+
+
+export let top5CategoriesDemoData = [
+  {
+    'label': 'Open',
+    'value': 24
+  },
+  {
+    'label': 'Closed',
+    'value': 33
+  },
+];

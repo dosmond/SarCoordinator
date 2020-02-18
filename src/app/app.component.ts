@@ -58,6 +58,13 @@ export class AppComponent {
         position: 15,
         pathMatchExact: true
       },
+      {
+        name: 'Volunteers',
+        routeOrFunction: '/volunteers',
+        icon: 'person',
+        position: 20,
+        pathMatchExact: true
+      },
       // {
       //   name: 'USER INTERFACE',
       //   type: 'subheading',

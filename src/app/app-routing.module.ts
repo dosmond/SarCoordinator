@@ -55,6 +55,11 @@ const routes: Routes = [
         path: 'audit',
         loadChildren: './pages/audit-page/audit-page.module#AuditPageModule',
         canActivate: [LoggedInGuard]
+      },
+      {
+        path: 'volunteers',
+        loadChildren: './pages/volunteer-page/volunteer-page.module#VolunteerPageModule',
+        canActivate: [LoggedInGuard]
       }
     ],
   }

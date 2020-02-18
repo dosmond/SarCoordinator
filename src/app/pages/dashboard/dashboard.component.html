@@ -15,17 +15,26 @@
                                   (refreshCase)="refreshCases()"
                                   [isLoading]="caseloading"></fury-recent-sales-widget>
       </div>
-
-      <div fxFlex="grow" class="route-animations-elements">
-        <fury-recent-sales-widget [options]="volunteerOptions"
-                                  [tableOptions]="volunteerTableOptions"
-                                  [tableData]="volunteerDataObservable$ | async"
-                                  (refreshVolunteers)="refreshVolunteers()"
-                                  [isLoading]="volunteerloading"></fury-recent-sales-widget>
-      </div>
-
     </div>
+  </div>
 
+  <div [fxLayoutGap]="gap" fxFlex="noshrink" fxLayout="column" fxLayout.gt-lg="row">
+
+    <div fxLayout="column" [fxLayoutGap]="gap" [fxFlex]="col(2)">
+      <div [fxLayoutGap]="gap" fxLayout="column" fxLayout.gt-sm="row">
+        <fury-donut-chart-widget [data]="donutData$ | async"
+                                [options]="donutOptions"
+                                [total]="totalCases"
+                                fxFlex="30"
+                                class="route-animations-elements">
+        </fury-donut-chart-widget>
+
+        <fury-bar-chart-widget  fxFlex="auto" class="widget route-animations-elements"
+                                [data]="barData$ | async"
+                                [options]="barOptions">
+        </fury-bar-chart-widget>
+      </div>
+    </div>
   </div>
 </fury-page>
 

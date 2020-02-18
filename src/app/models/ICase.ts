@@ -1,7 +1,7 @@
 import { IUser } from './IUser';
 
 export interface ICase {
-    caseId : string;
+    id : string;
     description: string;
     equipmentUsed: string[];
     missingPersonName: string;
@@ -9,5 +9,5 @@ export interface ICase {
     volunteers: IUser[];
     date: any;
     isOpen: boolean;
-    status: string;
+    caseStatus: string;
 }

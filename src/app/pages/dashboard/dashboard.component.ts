@@ -1,16 +1,18 @@
-import { PdfGenComponent } from './../pdf-gen/pdf-gen.component';
+import { element } from 'protractor';
+import * as moment from 'moment';
+import { ICaseIds } from './../../models/ICaseIds';
 import { AuthProcessService } from './../authentication/auth-service';
 import { ICases } from 'src/app/models/ICases';
 import { ICase } from 'src/app/models/ICase';
-import { ICaseIds } from 'src/app/models/ICaseIds';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, of, ReplaySubject } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { RecentSalesWidgetOptions } from './widgets/recent-sales-widget/recent-sales-widget-options.interface';
 import { DashboardService } from './dashboard.service';
 import { MatDialog } from '@angular/material/dialog'
-import { VolunteerFormDialogComponent } from '../forms/volunteer-form/volunteer-form.component';
-import { CreateCaseFormDialogComponent } from '../forms/create-case-form/create-case-form.component';
+import { ChartData } from 'chart.js';
+import { DonutChartWidgetOptions } from './widgets/donut-chart-widget/donut-chart-widget-options.interface';
+import { BarChartWidgetOptions } from './widgets/bar-chart-widget/bar-chart-widget-options.interface';
 
 @Component({
   selector: 'fury-dashboard',
@@ -20,9 +22,10 @@ import { CreateCaseFormDialogComponent } from '../forms/create-case-form/create-
 export class DashboardComponent implements OnInit {
 
   private static isInitialLoad = true;
+  totalCases: number;
   caseloading: boolean;
   volunteerloading: boolean;
-  data : any;
+  data : ICase[];
   caseOptions: RecentSalesWidgetOptions = {
     title: 'Cases',
     subTitle: 'A view of all cases'
@@ -34,26 +37,26 @@ export class DashboardComponent implements OnInit {
       { name: 'Case Id', property: 'caseId', visible: false, isModelProperty: true},
       { name: 'Missing Person(s)', property: 'missingPersonName', visible: true, isModelProperty: true },
       { name: 'Date', property: 'date', visible: true, isModelProperty: true },
-      { name: "Status", property: 'status', visible: true, isModelProperty: true}
+      { name: "Status", property: 'caseStatus', visible: true, isModelProperty: true}
     ]
   };
   caseDataObservable$ : Observable<any>;
 
-  volunteerOptions: RecentSalesWidgetOptions = {
-    title: 'Volunteers',
-    subTitle: 'All registered volunteers'
+  donutData$: Observable<ChartData>;
+  donutOptions: DonutChartWidgetOptions = {
+    title: 'Case Status',
+    subTitle: 'Open vs. Closed'
   };
-  volunteerTableOptions = {
-    clickable: false,
-    pageSize: 5,
-    columns: [
-      { name: 'Volunteer', property: 'name', visible: true, isModelProperty: true },
-      { name: 'Role', property: 'roles', visible: true, isModelProperty: true },
-      { name: 'Badge Number', property: 'badgeNumber', visible: true, isModelProperty: true },
-    ]
-  };
-  volunteerDataObservable$ : Observable<any>;
 
+  barMonthData = {'January': 0, 'February': 0, 'March': 0, 'April': 0, 'May': 0, 'June': 0, 'July': 0, 'August': 0, 'September': 0, 'October': 0, 'November': 0, 'December': 0, }
+  barData$: Observable<ChartData>;
+  barOptions: BarChartWidgetOptions = {
+    title: 'Total Cases',
+    gain: 16.3,
+    subTitle: 'By Month',
+    background: '#3F51B5',
+    color: '#FFFFFF'
+  };
   /**
    * Needed for the Layout
    */
@@ -86,46 +89,73 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.refreshCases();
-    this.refreshVolunteers();
   }
 
   refreshCases() {
     this.caseloading = true;
+    let openCount = 0;
+    let closedCount = 0;
+
     let cases : ICases = {cases : []};
     this.aps.getIdToken().then(token => {
       this.dashboardService.getRecentSalesTableData(token).subscribe((res) => {
-        this.data = (res as ICaseIds);
-        this.data.caseIds.forEach(element => {
-          this.dashboardService.getCaseData(element.caseId, token).subscribe(res => {
-            let cdata = (res as ICase);
-            cdata.caseId = element.caseId
-            if(cdata.isOpen)
-              cdata.status = "Open"
-            else
-              cdata.status = "Closed"
-						var d = new Date(0);
-						d.setUTCSeconds(cdata.date);
-            cdata.date = d.toDateString();
-            cases.cases.push(cdata);
+        this.data = (res as ICase[]);
+        this.totalCases = this.data.length
+        this.data.forEach(element => {
+          if(element.isOpen){
+            element.caseStatus = "Open"
+            openCount = openCount + 1
+          }
+          else {
+            element.caseStatus = "Closed"
+            closedCount = closedCount + 1
+          }
 
-            if(cases.cases.length == this.data.caseIds.length)
-              this.caseDataObservable$ = of(cases.cases);
-          })
-        });
+          var d = new Date(0);
+          d.setUTCSeconds(element.date);
+          element.date = d.toDateString();
+          let month = moment(d).format("MMMM")
+          this.barMonthData[month] = this.barMonthData[month] + 1
+          cases.cases.push(element);
+  
+          if(cases.cases.length == this.data.length){
+            this.caseDataObservable$ = of(cases.cases);
+            this.createDonutData(openCount, closedCount)
+            this.createBarData()
+          }
+        })
+
+
       })
-
-
     });
   }
 
-  refreshVolunteers(){
-    this.volunteerloading = true;
-    this.aps.getIdToken().then(token => {
-      this.dashboardService.getVolunteers(token).subscribe(res => {
-        let data = {volunteers: res}
-        this.volunteerDataObservable$ = of(data.volunteers);
-        this.volunteerloading = false;
-      })
+  createDonutData(openCount, closedCount){
+    let data = [
+      {
+        'label': 'Open',
+        'value': openCount
+      },
+      {
+        'label': 'Closed',
+        'value': closedCount
+      },
+    ];
+    this.donutData$ = this.dashboardService.getDonutData(data)
+  }
+
+  createBarData(){
+    let data = []
+    let vals = Object.keys(this.barMonthData)
+    
+    vals.forEach(month => {
+      let subdata = {
+        'label': month,
+        'value': this.barMonthData[month]
+      }
+      data.push(subdata)
     })
+
+    this.barData$ = this.dashboardService.getBarData(data)
   }
 }
