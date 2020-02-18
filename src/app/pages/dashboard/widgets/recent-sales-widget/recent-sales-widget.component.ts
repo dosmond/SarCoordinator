@@ -71,7 +71,8 @@ export class RecentSalesWidgetComponent implements OnInit, OnChanges {
 
   openVolunteerDialog(): void {
     const dialogRef = this.dialog.open(VolunteerFormDialogComponent, {
-      width: '30vw'});
+      width: '30vw',
+      minWidth: '300px'});
 
     dialogRef.afterClosed().subscribe(result => {
       if(result != undefined && result.created == true)
@@ -81,7 +82,8 @@ export class RecentSalesWidgetComponent implements OnInit, OnChanges {
 
   openCreateCaseDialog(): void{
     const dialogRef = this.dialog.open(CreateCaseFormDialogComponent, {
-      width: '30vw'});
+      width: '30vw',
+      minWidth: '300px'});
 
     dialogRef.afterClosed().subscribe(result => {
       if(result != undefined && result.created == true)
