@@ -16,6 +16,7 @@
           <mat-form-field>
             <mat-label>Choose a start date</mat-label>
             <input matInput [max]="maxDate" [matDatepicker]="startpicker" (dateInput)="updateMin($event)" formControlName="startDate" required>
+            <mat-hint>MM/DD/YYYY</mat-hint>
             <mat-error *ngIf="dateFormGroup.get('startDate').invalid">A start date is required</mat-error>
             <mat-datepicker-toggle matSuffix [for]="startpicker"></mat-datepicker-toggle>
             <mat-datepicker #startpicker></mat-datepicker>
@@ -23,11 +24,12 @@
           <mat-form-field>
             <mat-label>Choose an end date</mat-label>
             <input matInput [min]="minDate" [matDatepicker]="endpicker" (dateInput)="updateMax($event)" formControlName="endDate">
+            <mat-hint>MM/DD/YYYY</mat-hint>
             <mat-datepicker-toggle matSuffix [for]="endpicker"></mat-datepicker-toggle>
             <mat-datepicker #endpicker></mat-datepicker>
           </mat-form-field>
   
-        <button mat-button (click)="submit()">
+        <button mat-button (click)="submit()" [disabled]="dateFormGroup.invalid">
           <mat-icon>find_in_page</mat-icon>
         </button>
       </fury-card-header-actions>
