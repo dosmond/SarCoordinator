@@ -58,7 +58,7 @@ export class AuditPageComponent implements OnInit {
       title: "Volunteers",
       subTitle: "List of all volunteers",
       totalCases: `Total Cases: -`,
-      threshold: `Threshold: ${this.threshold}`
+      threshold: `Threshold: `
     }
 
     this.afa.getIdToken().then(token => {
@@ -72,7 +72,7 @@ export class AuditPageComponent implements OnInit {
           title: "Volunteers",
           subTitle: "List of all volunteers",
           totalCases: `Total Cases: ${this.totalCases}`,
-          threshold: `Threshold: ${this.threshold}`
+          threshold: `Threshold: `
         }
       })
 
@@ -114,7 +114,7 @@ export class AuditPageComponent implements OnInit {
       title: "Volunteers",
       subTitle: "List of all volunteers",
       totalCases: `Total Cases: -`,
-      threshold: `Threshold: ${this.threshold}`
+      threshold: `Threshold: `
     }
 
     this.afa.getIdToken().then(token => {
@@ -127,7 +127,7 @@ export class AuditPageComponent implements OnInit {
           title: "Volunteers",
           subTitle: "List of all volunteers",
           totalCases: `Total Cases: ${data.length}`,
-          threshold: `Threshold: ${this.threshold}`
+          threshold: `Threshold: `
         }
       })
 

@@ -25,3 +25,12 @@
     padding: 10px
   }
 }
+
+.small {
+  width: 30%;
+  height: 30%
+
+  & mat-label {
+    font-size: 12px;
+  }
+}

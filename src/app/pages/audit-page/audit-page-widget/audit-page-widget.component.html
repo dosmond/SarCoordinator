@@ -1,16 +1,18 @@
 <fury-card>
+  <form [formGroup]="dateFormGroup">
     <fury-card-header>
       <fury-card-header-heading>{{ options.title }}</fury-card-header-heading>
       <fury-card-header-subheading *ngIf="options.subTitle">{{ options.subTitle }}</fury-card-header-subheading>
       <fury-card-header-subheading *ngIf="options.totalCases">{{ options.totalCases }}</fury-card-header-subheading>
-      <fury-card-header-subheading *ngIf="options.threshold">{{ options.threshold }}%</fury-card-header-subheading>
+      <fury-card-header-subheading *ngIf="options.threshold">
+        {{ options.threshold }}
+        <mat-form-field class="small">
+          <mat-label>Threshold</mat-label>
+          <input matInput formControlName="threshold" type="number" min="0" max="100" required>
+        </mat-form-field>%
+      </fury-card-header-subheading>
 
       <fury-card-header-actions class="spacing">
-        <form [formGroup]="dateFormGroup">
-          <mat-form-field>
-            <mat-label>Threshold</mat-label>
-            <input matInput formControlName="threshold" type="number" min="0" max="100" required>
-          </mat-form-field>
           <mat-form-field>
             <mat-label>Choose a start date</mat-label>
             <input matInput [max]="maxDate" [matDatepicker]="startpicker" (dateInput)="updateMin($event)" formControlName="startDate" required>
@@ -24,7 +26,7 @@
             <mat-datepicker-toggle matSuffix [for]="endpicker"></mat-datepicker-toggle>
             <mat-datepicker #endpicker></mat-datepicker>
           </mat-form-field>
-        </form>
+  
         <button mat-button (click)="submit()">
           <mat-icon>find_in_page</mat-icon>
         </button>
@@ -34,10 +36,10 @@
     <fury-card-content class="card-content">
         <audit-page-widget-table [data]="tableData" [columns]="tableOptions?.columns"
                                       [pageSize]="tableOptions?.pageSize"
-                                      [threshold]="threshold"
-                                      [(selection)]="selection"></audit-page-widget-table>
+                                      [threshold]="threshold"></audit-page-widget-table>
   
     </fury-card-content>
   
     <fury-loading-overlay [isLoading]="isLoading"></fury-loading-overlay>
+  </form>
 </fury-card>
