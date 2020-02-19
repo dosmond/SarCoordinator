@@ -34,7 +34,7 @@ export class DashboardComponent implements OnInit {
     clickable: true,
     pageSize: 5,
     columns: [
-      { name: 'Case Id', property: 'caseId', visible: false, isModelProperty: true},
+      { name: 'Case Id', property: 'id', visible: false, isModelProperty: true},
       { name: 'Missing Person(s)', property: 'missingPersonName', visible: true, isModelProperty: true },
       { name: 'Date', property: 'date', visible: true, isModelProperty: true },
       { name: "Status", property: 'caseStatus', visible: true, isModelProperty: true}
