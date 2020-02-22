@@ -19,6 +19,9 @@
     <div id="report-container">
         <h3 style="margin: 0 auto; width: 100%; text-align:center">WASATCH COUNTY SEARCH AND RESCUE</h3>
         <h5 style="margin:0px">Incident Report</h5>
+        <h5 style="margin:0px">Case#: {{caseNum}}</h5>
+        <h5 style="margin:0px">Date</h5>
+
         <table style="float:left; width: 40%; table-layout: fixed;">
             <thead>
                 <tr>
@@ -30,8 +33,8 @@
             </thead>
             <tbody *ngFor='let shift of shifts| async'>
                 <tr>
-                    <td>01</td>
-                    <td>test</td>
+                    <td>{{shift.badgeNumber}}</td>
+                    <td>{{shift.name}}</td>
                     <td>{{shift.hours}}</td>
                     <td>{{shift.totalMiles}}</td>
                 </tr>

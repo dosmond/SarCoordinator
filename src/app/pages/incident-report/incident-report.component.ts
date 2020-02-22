@@ -18,7 +18,7 @@ export class IncidentReportComponent implements OnInit {
   constructor(private reportService: IncidentReportService,
     private aps : AuthProcessService) {
       this.caseNum = '1234-1234'; //TODO get this from dropdown or from route
-      this.caseId = 'RP9iLLOWLF0qDctBdrMN'; //TODO get from route
+      this.caseId = 'VtSGSn0CFeLXD0IhZTn5'; //TODO get from route
      }
 
   ngOnInit() {
