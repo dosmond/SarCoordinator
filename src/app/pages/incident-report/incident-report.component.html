@@ -1,10 +1,15 @@
 <fury-page>
 <div style="padding:10px">
     <mat-form-field style="margin-right: 10px">
+        <mat-label>Case</mat-label>
+        <mat-select (selectionChange)="caseSelected($event)">
+            <mat-option *ngFor="let case of cases | async" value={{case.id}}>{{case.caseName}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field style="margin-right: 10px">
     <mat-label>Operational Period</mat-label>
-    <mat-select>
-        <mat-option value="1">1</mat-option>
-        <mat-option value="2">2</mat-option>
+    <mat-select  [disabled] = "!days" (selectionChange)="daySelected($event)">
+        <mat-option *ngFor="let day of daysArr; let i = index"value={{i+1}}>{{i+1}}</mat-option>
     </mat-select>
     </mat-form-field>
     <button mat-raised-button 
@@ -19,9 +24,6 @@
     <div id="report-container">
         <h3 style="margin: 0 auto; width: 100%; text-align:center">WASATCH COUNTY SEARCH AND RESCUE</h3>
         <h5 style="margin:0px">Incident Report</h5>
-        <h5 style="margin:0px">Case#: {{caseNum}}</h5>
-        <h5 style="margin:0px">Date</h5>
-
         <table style="float:left; width: 40%; table-layout: fixed;">
             <thead>
                 <tr>
@@ -51,10 +53,10 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>12/13/19</td>
+                    <td>{{date}}</td>
                     <td>{{caseNum}}</td>
-                    <td>14:00</td>
-                    <td>12/15/19</td>
+                    <td>#####</td>
+                    <td>##/##/####</td>
                 </tr>
             </tbody>
         </table>
@@ -66,7 +68,37 @@
             </thead>
             <tbody>
                 <tr>
-                    <td style="height:50px"></td>
+                    <td style="height:50px">{{caseDescription}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <table style="float: right; width: 58%">
+            <thead>
+                <tr>
+                    <th>RP Name</th>
+                    <th>RP Location</th>
+                    <th>RP Phone</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{reporterName}}</td>
+                    <td></td>
+                    <td>#########</td>
+                </tr>
+            </tbody>
+        </table>
+        <table style="float: right; width: 58%">
+            <thead>
+                <tr>
+                    <th>Subject Name</th>
+                    <th>Problems/Injuries</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{missingPerson}}</td>
+                    <td></td>
                 </tr>
             </tbody>
         </table>

@@ -10,4 +10,5 @@ export interface ICase {
     date: any;
     isOpen: boolean;
     caseStatus: string;
+    days: number;
 }
