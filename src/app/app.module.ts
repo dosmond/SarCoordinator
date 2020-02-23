@@ -17,6 +17,7 @@ import { MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarConfig } from '@angular/mater
 import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
 import { AngularFireModule } from "@angular/fire";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
+import { IncidentReportModule } from './pages/incident-report/incident-report.module';
 
 @NgModule({
   imports: [
@@ -45,6 +46,7 @@ import { AngularFirestoreModule } from "@angular/fire/firestore";
     NgxAuthFirebaseUIModule.forRoot(environment.firebaseConfig),
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
+    IncidentReportModule
   
   ],
   declarations: [AppComponent],

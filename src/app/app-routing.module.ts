@@ -2,6 +2,7 @@ import { LoggedInGuard } from './pages/authentication/logged-in-guard';
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './layout/layout.component';
+import { IncidentReportComponent } from './pages/incident-report/incident-report.component';
 
 const routes: Routes = [
   {
@@ -59,6 +60,11 @@ const routes: Routes = [
       {
         path: 'volunteers',
         loadChildren: './pages/volunteer-page/volunteer-page.module#VolunteerPageModule',
+        canActivate: [LoggedInGuard]
+      },
+      {
+        path:'reports',
+        component: IncidentReportComponent,
         canActivate: [LoggedInGuard]
       }
     ],

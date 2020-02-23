@@ -65,6 +65,13 @@ export class AppComponent {
         position: 20,
         pathMatchExact: true
       },
+      {
+        name: 'Reports',
+        routeOrFunction: '/reports',
+        icon: 'perm_media',
+        position: 25,
+        pathMatchExact: true
+      }
       // {
       //   name: 'USER INTERFACE',
       //   type: 'subheading',

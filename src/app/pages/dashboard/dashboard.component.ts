@@ -158,4 +158,5 @@ export class DashboardComponent implements OnInit {
 
     this.barData$ = this.dashboardService.getBarData(data)
   }
+
 }
