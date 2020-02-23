@@ -47,6 +47,7 @@ export class IncidentReportComponent implements OnInit {
 
   caseSelected(event: MatSelectChange){
     this.caseId = event.value;
+    this.shifts = null;
     this.aps.getIdToken().then(token => { 
       this.reportService.getCaseData(this.caseId,token).subscribe((res: ICase)=> {
         this.missingPerson = res.missingPersonName;
