@@ -1,8 +1,8 @@
-import { AfterViewInit, Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild, OnChanges } from '@angular/core';
 import * as Chart from 'chart.js';
 import { ChartConfiguration, ChartData } from 'chart.js';
 import defaultsDeep from 'lodash-es/defaultsDeep';
-import { defaultChartOptions } from '../../../../../@fury/shared/chart-widget/chart-widget-defaults';
+import { defaultChartOptions, barChartOptions } from '../../../../../@fury/shared/chart-widget/chart-widget-defaults';
 import { BarChartWidgetOptions } from './bar-chart-widget-options.interface';
 
 @Component({
@@ -10,7 +10,7 @@ import { BarChartWidgetOptions } from './bar-chart-widget-options.interface';
   templateUrl: './bar-chart-widget.component.html',
   styleUrls: ['./bar-chart-widget.component.scss']
 })
-export class BarChartWidgetComponent implements AfterViewInit {
+export class BarChartWidgetComponent implements OnChanges {
 
   @Input() data: ChartData;
   @Input() options: BarChartWidgetOptions;
@@ -19,38 +19,46 @@ export class BarChartWidgetComponent implements AfterViewInit {
 
   chart: Chart;
 
-  isLoading: boolean;
+  isLoading: boolean = true;
 
   constructor() {
   }
 
-  ngAfterViewInit() {
-    this.chart = new Chart(this.canvas.nativeElement.getContext('2d'), <ChartConfiguration>{
-      type: 'bar',
-      data: this.data,
-      options: defaultsDeep({
-        layout: {
-          padding: {
-            left: 24,
-            right: 24,
-            top: 16,
-            bottom: 24
-          }
-        },
-        scales: {
-          xAxes: [{
-            barPercentage: 0.5
-          }]
-        },
-        tooltips: {
-          mode: 'index',
-          intersect: false,
-        },
-        hover: {
-          intersect: true
-        }
-      }, defaultChartOptions)
-    });
+
+  ngOnChanges(changes) {
+      if(changes.data != undefined && changes.data.currentValue != undefined && changes.data.currentValue != null){
+        this.chart = new Chart(this.canvas.nativeElement.getContext('2d'), <ChartConfiguration>{
+          type: 'bar',
+          data: this.data,
+          options: defaultsDeep({
+            layout: {
+              padding: {
+                left: 24,
+                right: 24,
+                top: 16,
+                bottom: 24
+              }
+            },
+            scales: {
+              xAxes: [{
+                barPercentage: .5,
+              }],
+              yAxes:[{
+                minBarLength: 20
+              }]
+            },
+            tooltips: {
+              mode: 'index',
+              intersect: false,
+            },
+            hover: {
+              intersect: true
+            },
+            minBarLength: 2,
+          }, barChartOptions)
+        });
+        this.isLoading = false
+      }
   }
 
   reload() {

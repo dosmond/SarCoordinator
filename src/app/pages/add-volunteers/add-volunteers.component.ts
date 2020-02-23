@@ -47,7 +47,6 @@ export class AddVolunteersComponent implements OnInit {
               @Inject(MAT_DIALOG_DATA) public data: any) {}
 
   ngOnInit() {
-    console.log(this.data)
     this.auth.getIdToken().then(token => {
       this.addVolunteersService.getVolunteers(token).subscribe(res => {
         let data$ = {volunteers: res}

@@ -26,6 +26,9 @@
       <h5 class="sidenav-user-email">{{userEmail}}</h5>
 
       <div class="sidenav-user-icons" fxLayout="row">
+        <button mat-icon-button (click)="logout()" matTooltip="Logout">
+          <mat-icon>exit_to_app</mat-icon>
+        </button>
       </div>
     </div>
 

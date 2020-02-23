@@ -103,8 +103,4 @@ export class GoogleMapsComponent implements OnInit, AfterViewInit {
     return color;
   }
 
-  log(thing){
-    console.log(thing);
-  }
-
 }

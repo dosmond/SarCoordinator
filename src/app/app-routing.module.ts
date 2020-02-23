@@ -53,6 +53,16 @@ const routes: Routes = [
         canActivate: [LoggedInGuard]
       },
       {
+        path: 'audit',
+        loadChildren: './pages/audit-page/audit-page.module#AuditPageModule',
+        canActivate: [LoggedInGuard]
+      },
+      {
+        path: 'volunteers',
+        loadChildren: './pages/volunteer-page/volunteer-page.module#VolunteerPageModule',
+        canActivate: [LoggedInGuard]
+      },
+      {
         path:'reports',
         component: IncidentReportComponent,
         canActivate: [LoggedInGuard]

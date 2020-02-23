@@ -143,7 +143,6 @@ export class AuthProcessService implements ISignInProcess {
 
   async handleSuccess(userCredential: UserCredential) {
     this.onSuccessEmitter.next(userCredential.user);
-    //console.log(userCredential);
     const fallbackMessage = `Hello ${userCredential.user.displayName ? userCredential.user.displayName : ''}!`;
     this.showToast(this.messageOnAuthSuccess || fallbackMessage); 
     this.router.navigate(["/"]);

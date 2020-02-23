@@ -2,9 +2,9 @@ import { ChartOptions } from 'chart.js';
 
 export const defaultChartOptions: ChartOptions = {
   responsive: true,
-  responsiveAnimationDuration: 0,
+  responsiveAnimationDuration: 1,
   animation: {
-    duration: 0,
+    duration: 1000,
   },
   maintainAspectRatio: false,
   legend: {
@@ -24,3 +24,28 @@ export const defaultChartOptions: ChartOptions = {
     footerFontFamily: 'Roboto, \'Helvetica Neue\', Arial, sans-serif'
   }
 };
+
+export const barChartOptions: ChartOptions = {
+  responsive: true,
+  responsiveAnimationDuration: 1,
+  animation: {
+    duration: 1000,
+  },
+  maintainAspectRatio: false,
+  legend: {
+    display: false
+  },
+  scales: {
+    xAxes: [{
+      display: true
+    }],
+    yAxes: [{
+      display: true
+    }]
+  },
+  tooltips: {
+    titleFontFamily: 'Roboto, \'Helvetica Neue\', Arial, sans-serif',
+    bodyFontFamily: 'Roboto, \'Helvetica Neue\', Arial, sans-serif',
+    footerFontFamily: 'Roboto, \'Helvetica Neue\', Arial, sans-serif'
+  }
+}

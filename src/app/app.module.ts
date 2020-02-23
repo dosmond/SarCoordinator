@@ -3,7 +3,7 @@ import { AuthProcessService } from './pages/authentication/auth-service';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import 'hammerjs'; // Needed for Touch functionality of Material Components
 import { AppRoutingModule } from './app-routing.module';
@@ -14,11 +14,9 @@ import { environment } from '../environments/environment';
 import { PendingInterceptorModule } from '../@fury/shared/loading-indicator/pending-interceptor.module';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldDefaultOptions } from '@angular/material/form-field';
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarConfig } from '@angular/material/snack-bar';
-import { NgxAuthFirebaseUIModule, NgxAuthFirebaseUIConfigToken } from 'ngx-auth-firebaseui';
+import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
 import { AngularFireModule } from "@angular/fire";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
-import { PdfViewerModule } from "ng2-pdf-viewer";
-import { PdfGenComponent } from './pages/pdf-gen/pdf-gen.component';
 import { IncidentReportModule } from './pages/incident-report/incident-report.module';
 
 @NgModule({

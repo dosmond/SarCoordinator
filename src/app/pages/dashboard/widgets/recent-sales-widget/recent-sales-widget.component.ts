@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild, Output, EventEmitter, AfterViewInit, OnChanges } from '@angular/core';
 import * as Chart from 'chart.js';
 import { ChartData } from 'chart.js';
 import { ListColumn } from '../../../../../@fury/shared/list/list-column.model';
@@ -12,7 +12,7 @@ import { CreateCaseFormDialogComponent } from 'src/app/pages/forms/create-case-f
   templateUrl: './recent-sales-widget.component.html',
   styleUrls: ['./recent-sales-widget.component.scss']
 })
-export class RecentSalesWidgetComponent implements OnInit {
+export class RecentSalesWidgetComponent implements OnInit, OnChanges {
 
   @Input() tableOptions: {
     clickable : boolean;
@@ -29,13 +29,21 @@ export class RecentSalesWidgetComponent implements OnInit {
 
   chart: Chart;
 
-  isLoading: boolean;
+  @Input() isLoading: boolean;
 
 
   constructor(public dialog: MatDialog) {
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
+
+  ngOnChanges() {
+    if(this.tableData == null || this.tableData.length == 0)
+      this.isLoading=true;
+    else
+      this.isLoading=false;
+  }
 
   reload() {
     this.isLoading = true;
@@ -43,7 +51,6 @@ export class RecentSalesWidgetComponent implements OnInit {
     if(this.options.title == "Cases")
       this.refreshCase.emit()
     else {
-      console.log(this.options.title)
       this.refreshVolunteers.emit()
     }
 
@@ -64,7 +71,8 @@ export class RecentSalesWidgetComponent implements OnInit {
 
   openVolunteerDialog(): void {
     const dialogRef = this.dialog.open(VolunteerFormDialogComponent, {
-      width: '30vw'});
+      width: '30vw',
+      minWidth: '300px'});
 
     dialogRef.afterClosed().subscribe(result => {
       if(result != undefined && result.created == true)
@@ -74,7 +82,8 @@ export class RecentSalesWidgetComponent implements OnInit {
 
   openCreateCaseDialog(): void{
     const dialogRef = this.dialog.open(CreateCaseFormDialogComponent, {
-      width: '30vw'});
+      width: '30vw',
+      minWidth: '300px'});
 
     dialogRef.afterClosed().subscribe(result => {
       if(result != undefined && result.created == true)

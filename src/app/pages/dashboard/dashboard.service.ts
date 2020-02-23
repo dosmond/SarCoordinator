@@ -3,7 +3,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { of, Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
-import { volunteerDummyData } from '../demo-data/widget-demo-data';
+import { volunteerDummyData, top5CategoriesDemoData } from '../demo-data/widget-demo-data';
+import { ChartData } from 'chart.js';
+import { map } from 'rxjs/operators';
 
 /**
  * @class DashboardService
@@ -26,7 +28,7 @@ export class DashboardService {
   }
 
   getRecentSalesTableData(token) {
-    return this.http.get(`${this.url}/getCasesWeb`, {headers: {'Authorization': token}});
+    return this.http.get(`${this.url}/getCases`, {headers: {'Authorization': token}});
   }
 
   // Currently using dummy data
@@ -51,7 +53,46 @@ export class DashboardService {
     let httpOptions = {
       headers : new HttpHeaders().set("Authorization", token)
     };
-    console.log("Made it")
     return this.http.post(`${this.url}/postCase?userId=${userId}`,form, httpOptions);
+  }
+
+  getDonutData(data) {
+    return of(data).pipe(
+      map(values => this.toDonutData(values))
+    );
+  }
+
+  toDonutData(chartData: { label: string, value: number }[]) {
+    return {
+      labels: chartData.map(data => data.label),
+      datasets: [
+        {
+          data: chartData.map(data => data.value),
+          backgroundColor: ['#2196F3', '#009688', '#4CAF50', '#607D8B', '#E91E63']
+        }
+      ]
+    } as ChartData;
+  }
+
+  getBarData(data) {
+    return of(data).pipe(
+      map(values => this.toBarChartData(values))
+    );
+  }
+
+  /**
+   * Converting Data from Server to Chart compatible format
+   * @returns {Chart.ChartData}
+   */
+  toBarChartData(chartData: { label: string, value: number }[]) {
+    return {
+      labels: chartData.map(data => data.label),
+      datasets: [
+        {
+          data: chartData.map(data => data.value),
+          backgroundColor: ['#2196F3', '#009688', '#4CAF50', '#607D8B', '#E91E63','#2196F3', '#009688', '#4CAF50', '#607D8B', '#E91E63', '#2196F3', '#009688'],
+        }
+      ]
+    } as ChartData;
   }
 }

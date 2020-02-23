@@ -3,7 +3,6 @@ import { ReportFormModule } from './../pdf-gen/pdf-gen.module';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MaterialModule } from '../../../@fury/shared/material-components.module';
-import { AdvancedPieChartWidgetModule } from './widgets/advanced-pie-chart-widget/advanced-pie-chart-widget.module';
 import { BarChartWidgetModule } from './widgets/bar-chart-widget/bar-chart-widget.module';
 import { DonutChartWidgetModule } from './widgets/donut-chart-widget/donut-chart-widget.module';
 import { LineChartWidgetModule } from './widgets/line-chart-widget/line-chart-widget.module';
@@ -28,12 +27,12 @@ import { CreateCaseFormModule } from '../forms/create-case-form/create-case-form
     LineChartWidgetModule,
     DonutChartWidgetModule,
     RecentSalesWidgetModule,
-    AdvancedPieChartWidgetModule,
+    DonutChartWidgetModule,
     MapsWidgetModule,
     VolunteerFormModule,
     CreateCaseFormModule,
     ReportFormModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   declarations: [DashboardComponent],
   providers: [DashboardService]

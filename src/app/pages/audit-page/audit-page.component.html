@@ -1,0 +1,22 @@
+<fury-page-layout mode="card">
+  <fury-page-layout-header>
+    <fury-breadcrumbs [@fadeInRight] current="Audit"></fury-breadcrumbs>
+  </fury-page-layout-header>
+  <fury-page-layout-content [@fadeInUpStagger]
+                            cdkDropListGroup
+                            cdkScrollable
+                            fxLayout="row"
+                            fxLayout.lt-sm="row"
+                            fxLayoutAlign="start start"
+                            fxLayoutGap="24px">
+
+    <audit-page-widget fxFill fadeInUpStaggerElement
+                      [options]="auditPageOptions"
+                      [tableOptions]="auditPageTableOptions"
+                      [tableData]="volunteerDataObservable$ | async"
+                      [threshold]="threshold"
+                      (refreshVolunteers)="refreshVolunteers()"
+                      (queryDates)="refreshWithDates($event)">
+    </audit-page-widget>
+  </fury-page-layout-content>
+</fury-page-layout>

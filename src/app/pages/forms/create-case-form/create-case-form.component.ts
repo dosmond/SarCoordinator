@@ -47,7 +47,6 @@ export class CreateCaseFormDialogComponent implements OnInit {
       let controls = this.caseFormGroup.controls;
       let date = new Date();
       let now = (date.getMonth()+1) + ' ' + date.getDate() + ' ' + date.getFullYear();
-      console.log("made it")
       this.dashboardService.postCase(token, 'AmA2e16pJYMBFjijOvDb',
         {
           caseNumber: controls['caseNumber'].value,
