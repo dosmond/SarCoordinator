@@ -18,6 +18,8 @@ export class CaseDataWidgetTableComponent implements OnInit, AfterViewInit {
 
   @Input() columns: ListColumn[];
   @Input() pageSize = 10;
+  @Input() caseId: string;
+  @Input() caseName: string;
   @Output() deleteRow = new EventEmitter<any>();
   /**
    * Simulating a service with HTTP that returns Observables
@@ -43,7 +45,10 @@ export class CaseDataWidgetTableComponent implements OnInit, AfterViewInit {
   }
 
   navigate(row: any){
-    this.router.navigate([`case-dashboard/${row.caseId}`]);
+    this.router.navigate([`shift-logs`], {queryParams: {caseId : this.caseId,
+                                                        caseName: this.caseName,
+                                                        userId: row.userId,
+                                                        name: row.name}});
   }
 
   ngOnInit() {

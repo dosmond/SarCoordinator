@@ -27,6 +27,7 @@ export class CaseDataWidgetComponent implements OnInit {
   @Input() chartData: ChartData;
   @Input() options: CaseDataWidgetOptions;
   @Input() caseId: string;
+  caseName: string;
 
   @ViewChild('canvas', { read: ElementRef, static: true }) canvas: ElementRef;
 
@@ -41,8 +42,13 @@ export class CaseDataWidgetComponent implements OnInit {
   }
 
   ngOnInit() {
+    // this.caseName =  // Get everything passed first colon
   }
 
+  ngOnChanges() {
+    let temp = this.options.title;
+    this.caseName = temp.substr(temp.indexOf(':')+1).trim();
+  }
 
   async reload() {
     this.isLoading = true;

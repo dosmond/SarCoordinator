@@ -10,7 +10,8 @@
                             fxLayoutGap="24px">
     <fury-card fxFill>
       <fury-card-header class="container">
-        <fury-card-header-heading>Volunteer Name: {{name}}</fury-card-header-heading>
+        <fury-card-header-heading>Volunteer: {{volunteerName}}</fury-card-header-heading>
+        <fury-card-header-subheading>Case: {{ caseName }}</fury-card-header-subheading>
         <fury-card-header-actions>
           <button mat-icon-button (click)="reload()">
             <mat-icon>refresh</mat-icon>
@@ -61,7 +62,7 @@
           <mat-paginator class="paginator" [pageSize]="pageSize"></mat-paginator>
         </fury-list>
       </fury-card-content>
-    
+    <fury-loading-overlay [isLoading]="shiftsLoading"></fury-loading-overlay>
 
     </fury-card>
   </fury-page-layout-content>

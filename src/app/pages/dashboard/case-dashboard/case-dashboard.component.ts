@@ -23,6 +23,7 @@ export class CaseDashboardComponent implements OnInit {
   caseId : string;
   missingPerson : string;
   reporterName : string;
+  caseName : string;
   volunteers$: Observable<any[]>;
   mapOptions = {
     zoom : 15
@@ -74,6 +75,7 @@ export class CaseDashboardComponent implements OnInit {
     // Initialize to avoid errors.
     this.caseDataOptions = {
       title: ``,
+      id: ``,
       mp: ``,
       rp: '',
       rpPhone: '',
@@ -86,10 +88,12 @@ export class CaseDashboardComponent implements OnInit {
         this.data = (res as ICase);
         this.missingPerson = this.data.missingPersonName[0];
         this.reporterName = this.data.reporterName;
+        this.caseName = this.data.caseName;
         this.volunteers$ = of(this.data.volunteers);
   
         this.caseDataOptions = {
-          title: `Case ID: ${this.caseId}`,
+          title: `Case Name: ${this.caseName}`,
+          id: `Case ID: ${this.caseId}`,
           mp: `Missing Person: ${this.missingPerson}`,
           rp: `Reporting Person: ${this.reporterName}`,
           rpPhone: 'RP Contact Phone: 555-123-4567',

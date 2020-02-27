@@ -1,6 +1,7 @@
 <fury-card>
   <fury-card-header>
     <fury-card-header-heading>{{ options.title }}</fury-card-header-heading>
+    <fury-card-header-subheading *ngIf="options.id">{{ options.id }}</fury-card-header-subheading>
     <fury-card-header-subheading *ngIf="options.mp">{{ options.mp }}</fury-card-header-subheading>
     <fury-card-header-subheading *ngIf="options.rp">{{ options.rp }}</fury-card-header-subheading>
     <fury-card-header-subheading *ngIf="options.rpPhone">{{ options.rpPhone }}</fury-card-header-subheading>
@@ -22,7 +23,9 @@
   <fury-card-content class="card-content">
     <case-data-widget-table [data]="tableData" [columns]="tableOptions?.columns"
                                     [pageSize]="tableOptions?.pageSize"
-                                    (deleteRow)="deleteRow($event)"></case-data-widget-table>
+                                    (deleteRow)="deleteRow($event)"
+                                    [caseId]="caseId"
+                                    [caseName]="caseName"></case-data-widget-table>
 
   </fury-card-content>
 

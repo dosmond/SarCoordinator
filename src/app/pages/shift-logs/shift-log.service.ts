@@ -1,5 +1,5 @@
 import { AuthProcessService } from '../authentication/auth-service';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 
@@ -15,9 +15,19 @@ export class ShiftLogService {
   }
 
   getShifts(token: string, caseId: string, userId: string) {
-    // TODO:
-    const url = `${this.url}/getShifts`
-    return this.http.get(url, {headers: {'Authorization': token}})
+    let httpOptions = {
+      headers : new HttpHeaders().set("Authorization", token)
+    };
+
+    return this.http.get(`${this.url}/getShifts?caseId=${caseId}&userId=${userId}`, httpOptions);
+  }
+
+  putHours(token: string, shiftUpdates: any[]) {
+    let httpOptions = {
+      headers : new HttpHeaders().set("Authorization", token)
+    };
+
+    return this.http.put(`${this.url}/putHours`, shiftUpdates, httpOptions);
   }
 
 }

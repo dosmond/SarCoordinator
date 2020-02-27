@@ -10,6 +10,7 @@ import { ShiftUpdateModule } from './shift-update/shift-update.module';
 import { FurySharedModule } from '../../../@fury/fury-shared.module';
 import { FuryCardModule } from './../../../@fury/shared/card/card.module';
 import { ShiftLogService } from './shift-log.service';
+import { LoadingOverlayModule } from '../../../@fury/shared/loading-overlay/loading-overlay.module';
 
 @NgModule({
   imports: [
@@ -21,6 +22,7 @@ import { ShiftLogService } from './shift-log.service';
     FuryCardModule,
 
     // Core
+    LoadingOverlayModule,
     ListModule,
     ShiftUpdateModule,
     BreadcrumbsModule
