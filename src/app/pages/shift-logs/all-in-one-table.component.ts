@@ -83,7 +83,7 @@ export class AllInOneTableComponent implements OnInit, AfterViewInit, OnDestroy 
     this.aps.getIdToken().then(token => {
       this.shiftLogService.getShifts(token, this.caseId, this.userId).subscribe(res => {
         of(res).subscribe(shifts => {
-          this.subject$.next(shifts);
+          this.subject$.next(shifts as Shift[]);
           this.shiftsLoading = false;
         });
 
