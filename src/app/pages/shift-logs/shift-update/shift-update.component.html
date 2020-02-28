@@ -1,9 +1,9 @@
 <div mat-dialog-title>Hours Worked</div>
 <mat-form-field appearance="fill">
-  <input [(ngModel)]="hours" matInput type="number" min="0"/>
+  <input [(ngModel)]="hours" (keyup.enter)="updateHours()" matInput type="number" min="0"/>
   <span matSuffix>hours</span>
 </mat-form-field>
-<div class="modal-footer" >
+<div class="modal-footer">
   <button mat-button (click)="cancel()">Cancel</button>
   <button mat-raised-button color="primary" (click)="updateHours()">Update</button>
 </div>

@@ -1,4 +1,4 @@
-import {Vehicle} from "../vehicle.model";
+import {Vehicle} from "../vehicle-list/vehicle.model";
 import * as moment from 'moment';
 
 export class Shift {
@@ -11,6 +11,7 @@ export class Shift {
   vehicles: Vehicle[];
 
   constructor(shift) {
+    this.shiftId = shift.shiftId;
     this.day = shift.day;
     this.start = this.convertTime(shift.startTime);
     this.end = this.convertTime(shift.endTime);

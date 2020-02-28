@@ -14,6 +14,7 @@ import { AuthProcessService } from '../authentication/auth-service';
 import { ShiftLogService } from './shift-log.service';
 import { Shift } from './shift-update/shift.model';
 import { ActivatedRoute } from '@angular/router';
+import { VehicleListComponent } from './vehicle-list/vehicle-list.component';
 
 @Component({
   selector: 'fury-all-in-one-table',
@@ -33,18 +34,20 @@ export class AllInOneTableComponent implements OnInit, AfterViewInit, OnDestroy 
   caseName: string;
   caseId: string;
   userId: string;
-  shiftsLoading: boolean; // TODO make spinner
+  shiftsLoading: boolean;
+  totalMiles: number;
+  totalHours: number;
 
   @Input()
   columns: ListColumn[] = [
+    { name: 'ShiftId', property: 'shiftId', visible: false},
     { name: 'Search Day', property: 'day', visible: true, isModelProperty: true},
     { name: 'Start Time', property: 'start', visible: true, isModelProperty: true },
     { name: 'End Time', property: 'end', visible: true, isModelProperty: true },
     { name: 'Hours Worked', property: 'hours', visible: true, isModelProperty: true },
-    { name: 'Vehicle', property: 'vehicles[0].miles', visible: true, isModelProperty: true},
+    { name: 'Vehicles', property: 'showVehicles', visible: true},
     { name: 'Actions', property: 'actions', visible: true},
   ] as ListColumn[];
-  subColumns: ListColumn[] = []
   pageSize = 10;
   dataSource: MatTableDataSource<Object> | null;
   shiftLogsObservable$ : Observable<any>;
@@ -67,7 +70,7 @@ export class AllInOneTableComponent implements OnInit, AfterViewInit, OnDestroy 
     this.userId = this.routeParse.snapshot.queryParamMap.get("userId");
     this.volunteerName = this.routeParse.snapshot.queryParamMap.get("name");
     this.caseName = this.routeParse.snapshot.queryParamMap.get("caseName");
-    
+
     this.refreshShifts();
   }
 
@@ -92,7 +95,18 @@ export class AllInOneTableComponent implements OnInit, AfterViewInit, OnDestroy 
         this.data$.pipe(
           filter(Boolean)
         ).subscribe((shifts: Object[]) => {
-          this.dataSource.data = shifts.map(shift => new Shift(shift));
+          this.totalHours = 0;
+          this.totalMiles = 0;
+
+          this.dataSource.data = shifts.map(shift => {
+            // Sum miles and hours then add shift
+            let _shift = new Shift(shift);
+            this.totalHours += _shift.hours;
+            _shift.vehicles.forEach(vehicle => {
+              this.totalMiles += vehicle.miles;
+            });
+            return _shift;
+          });
         });
       });
     });
@@ -103,12 +117,25 @@ export class AllInOneTableComponent implements OnInit, AfterViewInit, OnDestroy 
     this.dataSource.sort = this.sort;
   }
 
+  showVehicles(vehicles) {
+    const dialogRef = this.dialog.open(VehicleListComponent, {});
+    dialogRef.componentInstance.vehicles = vehicles;
+    dialogRef.afterClosed().subscribe(() => {
+
+    });
+  }
+
   updateShift(shift) {
     const dialogRef = this.dialog.open(ShiftUpdateComponent, {});
     dialogRef.componentInstance.hours = shift.hours;
     dialogRef.afterClosed().subscribe(newHours => {
       if(newHours >= 0) {
-        // update hours in shift
+        this.aps.getIdToken().then(token => {
+          this.shiftLogService.putHours(token, [{shiftId: shift.shiftId, newHours: newHours}])
+          .subscribe(res => {
+            this.refreshShifts();
+          });
+        });
       }
     });
   }
@@ -122,6 +149,7 @@ export class AllInOneTableComponent implements OnInit, AfterViewInit, OnDestroy 
 
     dialogRef.afterClosed().subscribe(confirmed => {
       if(confirmed) {
+
         // delete this shift
       }
     });

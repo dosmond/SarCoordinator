@@ -11,6 +11,7 @@ import { FurySharedModule } from '../../../@fury/fury-shared.module';
 import { FuryCardModule } from './../../../@fury/shared/card/card.module';
 import { ShiftLogService } from './shift-log.service';
 import { LoadingOverlayModule } from '../../../@fury/shared/loading-overlay/loading-overlay.module';
+import { VehicleListModule } from './vehicle-list/vehicle-list.module';
 
 @NgModule({
   imports: [
@@ -25,6 +26,7 @@ import { LoadingOverlayModule } from '../../../@fury/shared/loading-overlay/load
     LoadingOverlayModule,
     ListModule,
     ShiftUpdateModule,
+    VehicleListModule,
     BreadcrumbsModule
   ],
   declarations: [AllInOneTableComponent],

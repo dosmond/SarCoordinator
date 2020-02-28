@@ -12,8 +12,10 @@
       <fury-card-header class="container">
         <fury-card-header-heading>Volunteer: {{volunteerName}}</fury-card-header-heading>
         <fury-card-header-subheading>Case: {{ caseName }}</fury-card-header-subheading>
+        <fury-card-header-subheading>Total Shift Miles: {{ totalMiles }}</fury-card-header-subheading>
+        <fury-card-header-subheading>Total Shift Hours: {{ totalHours }}</fury-card-header-subheading>
         <fury-card-header-actions>
-          <button mat-icon-button (click)="reload()">
+          <button mat-icon-button (click)="refreshShifts()">
             <mat-icon>refresh</mat-icon>
           </button>
         </fury-card-header-actions>
@@ -32,9 +34,30 @@
                 <td *matCellDef="let row" mat-cell>
                   {{ row[column.property] }}
                 </td>
+                <!-- Pick which footer to render depending on column -->
+                <ng-container *ngIf="column.property === 'day'; else total">
+                  <td mat-footer-cell *matFooterCellDef><b>Total Hours</b></td>
+                </ng-container>
+                <ng-template #total >
+                  <ng-container *ngIf="column.property === 'hours'; else empty">
+                    <td mat-footer-cell *matFooterCellDef>{{totalHours}}</td>
+                  </ng-container>
+                </ng-template>
+                <ng-template #empty>
+                  <td mat-footer-cell *matFooterCellDef></td>
+                </ng-template>
               </ng-container>
             </ng-container>
-    
+
+            <!--Show Vehicles Column-->
+            <ng-container matColumnDef="showVehicles">
+              <th *matHeaderCellDef class="vehicles-cell" mat-header-cell mat-sort-header>Vehicles</th>
+              <td *matCellDef="let row" mat-cell>
+                <button mat-raised-button (click)="showVehicles(row.vehicles)"> Show </button>
+              </td>
+              <td mat-footer-cell *matFooterCellDef></td>
+            </ng-container>
+
             <!-- actions Column -->
             <ng-container matColumnDef="actions">
               <th *matHeaderCellDef class="actions-cell" mat-header-cell mat-sort-header></th>
@@ -43,7 +66,7 @@
                   (click)="$event.stopPropagation()">
                   <mat-icon>more_horiz</mat-icon>
                 </button>
-    
+                        
                 <mat-menu #actionsMenu="matMenu" yPosition="below" xPosition="before">
                   <button (click)="updateShift(row)" mat-menu-item>
                     <span>Modify</span>
@@ -53,12 +76,15 @@
                   </button>
                 </mat-menu>
               </td>
+              <td mat-footer-cell *matFooterCellDef></td>
             </ng-container>
     
             <tr *matHeaderRowDef="visibleColumns" mat-header-row></tr>
-            <tr (click)="updateShift(row)" *matRowDef="let row; columns: visibleColumns;"
-              class="clickable route-animations-elements" mat-row></tr> <!--TODO change this to expand rows to show vehicles -->
+            <tr *matRowDef="let row; columns: visibleColumns;"
+              class="route-animations-elements" mat-row></tr>
+            <tr mat-footer-row *matFooterRowDef="visibleColumns; sticky: true"></tr>
           </table>
+          
           <mat-paginator class="paginator" [pageSize]="pageSize"></mat-paginator>
         </fury-list>
       </fury-card-content>
