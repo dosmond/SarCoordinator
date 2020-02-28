@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AllInOneTableComponent } from './all-in-one-table.component';
+import { ShiftLogsComponent } from './shift-logs.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: AllInOneTableComponent
+    component: ShiftLogsComponent
   }
 ];
 
@@ -13,5 +13,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class AllInOneTableRoutingModule {
+export class ShiftLogsRoutingModule {
 }

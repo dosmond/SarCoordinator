@@ -67,14 +67,9 @@ const routes: Routes = [
         component: IncidentReportComponent,
         canActivate: [LoggedInGuard]
       },
-      // {
-      //   path: 'shift-logs',
-      //   loadChildren: './pages/shift-logs/shift-logs.module#ShiftLogsModule',
-      //   canActivate: [LoggedInGuard]
-      // },
       {
         path: 'shift-logs',
-        loadChildren: './pages/shift-logs/all-in-one-table.module#AllInOneTableModule',
+        loadChildren: './pages/shift-logs/shift-logs.module#ShiftLogsModule',
         canActivate: [LoggedInGuard]
       }
     ],

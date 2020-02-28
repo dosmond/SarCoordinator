@@ -9,8 +9,7 @@ export class ShiftLogService {
   url = "https://us-central1-sar-solutions.cloudfunctions.net";
   
 
-  constructor(private http: HttpClient,
-              private aps: AuthProcessService) {
+  constructor(private http: HttpClient) {
 
   }
 

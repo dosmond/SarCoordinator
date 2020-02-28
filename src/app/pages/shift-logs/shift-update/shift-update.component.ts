@@ -21,7 +21,7 @@ export class ShiftUpdateComponent implements OnInit {
   }
 
   updateHours() {
-    // Call putHours endpoint
+    // Calls putHours endpoint
     this.dialogRef.close(this.hours);
   }
 }

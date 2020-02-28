@@ -17,12 +17,12 @@ import { ActivatedRoute } from '@angular/router';
 import { VehicleListComponent } from './vehicle-list/vehicle-list.component';
 
 @Component({
-  selector: 'fury-all-in-one-table',
-  templateUrl: './all-in-one-table.component.html',
-  styleUrls: ['./all-in-one-table.component.scss'],
+  selector: 'shift-logs',
+  templateUrl: './shift-logs.component.html',
+  styleUrls: ['./shift-logs.component.scss'],
   animations: [fadeInRightAnimation, fadeInUpAnimation]
 })
-export class AllInOneTableComponent implements OnInit, AfterViewInit, OnDestroy {
+export class ShiftLogsComponent implements OnInit, AfterViewInit, OnDestroy {
 
   /**
    * Simulating a service with HTTP that returns Observables
