@@ -122,7 +122,6 @@ export class ShiftLogsComponent implements OnInit, AfterViewInit, OnDestroy {
   showVehicles(vehicles) {
     const dialogRef = this.dialog.open(VehicleListComponent, {});
     dialogRef.componentInstance.vehicles = vehicles;
-    dialogRef.componentInstance.totalMiles = this.totalMiles;
     dialogRef.afterClosed().subscribe(() => {
 
     });
