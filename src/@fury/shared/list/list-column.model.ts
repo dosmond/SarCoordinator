@@ -1,5 +1,5 @@
 export class ListColumn {
-  shiftId: string;
+  id: string;
   name?: string;
   property?: string;
   visible?: boolean;

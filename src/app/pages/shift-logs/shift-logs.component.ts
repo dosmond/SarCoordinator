@@ -66,6 +66,7 @@ export class ShiftLogsComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   async ngOnInit() {
+    this.dataSource = new MatTableDataSource();
     this.caseId = this.routeParse.snapshot.queryParamMap.get("caseId");
     this.userId = this.routeParse.snapshot.queryParamMap.get("userId");
     this.volunteerName = this.routeParse.snapshot.queryParamMap.get("name");
@@ -107,6 +108,7 @@ export class ShiftLogsComponent implements OnInit, AfterViewInit, OnDestroy {
             });
             return _shift;
           });
+          this.dataSource.paginator = this.paginator;
         });
       });
     });
@@ -132,7 +134,7 @@ export class ShiftLogsComponent implements OnInit, AfterViewInit, OnDestroy {
     dialogRef.afterClosed().subscribe(newHours => {
       if(newHours >= 0) {
         this.aps.getIdToken().then(token => {
-          this.shiftLogService.putHours(token, [{shiftId: shift.shiftId, newHours: newHours}])
+          this.shiftLogService.putHours(token, [{shiftId: shift.id, newHours: newHours}])
           .subscribe(res => {
             this.refreshShifts();
           });
