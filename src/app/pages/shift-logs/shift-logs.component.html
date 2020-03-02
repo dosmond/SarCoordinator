@@ -34,18 +34,6 @@
                 <td *matCellDef="let row" mat-cell>
                   {{ row[column.property] }}
                 </td>
-                <!-- Pick which footer to render depending on column -->
-                <ng-container *ngIf="column.property === 'day'; else total">
-                  <td mat-footer-cell *matFooterCellDef><b>Total Hours</b></td>
-                </ng-container>
-                <ng-template #total >
-                  <ng-container *ngIf="column.property === 'hours'; else empty">
-                    <td mat-footer-cell *matFooterCellDef>{{totalHours}}</td>
-                  </ng-container>
-                </ng-template>
-                <ng-template #empty>
-                  <td mat-footer-cell *matFooterCellDef></td>
-                </ng-template>
               </ng-container>
             </ng-container>
 
@@ -55,7 +43,6 @@
               <td *matCellDef="let row" mat-cell>
                 <button mat-raised-button (click)="showVehicles(row.vehicles)"> Show </button>
               </td>
-              <td mat-footer-cell *matFooterCellDef></td>
             </ng-container>
 
             <!-- actions Column -->
@@ -71,18 +58,17 @@
                   <button (click)="updateShift(row)" mat-menu-item>
                     <span>Modify</span>
                   </button>
-                  <button (click)="deleteShift(row)" mat-menu-item>
+                  <!-- May want in the future-->
+                  <!-- <button (click)="deleteShift(row)" mat-menu-item>
                     <span>Delete</span>
-                  </button>
+                  </button> -->
                 </mat-menu>
               </td>
-              <td mat-footer-cell *matFooterCellDef></td>
             </ng-container>
     
             <tr *matHeaderRowDef="visibleColumns" mat-header-row></tr>
             <tr *matRowDef="let row; columns: visibleColumns;"
               class="route-animations-elements" mat-row></tr>
-            <tr mat-footer-row *matFooterRowDef="visibleColumns; sticky: true"></tr>
           </table>
           
           <mat-paginator class="paginator" [pageSize]="pageSize"></mat-paginator>

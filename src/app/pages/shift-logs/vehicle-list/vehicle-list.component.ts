@@ -11,18 +11,13 @@ export class VehicleListComponent implements OnInit {
 
   @Input() vehicles: Vehicle[];
   displayColumns: String[];
-  totalMiles: number;
+  @Input() totalMiles: number;
 
   constructor(private dialogRef: MatDialogRef<VehicleListComponent>) {
   }
 
   ngOnInit() {
     this.displayColumns = ['type', 'isCountyVehicle', 'isPersonalVehicle', 'miles'];
-
-    this.totalMiles = 0;
-    this.vehicles.forEach(vehicle => {
-      this.totalMiles += vehicle.miles;
-    });
   }
 
   cancel() {

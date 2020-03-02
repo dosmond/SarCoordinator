@@ -103,7 +103,7 @@ export class ShiftLogsComponent implements OnInit, AfterViewInit, OnDestroy {
             let _shift = new Shift(shift);
             this.totalHours += _shift.hours;
             _shift.vehicles.forEach(vehicle => {
-              this.totalMiles += vehicle.miles;
+              this.totalMiles += Number(vehicle.miles);
             });
             return _shift;
           });
@@ -120,6 +120,7 @@ export class ShiftLogsComponent implements OnInit, AfterViewInit, OnDestroy {
   showVehicles(vehicles) {
     const dialogRef = this.dialog.open(VehicleListComponent, {});
     dialogRef.componentInstance.vehicles = vehicles;
+    dialogRef.componentInstance.totalMiles = this.totalMiles;
     dialogRef.afterClosed().subscribe(() => {
 
     });
