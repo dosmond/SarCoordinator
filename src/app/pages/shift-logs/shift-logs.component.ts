@@ -9,7 +9,7 @@ import { ListColumn } from '../../../@fury/shared/list/list-column.model';
 import { ShiftUpdateComponent } from './shift-update/shift-update.component';
 import { fadeInRightAnimation } from '../../../@fury/animations/fade-in-right.animation';
 import { fadeInUpAnimation } from '../../../@fury/animations/fade-in-up.animation';
-import { ConfirmationComponent } from '../components/confirmation/confirmation.component';
+// import { ConfirmationComponent } from '../components/confirmation/confirmation.component';
 import { AuthProcessService } from '../authentication/auth-service';
 import { ShiftLogService } from './shift-log.service';
 import { Shift } from './shift-update/shift.model';
@@ -143,20 +143,21 @@ export class ShiftLogsComponent implements OnInit, AfterViewInit, OnDestroy {
     });
   }
 
-  deleteShift(shift) {
-    const dialogRef = this.dialog.open(ConfirmationComponent, {});
-    dialogRef.componentInstance.message = "Are you sure you want to delete this shift? It will be permanently lost.";
-    dialogRef.componentInstance.btnCancelText = "Cancel";
-    dialogRef.componentInstance.btnOkText = "Delete";
-    dialogRef.componentInstance.isNegativeAction = true;
+  // Left for possible use in the future.
+  // deleteShift(shift) {
+  //   const dialogRef = this.dialog.open(ConfirmationComponent, {});
+  //   dialogRef.componentInstance.message = "Are you sure you want to delete this shift? It will be permanently lost.";
+  //   dialogRef.componentInstance.btnCancelText = "Cancel";
+  //   dialogRef.componentInstance.btnOkText = "Delete";
+  //   dialogRef.componentInstance.isNegativeAction = true;
 
-    dialogRef.afterClosed().subscribe(confirmed => {
-      if(confirmed) {
+  //   dialogRef.afterClosed().subscribe(confirmed => {
+  //     if(confirmed) {
 
-        // delete this shift
-      }
-    });
-  }
+  //       // delete this shift
+  //     }
+  //   });
+  // }
 
   ngOnDestroy() {
   }

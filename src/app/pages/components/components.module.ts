@@ -24,6 +24,7 @@ import { SliderComponent } from './slider/slider.component';
 import { SnackBarComponent } from './snack-bar/snack-bar.component';
 import { TooltipComponent } from './tooltip/tooltip.component';
 import { FurySharedModule } from '../../../@fury/fury-shared.module';
+import { ConfirmationComponent } from './confirmation/confirmation.component';
 
 @NgModule({
   imports: [
@@ -58,6 +59,7 @@ import { FurySharedModule } from '../../../@fury/fury-shared.module';
     SnackBarComponent,
     TooltipComponent,
     SlideToggleComponent,
+    ConfirmationComponent,
   ],
   entryComponents: [DemoDialogComponent]
 })
