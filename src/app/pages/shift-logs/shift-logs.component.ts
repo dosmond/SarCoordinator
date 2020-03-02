@@ -134,7 +134,7 @@ export class ShiftLogsComponent implements OnInit, AfterViewInit, OnDestroy {
     dialogRef.afterClosed().subscribe(newHours => {
       if(newHours >= 0) {
         this.aps.getIdToken().then(token => {
-          this.shiftLogService.putHours(token, [{shiftId: shift.id, newHours: newHours}])
+          this.shiftLogService.putHours(token, [{shiftId: shift.shiftId, newHours: newHours}])
           .subscribe(res => {
             this.refreshShifts();
           });
