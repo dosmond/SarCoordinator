@@ -25,6 +25,7 @@ import { SnackBarComponent } from './snack-bar/snack-bar.component';
 import { TooltipComponent } from './tooltip/tooltip.component';
 import { FurySharedModule } from '../../../@fury/fury-shared.module';
 import { ConfirmationComponent } from './confirmation/confirmation.component';
+import { PhotoGridComponent } from './photo-grid/photo-grid.component';
 
 @NgModule({
   imports: [
@@ -60,6 +61,7 @@ import { ConfirmationComponent } from './confirmation/confirmation.component';
     TooltipComponent,
     SlideToggleComponent,
     ConfirmationComponent,
+    PhotoGridComponent,
   ],
   entryComponents: [DemoDialogComponent]
 })

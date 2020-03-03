@@ -28,6 +28,11 @@ export class CaseDataWidgetComponent implements OnInit {
   @Input() options: CaseDataWidgetOptions;
   @Input() caseId: string;
   caseName: string;
+  mapOptions = {
+    zoom : 15
+  }
+  private _gap = 16;
+  gap = `${this._gap}px`;
 
   @ViewChild('canvas', { read: ElementRef, static: true }) canvas: ElementRef;
 
@@ -41,8 +46,11 @@ export class CaseDataWidgetComponent implements OnInit {
     private router: Router) {
   }
 
+  col(colAmount: number) {
+    return `1 1 calc(${100 / colAmount}% - ${this._gap - (this._gap / colAmount)}px)`;
+  }
+  
   ngOnInit() {
-    // this.caseName =  // Get everything passed first colon
   }
 
   ngOnChanges() {
