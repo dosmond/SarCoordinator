@@ -47,7 +47,6 @@ export class CaseDashboardService {
     let httpOptions = {
       headers : new HttpHeaders().set("Authorization", token)
     };
-    console.log("Calling put")
     return this.http.put(`${this.url}/putCaseStatus?caseId=${caseId}`, {"isOpen": false}, httpOptions);
   }
 }
