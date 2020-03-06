@@ -4,6 +4,7 @@ import { BreadcrumbsModule } from '../../../../@fury/shared/breadcrumbs/breadcru
 import { MaterialModule } from '../../../../@fury/shared/material-components.module';
 import { FurySharedModule } from '../../../../@fury/fury-shared.module';
 import { PhotoGridComponent } from './photo-grid.component';
+import { NgxGalleryModule } from 'ngx-gallery';
 
 @NgModule({
   imports: [
@@ -12,7 +13,8 @@ import { PhotoGridComponent } from './photo-grid.component';
     MaterialModule,
 
     // Core
-    BreadcrumbsModule
+    BreadcrumbsModule,
+    NgxGalleryModule,
   ],
   declarations: [PhotoGridComponent],
   exports: [PhotoGridComponent]
