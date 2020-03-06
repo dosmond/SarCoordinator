@@ -106,7 +106,9 @@ export class CaseDashboardComponent implements OnInit {
 
   closecase(){
     this.afa.getIdToken().then(token => {
-      this.dashboardService.closeCase(token, this.caseId);
+      this.dashboardService.closeCase(token, this.caseId).subscribe(res => {
+        
+      });
     })
   }
   

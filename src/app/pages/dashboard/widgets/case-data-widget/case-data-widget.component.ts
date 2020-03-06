@@ -85,7 +85,6 @@ export class CaseDataWidgetComponent implements OnInit {
   }
 
   closeCase(){
-    console.log("Made it")
     this.closecase.emit();
   }
 
