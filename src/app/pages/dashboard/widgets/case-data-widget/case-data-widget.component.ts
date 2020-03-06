@@ -88,15 +88,4 @@ export class CaseDataWidgetComponent implements OnInit {
     console.log("Made it")
     this.closecase.emit();
   }
-
-  openPdfDialog(): void {
-    // const dialogRef = this.dialog.open(IncidentReportComponent, {
-    //   width: '80vw',
-    //   height: '80vh'});
-
-    // dialogRef.afterClosed().subscribe(result => {
-    //   console.log('The dialog was closed');
-    // });
-    this.router.navigate(['./'])
-  }
 }
