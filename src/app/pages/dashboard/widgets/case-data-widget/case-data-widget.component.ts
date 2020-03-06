@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild, EventEmitter, Output } from '@angular/core';
 import * as Chart from 'chart.js';
 import { ChartData } from 'chart.js';
 import { ListColumn } from '../../../../../@fury/shared/list/list-column.model';
@@ -27,6 +27,7 @@ export class CaseDataWidgetComponent implements OnInit {
   @Input() chartData: ChartData;
   @Input() options: CaseDataWidgetOptions;
   @Input() caseId: string;
+  @Output() closecase = new EventEmitter();
   caseName: string;
 
   @ViewChild('canvas', { read: ElementRef, static: true }) canvas: ElementRef;
@@ -81,6 +82,11 @@ export class CaseDataWidgetComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
     });
+  }
+
+  closeCase(){
+    console.log("Made it")
+    this.closecase.emit();
   }
 
   openPdfDialog(): void {
