@@ -8,7 +8,7 @@
     </mat-form-field>
     <mat-form-field style="margin-right: 10px">
     <mat-label>Operational Period</mat-label>
-    <mat-select  [disabled] = "!days" (selectionChange)="daySelected($event)">
+    <mat-select  [disabled] = "!days" (selectionChange)="daySelected($event)" [(value)] = "selected">
         <mat-option *ngFor="let day of daysArr; let i = index"value={{i+1}}>{{i+1}}</mat-option>
     </mat-select>
     </mat-form-field>

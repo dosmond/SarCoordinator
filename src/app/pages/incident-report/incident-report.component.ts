@@ -26,6 +26,7 @@ export class IncidentReportComponent implements OnInit {
   date: string;
   vehicles: [];
   daysArr:number[]
+  selected: number
 
   
   constructor(private reportService: IncidentReportService,
@@ -47,6 +48,7 @@ export class IncidentReportComponent implements OnInit {
 
   caseSelected(event: MatSelectChange){
     this.caseId = event.value;
+    this.selected = null;
     this.shifts = null;
     this.aps.getIdToken().then(token => { 
       this.reportService.getCaseData(this.caseId,token).subscribe((res: ICase)=> {
