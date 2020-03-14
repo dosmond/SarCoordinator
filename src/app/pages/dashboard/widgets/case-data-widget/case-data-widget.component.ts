@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild, EventEmitter, Output } from '@angular/core';
 import * as Chart from 'chart.js';
 import { ChartData } from 'chart.js';
 import { ListColumn } from '../../../../../@fury/shared/list/list-column.model';
@@ -27,6 +27,7 @@ export class CaseDataWidgetComponent implements OnInit {
   @Input() chartData: ChartData;
   @Input() options: CaseDataWidgetOptions;
   @Input() caseId: string;
+  @Output() closecase = new EventEmitter();
   caseName: string;
   mapOptions = {
     zoom : 15
@@ -91,14 +92,7 @@ export class CaseDataWidgetComponent implements OnInit {
     });
   }
 
-  openPdfDialog(): void {
-    // const dialogRef = this.dialog.open(IncidentReportComponent, {
-    //   width: '80vw',
-    //   height: '80vh'});
-
-    // dialogRef.afterClosed().subscribe(result => {
-    //   console.log('The dialog was closed');
-    // });
-    this.router.navigate(['./'])
+  closeCase(){
+    this.closecase.emit();
   }
 }

@@ -42,4 +42,11 @@ export class CaseDashboardService {
     };
     return this.http.delete(`${this.url}/deleteVolunteerFromCase?caseId=${caseId}&userId=${userId}`, httpOptions);
   }
+
+  closeCase(token: string, caseId: string){
+    let httpOptions = {
+      headers : new HttpHeaders().set("Authorization", token)
+    };
+    return this.http.put(`${this.url}/putCaseStatus?caseId=${caseId}`, {"isOpen": false}, httpOptions);
+  }
 }
