@@ -9,12 +9,11 @@ export class PhotoGridService {
   constructor() {
   }
 
-
   loadImages(caseId : string) {
     // var storageRef = this.afStorage.ref(caseId + '/images');
     var storageRef = storage.ref('testImg');
     let images = [];
-    storageRef.listAll().then(result => {
+    return storageRef.listAll().then(result => {
       result.items.forEach(imageRef => {
         images.push(this.makeImage(imageRef));
       });

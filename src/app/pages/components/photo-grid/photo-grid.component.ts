@@ -38,10 +38,10 @@ export class PhotoGridComponent implements OnInit {
       }
     ];
 
-    // this.photoGridService.loadImages(this.caseId)
-    // .then(imageUrls => {
-    //   this.galleryImages = imageUrls;
-    // })
+    this.photoGridService.loadImages(this.caseId)
+    .then(images => {
+      this.galleryImages = images;
+    })
  
     this.galleryImages = [
         // {
@@ -83,7 +83,7 @@ export class PhotoGridComponent implements OnInit {
         {
           small: 'https://s.abcnews.com/images/Lifestyle/puppy-ht-3-er-170907_16x9_992.jpg',
           big: 'https://s.abcnews.com/images/Lifestyle/puppy-ht-3-er-170907_16x9_992.jpg',
-          description: null
+          description: 'PUPPY'
         }
     ];
   }
