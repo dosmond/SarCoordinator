@@ -5,6 +5,7 @@ import { MaterialModule } from '../../../../@fury/shared/material-components.mod
 import { FurySharedModule } from '../../../../@fury/fury-shared.module';
 import { PhotoGridComponent } from './photo-grid.component';
 import { NgxGalleryModule } from 'ngx-gallery';
+import { PhotoGridService } from './photo-grid.service';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { NgxGalleryModule } from 'ngx-gallery';
     NgxGalleryModule,
   ],
   declarations: [PhotoGridComponent],
-  exports: [PhotoGridComponent]
+  exports: [PhotoGridComponent],
+  providers: [PhotoGridService]
 })
 export class PhotoGridModule {
 }
