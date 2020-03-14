@@ -3,4 +3,9 @@
     justify-content: center;
     align-items: center;
     margin: 10px;
+    overflow: scroll;
+}
+
+:host ngx-gallery ::ng-deep .ngx-gallery-arrow {
+    color: black;
 }

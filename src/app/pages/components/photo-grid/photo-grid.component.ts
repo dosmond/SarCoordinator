@@ -25,7 +25,9 @@ export class PhotoGridComponent implements OnInit {
 
         thumbnailsColumns: 4,
         thumbnailsRows: 2,
-        thumbnailMargin: 35,
+        thumbnailMargin: 10,
+        thumbnailsArrows: true,
+        thumbnailsSwipe: true,
 
         previewCloseOnClick: true,
         previewCloseOnEsc: true,
@@ -43,7 +45,7 @@ export class PhotoGridComponent implements OnInit {
       this.galleryImages = images;
     })
  
-    this.galleryImages = [
+    // this.galleryImages = [
         // {
         //   small: '../../../../assets/img/attachments/1.png',
         //   medium: '../../../../assets/img/attachments/1.png',
@@ -80,12 +82,12 @@ export class PhotoGridComponent implements OnInit {
         //   big: '../../../../assets/img/avatars/3.jpg',
         //   description: "This is avatar 3 and this is the description for it.",
         // },
-        {
-          small: 'https://s.abcnews.com/images/Lifestyle/puppy-ht-3-er-170907_16x9_992.jpg',
-          big: 'https://s.abcnews.com/images/Lifestyle/puppy-ht-3-er-170907_16x9_992.jpg',
-          description: 'PUPPY'
-        }
-    ];
+    //     {
+    //       small: "https://firebasestorage.googleapis.com/v0/b/sar-solutions.appspot.com/o/testImg%2F1.png?alt=media&token=83fb0a3f-a231-4da6-8d3e-221d3e62713a",
+    //       big: "https://firebasestorage.googleapis.com/v0/b/sar-solutions.appspot.com/o/testImg%2F1.png?alt=media&token=83fb0a3f-a231-4da6-8d3e-221d3e62713a",
+    //       description: null
+    //     }
+    // ];
   }
 
 }

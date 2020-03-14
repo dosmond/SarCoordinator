@@ -9,20 +9,24 @@ export class PhotoGridService {
   constructor() {
   }
 
-  loadImages(caseId : string) {
+  async loadImages(caseId : string) {
     // var storageRef = this.afStorage.ref(caseId + '/images');
     var storageRef = storage.ref('testImg');
     let images = [];
-    return storageRef.listAll().then(result => {
-      result.items.forEach(imageRef => {
-        images.push(this.makeImage(imageRef));
+    await storageRef.listAll().then(result => {
+      result.items.forEach(async imageRef => {
+        console.log(imageRef)
+        await this.makeImage(imageRef).then(res =>{
+          let image = res;
+          console.log(image)
+          images.push(image);
+        })
       });
-    }).then(() => {
-      // After we get all image URLs then return the list
-      return images;
     }).catch(err => {
       console.log(err);
     });
+
+    return images;
   }
 
   private makeImage(imageRef: firebase.storage.Reference) {
@@ -37,6 +41,7 @@ export class PhotoGridService {
       return imageRef.getDownloadURL().then(url => {
         let img = {
           small: url,
+          medium: url,
           big: url,
           description: description
         }
