@@ -10,15 +10,13 @@ export class PhotoGridService {
   }
 
   async loadImages(caseId : string) {
-    // var storageRef = this.afStorage.ref(caseId + '/images');
-    var storageRef = storage.ref('testImg');
+    var storageRef = storage.ref(caseId + '/images');
+    // var storageRef = storage.ref('testImg');
     let images = [];
     await storageRef.listAll().then(result => {
       result.items.forEach(async imageRef => {
-        console.log(imageRef)
         await this.makeImage(imageRef).then(res =>{
           let image = res;
-          console.log(image)
           images.push(image);
         })
       });
