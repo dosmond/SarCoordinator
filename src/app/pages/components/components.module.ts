@@ -61,7 +61,6 @@ import { PhotoGridComponent } from './photo-grid/photo-grid.component';
     TooltipComponent,
     SlideToggleComponent,
     ConfirmationComponent,
-    PhotoGridComponent,
   ],
   entryComponents: [DemoDialogComponent]
 })
