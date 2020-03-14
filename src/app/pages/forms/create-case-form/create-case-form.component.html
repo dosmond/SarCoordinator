@@ -44,7 +44,7 @@
           <button (click)="cancel()" color="primary" mat-button
                   type="button">Cancel
           </button>
-          <button (click)="submit()" [disabled]="caseFormGroup.invalid" color="primary" 
+          <button (click)="submit()" [disabled]="caseFormGroup.invalid || isSubmited" color="primary" 
                   mat-raised-button>CREATE
           </button>
         </div>

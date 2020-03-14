@@ -16,6 +16,7 @@ import { DashboardService } from '../../dashboard/dashboard.service';
 })
 export class CreateCaseFormDialogComponent implements OnInit {
 
+  isSubmited : boolean = false;
   caseFormGroup: FormGroup;
 
   phonePrefixOptions = ['+1', '+27', '+44', '+49', '+61', '+91'];
@@ -43,6 +44,7 @@ export class CreateCaseFormDialogComponent implements OnInit {
   }
 
   submit() {
+    this.isSubmited = true;
     this.auth.getIdToken().then(token => {
       let controls = this.caseFormGroup.controls;
       let date = new Date();

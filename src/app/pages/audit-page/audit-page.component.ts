@@ -90,7 +90,8 @@ export class AuditPageComponent implements OnInit {
 
           if(this.totalCases != 0){
             volunteer.casesLength = count;
-            volunteer.percent = Math.round((count / this.totalCases) * 100);
+            volunteer.percent = Math.floor((count / this.totalCases) * 100);
+            console.log(volunteer.percent);
           }else {
             volunteer.casesLength = count;
             volunteer.percent = 100;
@@ -146,7 +147,7 @@ export class AuditPageComponent implements OnInit {
 
           if(this.totalCases != 0){
             volunteer.casesLength = count;
-            volunteer.percent = (count / this.totalCases) * 100;
+            volunteer.percent = Math.floor((count / this.totalCases) * 100);
           }else {
             volunteer.casesLength = count;
             volunteer.percent = 100;
