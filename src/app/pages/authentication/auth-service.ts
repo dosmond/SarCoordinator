@@ -1,4 +1,4 @@
-import { EventEmitter, forwardRef, Inject, Injectable } from '@angular/core';
+import { EventEmitter, forwardRef, Inject, Injectable, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { MatSnackBar, MatSnackBarConfig, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material';
 import '@firebase/auth';
@@ -15,6 +15,7 @@ import UserCredential = firebase.auth.UserCredential;
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { IUser } from 'src/app/models/IUser';
 
 export enum AuthProvider {
   ALL = 'all',
@@ -27,7 +28,7 @@ export type messageOnAuthErrorType = string | getErrorMessageType;
 @Injectable({
   providedIn: 'root'
 })
-export class AuthProcessService implements ISignInProcess {
+export class AuthProcessService implements ISignInProcess, OnInit{
   onSuccessEmitter: EventEmitter<any> = new EventEmitter<any>();
   onErrorEmitter: EventEmitter<any> = new EventEmitter<any>();
 
@@ -37,7 +38,7 @@ export class AuthProcessService implements ISignInProcess {
   user: User;
 
   url : string = environment.backend
-
+  userRole : string[];
   messageOnAuthSuccess: string;
   messageOnAuthError: messageOnAuthErrorType;
 
@@ -54,6 +55,10 @@ export class AuthProcessService implements ISignInProcess {
     @Inject(MAT_SNACK_BAR_DEFAULT_OPTIONS) private _matSnackBarConfig: MatSnackBarConfig
   ) {}
 
+  ngOnInit() {
+    console.log("Im initialized!")
+  }
+
   listenToUserEvents() {
     this.user$ = this.afa.user.pipe(
       tap(user => {
@@ -69,6 +74,14 @@ export class AuthProcessService implements ISignInProcess {
   getUser() {
     return this.afa.auth.currentUser;
   }
+
+  getCurrentUserInfo(token: string, userId: string){
+    let httpOptions = {
+      headers : new HttpHeaders().set("Authorization", token)
+    };
+    return this.http.get(`${this.url}/getUser?userId=${userId}`, httpOptions);
+  }
+
 
   /**
    * Reset the password of the ngx-auth-firebaseui-user via email
@@ -151,6 +164,13 @@ export class AuthProcessService implements ISignInProcess {
   handleError(error: any) {
     this.notifyError(error);
     console.error(error);
+  }
+
+  getUserRole(token){
+    let httpOptions = {
+      headers : new HttpHeaders().set("Authorization", token)
+    };
+    return this.http.get(`${this.url}/getUser?uid=${this.afa.auth.currentUser.uid}`, httpOptions)
   }
 
   // Refresh user info. Can be useful for instance to get latest status regarding email verification.
