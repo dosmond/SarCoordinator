@@ -29,18 +29,15 @@ export class PhotoGridService {
 
   private makeImage(imageRef: firebase.storage.Reference) {
     return imageRef.getMetadata().then(metadata => {
-      // Only add description field if it exists
-      let description = null;
-      if(metadata.ImageDescription) {
-        description = metadata.ImageDescription;
-      }
+      
+
 
       return imageRef.getDownloadURL().then(url => {
         let img = {
           small: url,
           medium: url,
           big: url,
-          description: description
+          description: metadata.Description ? metadata.Description : null  // Only add description field if it exists
         }
         return img;
       }).catch(err => {
