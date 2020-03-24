@@ -31,9 +31,8 @@ export class PhotoGridService {
     return imageRef.getMetadata().then(metadata => {
       // Only add description field if it exists
       let description = null;
-      let customMD = metadata.customMetadata;
-      if(customMD && customMD.ImageDescription) {
-        description = customMD.ImageDescription;
+      if(metadata.ImageDescription) {
+        description = metadata.ImageDescription;
       }
 
       return imageRef.getDownloadURL().then(url => {
