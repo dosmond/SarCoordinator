@@ -110,6 +110,12 @@ export class AuthProcessService implements ISignInProcess, OnInit{
 
         signInResult = await this.afa.auth.signInWithEmailAndPassword(credentials.email, credentials.password) as UserCredential;
         
+        await this.getIdToken().then(async token => {
+          return await this.getUserRole(token).toPromise().then(res => {
+            let roles = (res as IUser).roles
+            localStorage.setItem("roles", roles.toString());
+          })
+        })
         await this.handleSuccess(signInResult);
     } catch (err) {
       this.handleError(err);
