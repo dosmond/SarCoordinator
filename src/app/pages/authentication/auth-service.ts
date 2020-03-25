@@ -77,7 +77,7 @@ export class AuthProcessService implements ISignInProcess, OnInit{
     let httpOptions = {
       headers : new HttpHeaders().set("Authorization", token)
     };
-    return this.http.get(`${this.url}/getUser?userId=${userId}`, httpOptions);
+    return this.http.get(`${this.url}/getUser?uid=${userId}`, httpOptions);
   }
 
 
