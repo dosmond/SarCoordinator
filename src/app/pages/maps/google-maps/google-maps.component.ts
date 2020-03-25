@@ -89,7 +89,6 @@ export class GoogleMapsComponent implements OnInit, AfterViewInit {
           lng: pt.longitude
         };
         path.push(latlong);
-        console.log(latlong);
       });
 
       let color = this.getRandomColor();
