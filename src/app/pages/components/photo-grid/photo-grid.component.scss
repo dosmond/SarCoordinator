@@ -1,0 +1,26 @@
+.gallery-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+
+.gallery {
+    margin: 20px;
+}
+
+.image-placeholder {
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+img {
+    width: 50%;
+    max-width: 400px;
+}
+
+:host ngx-gallery ::ng-deep .ngx-gallery-arrow {
+    color: black;
+}

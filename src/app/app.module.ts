@@ -18,6 +18,7 @@ import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
 import { AngularFireModule } from "@angular/fire";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { IncidentReportModule } from './pages/incident-report/incident-report.module';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   imports: [
@@ -31,6 +32,7 @@ import { IncidentReportModule } from './pages/incident-report/incident-report.mo
 
     // Layout Module (Sidenav, Toolbar, Quickpanel, Content)
     LayoutModule,
+    FontAwesomeModule,
 
     // Google Maps Module
     AgmCoreModule.forRoot({

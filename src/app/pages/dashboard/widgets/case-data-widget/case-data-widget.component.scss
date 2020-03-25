@@ -12,3 +12,7 @@
   flex: 1;
   position: relative;
 }
+
+.mat-sidenav-container, .mat-sidenav-content, .mat-tab-body-content {
+  transform: none !important;
+}

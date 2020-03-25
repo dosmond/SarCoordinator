@@ -15,6 +15,7 @@ import { GoogleMapsModule } from '../../maps/google-maps/google-maps.module';
     MaterialModule,
     FurySharedModule,
     GoogleMapsModule,
+
     // Widgets
     CaseDataWidgetModule,
   ],

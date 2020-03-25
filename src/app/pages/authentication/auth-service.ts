@@ -9,8 +9,6 @@ import { tap } from 'rxjs/operators';
 //import { Accounts } from '../enums';
 import { ICredentials, ISignInProcess } from './auth-interfaces';
 
-// import User = firebase.User;
-
 import UserCredential = firebase.auth.UserCredential;
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
