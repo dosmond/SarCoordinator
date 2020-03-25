@@ -110,8 +110,8 @@ export class AuthProcessService implements ISignInProcess, OnInit{
         
         await this.getIdToken().then(async token => {
           return await this.getUserRole(token).toPromise().then(res => {
-            let roles = (res as IUser).roles
-            localStorage.setItem("roles", roles.toString());
+            let role = (res as IUser).role
+            localStorage.setItem("role", role);
           })
         })
         await this.handleSuccess(signInResult);

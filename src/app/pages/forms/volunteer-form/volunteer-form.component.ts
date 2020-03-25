@@ -22,6 +22,7 @@ export class VolunteerFormDialogComponent implements OnInit {
   phonePrefixOptions = ['+1', '+27', '+44', '+49', '+61', '+91'];
 
   passwordInputType = 'password';
+  role = 'Volunteer';
 
   constructor(private fb: FormBuilder,
               private cd: ChangeDetectorRef,
@@ -68,14 +69,14 @@ export class VolunteerFormDialogComponent implements OnInit {
                                             email: controls["email"].value,
                                             phoneNumber: controls["phoneNum"].value,
                                             badgeNum: controls["badgeNum"].value,
-                                            roles: ["volunteer"]}).subscribe(res => {
+                                            role: this.role.toLowerCase()}).subscribe(res => {
 
           this.dialogRef.close({firstName: controls["firstName"].value,
           lastName: controls["lastName"].value,
           email: controls["email"].value,
           phoneNumber: controls["phoneNum"].value,
           badgeNum: controls["badgeNum"].value,
-          roles: ["volunteer"],
+          role: this.role.toLowerCase(),
           created: true});
         })
     })
