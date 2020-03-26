@@ -1,6 +1,5 @@
 
 <agm-map [style.height]='height' [mapTypeId]="'terrain'" [latitude]="lat" [longitude]="lng" [zoom]="zoom" [fullscreenControl]="true">
-    <button id="Logout" class="toggle-button controls button" (click)="logout()">Logout</button>  
     <ng-container *ngFor="let paths of mapPath; index as i">
         <agm-polyline *ngIf='paths' [strokeColor]="paths.color">
             <ng-container *ngFor="let path of paths.path">
