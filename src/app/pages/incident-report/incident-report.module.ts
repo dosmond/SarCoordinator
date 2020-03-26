@@ -1,3 +1,4 @@
+import { FuryCardModule } from './../../../@fury/shared/card/card.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from 'src/@fury/shared/material-components.module';
@@ -13,7 +14,8 @@ import { IncidentReportService } from './incident-report.service';
       MaterialModule,
       ReactiveFormsModule,
       NgxPrintModule,
-      FurySharedModule
+      FurySharedModule,
+      FuryCardModule
     ],
     declarations: [IncidentReportComponent],
     entryComponents: [IncidentReportComponent],

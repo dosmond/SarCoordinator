@@ -1,124 +1,143 @@
-<fury-page>
-<div style="padding:10px">
-    <mat-form-field style="margin-right: 10px">
-        <mat-label>Case</mat-label>
-        <mat-select (selectionChange)="caseSelected($event)">
-            <mat-option *ngFor="let case of cases | async" value={{case.id}}>{{case.caseName}}</mat-option>
-        </mat-select>
-    </mat-form-field>
-    <mat-form-field style="margin-right: 10px">
-    <mat-label>Operational Period</mat-label>
-    <mat-select  [disabled] = "!days" (selectionChange)="daySelected($event)" [(value)] = "selected">
-        <mat-option *ngFor="let day of daysArr; let i = index"value={{i+1}}>{{i+1}}</mat-option>
-    </mat-select>
-    </mat-form-field>
-    <button mat-raised-button 
-        color="primary" 
-        printSectionId="report-container" 
-        [useExistingCss]="true"
-        printTitle="Incident Report"
-        ngxPrint>Print</button>
-<div>
-<hr>
-<div id="print-section">
-    <div id="report-container">
-        <h3 style="margin: 0 auto; width: 100%; text-align:center">WASATCH COUNTY SEARCH AND RESCUE</h3>
-        <h5 style="margin:0px">Incident Report</h5>
-        <table style="float:left; width: 58%">
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Case #</th>
-                    <th>Time Dispatched</th>
-                    <th>Event Closed</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>{{date}}</td>
-                    <td>{{caseNumberFormatted}}</td>
-                    <td>{{timeDispatched}} </td>
-                    <td> </td>
-                </tr>
-            </tbody>
-        </table>
-        <table style="float: right; width: 40%">
-            <thead>
-                <tr>
-                    <th>Location And Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td style="height:116px">{{caseDescription}}</td>
-                </tr>
-            </tbody>
-        </table>
-        <table style="float: left; width: 58%">
-            <thead>
-                <tr>
-                    <th>RP Name</th>
-                    <th>RP Location</th>
-                    <th>RP Phone</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>{{reporterName}}</td>
-                    <td>.</td>
-                    <td></td>
-                </tr>
-            </tbody>
-        </table>
-        <table style="float: left; width: 58%">
-            <thead>
-                <tr>
-                    <th>Subject Name</th>
-                    <th>Problems/Injuries</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>{{missingPerson}}</td>
-                    <td>.</td>
-                </tr>
-            </tbody>
-        </table>
-        <table style="float:left; width: 100%; margin-top: 15px; table-layout: fixed;">
-            <thead>
-                <tr>
-                    <th>ID#</th>
-                    <th>Volunteer</th>
-                    <th>Hours</th>
-                    <th>SAR Vehicles</th>
-                    <th>SAR Miles</th>
-                    <th>Personal Vehicles</th>
-                    <th>Personal Miles</th>
-                    <th>Combined Miles</th>
-                </tr>
-            </thead>
-            <tbody >
-                <tr *ngFor='let shift of shifts | async'>
-                    <td>{{shift.badgeNumber}}</td>
-                    <td>{{shift.name}}</td>
-                    <td>{{shift.hours}}</td>
-                    <td>{{shift.countyVehicles}}</td>
-                    <td>{{shift.countyVehicleMiles}}</td>
-                    <td>{{shift.personalVehicles}}</td>
-                    <td>{{shift.personalVehicleMiles}}</td>
-                    <td>{{shift.totalMiles}}</td>
-                </tr>
-                <tr>
-                    <td colspan="2" style="font-weight: 600;">Total</td>
-                    <td>{{totalVolunteerHours}}</td>
-                    <td>{{totalCountyVehicles}}</td>
-                    <td>{{totalCountyMiles}}</td>
-                    <td>{{totalPersonalVehicles}}</td>
-                    <td>{{totalPersonalMiles}}</td>
-                    <td>{{totalCombinedMiles}}</td>
-                </tr>
-            </tbody>
-        </table>    
-    </div>
-    
-</div>
+<fury-page-layout mode="card">
+    <fury-page-layout-header>
+        <fury-breadcrumbs [@fadeInRight] current="Reports"></fury-breadcrumbs>
+    </fury-page-layout-header>
+
+    <fury-page-layout-content [@fadeInUpStagger]
+                            cdkDropListGroup
+                            cdkScrollable
+                            fxLayout="row"
+                            fxLayout.lt-sm="row"
+                            fxLayoutAlign="start start"
+                            fxLayoutGap="10px">
+        <fury-card>
+            <fury-card-header>
+                <div style="padding:10px">
+                    <mat-form-field style="margin-right: 10px">
+                        <mat-label>Case</mat-label>
+                        <mat-select (selectionChange)="caseSelected($event)">
+                            <mat-option *ngFor="let case of cases | async" value={{case.id}}>{{case.caseName}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field style="margin-right: 10px">
+                    <mat-label>Operational Period</mat-label>
+                    <mat-select  [disabled] = "!days" (selectionChange)="daySelected($event)" [(value)] = "selected">
+                        <mat-option *ngFor="let day of daysArr; let i = index"value={{i+1}}>{{i+1}}</mat-option>
+                    </mat-select>
+                    </mat-form-field>
+                    <button mat-raised-button 
+                        color="primary" 
+                        printSectionId="report-container" 
+                        [useExistingCss]="true"
+                        printTitle="Incident Report"
+                        ngxPrint>Print</button>
+                </div>
+            </fury-card-header>
+            <fury-card-content style="align-self: center;">
+                <hr>
+                <div id="print-section">
+                    <div id="report-container">
+                        <h3 style="margin: 0 auto; width: 100%; text-align:center">WASATCH COUNTY SEARCH AND RESCUE</h3>
+                        <h5 style="margin:0px">Incident Report</h5>
+                        <table style="float:left; width: 58%">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Case #</th>
+                                    <th>Time Dispatched</th>
+                                    <th>Event Closed</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{{date}}</td>
+                                    <td>{{caseNumberFormatted}}</td>
+                                    <td>{{timeDispatched}} </td>
+                                    <td> </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="float: right; width: 40%">
+                            <thead>
+                                <tr>
+                                    <th>Location And Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="height:116px">{{caseDescription}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="float: left; width: 58%">
+                            <thead>
+                                <tr>
+                                    <th>RP Name</th>
+                                    <th>RP Location</th>
+                                    <th>RP Phone</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{{reporterName}}</td>
+                                    <td>.</td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="float: left; width: 58%">
+                            <thead>
+                                <tr>
+                                    <th>Subject Name</th>
+                                    <th>Problems/Injuries</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{{missingPerson}}</td>
+                                    <td>.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="float:left; width: 100%; margin-top: 15px; table-layout: fixed;">
+                            <thead>
+                                <tr>
+                                    <th>ID#</th>
+                                    <th>Volunteer</th>
+                                    <th>Hours</th>
+                                    <th>SAR Vehicles</th>
+                                    <th>SAR Miles</th>
+                                    <th>Personal Vehicles</th>
+                                    <th>Personal Miles</th>
+                                    <th>Combined Miles</th>
+                                </tr>
+                            </thead>
+                            <tbody >
+                                <tr *ngFor='let shift of shifts | async'>
+                                    <td>{{shift.badgeNumber}}</td>
+                                    <td>{{shift.name}}</td>
+                                    <td>{{shift.hours}}</td>
+                                    <td>{{shift.countyVehicles}}</td>
+                                    <td>{{shift.countyVehicleMiles}}</td>
+                                    <td>{{shift.personalVehicles}}</td>
+                                    <td>{{shift.personalVehicleMiles}}</td>
+                                    <td>{{shift.totalMiles}}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" style="font-weight: 600;">Total</td>
+                                    <td>{{totalVolunteerHours}}</td>
+                                    <td>{{totalCountyVehicles}}</td>
+                                    <td>{{totalCountyMiles}}</td>
+                                    <td>{{totalPersonalVehicles}}</td>
+                                    <td>{{totalPersonalMiles}}</td>
+                                    <td>{{totalCombinedMiles}}</td>
+                                </tr>
+                            </tbody>
+                        </table>    
+                    </div>
+                    
+                </div>
+            </fury-card-content>
+        </fury-card>
+    </fury-page-layout-content>
+</fury-page-layout>
