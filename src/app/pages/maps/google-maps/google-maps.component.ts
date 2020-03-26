@@ -65,7 +65,10 @@ export class GoogleMapsComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
+    this.refresh();
+  }
 
+  refresh(){
     this.aps.getIdToken().then(token =>{
       this.locationService.getPaths(this.caseId, token).subscribe(val => {
         this.extractPath(val)
