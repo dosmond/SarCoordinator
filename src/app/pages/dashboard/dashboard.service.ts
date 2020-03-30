@@ -27,8 +27,8 @@ export class DashboardService {
 
   }
 
-  getRecentSalesTableData(token) {
-    return this.http.get(`${this.url}/getCases`, {headers: {'Authorization': token}});
+  getCases(countyId, token) {
+    return this.http.get(`${this.url}/getCases?countyId=${countyId}`, {headers: {'Authorization': token}});
   }
 
   // Currently using dummy data
@@ -49,11 +49,11 @@ export class DashboardService {
     return this.http.get(url, {headers: {'Authorization': token}})
   }
 
-  postCase(token: string, userId: string, form){
+  postCase(countyId: string, token: string, userId: string, form){
     let httpOptions = {
       headers : new HttpHeaders().set("Authorization", token)
     };
-    return this.http.post(`${this.url}/postCase?userId=${userId}`,form, httpOptions);
+    return this.http.post(`${this.url}/postCase?userId=${userId}&countyId=${countyId}`,form, httpOptions);
   }
 
   getDonutData(data) {

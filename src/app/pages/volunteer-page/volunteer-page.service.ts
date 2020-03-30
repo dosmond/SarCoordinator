@@ -22,8 +22,8 @@ export class VolunteerService {
     return of(volunteerDummyData);
   }
 
-  getVolunteers(token: string) {
-    const url = `${this.url}/getVolunteers`
+  getVolunteers(countyId:string ,token: string) {
+    const url = `${this.url}/getVolunteers?countyId=${countyId}`
     return this.http.get(url, {headers: {'Authorization': token}})
   }
 

@@ -97,8 +97,9 @@ export class DashboardComponent implements OnInit {
     let closedCount = 0;
 
     let cases : ICases = {cases : []};
+    let countyId = localStorage.getItem('currentCounty');
     this.aps.getIdToken().then(token => {
-      this.dashboardService.getRecentSalesTableData(token).subscribe((res) => {
+      this.dashboardService.getCases(countyId, token).subscribe((res) => {
         this.data = (res as ICase[]);
         this.totalCases = this.data.length
         this.data.forEach(element => {

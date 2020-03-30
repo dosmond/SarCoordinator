@@ -110,8 +110,11 @@ export class AuthProcessService implements ISignInProcess, OnInit{
         
         await this.getIdToken().then(async token => {
           return await this.getUserRole(token).toPromise().then(res => {
-            let role = (res as IUser).role
+            let userData = res as IUser;
+            let role = userData.role;
+            let countyId = userData.currentCounty;
             localStorage.setItem("role", role);
+            localStorage.setItem("currentCounty", countyId);
           })
         })
         await this.handleSuccess(signInResult);
@@ -130,6 +133,7 @@ export class AuthProcessService implements ISignInProcess, OnInit{
   async signOut() {
     try {
       await this.afa.auth.signOut();
+      localStorage.clear();
     } catch (error) {
       this.notifyError(error);
     }
@@ -182,11 +186,11 @@ export class AuthProcessService implements ISignInProcess, OnInit{
     return this.user.reload();
   }
 
-  createUserWithEmailAndName(token, form){
+  createUserWithEmailAndName(countyId, token, form){
     let httpOptions = {
       headers : new HttpHeaders().set("Authorization", token)
     };
-    return this.http.post(`${this.url}/postUser`, form, httpOptions)
+    return this.http.post(`${this.url}/postUser?countyId=${countyId}`, form, httpOptions)
   }
 
   // Search for an error message.
