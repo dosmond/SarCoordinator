@@ -1,4 +1,4 @@
-import { EventEmitter, forwardRef, Inject, Injectable } from '@angular/core';
+import { EventEmitter, forwardRef, Inject, Injectable, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { MatSnackBar, MatSnackBarConfig, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material';
 import '@firebase/auth';
@@ -9,12 +9,11 @@ import { tap } from 'rxjs/operators';
 //import { Accounts } from '../enums';
 import { ICredentials, ISignInProcess } from './auth-interfaces';
 
-// import User = firebase.User;
-
 import UserCredential = firebase.auth.UserCredential;
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { IUser } from 'src/app/models/IUser';
 
 export enum AuthProvider {
   ALL = 'all',
@@ -27,7 +26,7 @@ export type messageOnAuthErrorType = string | getErrorMessageType;
 @Injectable({
   providedIn: 'root'
 })
-export class AuthProcessService implements ISignInProcess {
+export class AuthProcessService implements ISignInProcess, OnInit{
   onSuccessEmitter: EventEmitter<any> = new EventEmitter<any>();
   onErrorEmitter: EventEmitter<any> = new EventEmitter<any>();
 
@@ -37,7 +36,7 @@ export class AuthProcessService implements ISignInProcess {
   user: User;
 
   url : string = environment.backend
-
+  userRole : string[];
   messageOnAuthSuccess: string;
   messageOnAuthError: messageOnAuthErrorType;
 
@@ -54,6 +53,10 @@ export class AuthProcessService implements ISignInProcess {
     @Inject(MAT_SNACK_BAR_DEFAULT_OPTIONS) private _matSnackBarConfig: MatSnackBarConfig
   ) {}
 
+  ngOnInit() {
+    console.log("Im initialized!")
+  }
+
   listenToUserEvents() {
     this.user$ = this.afa.user.pipe(
       tap(user => {
@@ -69,6 +72,14 @@ export class AuthProcessService implements ISignInProcess {
   getUser() {
     return this.afa.auth.currentUser;
   }
+
+  getCurrentUserInfo(token: string, userId: string){
+    let httpOptions = {
+      headers : new HttpHeaders().set("Authorization", token)
+    };
+    return this.http.get(`${this.url}/getUser?userId=${userId}`, httpOptions);
+  }
+
 
   /**
    * Reset the password of the ngx-auth-firebaseui-user via email
@@ -97,6 +108,19 @@ export class AuthProcessService implements ISignInProcess {
 
         signInResult = await this.afa.auth.signInWithEmailAndPassword(credentials.email, credentials.password) as UserCredential;
         
+        await this.getIdToken().then(async token => {
+          return await this.getUserRole(token).toPromise().then(res => {
+            let userData = res as IUser;
+            let role = userData.role;
+            let countyId = userData.currentCounty;
+
+            if(userData.userId) {
+              localStorage.setItem("userId", userData.userId)
+            }
+            localStorage.setItem("role", role);
+            localStorage.setItem("currentCounty", countyId);
+          })
+        })
         await this.handleSuccess(signInResult);
     } catch (err) {
       this.handleError(err);
@@ -113,6 +137,7 @@ export class AuthProcessService implements ISignInProcess {
   async signOut() {
     try {
       await this.afa.auth.signOut();
+      localStorage.clear();
     } catch (error) {
       this.notifyError(error);
     }
@@ -153,16 +178,23 @@ export class AuthProcessService implements ISignInProcess {
     console.error(error);
   }
 
+  getUserRole(token){
+    let httpOptions = {
+      headers : new HttpHeaders().set("Authorization", token)
+    };
+    return this.http.get(`${this.url}/getUser?uid=${this.afa.auth.currentUser.uid}`, httpOptions)
+  }
+
   // Refresh user info. Can be useful for instance to get latest status regarding email verification.
   reloadUserInfo() {
     return this.user.reload();
   }
 
-  createUserWithEmailAndName(token, form){
+  createUserWithEmailAndName(countyId, token, form){
     let httpOptions = {
       headers : new HttpHeaders().set("Authorization", token)
     };
-    return this.http.post(`${this.url}/postUser`, form, httpOptions)
+    return this.http.post(`${this.url}/postUser?countyId=${countyId}`, form, httpOptions)
   }
 
   // Search for an error message.

@@ -1,3 +1,4 @@
+
 <agm-map [style.height]='height' [mapTypeId]="'terrain'" [latitude]="lat" [longitude]="lng" [zoom]="zoom" [fullscreenControl]="true">
     <ng-container *ngFor="let paths of mapPath; index as i">
         <agm-polyline *ngIf='paths' [strokeColor]="paths.color">
@@ -7,4 +8,5 @@
         </agm-polyline>
     </ng-container>
 </agm-map>
+<button (click) = "refresh()"class = "fa fa-refresh" style="position: absolute; top: 7px; left: 7px; height: 40px; width: 40px"></button>
 

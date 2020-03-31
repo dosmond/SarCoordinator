@@ -1,5 +1,8 @@
 export interface IUser {
+    userId?: string;
     name: string;
-    roles: string[];
-    badgeNumber: string;
+    role: string;
+    badgeNumber?: string;
+    phoneNumber?: string;
+    currentCounty: string;
 }

@@ -17,7 +17,9 @@ export class LoggedInGuard implements CanActivate {
     return this.authProcess.afa.user.pipe(
       map(user => {
         if (user) {
+          if(localStorage.getItem("role") === 'admin')
             return true;
+          this.router.navigate([`/login`], { queryParams: { redirectUrl: state.url }});
         } else {
             this.router.navigate([`/login`], { queryParams: { redirectUrl: state.url }});
         }

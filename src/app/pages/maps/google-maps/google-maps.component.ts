@@ -35,7 +35,7 @@ export class GoogleMapsComponent implements OnInit, AfterViewInit {
   @ViewChild('mapContainer', {static: false}) gmap: ElementRef;
   map: google.maps.Map;
 
-  @Input('height') height = "35vh";
+  @Input('height') height = "65vh";
   @Input("lat") lat : number; 
   @Input("lng") lng : number;  
   @Input("caseId") caseId : string;
@@ -65,7 +65,10 @@ export class GoogleMapsComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
+    this.refresh();
+  }
 
+  refresh(){
     this.aps.getIdToken().then(token =>{
       this.locationService.getPaths(this.caseId, token).subscribe(val => {
         this.extractPath(val)

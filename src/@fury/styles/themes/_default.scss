@@ -13,12 +13,12 @@
 
 // Sidebar
 $sidebar-width: 330px;
-$sidebar-background: $theme-background;
+$sidebar-background: #c5282b;
 $sidebar-box-shadow: 0 2px 8px 0 rgba(0, 0, 0, .40);
 @import "../../shared/sidebar/sidebar.directive.theme";
 
 // Sidenav
-$sidenav-background: #283144 !default;
+$sidenav-background: #37474F !default;
 $sidenav-color: white !default;
 $sidenav-box-shadow: 0 2px 8px 0 rgba(0, 0, 0, .40) !default;
 $sidenav-toolbar-background: darken($sidenav-background, 3.5) !default;

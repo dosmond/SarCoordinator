@@ -40,8 +40,9 @@ export class VolunteerPageComponent implements OnInit {
 
   refreshVolunteers(){
     this.volunteerloading = true;
+    let countyId = localStorage.getItem('currentCounty')
     this.aps.getIdToken().then(token => {
-      this.volunteerService.getVolunteers(token).subscribe(res => {
+      this.volunteerService.getVolunteers(countyId, token).subscribe(res => {
         let data = {volunteers: res}
         this.volunteerDataObservable$ = of(data.volunteers);
         this.volunteerloading = false;

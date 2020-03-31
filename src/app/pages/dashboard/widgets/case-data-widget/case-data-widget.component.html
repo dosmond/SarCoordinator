@@ -1,40 +1,58 @@
 <fury-card>
-  <fury-card-header>
-    <fury-card-header-heading>{{ options.title }}</fury-card-header-heading>
-    <fury-card-header-subheading *ngIf="options.id">{{ options.id }}</fury-card-header-subheading>
-    <fury-card-header-subheading *ngIf="options.mp">{{ options.mp }}</fury-card-header-subheading>
-    <fury-card-header-subheading *ngIf="options.rp">{{ options.rp }}</fury-card-header-subheading>
-    <fury-card-header-subheading *ngIf="options.rpPhone">{{ options.rpPhone }}</fury-card-header-subheading>
-    <fury-card-header-subheading *ngIf="options.subTitle">{{ options.subTitle }}</fury-card-header-subheading>
+  <mat-tab-group>
+    <mat-tab label="Dashboard">
+      <fury-card-header>
+        <fury-card-header-heading>{{ options.title }}</fury-card-header-heading>
+        <fury-card-header-subheading *ngIf="options.id">{{ options.id }}</fury-card-header-subheading>
+        <fury-card-header-subheading *ngIf="options.mp">{{ options.mp }}</fury-card-header-subheading>
+        <fury-card-header-subheading *ngIf="options.rp">{{ options.rp }}</fury-card-header-subheading>
+        <fury-card-header-subheading *ngIf="options.rpPhone">{{ options.rpPhone }}</fury-card-header-subheading>
+        <fury-card-header-subheading *ngIf="options.subTitle">{{ options.subTitle }}</fury-card-header-subheading>
 
-    <fury-card-header-actions>
-      <button mat-icon-button (click)="openAddVolunteersDialog()">
-        <mat-icon>group_add</mat-icon>
-      </button>
-      <button mat-icon-button (click)="reload()">
-        <mat-icon>refresh</mat-icon>
-      </button>
-      <button mat-icon-button [matMenuTriggerFor]="menu">
-        <mat-icon>more_vert</mat-icon>
-      </button>
-    </fury-card-header-actions>
-  </fury-card-header>
+        <fury-card-header-actions>
+          <button mat-icon-button (click)="openAddVolunteersDialog()">
+            <mat-icon>group_add</mat-icon>
+          </button>
+          <button mat-icon-button (click)="reload()">
+            <mat-icon>refresh</mat-icon>
+          </button>
+          <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+        </fury-card-header-actions>
+      </fury-card-header>
 
-  <fury-card-content class="card-content">
-    <case-data-widget-table [data]="tableData" [columns]="tableOptions?.columns"
-                                    [pageSize]="tableOptions?.pageSize"
-                                    (deleteRow)="deleteRow($event)"
-                                    [caseId]="caseId"
-                                    [caseName]="caseName"></case-data-widget-table>
+      <fury-card-content class="card-content">
+        <case-data-widget-table [data]="tableData" [columns]="tableOptions?.columns"
+                                        [pageSize]="tableOptions?.pageSize"
+                                        (deleteRow)="deleteRow($event)"
+                                        [caseId]="caseId"
+                                        [caseName]="caseName"></case-data-widget-table>
 
-  </fury-card-content>
+      </fury-card-content>
 
-  <mat-menu #menu="matMenu">
-    <button mat-menu-item (click)="closeCase()">
-      <mat-icon> check</mat-icon>
-      <span> Close Case </span>
-    </button>
-  </mat-menu>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+          <mat-icon> check</mat-icon>
+          <span> Close Case </span>
+        </button>
+      </mat-menu>
 
-  <fury-loading-overlay [isLoading]="isLoading"></fury-loading-overlay>
+      <fury-loading-overlay [isLoading]="isLoading"></fury-loading-overlay>
+    </mat-tab>
+
+
+    <mat-tab label="Map">
+      <div fxFill fxLayout="column" fxLayoutAlign='end' [fxLayoutGap]="gap" [fxFlex]="col(2)" >
+        <div fxFlex="grow">
+          <fury-google-maps [caseId]="caseId" [zoom]="mapOptions.zoom"></fury-google-maps>
+        </div>
+      </div>
+    </mat-tab>
+
+
+    <mat-tab label="Images">
+      <fury-photo-grid [caseId]="caseId"></fury-photo-grid>
+    </mat-tab>
+  </mat-tab-group>
 </fury-card>

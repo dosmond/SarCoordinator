@@ -10,13 +10,11 @@
         <mat-form-field fxFlex="auto">
           <mat-label>First Name</mat-label>
           <input formControlName="firstName" matInput required>
-          <mat-hint>First Name</mat-hint>
         </mat-form-field>
 
         <mat-form-field fxFlex="auto">
           <mat-label>Last Name</mat-label>
           <input formControlName="lastName" matInput required>
-          <mat-hint>Last Name</mat-hint>
         </mat-form-field>
 
         <mat-form-field fxFlex="auto">
@@ -33,6 +31,14 @@
         <mat-form-field fxFlex="auto">
           <mat-label>Phone Number</mat-label>
           <input formControlName="phoneNum" matInput>
+        </mat-form-field>
+
+        <mat-form-field fxFlex="auto">
+          <mat-label>Role</mat-label>
+          <mat-select [(value)]="role">
+            <mat-option value="Admin">Admin</mat-option>
+            <mat-option value="Volunteer">Volunteer</mat-option>
+          </mat-select>
         </mat-form-field>
       </div>
 

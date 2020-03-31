@@ -20,6 +20,7 @@ export class AuditPageComponent implements OnInit {
   threshold: number;
   totalCases : number;
   caseIds;
+  countyId: string;
   volunteerDataObservable$ : Observable<any>;
   auditPageOptions: AuditPageWidgetOptions;
   auditPageTableOptions = {
@@ -49,6 +50,7 @@ export class AuditPageComponent implements OnInit {
               private datePipe : DatePipe) { }
 
   ngOnInit() {
+    this.countyId = localStorage.getItem("currentCounty");
     this.refreshVolunteers();
   }
 
@@ -64,7 +66,7 @@ export class AuditPageComponent implements OnInit {
     this.afa.getIdToken().then(token => {
       let date : string = this.datePipe.transform(new Date(), 'yyyy-MM-dd')
       // Get total case count from current date back.
-      this.auditService.getCaseCount(token,{startDate: null, endDate: date}).subscribe(res => {
+      this.auditService.getCaseCount(this.countyId, token,{startDate: null, endDate: date}).subscribe(res => {
         let data : ICaseId[] = (res as ICaseId[])
         this.caseIds = data
         this.totalCases = data.length
@@ -76,7 +78,7 @@ export class AuditPageComponent implements OnInit {
         }
       })
 
-      this.auditService.getVolunteers(token).subscribe(res => {
+      this.auditService.getVolunteers(this.countyId, token).subscribe(res => {
         let data = {volunteers: res as any[]}
         data.volunteers.forEach(volunteer => {
           let count = 0;
@@ -120,7 +122,7 @@ export class AuditPageComponent implements OnInit {
 
     this.afa.getIdToken().then(token => {
 
-      this.auditService.getCaseCount(token, dates).subscribe(res => {
+      this.auditService.getCaseCount(this.countyId, token, dates).subscribe(res => {
         let data : ICaseId[] = (res as ICaseId[])
         this.caseIds = data
         this.totalCases = data.length
@@ -132,7 +134,7 @@ export class AuditPageComponent implements OnInit {
         }
       })
 
-      this.auditService.getVolunteers(token, dates).subscribe(res => {
+      this.auditService.getVolunteers(this.countyId, token, dates).subscribe(res => {
         let data = {volunteers: res as any[]}
 
         data.volunteers.forEach(volunteer => {
@@ -153,7 +155,6 @@ export class AuditPageComponent implements OnInit {
             volunteer.percent = 100;
           }
         })
-
         this.volunteerDataObservable$ = of(data.volunteers);
       })
     })

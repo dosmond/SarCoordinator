@@ -22,6 +22,7 @@ export class VolunteerFormDialogComponent implements OnInit {
   phonePrefixOptions = ['+1', '+27', '+44', '+49', '+61', '+91'];
 
   passwordInputType = 'password';
+  role = 'Volunteer';
 
   constructor(private fb: FormBuilder,
               private cd: ChangeDetectorRef,
@@ -61,23 +62,21 @@ export class VolunteerFormDialogComponent implements OnInit {
 
     this.auth.getIdToken().then(token => {
       let controls = this.accountFormGroup.controls
-
-      this.auth.createUserWithEmailAndName(token,
-                                           {firstName: controls["firstName"].value,
-                                            lastName: controls["lastName"].value,
-                                            email: controls["email"].value,
-                                            phoneNumber: controls["phoneNum"].value,
-                                            badgeNum: controls["badgeNum"].value,
-                                            roles: ["volunteer"]}).subscribe(res => {
-
-          this.dialogRef.close({firstName: controls["firstName"].value,
-          lastName: controls["lastName"].value,
-          email: controls["email"].value,
-          phoneNumber: controls["phoneNum"].value,
-          badgeNum: controls["badgeNum"].value,
-          roles: ["volunteer"],
-          created: true});
-        })
+      let countyId = localStorage.getItem("currentCounty");
+      let userBody = {
+        firstName: controls["firstName"].value,
+        lastName: controls["lastName"].value,
+        email: controls["email"].value,
+        phoneNumber: controls["phoneNum"].value,
+        badgeNum: controls["badgeNum"].value,
+        role: this.role.toLowerCase()
+      }
+      
+      this.auth.createUserWithEmailAndName(countyId, token, userBody).subscribe(res => {
+        let userData = userBody;
+        userData['created'] = true;
+        this.dialogRef.close(userData);
+      })
     })
   }
 

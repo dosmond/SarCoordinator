@@ -1,0 +1,13 @@
+<div class="gallery-container" *ngIf="galleryImages?.length > 0; then gallery else placeholder"></div>
+<ng-template #gallery>
+    <ngx-gallery #gallery class="gallery" [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+</ng-template>
+<ng-template #placeholder>
+    <div class="image-placeholder">
+        <img src="../../../../assets/no-images-placeholder.png" alt="no-images-placeholder">
+    </div>
+</ng-template>
+
+
+
+

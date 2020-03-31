@@ -27,6 +27,7 @@ th, td {
   background-color: white;
   page-break-after: always;
   position: relative;
+  border: black;
   //padding: 10px;
 }
 
@@ -35,4 +36,8 @@ th, td {
   padding: 10px;
   height: 100%;
   box-sizing: border-box
+}
+
+.report {
+  max-height: 50%;
 }

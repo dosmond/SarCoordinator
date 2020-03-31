@@ -7,6 +7,7 @@ import { scaleInAnimation } from '../../../../@fury/animations/scale-in.animatio
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog'
 import { AuthProcessService } from '../../authentication/auth-service';
 import { DashboardService } from '../../dashboard/dashboard.service';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'fury-create-case-form',
@@ -26,7 +27,8 @@ export class CreateCaseFormDialogComponent implements OnInit {
               private snackbar: MatSnackBar,
               private auth: AuthProcessService,
               public dialogRef: MatDialogRef<CreateCaseFormDialogComponent>,
-              private dashboardService: DashboardService) {}
+              private dashboardService: DashboardService,
+              private afa: AngularFireAuth) {}
 
   ngOnInit() {
     this.caseFormGroup = this.fb.group({
@@ -49,7 +51,9 @@ export class CreateCaseFormDialogComponent implements OnInit {
       let controls = this.caseFormGroup.controls;
       let date = new Date();
       let now = (date.getMonth()+1) + ' ' + date.getDate() + ' ' + date.getFullYear();
-      this.dashboardService.postCase(token, 'AmA2e16pJYMBFjijOvDb',
+      let countyId = localStorage.getItem("currentCounty");
+      let userId = this.afa.auth.currentUser.uid;
+      this.dashboardService.postCase(countyId, token, userId,
         {
           caseNumber: controls['caseNumber'].value,
           caseName: controls['caseName'].value,
