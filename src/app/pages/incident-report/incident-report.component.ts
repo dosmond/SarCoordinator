@@ -48,7 +48,8 @@ export class IncidentReportComponent implements OnInit {
     // });
 
     this.aps.getIdToken().then(token => { //TODO It'd be better to check the exp date, then get a new token only if needed.
-      this.cases = this.reportService.getCases(token);
+      let countyId = localStorage.getItem("currentCounty");
+      this.cases = this.reportService.getCases(countyId, token);
     });
     
   }

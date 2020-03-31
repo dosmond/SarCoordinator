@@ -113,6 +113,10 @@ export class AuthProcessService implements ISignInProcess, OnInit{
             let userData = res as IUser;
             let role = userData.role;
             let countyId = userData.currentCounty;
+
+            if(userData.userId) {
+              localStorage.setItem("userId", userData.userId)
+            }
             localStorage.setItem("role", role);
             localStorage.setItem("currentCounty", countyId);
           })

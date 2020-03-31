@@ -18,8 +18,8 @@ export class IncidentReportService {
     return this.http.get<IShift>(`${this.url}/getShiftReports?caseId=${caseId}&day=${day}`, httpOptions);
   }
 
-  getCases(token: string){
-    return this.http.get<ICase>(`${this.url}/getCases`, {headers: {'Authorization': token}});
+  getCases(countyId: string, token: string){
+    return this.http.get<ICase>(`${this.url}/getCases?countyId=${countyId}`, {headers: {'Authorization': token}});
   }
 
   getCaseData(caseId: string, token: string){

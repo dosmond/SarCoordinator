@@ -31,23 +31,25 @@ export class AuditPageService {
     return this.http.delete(`${this.url}/deleteVolunteerFromCase?caseId=${caseId}&userId=${userId}`, httpOptions);
   }
 
-  getVolunteers(token: string, dates?) {
+  getVolunteers(countyId: string, token: string, dates?) {
+    let urlTarget = `${this.url}/getVolunteers?countyId=${countyId}`;
     if(dates === undefined)
-      return this.http.get(`${this.url}/getVolunteers`, {headers: {'Authorization': token}})
+      return this.http.get(urlTarget, {headers: {'Authorization': token}})
     else{
       if(dates.endDate == null)
-        return this.http.get(`${this.url}/getVolunteers?startDate=${dates.startDate}`, {headers: {'Authorization': token}})
+        return this.http.get(`${urlTarget}&startDate=${dates.startDate}`, {headers: {'Authorization': token}})
       else
-        return this.http.get(`${this.url}/getVolunteers?startDate=${dates.startDate}&endDate=${dates.endDate}`, {headers: {'Authorization': token}})
+        return this.http.get(`${urlTarget}&startDate=${dates.startDate}&endDate=${dates.endDate}`, {headers: {'Authorization': token}})
     }
   }
 
-  getCaseCount(token: string, dates){
+  getCaseCount(countyId:string, token: string, dates){
+    let urlTarget = `${this.url}/getCases?countyId=${countyId}`;
     if(dates.endDate == null)
-      return this.http.get(`${this.url}/getCases?startDate=${dates.startDate}`, {headers: {'Authorization': token}})
+      return this.http.get(`${urlTarget}&startDate=${dates.startDate}`, {headers: {'Authorization': token}})
     else if(dates.startDate != null)
-      return this.http.get(`${this.url}/getCases?startDate=${dates.startDate}&endDate=${dates.endDate}`, {headers: {'Authorization': token}})
+      return this.http.get(`${urlTarget}&startDate=${dates.startDate}&endDate=${dates.endDate}`, {headers: {'Authorization': token}})
     else
-      return this.http.get(`${this.url}/getCases?endDate=${dates.endDate}`, {headers: {'Authorization': token}})
+      return this.http.get(`${urlTarget}&endDate=${dates.endDate}`, {headers: {'Authorization': token}})
   }
 }
