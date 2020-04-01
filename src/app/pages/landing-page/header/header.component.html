@@ -10,7 +10,7 @@
         <span fxFlex="20"></span>
 
 
-        <button mat-button fxHide.sm="false" fxHide="true"
+        <button mat-button fxHide.sm="false" fxHide.xs="false" fxHide="true"
                 class="navbar-toggler toggler"
                 [matMenuTriggerFor]="menu"
                 id="menu_button"
@@ -23,28 +23,28 @@
         <mat-menu #menu="matMenu">
             <div class="collapse navbar-collapse" id="navbarCollapse" scrollSpy fxFlex="50">
                 <div class="navbar-nav navbar-center" id="mySidenav">
-                    <button mat-button class="nav-item">
+                    <button mat-button>
                         <a data="id_home"  [ngx-scroll-to]="'#home'" class="nav-link">Home</a>
                     </button>
-                    <button mat-button class="nav-item">
+                    <button mat-button>
                         <a data="id_features"  [ngx-scroll-to]="'#features'" class="nav-link">Features</a>
                     </button>
-                    <button mat-button class="nav-item">
+                    <button mat-button>
                         <a data="id_services"  [ngx-scroll-to]="'#services'" class="nav-link">Services</a>
                     </button>
-                    <button mat-button class="nav-item">
+                    <button mat-button>
                         <a data="id_about" [ngx-scroll-to]="'#about'" class="nav-link">About</a>
                     </button>
-                    <button mat-button class="nav-item">
+                    <button mat-button>
                         <a data="id_contact" [ngx-scroll-to]="'#contact'" class="nav-link">Contact</a>
                     </button>
                 </div>
             </div>
         </mat-menu>
 
-        <div fxHide.sm="true" class="collapse navbar-collapse" id="navbarCollapse" scrollSpy fxFlex="50">
+        <div fxHide.sm="true" fxHide.xs="true" class="collapse navbar-collapse" id="navbarCollapse" scrollSpy fxFlex="50">
             <div class="navbar-nav navbar-center" id="mySidenav">
-                <button mat-button class="nav-item">
+                <button mat-button>
                     <a data="id_home"  [ngx-scroll-to]="'#home'" class="nav-link">Home</a>
                 </button>
                 <button mat-button class="nav-item">

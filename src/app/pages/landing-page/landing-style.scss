@@ -474,8 +474,8 @@
    }
 
    .img-responsive {
-    width: auto;
-    max-height: 300px;
+    max-width: 300px;
+    height: auto;
    }
    
    /* ------------- Demo 1 bg-pattern ------------- */
@@ -809,7 +809,7 @@
    }
 
    .team-img {
-     max-height: 300px;
+     max-height: 250px;
      width: auto;
    }
    
