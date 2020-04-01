@@ -68,7 +68,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatStepperModule,
     FlexLayoutModule,
     MatDividerModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatToolbarModule
   ]
 })
 export class MaterialModule {

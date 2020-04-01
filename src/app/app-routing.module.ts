@@ -3,8 +3,14 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './layout/layout.component';
 import { IncidentReportComponent } from './pages/incident-report/incident-report.component';
+import { LandingLayoutComponent } from './pages/landing-page/layout/layout.component';
 
 const routes: Routes = [
+  {
+    path: '',
+    component: LandingLayoutComponent,
+    loadChildren: './pages/landing-page/home/home.module#HomeModule',
+  },
   {
     path: 'login',
     loadChildren: './pages/authentication/login/login.module#LoginModule',
@@ -18,7 +24,7 @@ const routes: Routes = [
     loadChildren: './pages/authentication/forgot-password/forgot-password.module#ForgotPasswordModule',
   },
   {
-    path: '',
+    path: 'dashboard',
     component: LayoutComponent,
     children: [
       {

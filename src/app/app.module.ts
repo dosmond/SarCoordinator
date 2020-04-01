@@ -1,3 +1,4 @@
+import { LandingLayoutModule } from './pages/landing-page/layout/layout.module';
 import { LoggedInGuard } from './pages/authentication/logged-in-guard';
 import { AuthProcessService } from './pages/authentication/auth-service';
 import { HttpClientModule } from '@angular/common/http';
@@ -19,6 +20,7 @@ import { AngularFireModule } from "@angular/fire";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { IncidentReportModule } from './pages/incident-report/incident-report.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { HomeModule } from './pages/landing-page/home/home.module';
 
 @NgModule({
   imports: [
@@ -32,6 +34,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
     // Layout Module (Sidenav, Toolbar, Quickpanel, Content)
     LayoutModule,
+    LandingLayoutModule,
+    HomeModule,
     FontAwesomeModule,
 
     // Google Maps Module

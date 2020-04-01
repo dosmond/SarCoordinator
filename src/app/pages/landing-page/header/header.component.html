@@ -1,0 +1,61 @@
+<mat-toolbar fxAlign="row" fxAlignLayout="center center" class="navbar navbar-expand-lg navbar-custom sticky sticky-dark" id="navbar1" style="position: fixed; top: 0;">
+    <mat-toolbar-row>
+        <div fxFlex="30">
+            <a class="navbar-brand logo text-uppercase" routerLink="/">
+                <img src="assets/logoV5-transparent.png" width="50" height="50"/>SAR Solutions
+            </a>
+        </div><!-- LOGO -->
+
+
+        <span fxFlex="20"></span>
+
+
+        <button mat-button class="navbar-toggler" [matMenuTriggerFor]="menu" id="menu_button" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="mdi mdi-menu"></i>
+        </button>
+
+        <mat-menu #menu="matMenu">
+            <div class="collapse navbar-collapse" id="navbarCollapse" scrollSpy fxFlex="50">
+                <div class="navbar-nav navbar-center" id="mySidenav">
+                    <button mat-button class="nav-item">
+                        <a data="id_home"  [ngx-scroll-to]="'#home'" class="nav-link">Home</a>
+                    </button>
+                    <button mat-button class="nav-item">
+                        <a data="id_features"  [ngx-scroll-to]="'#features'" class="nav-link">Features</a>
+                    </button>
+                    <button mat-button class="nav-item">
+                        <a data="id_services"  [ngx-scroll-to]="'#services'" class="nav-link">Services</a>
+                    </button>
+                    <button mat-button class="nav-item">
+                        <a data="id_about" [ngx-scroll-to]="'#about'" class="nav-link">About</a>
+                    </button>
+                    <button mat-button class="nav-item">
+                        <a data="id_contact" [ngx-scroll-to]="'#contact'" class="nav-link">Contact</a>
+                    </button>
+                    <button mat-button type="button" class="btn btn-custom navbar-btn btn-rounded waves-effect waves-light">Try it Free</button>
+                </div>
+            </div>
+        </mat-menu>
+
+        <div class="collapse navbar-collapse" id="navbarCollapse" scrollSpy fxFlex="50">
+            <div class="navbar-nav navbar-center" id="mySidenav">
+                <button mat-button class="nav-item">
+                    <a data="id_home"  [ngx-scroll-to]="'#home'" class="nav-link">Home</a>
+                </button>
+                <button mat-button class="nav-item">
+                    <a data="id_features"  [ngx-scroll-to]="'#features'" class="nav-link">Features</a>
+                </button>
+                <button mat-button class="nav-item">
+                    <a data="id_services"  [ngx-scroll-to]="'#services'" class="nav-link">Services</a>
+                </button>
+                <button mat-button class="nav-item">
+                    <a data="id_about" [ngx-scroll-to]="'#about'" class="nav-link">About</a>
+                </button>
+                <button mat-button class="nav-item">
+                    <a data="id_contact" [ngx-scroll-to]="'#contact'" class="nav-link">Contact</a>
+                </button>
+                <button mat-button type="button" class="btn btn-custom navbar-btn btn-rounded waves-effect waves-light">Try it Free</button>
+            </div>
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>
