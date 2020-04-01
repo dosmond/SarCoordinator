@@ -10,7 +10,13 @@
         <span fxFlex="20"></span>
 
 
-        <button mat-button class="navbar-toggler" [matMenuTriggerFor]="menu" id="menu_button" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <button mat-button fxHide.sm="false" fxHide="true"
+                class="navbar-toggler toggler"
+                [matMenuTriggerFor]="menu"
+                id="menu_button"
+                aria-controls="navbarCollapse"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
             <i class="mdi mdi-menu"></i>
         </button>
 
@@ -32,12 +38,11 @@
                     <button mat-button class="nav-item">
                         <a data="id_contact" [ngx-scroll-to]="'#contact'" class="nav-link">Contact</a>
                     </button>
-                    <button mat-button type="button" class="btn btn-custom navbar-btn btn-rounded waves-effect waves-light">Try it Free</button>
                 </div>
             </div>
         </mat-menu>
 
-        <div class="collapse navbar-collapse" id="navbarCollapse" scrollSpy fxFlex="50">
+        <div fxHide.sm="true" class="collapse navbar-collapse" id="navbarCollapse" scrollSpy fxFlex="50">
             <div class="navbar-nav navbar-center" id="mySidenav">
                 <button mat-button class="nav-item">
                     <a data="id_home"  [ngx-scroll-to]="'#home'" class="nav-link">Home</a>
@@ -54,7 +59,7 @@
                 <button mat-button class="nav-item">
                     <a data="id_contact" [ngx-scroll-to]="'#contact'" class="nav-link">Contact</a>
                 </button>
-                <button mat-button type="button" class="btn btn-custom navbar-btn btn-rounded waves-effect waves-light">Try it Free</button>
+                <button mat-button type="button" (click)="toLogin()" class="btn btn-custom navbar-btn btn-rounded waves-effect waves-light">Try it Free</button>
             </div>
         </div>
     </mat-toolbar-row>

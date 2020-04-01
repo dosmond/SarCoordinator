@@ -74,6 +74,10 @@ console.log(JSON.stringify(self.sections));
       document.querySelector('a[data="id_blog"]').setAttribute('style', 'color:'+color+'!important');
       document.querySelector('a[data="id_contact"]').setAttribute('style', 'color:'+color+'!important');
   }
+
+  toLogin() {
+    this.router.navigate(['/login']);
+  }
 }
 
 

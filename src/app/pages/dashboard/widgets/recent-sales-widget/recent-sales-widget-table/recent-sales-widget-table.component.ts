@@ -42,7 +42,7 @@ export class RecentSalesWidgetTableComponent implements OnInit, AfterViewInit {
   }
 
   navigate(row: any){
-    this.router.navigate([`case-dashboard`], {queryParams: {caseId : row.id}});
+    this.router.navigate([`dashboard/case-dashboard`], {queryParams: {caseId : row.id}});
   }
 
   ngOnInit() {

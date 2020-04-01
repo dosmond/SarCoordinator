@@ -46,28 +46,28 @@ export class AppComponent {
       },
       {
         name: 'Dashboard',
-        routeOrFunction: '/',
+        routeOrFunction: '/dashboard',
         icon: 'dashboard',
         position: 10,
         pathMatchExact: true
       },
       {
         name: 'Audit',
-        routeOrFunction: '/audit',
+        routeOrFunction: '/dashboard/audit',
         icon: 'show_chart',
         position: 15,
         pathMatchExact: true
       },
       {
         name: 'Volunteers',
-        routeOrFunction: '/volunteers',
+        routeOrFunction: '/dashboard/volunteers',
         icon: 'person',
         position: 20,
         pathMatchExact: true
       },
       {
         name: 'Reports',
-        routeOrFunction: '/reports',
+        routeOrFunction: '/dashboard/reports',
         icon: 'perm_media',
         position: 25,
         pathMatchExact: true

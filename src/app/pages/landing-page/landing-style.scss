@@ -144,9 +144,9 @@
    }
    
    .bg-overlay {
-     background: #005C97;
+     background: #607D8B;
      /* fallback for old browsers */
-     background: linear-gradient(to right, #363795, #005C97);
+     background: linear-gradient(to right, rgb(70, 88, 97), #607D8B);
      /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
      opacity: 0.95;
      position: absolute;
@@ -368,6 +368,11 @@
      margin-top: 0px;
      margin-bottom: 0px;
      color: #ffffff;
+   }
+
+   .toggler {
+     position: fixed;
+     right: 10px
    }
    
    .navbar-custom .btn-custom {
