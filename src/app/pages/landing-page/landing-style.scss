@@ -150,6 +150,10 @@
      left: 0;
      top: 0;
    }
+
+   .text-centered {
+     vertical-align: middle;
+   }
    
    .bg-overlay-light {
      background-color: rgba(0, 0, 0, 0.5);
@@ -402,7 +406,7 @@
      =====================================*/
    
    .bg-home {
-     background: url("../../../../assets/images/bg-home.jpg");
+     background: url("../../../../assets/images/home-dashboard.png");
      background-repeat: no-repeat;
      background-size: cover;
      background-position: center;
@@ -474,8 +478,13 @@
    }
 
    .img-responsive {
-    max-width: 300px;
+    max-width: 500px;
     height: auto;
+
+    @media only screen and (max-width: 450px){
+      max-width: 250px;
+      height: auto;
+    }
    }
    
    /* ------------- Demo 1 bg-pattern ------------- */
