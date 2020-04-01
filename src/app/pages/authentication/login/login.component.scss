@@ -4,6 +4,26 @@
   width: 100%;
 }
 
+.bg-account-pages {
+  background: linear-gradient(to right, rgb(70, 88, 97), #607D8B);
+  opacity: 0.9;
+}
+
+.bg-overlay {
+  background: #607D8B;
+  /* fallback for old browsers */
+  background: linear-gradient(to right, rgb(70, 88, 97), #607D8B);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  opacity: 0.95;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  top: 0;
+}
+
 #login-form-wrapper {
     flex: 1 0 auto;
     padding: 32px;

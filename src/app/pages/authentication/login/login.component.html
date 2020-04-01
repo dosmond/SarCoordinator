@@ -1,11 +1,12 @@
-<div class="background-pattern page" fxLayout="column" fxLayoutAlign="center center">
-
+<div class="bg-account-pages page" fxLayout="column" fxLayoutAlign="center center" style="background-image: url('assets/images/img-3.jpg'); background-size: cover; background-position: center;">
+  <div class="bg-overlay"></div>
+    <mat-card>
         <div id="login-form-wrapper" fxLayout="column" fxLayoutAlign="center center">
       
           <div id="login-form">
       
             <div *ngIf="logoUrl" class="logo">
-              <img [src]="logoUrl" alt="logo">
+              <img [src]="logoUrl" alt="logo" style="max-height: 150px; width: auto">
             </div>
       
             <div class="title">{{titleText}}</div>
@@ -67,4 +68,5 @@
             </div>
           </div>
         </div>
+      </mat-card>
 </div>

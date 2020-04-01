@@ -13,7 +13,7 @@ import {isPlatformBrowser} from '@angular/common';
 })
 export class LoginComponent implements OnInit {
 
-  @Input() logoUrl: string;
+  @Input() logoUrl: string = "assets/logoV5-transparent.png";
   @Input() providers: string[] | string = AuthProvider.ALL; //  google, facebook, twitter, github as array or all as one single string
   @Input() appearance: MatFormFieldAppearance;
   @Input() registrationEnabled = true;
