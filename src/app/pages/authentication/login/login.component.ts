@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import {Component, EventEmitter, Inject, Input, OnInit, Output, PLATFORM_ID, ViewEncapsulation} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MatFormFieldAppearance, ThemePalette} from '@angular/material';
@@ -53,7 +54,8 @@ export class LoginComponent implements OnInit {
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
     public authProcess: AuthProcessService,
-    private _formBuilder: FormBuilder) {
+    private _formBuilder: FormBuilder,
+    private router: Router) {
     this.onSuccess = authProcess.onSuccessEmitter;
     this.onError = authProcess.onErrorEmitter;
   }
@@ -86,7 +88,7 @@ export class LoginComponent implements OnInit {
   }
 
   async resetPassword() {
-    
+    this.router.navigate(['/forgot-password'])
   }
 
   async login() {

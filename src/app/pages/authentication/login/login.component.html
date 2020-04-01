@@ -6,7 +6,7 @@
           <div id="login-form">
       
             <div *ngIf="logoUrl" class="logo">
-              <img [src]="logoUrl" alt="logo" style="max-height: 150px; width: auto">
+              <img [src]="logoUrl" alt="logo" style="max-height: 150px; width: 150px; margin: 32px auto;">
             </div>
       
             <div class="title">{{titleText}}</div>
@@ -44,7 +44,7 @@
                         class="forgot-password"
                         [color]="color"
                         type="button"
-                        (click)="onResetPasswordRequested.emit()">
+                        (click)="resetPassword()">
                   {{forgotPasswordText}}
                 </button>
               </div>

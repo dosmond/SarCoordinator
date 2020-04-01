@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { fadeInUpAnimation } from '../../../../@fury/animations/fade-in-up.animation';
@@ -10,7 +10,7 @@ import { fadeInUpAnimation } from '../../../../@fury/animations/fade-in-up.anima
   animations: [fadeInUpAnimation]
 })
 export class ForgotPasswordComponent implements OnInit {
-
+  @Input() logoUrl: string = "assets/logoV5-transparent.png";
   form = this.fb.group({
     email: [null, Validators.required]
   });
