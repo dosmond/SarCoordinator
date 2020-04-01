@@ -170,7 +170,7 @@ export class AuthProcessService implements ISignInProcess, OnInit{
     this.onSuccessEmitter.next(userCredential.user);
     const fallbackMessage = `Hello ${userCredential.user.displayName ? userCredential.user.displayName : ''}!`;
     this.showToast(this.messageOnAuthSuccess || fallbackMessage); 
-    this.router.navigate(["/"]);
+    this.router.navigate(["/dashboard"]);
   }
 
   handleError(error: any) {
