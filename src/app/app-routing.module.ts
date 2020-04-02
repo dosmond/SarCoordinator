@@ -35,21 +35,6 @@ const routes: Routes = [
         pathMatch: 'full',
         canActivate: [LoggedInGuard]
       },
-      // {
-      //   path: 'apps/inbox',
-      //   loadChildren: './pages/apps/inbox/inbox.module#InboxModule',
-      //   canActivate: [LoggedInGuard]
-      // },
-      // {
-      //   path: 'apps/calendar',
-      //   loadChildren: './pages/apps/calendar/calendar.module#CalendarAppModule',
-      //   canActivate: [LoggedInGuard]
-      // },
-      // {
-      //   path: 'apps/chat',
-      //   loadChildren: './pages/apps/chat/chat.module#ChatModule',
-      //   canActivate: [LoggedInGuard]
-      // },
       {
         path: 'apps/maps',
         loadChildren: './pages/maps/google-maps/google-maps.module#GoogleMapsModule',
