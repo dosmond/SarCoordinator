@@ -4,6 +4,8 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './layout/layout.component';
 import { IncidentReportComponent } from './pages/incident-report/incident-report.component';
 import { LandingLayoutComponent } from './pages/landing-page/layout/layout.component';
+import { ForbiddenComponent } from './pages/miscellaneous/forbidden/forbidden.component';
+import { NotFoundComponent } from './pages/miscellaneous/not-found/not-found.component';
 
 const routes: Routes = [
   {
@@ -33,21 +35,21 @@ const routes: Routes = [
         pathMatch: 'full',
         canActivate: [LoggedInGuard]
       },
-      {
-        path: 'apps/inbox',
-        loadChildren: './pages/apps/inbox/inbox.module#InboxModule',
-        canActivate: [LoggedInGuard]
-      },
-      {
-        path: 'apps/calendar',
-        loadChildren: './pages/apps/calendar/calendar.module#CalendarAppModule',
-        canActivate: [LoggedInGuard]
-      },
-      {
-        path: 'apps/chat',
-        loadChildren: './pages/apps/chat/chat.module#ChatModule',
-        canActivate: [LoggedInGuard]
-      },
+      // {
+      //   path: 'apps/inbox',
+      //   loadChildren: './pages/apps/inbox/inbox.module#InboxModule',
+      //   canActivate: [LoggedInGuard]
+      // },
+      // {
+      //   path: 'apps/calendar',
+      //   loadChildren: './pages/apps/calendar/calendar.module#CalendarAppModule',
+      //   canActivate: [LoggedInGuard]
+      // },
+      // {
+      //   path: 'apps/chat',
+      //   loadChildren: './pages/apps/chat/chat.module#ChatModule',
+      //   canActivate: [LoggedInGuard]
+      // },
       {
         path: 'apps/maps',
         loadChildren: './pages/maps/google-maps/google-maps.module#GoogleMapsModule',
@@ -79,6 +81,15 @@ const routes: Routes = [
         canActivate: [LoggedInGuard]
       }
     ],
+  },
+  {
+    path: '403',
+    loadChildren: './pages/miscellaneous/forbidden/forbidden.module#ForbiddenModule'
+  },
+  {
+    path: '**',
+    pathMatch: 'full',
+    loadChildren: './pages/miscellaneous/not-found/not-found.module#NotFoundModule'
   }
 ];
 

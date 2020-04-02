@@ -19,9 +19,9 @@ export class LoggedInGuard implements CanActivate {
         if (user) {
           if(localStorage.getItem("role") === 'admin')
             return true;
-          this.router.navigate([`/login`], { queryParams: { redirectUrl: state.url }});
+          this.router.navigate([`/403`], { queryParams: { redirectUrl: state.url }});
         } else {
-            this.router.navigate([`/login`], { queryParams: { redirectUrl: state.url }});
+          this.router.navigate([`/login`], { queryParams: { redirectUrl: state.url }});
         }
       })
     );

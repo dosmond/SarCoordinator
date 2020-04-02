@@ -1,0 +1,38 @@
+body, html {
+    height: 100%;
+}
+
+.bg {
+    background-image: url("../../../../assets/images/not-found/overlook.jpg");
+    height: 100%;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.overlay {
+    position: absolute;
+    opacity: .5;
+    height: 100%;
+    width: 100%;
+    background-color: white; 
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.info-box {
+    margin-top: 15vh;
+    display: inline-block;
+    max-width: 200px;
+}
+
+.nav-button {
+    margin: 2px 5px;
+    color: white;
+    background-color: #c5282b;
+}
