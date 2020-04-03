@@ -10,11 +10,11 @@ export class AddVolunteersService {
 
     constructor(private http: HttpClient){}
 
-    getVolunteers(token: string) {
+    getVolunteers(countyID: string, token: string) {
         let httpOptions = {
             headers : new HttpHeaders().set("Authorization", token)
         };
-        return this.http.get(`${this.url}/getVolunteers`, httpOptions)
+        return this.http.get(`${this.url}/getVolunteers?countyId=${countyID}`, httpOptions)
       }
 
     putVolunteers(token: string, caseId: string, volunteerIds){

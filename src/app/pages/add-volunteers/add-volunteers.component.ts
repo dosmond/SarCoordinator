@@ -48,7 +48,8 @@ export class AddVolunteersComponent implements OnInit {
 
   ngOnInit() {
     this.auth.getIdToken().then(token => {
-      this.addVolunteersService.getVolunteers(token).subscribe(res => {
+      let countyId = localStorage.getItem('currentCounty')
+      this.addVolunteersService.getVolunteers(countyId, token).subscribe(res => {
         let data$ = {volunteers: res}
         this.volunteerDataObservable$ = of(data$.volunteers);
       })
