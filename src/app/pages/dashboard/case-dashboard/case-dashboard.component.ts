@@ -8,6 +8,8 @@ import { CaseDataWidgetOptions } from '../widgets/case-data-widget/case-data-wid
 import { AuthProcessService } from '../../authentication/auth-service';
 import { fadeInUpStaggerAnimation } from 'src/@fury/animations/fade-in-up.animation';
 import { fadeInRightAnimation } from 'src/@fury/animations/fade-in-right.animation';
+import { MatDialog } from '@angular/material';
+import { CreateCaseFormDialogComponent } from '../../forms/create-case-form/create-case-form.component';
 
 @Component({
   selector: 'case-dashboard',
@@ -23,7 +25,10 @@ export class CaseDashboardComponent implements OnInit {
   caseId : string;
   missingPerson : string;
   reporterName : string;
+  reporterPhone: string;
   caseName : string;
+  caseNumber: string;
+
   volunteers$: Observable<any[]>;
   mapOptions = {
     zoom : 15
@@ -48,7 +53,8 @@ export class CaseDashboardComponent implements OnInit {
   constructor(private dashboardService: CaseDashboardService,
               private afa: AuthProcessService,
               private router: Router,
-              private routeParse: ActivatedRoute) {
+              private routeParse: ActivatedRoute,
+              public dialog: MatDialog) {
     /**
      * Edge wrong drawing fix
      * Navigate anywhere and on Promise right back
@@ -70,6 +76,10 @@ export class CaseDashboardComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.refresh();
+  }
+
+  refresh() {
     this.caseId = this.routeParse.snapshot.queryParamMap.get("caseId")
 
     // Initialize to avoid errors.
@@ -90,18 +100,17 @@ export class CaseDashboardComponent implements OnInit {
         this.reporterName = this.data.reporterName;
         this.caseName = this.data.caseName;
         this.volunteers$ = of(this.data.volunteers);
+        this.caseNumber = this.data.caseNumber;
   
         this.caseDataOptions = {
           title: `Case Name: ${this.caseName}`,
-          id: `Case ID: ${this.caseId}`,
+          id: `Case Number: ${this.caseNumber}`,
           mp: `Missing Person: ${this.missingPerson}`,
           rp: `Reporting Person: ${this.reporterName}`,
-          rpPhone: 'RP Contact Phone: 555-123-4567',
-          subTitle: 'All Volunteers on this case'
+          rpPhone: `RP Contact Phone: ${this.reporterPhone ? this.reporterPhone: ''}`,
         };
       });
     })
-    
   }
 
   closecase(){
@@ -109,6 +118,23 @@ export class CaseDashboardComponent implements OnInit {
       this.dashboardService.closeCase(token, this.caseId).subscribe(res => {
       });
     })
+  }
+
+  editcase(){
+    this.openEditCaseDialog();
+  }
+
+  openEditCaseDialog(): void{
+    const dialogRef = this.dialog.open(CreateCaseFormDialogComponent, {
+      width: '30vw',
+      minWidth: '300px',
+      data: this.data
+    });
+
+    // dialogRef.afterClosed().subscribe(result => {
+    //   if(result != undefined && result.created == true)
+    //     this.refresh();
+    // });
   }
   
 

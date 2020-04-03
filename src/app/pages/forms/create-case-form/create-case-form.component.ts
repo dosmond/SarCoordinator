@@ -22,7 +22,8 @@ export class CreateCaseFormDialogComponent implements OnInit {
 
   phonePrefixOptions = ['+1', '+27', '+44', '+49', '+61', '+91'];
 
-  constructor(private fb: FormBuilder,
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any,
+              private fb: FormBuilder,
               private cd: ChangeDetectorRef,
               private snackbar: MatSnackBar,
               private auth: AuthProcessService,
@@ -32,12 +33,12 @@ export class CreateCaseFormDialogComponent implements OnInit {
 
   ngOnInit() {
     this.caseFormGroup = this.fb.group({
-      caseNumber: [null, Validators.required],
-      caseName: [null, Validators.required],
-      locationAndDescription: '',
-      subjectName: [null, Validators.required],
-      rpName: '',
-      rpPhone: ''
+      caseNumber: this.data ? this.data.caseNumber: '',
+      caseName: this.data ? this.data.caseName: '',
+      locationAndDescription: this.data ? this.data.description: '',
+      subjectName: this.data ? this.data.missingPersonName: '',
+      rpName: this.data ? this.data.reporterName: '',
+      rpPhone: this.data ? this.data.reporterPhone: ''
     });
   }
 
@@ -60,7 +61,8 @@ export class CreateCaseFormDialogComponent implements OnInit {
           date: now,
           description: controls['locationAndDescription'].value,
           missingPersonName: [controls['subjectName'].value],
-          reporterName: controls['rpName'].value
+          reporterName: controls['rpName'].value,
+          reporterPhone: controls['rpPhone'].value,
         }).subscribe(res => {
           this.dialogRef.close({created: true});
           this.snackbar.open('Case created successfully!', null, {

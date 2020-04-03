@@ -7,6 +7,7 @@ import { FurySharedModule } from '../../../../@fury/fury-shared.module';
 import { CaseDashboardComponent } from '../case-dashboard/case-dashboard.component';
 import { CaseDataWidgetModule } from '../widgets/case-data-widget/case-data-widget.module';
 import { GoogleMapsModule } from '../../maps/google-maps/google-maps.module';
+import { DashboardService } from '../dashboard.service';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import { GoogleMapsModule } from '../../maps/google-maps/google-maps.module';
     CaseDataWidgetModule,
   ],
   declarations: [CaseDashboardComponent],
-  providers: [CaseDashboardService]
+  providers: [CaseDashboardService,
+  DashboardService]
 })
 export class CaseDashboardModule {
 }
