@@ -98,6 +98,7 @@ export class CaseDashboardComponent implements OnInit {
         this.data = (res as ICase);
         this.missingPerson = this.data.missingPersonName[0];
         this.reporterName = this.data.reporterName;
+        this.reporterPhone = this.data.reporterPhone;
         this.caseName = this.data.caseName;
         this.volunteers$ = of(this.data.volunteers);
         this.caseNumber = this.data.caseNumber;
@@ -125,16 +126,19 @@ export class CaseDashboardComponent implements OnInit {
   }
 
   openEditCaseDialog(): void{
+    let caseWithId: any = this.data;
+    caseWithId.caseId = this.caseId;
     const dialogRef = this.dialog.open(CreateCaseFormDialogComponent, {
       width: '30vw',
       minWidth: '300px',
-      data: this.data
+      data: caseWithId
     });
 
-    // dialogRef.afterClosed().subscribe(result => {
-    //   if(result != undefined && result.created == true)
-    //     this.refresh();
-    // });
+    
+    dialogRef.afterClosed().subscribe(result => {
+      if(result != undefined && result.created == true)
+        this.refresh();
+    });
   }
   
 

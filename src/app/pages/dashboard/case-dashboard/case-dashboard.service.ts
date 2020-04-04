@@ -8,6 +8,7 @@ import {
   recentSalesTableDemoData,
 
 } from '../../demo-data/widget-demo-data';
+import { ICase } from 'src/app/models/ICase';
 
 /**
  * @class DashboardService
