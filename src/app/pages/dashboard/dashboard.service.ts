@@ -6,6 +6,7 @@ import { environment } from '../../../environments/environment';
 import { volunteerDummyData, top5CategoriesDemoData } from '../demo-data/widget-demo-data';
 import { ChartData } from 'chart.js';
 import { map } from 'rxjs/operators';
+import { ICase } from 'src/app/models/ICase';
 
 /**
  * @class DashboardService
@@ -54,6 +55,13 @@ export class DashboardService {
       headers : new HttpHeaders().set("Authorization", token)
     };
     return this.http.post(`${this.url}/postCase?userId=${userId}&countyId=${countyId}`,form, httpOptions);
+  }
+
+  putCase(token: string, data){
+    let httpOptions = {
+      headers : new HttpHeaders().set("Authorization", token)
+    };
+    return this.http.put(`${this.url}/putCase`,data, httpOptions);
   }
 
   getDonutData(data) {

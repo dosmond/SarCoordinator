@@ -32,9 +32,13 @@
       </fury-card-content>
 
       <mat-menu #menu="matMenu">
-        <button mat-menu-item>
+        <button (click)="closeCase()" mat-menu-item>
           <mat-icon> check</mat-icon>
           <span> Close Case </span>
+        </button>
+        <button (click)="editCase()" mat-menu-item>
+          <mat-icon> edit</mat-icon>
+          <span> Edit Case </span>
         </button>
       </mat-menu>
 

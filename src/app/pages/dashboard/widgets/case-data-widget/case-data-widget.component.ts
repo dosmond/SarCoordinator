@@ -5,7 +5,7 @@ import { ListColumn } from '../../../../../@fury/shared/list/list-column.model';
 import { CaseDataWidgetOptions } from './case-data-widget-options.interface';
 import { CaseDashboardService } from '../../case-dashboard/case-dashboard.service';
 import { ICase } from 'src/app/models/ICase';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatMenuTrigger } from '@angular/material';
 import { PdfGenComponent } from 'src/app/pages/pdf-gen/pdf-gen.component';
 import { AddVolunteersComponent } from 'src/app/pages/add-volunteers/add-volunteers.component'
 import { AuthProcessService } from 'src/app/pages/authentication/auth-service';
@@ -28,6 +28,7 @@ export class CaseDataWidgetComponent implements OnInit {
   @Input() options: CaseDataWidgetOptions;
   @Input() caseId: string;
   @Output() closecase = new EventEmitter();
+  @Output() editcase = new EventEmitter();
   caseName: string;
   mapOptions = {
     zoom : 15
@@ -94,5 +95,9 @@ export class CaseDataWidgetComponent implements OnInit {
 
   closeCase(){
     this.closecase.emit();
+  }
+
+  editCase() {
+    this.editcase.emit();
   }
 }

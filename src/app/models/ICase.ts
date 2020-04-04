@@ -9,6 +9,7 @@ export interface ICase {
     equipmentUsed: string[];
     missingPersonName: string;
     reporterName: string;
+    reporterPhone: string;
     volunteers: IUser[];
     date: any;
     isOpen: boolean;

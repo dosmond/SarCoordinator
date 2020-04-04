@@ -19,10 +19,12 @@ export class CreateCaseFormDialogComponent implements OnInit {
 
   isSubmited : boolean = false;
   caseFormGroup: FormGroup;
+  type: string;
 
   phonePrefixOptions = ['+1', '+27', '+44', '+49', '+61', '+91'];
 
-  constructor(private fb: FormBuilder,
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any,
+              private fb: FormBuilder,
               private cd: ChangeDetectorRef,
               private snackbar: MatSnackBar,
               private auth: AuthProcessService,
@@ -31,13 +33,15 @@ export class CreateCaseFormDialogComponent implements OnInit {
               private afa: AngularFireAuth) {}
 
   ngOnInit() {
+    this.type = this.data? "UPDATE":"CREATE";
+
     this.caseFormGroup = this.fb.group({
-      caseNumber: [null, Validators.required],
-      caseName: [null, Validators.required],
-      locationAndDescription: '',
-      subjectName: [null, Validators.required],
-      rpName: '',
-      rpPhone: ''
+      caseNumber: this.data ? this.data.caseNumber: '',
+      caseName: this.data ? this.data.caseName: '',
+      locationAndDescription: this.data ? this.data.description: '',
+      subjectName: this.data ? this.data.missingPersonName: '',
+      rpName: this.data ? this.data.reporterName: '',
+      rpPhone: this.data ? this.data.reporterPhone: ''
     });
   }
 
@@ -53,25 +57,54 @@ export class CreateCaseFormDialogComponent implements OnInit {
       let now = (date.getMonth()+1) + ' ' + date.getDate() + ' ' + date.getFullYear();
       let countyId = localStorage.getItem("currentCounty");
       let userId = this.afa.auth.currentUser.uid;
-      this.dashboardService.postCase(countyId, token, userId,
-        {
-          caseNumber: controls['caseNumber'].value,
-          caseName: controls['caseName'].value,
-          date: now,
-          description: controls['locationAndDescription'].value,
-          missingPersonName: [controls['subjectName'].value],
-          reporterName: controls['rpName'].value
-        }).subscribe(res => {
-          this.dialogRef.close({created: true});
-          this.snackbar.open('Case created successfully!', null, {
-            duration: 5000
+      if(this.type == "UPDATE"){
+        this.dashboardService.putCase(token,
+          {
+            caseId: this.data.caseId,
+            caseNumber: controls['caseNumber'].value,
+            caseName: controls['caseName'].value,
+            date: now,
+            description: controls['locationAndDescription'].value,
+            missingPersonName: [controls['subjectName'].value],
+            reporterName: controls['rpName'].value,
+            reporterPhone: controls['rpPhone'].value,
+          }).subscribe(res => {
+            this.dialogRef.close({created: true});
+            this.snackbar.open('Case updated successfully!', null, {
+              duration: 5000
+            });
           });
-        });
+      } 
+      else {
+        this.dashboardService.postCase(countyId, token, userId,
+          {
+            caseNumber: controls['caseNumber'].value,
+            caseName: controls['caseName'].value,
+            date: now,
+            description: controls['locationAndDescription'].value,
+            missingPersonName: [controls['subjectName'].value],
+            reporterName: controls['rpName'].value,
+            reporterPhone: controls['rpPhone'].value,
+          }).subscribe(res => {
+            this.dialogRef.close({created: true});
+            this.snackbar.open('Case created successfully!', null, {
+              duration: 5000
+            });
+          });
+      }
     });
   }
 
   cancel(){
     this.dialogRef.close({created: false});
+  }
+
+  createCase (){
+
+  }
+
+  updateCase() {
+    
   }
 
 }

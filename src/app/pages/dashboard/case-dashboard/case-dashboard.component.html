@@ -16,6 +16,7 @@
             [tableOptions]="caseDataTableOptions"
             [tableData]="volunteers$ | async"
             (closecase)="closecase()"
+            (editcase)="editcase()"
             style="margin: 1em">
         </case-data-widget>
 
