@@ -11,6 +11,7 @@ import { AddVolunteersModule } from '../../../add-volunteers/add-volunteers.modu
 import { IncidentReportModule } from 'src/app/pages/incident-report/incident-report.module';
 import { GoogleMapsModule } from '../../../maps/google-maps/google-maps.module';
 import { PhotoGridModule } from '../../../components/photo-grid/photo-grid.module';
+import { CreateCaseFormModule } from 'src/app/pages/forms/create-case-form/create-case-form.module';
 
 @NgModule({
   imports: [
@@ -25,6 +26,7 @@ import { PhotoGridModule } from '../../../components/photo-grid/photo-grid.modul
     ListModule,
     GoogleMapsModule,
     PhotoGridModule,
+    CreateCaseFormModule
   ],
   declarations: [CaseDataWidgetComponent, CaseDataWidgetTableComponent],
   exports: [CaseDataWidgetComponent]
