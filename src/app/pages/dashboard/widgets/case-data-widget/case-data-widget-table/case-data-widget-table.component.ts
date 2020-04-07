@@ -45,7 +45,7 @@ export class CaseDataWidgetTableComponent implements OnInit, AfterViewInit {
   }
 
   navigate(row: any){
-    this.router.navigate([`shift-logs`], {queryParams: {caseId : this.caseId,
+    this.router.navigate([`dashboard/shift-logs`], {queryParams: {caseId : this.caseId,
                                                         caseName: this.caseName,
                                                         userId: row.userId,
                                                         name: row.name}});
