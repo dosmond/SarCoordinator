@@ -6,12 +6,14 @@ import { IShift } from 'src/app/models/IShift';
 import { AuthProcessService } from '../authentication/auth-service';
 import { ICase } from 'src/app/models/ICase';
 import { MatSelectChange } from '@angular/material';
-import { CaseDashboardService } from '../dashboard/case-dashboard/case-dashboard.service';
+import { fadeInUpStaggerAnimation } from 'src/@fury/animations/fade-in-up.animation';
+import { fadeInRightAnimation } from 'src/@fury/animations/fade-in-right.animation';
 
 @Component({
   selector: 'fury-incident-report',
   templateUrl: './incident-report.component.html',
-  styleUrls: ['./incident-report.component.scss']
+  styleUrls: ['./incident-report.component.scss'],
+  animations: [fadeInUpStaggerAnimation, fadeInRightAnimation]
 })
 export class IncidentReportComponent implements OnInit {
   caseDescription: string;
