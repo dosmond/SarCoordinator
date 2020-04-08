@@ -1,3 +1,4 @@
+import { SignedInGuard } from './pages/authentication/signed-in-guard';
 import { LoggedInGuard } from './pages/authentication/logged-in-guard';
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
@@ -11,11 +12,12 @@ const routes: Routes = [
   {
     path: '',
     component: LandingLayoutComponent,
-    loadChildren: './pages/landing-page/home/home.module#HomeModule',
+    loadChildren: './pages/landing-page/home/home.module#HomeModule'
   },
   {
     path: 'login',
     loadChildren: './pages/authentication/login/login.module#LoginModule',
+    canActivate: [SignedInGuard]
   },
   {
     path: 'register',

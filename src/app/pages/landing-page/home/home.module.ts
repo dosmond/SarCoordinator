@@ -1,3 +1,4 @@
+import { GetstartComponent } from './../getstart/getstart.component';
 import { MaterialModule } from './../../../../@fury/shared/material-components.module';
 import { HomeComponent } from './home.component';
 import { NgModule } from '@angular/core';
@@ -11,11 +12,14 @@ import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
 import { ParticlesModule } from 'angular-particle';
 
 @NgModule({
-  declarations: [ServicesComponent,
+  declarations: [
+    ServicesComponent,
     AboutComponent,
     ContactComponent,
     FeatureComponent,
-    HomeComponent],
+    HomeComponent,
+    GetstartComponent
+  ],
   imports: [
     CommonModule,
     NgxYoutubePlayerModule.forRoot(),

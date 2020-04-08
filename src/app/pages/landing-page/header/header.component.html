@@ -37,13 +37,16 @@
                         <a data="id_about" [ngx-scroll-to]="'#about'" class="nav-link">About</a>
                     </button>
                     <button mat-button>
+                        <a data="id_mobile" [ngx-scroll-to]="'#mobile'" class="nav-link">Mobile</a>
+                    </button>
+                    <button mat-button>
                         <a data="id_contact" [ngx-scroll-to]="'#contact'" class="nav-link">Contact</a>
                     </button>
                 </div>
             </div>
         </mat-menu>
 
-        <div fxHide.sm="true" fxHide.xs="true" class="collapse navbar-collapse" id="navbarCollapse" scrollSpy fxFlex="50">
+        <div fxHide.sm="true" fxHide.xs="true" class="collapse navbar-collapse" id="navbarCollapse" scrollSpy>
             <div class="navbar-nav navbar-center" id="mySidenav">
                 <button mat-button>
                     <a data="id_home"  [ngx-scroll-to]="'#home'" class="nav-link">Home</a>
@@ -56,6 +59,9 @@
                 </button>
                 <button mat-button class="nav-item">
                     <a data="id_about" [ngx-scroll-to]="'#about'" class="nav-link">About</a>
+                </button>
+                <button mat-button>
+                    <a data="id_mobile" [ngx-scroll-to]="'#mobile'" class="nav-link">Mobile</a>
                 </button>
                 <button mat-button class="nav-item">
                     <a data="id_contact" [ngx-scroll-to]="'#contact'" class="nav-link">Contact</a>
