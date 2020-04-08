@@ -3,18 +3,18 @@
         <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="center center">
             <div fxLayout="column" fxLayoutAlign="center center" class="margin-t-20">
                 <h4>SAR Solutions</h4>
-                <div class="text-muted margin-t-20">
+                <div class="text-muted margin-t-20" scrollSpy>
                     <ul class="list-unstyled footer-list">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About us</a></li>
-                        <li><a href="#">Contact us</a></li>
+                        <li><a data="id_home"  [ngx-scroll-to]="'#home'" class="nav-link">Home</a></li>
+                        <li><a data="id_about" [ngx-scroll-to]="'#about'" class="nav-link">About us</a></li>
+                        <li><a data="id_contact" [ngx-scroll-to]="'#contact'" class="nav-link">Contact us</a></li>
                     </ul>
                 </div>
             </div>       
             <div fxLayout="column" fxLayoutAlign="center center" class="margin-t-20" >
                 <h4>Subscribe</h4>
                 <div class="text-muted margin-t-20" style="max-width: 80%">
-                    <p>In an ideal world this text wouldn’t exist, a client would acknowledge the importance of having web copy before the design starts.</p>
+                    <p>Subscribe to get periodic updates on our web and mobile app as we strive to make saving lives quicker.</p>
                     <form class="form subscribe">
                         <input placeholder="Email" class="form-control" required fxFlex>
                         <a href="#" class="submit"><i class="pe-7s-paper-plane"></i></a>
@@ -33,20 +33,6 @@
             <div fxLayout="row">
                 <div style="margin-left: 5%">
                     <p class="copy-rights text-muted">{{ cur_year }} © SAR Solutions</p>
-                </div>
-                <div fxLayout="row" style="position: absolute; right: 10%">
-                    <div style="margin: 1%">
-                        <a href="" class="social-icon ml-1"><i class="mdi mdi-facebook"></i></a>
-                    </div>
-                    <div style="margin: 1%">
-                        <a href="" class="social-icon ml-1"><i class="mdi mdi-twitter"></i></a>
-                    </div>
-                    <div style="margin: 1%">
-                        <a href="" class="social-icon ml-1"><i class="mdi mdi-linkedin"></i></a>
-                    </div>
-                    <div style="margin: 1%">
-                        <a href="" class="social-icon ml-1"><i class="mdi mdi-google-plus"></i></a>
-                    </div>
                 </div>
                 <div class="clearfix"></div>
             </div>
