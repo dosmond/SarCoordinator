@@ -19,6 +19,10 @@ export class SignedInGuard implements CanActivate {
         if (!user) {
           return true
         } else {
+          if(localStorage.getItem("role") !== 'admin') {
+            this.authProcess.signOut();
+          }
+            
           this.router.navigate([`/dashboard`]);
         }
       })
