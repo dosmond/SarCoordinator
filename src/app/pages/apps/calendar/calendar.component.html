@@ -22,7 +22,7 @@
   </div>
 
   <div class="background" fxFlex fxLayout="column" [ngSwitch]="view">
-    <fury-scrollbar *ngSwitchCase="'month'" class="calendar-content" fxFlex>
+    <sar-scrollbar *ngSwitchCase="'month'" class="calendar-content" fxFlex>
       <mwl-calendar-month-view
         fxFlex
         class="padding-horizontal padding-bottom"
@@ -34,8 +34,8 @@
         (eventClicked)="handleEvent('Clicked', $event.event)"
         (eventTimesChanged)="eventTimesChanged($event)">
       </mwl-calendar-month-view>
-    </fury-scrollbar>
-    <fury-scrollbar fxFlex fxLayout="column" *ngSwitchCase="'week'">
+    </sar-scrollbar>
+    <sar-scrollbar fxFlex fxLayout="column" *ngSwitchCase="'week'">
       <mwl-calendar-week-view
         fxFlex
         class="padding-horizontal padding-bottom"
@@ -45,8 +45,8 @@
         (eventClicked)="handleEvent('Clicked', $event.event)"
         (eventTimesChanged)="eventTimesChanged($event)">
       </mwl-calendar-week-view>
-    </fury-scrollbar>
-    <fury-scrollbar fxFlex fxLayout="column" *ngSwitchCase="'day'">
+    </sar-scrollbar>
+    <sar-scrollbar fxFlex fxLayout="column" *ngSwitchCase="'day'">
       <mwl-calendar-day-view
         fxFlex
         class="padding-horizontal padding-bottom"
@@ -56,7 +56,7 @@
         (eventClicked)="handleEvent('Clicked', $event.event)"
         (eventTimesChanged)="eventTimesChanged($event)">
       </mwl-calendar-day-view>
-    </fury-scrollbar>
+    </sar-scrollbar>
   </div>
 
 </div>

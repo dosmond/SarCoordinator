@@ -1,11 +1,11 @@
-import { FuryCardModule } from './../../../@fury/shared/card/card.module';
+import { sarCardModule } from './../../../@sar/shared/card/card.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MaterialModule } from 'src/@fury/shared/material-components.module';
+import { MaterialModule } from 'src/@sar/shared/material-components.module';
 import { IncidentReportComponent } from './incident-report.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxPrintModule } from 'ngx-print';
-import { FurySharedModule } from '../../../@fury/fury-shared.module';
+import { SarSharedModule } from '../../../@sar/sar-shared.module';
 import { IncidentReportService } from './incident-report.service';
 
 @NgModule({
@@ -14,8 +14,8 @@ import { IncidentReportService } from './incident-report.service';
       MaterialModule,
       ReactiveFormsModule,
       NgxPrintModule,
-      FurySharedModule,
-      FuryCardModule
+      SarSharedModule,
+      sarCardModule
     ],
     declarations: [IncidentReportComponent],
     entryComponents: [IncidentReportComponent],

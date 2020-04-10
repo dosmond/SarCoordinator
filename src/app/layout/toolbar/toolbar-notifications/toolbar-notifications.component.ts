@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { LIST_FADE_ANIMATION } from '../../../../@fury/shared/list.animation';
+import { LIST_FADE_ANIMATION } from '../../../../@sar/shared/list.animation';
 
 @Component({
-  selector: 'fury-toolbar-notifications',
+  selector: 'sar-toolbar-notifications',
   templateUrl: './toolbar-notifications.component.html',
   styleUrls: ['./toolbar-notifications.component.scss'],
   animations: [...LIST_FADE_ANIMATION],

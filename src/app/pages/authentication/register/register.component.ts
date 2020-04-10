@@ -1,10 +1,10 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { fadeInUpAnimation } from '../../../../@fury/animations/fade-in-up.animation';
+import { fadeInUpAnimation } from '../../../../@sar/animations/fade-in-up.animation';
 
 @Component({
-  selector: 'fury-register',
+  selector: 'sar-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
   animations: [fadeInUpAnimation]

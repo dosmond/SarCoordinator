@@ -6,7 +6,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Observable, ReplaySubject } from 'rxjs';
 import { filter } from 'rxjs/operators';
-import { ListColumn } from '../../../../../../@fury/shared/list/list-column.model';
+import { ListColumn } from '../../../../../../@sar/shared/list/list-column.model';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({

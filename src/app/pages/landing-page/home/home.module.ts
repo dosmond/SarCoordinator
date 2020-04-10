@@ -1,5 +1,5 @@
 import { GetstartComponent } from './../getstart/getstart.component';
-import { MaterialModule } from './../../../../@fury/shared/material-components.module';
+import { MaterialModule } from './../../../../@sar/shared/material-components.module';
 import { HomeComponent } from './home.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';

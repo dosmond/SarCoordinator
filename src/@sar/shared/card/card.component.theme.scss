@@ -1,0 +1,14 @@
+.sar-card {
+  background: $theme-card;
+  color: $theme-text;
+
+  @include mat-elevation($elevation);
+
+  .sar-card-header-subheading {
+    color: $theme-secondary-text;
+  }
+
+  .sar-card-actions {
+    border-top: 1px solid $theme-divider;
+  }
+}

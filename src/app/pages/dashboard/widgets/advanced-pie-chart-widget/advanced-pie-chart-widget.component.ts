@@ -2,11 +2,11 @@ import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '
 import * as Chart from 'chart.js';
 import { ChartConfiguration, ChartData } from 'chart.js';
 import defaultsDeep from 'lodash-es/defaultsDeep';
-import { defaultChartOptions } from '../../../../../@fury/shared/chart-widget/chart-widget-defaults';
+import { defaultChartOptions } from '../../../../../@sar/shared/chart-widget/chart-widget-defaults';
 import { AdvancedPieChartWidgetOptions } from './advanced-pie-chart-widget-options.interface';
 
 @Component({
-  selector: 'fury-advanced-pie-chart-widget',
+  selector: 'sar-advanced-pie-chart-widget',
   templateUrl: './advanced-pie-chart-widget.component.html',
   styleUrls: ['./advanced-pie-chart-widget.component.scss']
 })

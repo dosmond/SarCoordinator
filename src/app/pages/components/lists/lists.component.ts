@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import escape from 'lodash-es/escape';
 
 @Component({
-  selector: 'fury-lists',
+  selector: 'sar-lists',
   templateUrl: './lists.component.html',
   styleUrls: ['./lists.component.scss']
 })

@@ -1,6 +1,6 @@
 @import '../../../../node_modules/@angular/material/theming';
 
-fury-toolbar {
+sar-toolbar {
   // position: map-get($toolbar, position); // TODO IMPLEMENT
 
   &.no-box-shadow {
@@ -24,7 +24,7 @@ fury-toolbar {
   }
 }
 
-fury-toolbar-user {
+sar-toolbar-user {
   .toolbar-user {
     .button.open {
       background: $theme-background-hover;
@@ -49,7 +49,7 @@ fury-toolbar-user {
   }
 }
 
-fury-toolbar-notifications {
+sar-toolbar-notifications {
   .dropdown {
     background: $theme-card;
     @include mat-elevation($toolbar-notification-elevation);
@@ -108,7 +108,7 @@ fury-toolbar-notifications {
   }
 }
 
-fury-toolbar-search-bar {
+sar-toolbar-search-bar {
   .search-wrapper {
 
     .search-icon {

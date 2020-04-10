@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FuryCardModule } from '../../../../../@fury/shared/card/card.module';
-import { LoadingOverlayModule } from '../../../../../@fury/shared/loading-overlay/loading-overlay.module';
-import { MaterialModule } from '../../../../../@fury/shared/material-components.module';
+import { sarCardModule } from '../../../../../@sar/shared/card/card.module';
+import { LoadingOverlayModule } from '../../../../../@sar/shared/loading-overlay/loading-overlay.module';
+import { MaterialModule } from '../../../../../@sar/shared/material-components.module';
 import { DonutChartWidgetComponent } from './donut-chart-widget.component';
 
 @NgModule({
@@ -11,7 +11,7 @@ import { DonutChartWidgetComponent } from './donut-chart-widget.component';
     MaterialModule,
 
     // Core
-    FuryCardModule,
+    sarCardModule,
     LoadingOverlayModule,
   ],
   declarations: [DonutChartWidgetComponent],

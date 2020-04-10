@@ -18,7 +18,7 @@
     </div>
   </div>
 
-  <fury-scrollbar class="sidenav-items" fxFlex="auto">
+  <sar-scrollbar class="sidenav-items" fxFlex="auto">
     <div *ngIf="sidenavUserVisible$ | async" class="sidenav-user">
       <img class="sidenav-user-image" src="../../../assets/logoV5.png" alt="">
       <!--<img class="sidenav-user-image" src="assets/img/avatars/default.jpg">-->
@@ -32,7 +32,7 @@
       </div>
     </div>
 
-    <fury-sidenav-item *ngFor="let item of items$ | async" [item]="item" [level]="0"></fury-sidenav-item>
-  </fury-scrollbar>
+    <sar-sidenav-item *ngFor="let item of items$ | async" [item]="item" [level]="0"></sar-sidenav-item>
+  </sar-scrollbar>
 
 </div>

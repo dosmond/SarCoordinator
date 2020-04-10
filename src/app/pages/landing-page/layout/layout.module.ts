@@ -1,4 +1,4 @@
-import { MaterialModule } from 'src/@fury/shared/material-components.module';
+import { MaterialModule } from 'src/@sar/shared/material-components.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';

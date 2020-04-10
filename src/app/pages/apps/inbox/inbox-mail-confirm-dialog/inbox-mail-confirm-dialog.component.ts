@@ -2,7 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
-  selector: 'fury-inbox-mail-confirm-dialog',
+  selector: 'sar-inbox-mail-confirm-dialog',
   templateUrl: './inbox-mail-confirm-dialog.component.html',
   styleUrls: ['./inbox-mail-confirm-dialog.component.scss']
 })

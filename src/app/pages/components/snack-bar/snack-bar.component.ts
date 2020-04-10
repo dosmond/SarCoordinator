@@ -3,7 +3,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import escape from 'lodash-es/escape';
 
 @Component({
-  selector: 'fury-snack-bar',
+  selector: 'sar-snack-bar',
   templateUrl: './snack-bar.component.html',
   styleUrls: ['./snack-bar.component.scss']
 })

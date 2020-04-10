@@ -1,14 +1,14 @@
 import { Component, ElementRef, Input, OnInit, ViewChild, Output, EventEmitter, AfterViewInit, OnChanges } from '@angular/core';
 import * as Chart from 'chart.js';
 import { ChartData } from 'chart.js';
-import { ListColumn } from '../../../../../@fury/shared/list/list-column.model';
+import { ListColumn } from '../../../../../@sar/shared/list/list-column.model';
 import { RecentSalesWidgetOptions } from './recent-sales-widget-options.interface';
 import { VolunteerFormDialogComponent } from 'src/app/pages/forms/volunteer-form/volunteer-form.component';
 import { MatDialog } from '@angular/material';
 import { CreateCaseFormDialogComponent } from 'src/app/pages/forms/create-case-form/create-case-form.component';
 
 @Component({
-  selector: 'fury-recent-sales-widget',
+  selector: 'sar-recent-sales-widget',
   templateUrl: './recent-sales-widget.component.html',
   styleUrls: ['./recent-sales-widget.component.scss']
 })

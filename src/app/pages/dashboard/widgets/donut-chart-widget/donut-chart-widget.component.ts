@@ -4,11 +4,11 @@ import * as Chart from 'chart.js';
 import { ChartConfiguration, ChartData } from 'chart.js';
 import * as ChartJSPieceLabelPlugin from 'chart.piecelabel.js';
 import defaultsDeep from 'lodash-es/defaultsDeep';
-import { defaultChartOptions } from '../../../../../@fury/shared/chart-widget/chart-widget-defaults';
+import { defaultChartOptions } from '../../../../../@sar/shared/chart-widget/chart-widget-defaults';
 import { LineChartWidgetOptions } from '../line-chart-widget/line-chart-widget-options.interface';
 
 @Component({
-  selector: 'fury-donut-chart-widget',
+  selector: 'sar-donut-chart-widget',
   templateUrl: './donut-chart-widget.component.html',
   styleUrls: ['./donut-chart-widget.component.scss']
 })

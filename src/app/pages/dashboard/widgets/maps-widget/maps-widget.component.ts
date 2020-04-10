@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'fury-maps-widget',
+  selector: 'sar-maps-widget',
   templateUrl: './maps-widget.component.html',
   styleUrls: ['./maps-widget.component.scss']
 })

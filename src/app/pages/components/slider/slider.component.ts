@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import escape from 'lodash-es/escape';
 
 @Component({
-  selector: 'fury-slider',
+  selector: 'sar-slider',
   templateUrl: './slider.component.html',
   styleUrls: ['./slider.component.scss']
 })

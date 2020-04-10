@@ -2,7 +2,7 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { Component, ElementRef, Input, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
 import * as Chart from 'chart.js';
 import { ChartData } from 'chart.js';
-import { ListColumn } from '../../../../../@fury/shared/list/list-column.model';
+import { ListColumn } from '../../../../../@sar/shared/list/list-column.model';
 import { VolunteerFormDialogComponent } from 'src/app/pages/forms/volunteer-form/volunteer-form.component';
 import { MatDialog } from '@angular/material';
 import { CreateCaseFormDialogComponent } from 'src/app/pages/forms/create-case-form/create-case-form.component';

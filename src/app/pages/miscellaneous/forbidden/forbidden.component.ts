@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'fury-forbidden',
+  selector: 'sar-forbidden',
   templateUrl: './forbidden.component.html',
   styleUrls: ['./forbidden.component.scss']
 })

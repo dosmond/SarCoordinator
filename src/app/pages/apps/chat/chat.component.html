@@ -51,7 +51,7 @@
         </div>
       </div>
 
-      <div class="messages-container background" furyScrollbar fxFlex #messagesScroll>
+      <div class="messages-container background" sarScrollbar fxFlex #messagesScroll>
         <div class="messages">
           <div class="chat-message" *ngFor="let message of chats[0].messages" [ngSwitch]="message.who"
                fxLayout="column" fxLayoutAlign="end start">
@@ -68,7 +68,7 @@
         </div>
       </div>
 
-      <div class="reply fury-form-field fury-form-field-remove-hint-bar"
+      <div class="reply sar-form-field sar-form-field-remove-hint-bar"
            fxFlex="none"
            fxLayout="row"
            fxLayoutAlign="start center"

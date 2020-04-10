@@ -9,7 +9,7 @@ import { MailLabel } from '../shared/mail-label.interface';
 import { Mail } from '../shared/mail.interface';
 
 @Component({
-  selector: 'fury-inbox-mail',
+  selector: 'sar-inbox-mail',
   templateUrl: './inbox-mail.component.html',
   styleUrls: ['./inbox-mail.component.scss']
 })

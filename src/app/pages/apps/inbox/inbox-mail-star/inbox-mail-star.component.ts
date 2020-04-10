@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
-  selector: 'fury-inbox-mail-star',
+  selector: 'sar-inbox-mail-star',
   templateUrl: './inbox-mail-star.component.html',
   styleUrls: ['./inbox-mail-star.component.scss']
 })

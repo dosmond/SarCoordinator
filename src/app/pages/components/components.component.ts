@@ -16,13 +16,13 @@ import { SlideToggleComponent } from './slide-toggle/slide-toggle.component';
 import { SliderComponent } from './slider/slider.component';
 import { SnackBarComponent } from './snack-bar/snack-bar.component';
 import { TooltipComponent } from './tooltip/tooltip.component';
-import { ScrollbarDirective } from '../../../@fury/shared/scrollbar/scrollbar.directive';
-import { fadeInUpStaggerAnimation } from '../../../@fury/animations/fade-in-up.animation';
-import { fadeInRightAnimation, fadeInRightStaggerAnimation } from '../../../@fury/animations/fade-in-right.animation';
+import { ScrollbarDirective } from '../../../@sar/shared/scrollbar/scrollbar.directive';
+import { fadeInUpStaggerAnimation } from '../../../@sar/animations/fade-in-up.animation';
+import { fadeInRightAnimation, fadeInRightStaggerAnimation } from '../../../@sar/animations/fade-in-right.animation';
 import { ScrollDispatcher } from '@angular/cdk/scrolling';
 
 @Component({
-  selector: 'fury-components',
+  selector: 'sar-components',
   templateUrl: './components.component.html',
   styleUrls: ['./components.component.scss'],
   animations: [fadeInUpStaggerAnimation, fadeInRightAnimation, fadeInRightStaggerAnimation(50)]

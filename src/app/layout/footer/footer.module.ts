@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { MaterialModule } from '../../../@fury/shared/material-components.module';
+import { MaterialModule } from '../../../@sar/shared/material-components.module';
 import { FooterComponent } from './footer.component';
 
 @NgModule({

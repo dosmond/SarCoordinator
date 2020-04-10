@@ -2,7 +2,7 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import escape from 'lodash-es/escape';
 
 @Component({
-  selector: 'fury-input',
+  selector: 'sar-input',
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss']
 })

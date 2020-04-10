@@ -1,5 +1,5 @@
-<fury-loading-indicator></fury-loading-indicator>
-<fury-backdrop #backdrop="furyBackdrop"></fury-backdrop>
+<sar-loading-indicator></sar-loading-indicator>
+<sar-backdrop #backdrop="sarBackdrop"></sar-backdrop>
 
 <div class="container" fxLayout="column">
   <ng-container *ngIf="(toolbarPosition$ | async) === 'above-fixed'">
@@ -14,13 +14,13 @@
                  [mode]="sidenavMode$ | async"
                  [opened]="sidenavOpen$ | async"
                  *ngIf="sideNavigation$ | async"
-                 class="fury-collapsable-sidenav">
-      <fury-sidenav [collapsed]="sidenavCollapsed$ | async" [expanded]="sidenavExpanded$ | async"></fury-sidenav>
+                 class="sar-collapsable-sidenav">
+      <sar-sidenav [collapsed]="sidenavCollapsed$ | async" [expanded]="sidenavExpanded$ | async"></sar-sidenav>
     </mat-sidenav>
     <!-- END SIDENAV -->
 
     <mat-sidenav [(opened)]="quickPanelOpen" mode="over" position="end">
-      <fury-quickpanel></fury-quickpanel>
+      <sar-quickpanel></sar-quickpanel>
     </mat-sidenav>
 
     <mat-sidenav-content class="content-container" fxLayout="column">
@@ -61,16 +61,16 @@
 
 <ng-template #toolbar>
   <!-- TOOLBAR -->
-  <fury-toolbar (openQuickPanel)="openQuickPanel()"
+  <sar-toolbar (openQuickPanel)="openQuickPanel()"
                 [hasNavigation]="topNavigation$ | async"
                 (openSidenav)="openSidenav()"
                 *ngIf="toolbarVisible$ | async"
-                fxFlex="none"></fury-toolbar>
+                fxFlex="none"></sar-toolbar>
   <!-- END TOOLBAR -->
 
   <!-- NAVIGATION -->
-  <fury-navigation *ngIf="topNavigation$ | async"
-                   fxFlex="none"></fury-navigation>
+  <sar-navigation *ngIf="topNavigation$ | async"
+                   fxFlex="none"></sar-navigation>
   <!-- END NAVIGATION -->
 </ng-template>
 

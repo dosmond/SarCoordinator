@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'fury-page-layout-card-tabbed',
+  selector: 'sar-page-layout-card-tabbed',
   templateUrl: './page-layout-card-tabbed.component.html',
   styleUrls: ['./page-layout-card-tabbed.component.scss']
 })

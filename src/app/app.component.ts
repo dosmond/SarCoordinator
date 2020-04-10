@@ -2,13 +2,13 @@ import { DOCUMENT } from '@angular/common';
 import { Component, Inject, Renderer2 } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { SidenavService } from './layout/sidenav/sidenav.service';
-import { ThemeService } from '../@fury/services/theme.service';
+import { ThemeService } from '../@sar/services/theme.service';
 import { ActivatedRoute } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { Platform } from '@angular/cdk/platform';
 
 @Component({
-  selector: 'fury-root',
+  selector: 'sar-root',
   templateUrl: './app.component.html'
 })
 export class AppComponent {

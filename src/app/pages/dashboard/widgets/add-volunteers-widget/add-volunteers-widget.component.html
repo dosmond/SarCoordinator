@@ -1,9 +1,9 @@
-<fury-card>
-  <fury-card-header>
-    <fury-card-header-heading>{{ options.title }}</fury-card-header-heading>
-    <fury-card-header-subheading *ngIf="options.subTitle">{{ options.subTitle }}</fury-card-header-subheading>
+<sar-card>
+  <sar-card-header>
+    <sar-card-header-heading>{{ options.title }}</sar-card-header-heading>
+    <sar-card-header-subheading *ngIf="options.subTitle">{{ options.subTitle }}</sar-card-header-subheading>
 
-    <fury-card-header-actions class="actions">
+    <sar-card-header-actions class="actions">
       <button mat-raised-button color="primary" (click)="addVolunteers()">
         <mat-icon> person_add</mat-icon>
         Assign
@@ -11,15 +11,15 @@
       <button mat-icon-button (click)="cancel()">
         <mat-icon> cancel</mat-icon>
       </button>
-    </fury-card-header-actions>
-  </fury-card-header>
+    </sar-card-header-actions>
+  </sar-card-header>
 
-  <fury-card-content class="card-content">
+  <sar-card-content class="card-content">
     <add-volunteers-widget-table [data]="tableData" [columns]="tableOptions?.columns"
                                     [pageSize]="tableOptions?.pageSize" [clickable]="tableOptions?.clickable"
                                     [(selection)]="selection"></add-volunteers-widget-table>
 
-  </fury-card-content>
+  </sar-card-content>
 
-  <fury-loading-overlay [isLoading]="isLoading"></fury-loading-overlay>
-</fury-card>
+  <sar-loading-overlay [isLoading]="isLoading"></sar-loading-overlay>
+</sar-card>

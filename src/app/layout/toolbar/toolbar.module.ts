@@ -2,10 +2,10 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { FuryCardModule } from '../../../@fury/shared/card/card.module';
-import { ClickOutsideModule } from '../../../@fury/shared/click-outside/click-outside.module';
-import { MaterialModule } from '../../../@fury/shared/material-components.module';
-import { ScrollbarModule } from '../../../@fury/shared/scrollbar/scrollbar.module';
+import { sarCardModule } from '../../../@sar/shared/card/card.module';
+import { ClickOutsideModule } from '../../../@sar/shared/click-outside/click-outside.module';
+import { MaterialModule } from '../../../@sar/shared/material-components.module';
+import { ScrollbarModule } from '../../../@sar/shared/scrollbar/scrollbar.module';
 import { ToolbarFullscreenToggleComponent } from './toolbar-fullscreen-toggle/toolbar-fullscreen-toggle.component';
 import { ToolbarNotificationsComponent } from './toolbar-notifications/toolbar-notifications.component';
 import { ToolbarQuickpanelToggleComponent } from './toolbar-quickpanel-toggle/toolbar-quickpanel-toggle.component';
@@ -23,7 +23,7 @@ import { ToolbarComponent } from './toolbar.component';
     ScrollbarModule,
     FormsModule,
     ClickOutsideModule,
-    FuryCardModule
+    sarCardModule
   ],
   declarations: [
     ToolbarComponent,

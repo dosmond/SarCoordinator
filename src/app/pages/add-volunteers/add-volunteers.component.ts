@@ -2,9 +2,9 @@ import { AddVolunteersWidgetOptions } from './../dashboard/widgets/add-volunteer
 import { MatTableDataSource } from '@angular/material/table';
 import { IUser } from './../../models/IUser';
 import { Component, OnInit, Inject } from '@angular/core';
-import { fadeInUpStaggerAnimation } from '../../../@fury/animations/fade-in-up.animation';
-import { fadeInRightAnimation } from '../../../@fury/animations/fade-in-right.animation';
-import { scaleInAnimation } from '../../../@fury/animations/scale-in.animation';
+import { fadeInUpStaggerAnimation } from '../../../@sar/animations/fade-in-up.animation';
+import { fadeInRightAnimation } from '../../../@sar/animations/fade-in-right.animation';
+import { scaleInAnimation } from '../../../@sar/animations/scale-in.animation';
 import { AuthProcessService } from '../authentication/auth-service';
 import { AddVolunteersService } from './add-volunteers.service';
 import { MatDialogRef } from '@angular/material/dialog';

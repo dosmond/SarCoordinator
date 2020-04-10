@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { PageLayoutSimpleRoutingModule } from './page-layout-simple-routing.module';
 import { PageLayoutSimpleComponent } from './page-layout-simple.component';
-import { FurySharedModule } from '../../../../@fury/fury-shared.module';
+import { SarSharedModule } from '../../../../@sar/sar-shared.module';
 import { PageLayoutDemoContentModule } from '../components/page-layout-content/page-layout-demo-content.module';
 
 @NgModule({
@@ -11,7 +11,7 @@ import { PageLayoutDemoContentModule } from '../components/page-layout-content/p
   imports: [
     CommonModule,
     PageLayoutSimpleRoutingModule,
-    FurySharedModule,
+    SarSharedModule,
     PageLayoutDemoContentModule
   ]
 })

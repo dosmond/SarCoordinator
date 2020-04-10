@@ -26,7 +26,7 @@ export interface location {
 
 
 @Component({
-  selector: 'fury-google-maps',
+  selector: 'sar-google-maps',
   templateUrl: './google-maps.component.html',
   styleUrls: ['./google-maps.component.scss']
 })

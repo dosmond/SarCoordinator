@@ -3,8 +3,8 @@ import { AuthProcessService } from './../authentication/auth-service';
 import { Component, OnInit } from '@angular/core';
 import { RecentSalesWidgetOptions } from '../dashboard/widgets/recent-sales-widget/recent-sales-widget-options.interface';
 import { Observable, of } from 'rxjs';
-import { fadeInUpStaggerAnimation } from 'src/@fury/animations/fade-in-up.animation';
-import { fadeInRightAnimation } from 'src/@fury/animations/fade-in-right.animation';
+import { fadeInUpStaggerAnimation } from 'src/@sar/animations/fade-in-up.animation';
+import { fadeInRightAnimation } from 'src/@sar/animations/fade-in-right.animation';
 
 @Component({
   selector: 'volunteer-page',

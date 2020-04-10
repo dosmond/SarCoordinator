@@ -1,0 +1,42 @@
+.sar-page-layout {
+  display: block;
+}
+
+.sar-page-layout-simple {
+
+  .sar-page-layout-content {
+    padding-top: $padding;
+    padding-bottom: $padding;
+  }
+}
+
+.sar-page-layout-card {
+  padding-bottom: $padding;
+
+  .sar-page-layout-header {
+    margin-bottom: -$page-layout-toolbar-height;
+    padding-bottom: $page-layout-toolbar-height;
+  }
+
+}
+
+.sar-page-layout-header {
+  height: $page-layout-height - $page-layout-toolbar-height;
+  padding-left: $padding;
+  padding-right: $padding;
+  display: flex;
+  flex-direction: row;
+  place-content: center flex-start;
+  align-items: center;
+}
+
+.sar-page-layout-content {
+  display: block;
+  padding-left: $padding;
+  padding-right: $padding;
+
+  @include layout-bp(lt-md) {
+    padding-left: $padding-md;
+    padding-right: $padding-md;
+  }
+}

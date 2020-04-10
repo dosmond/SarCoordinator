@@ -5,11 +5,11 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Observable, ReplaySubject } from 'rxjs';
 import { filter } from 'rxjs/operators';
-import { ListColumn } from '../../../../../../@fury/shared/list/list-column.model';
+import { ListColumn } from '../../../../../../@sar/shared/list/list-column.model';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'fury-recent-sales-widget-table',
+  selector: 'sar-recent-sales-widget-table',
   templateUrl: './recent-sales-widget-table.component.html',
   styleUrls: ['./recent-sales-widget-table.component.scss']
 })

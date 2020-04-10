@@ -15,7 +15,7 @@ import { DonutChartWidgetOptions } from './widgets/donut-chart-widget/donut-char
 import { BarChartWidgetOptions } from './widgets/bar-chart-widget/bar-chart-widget-options.interface';
 
 @Component({
-  selector: 'fury-dashboard',
+  selector: 'sar-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })

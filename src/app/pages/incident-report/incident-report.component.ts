@@ -6,11 +6,11 @@ import { IShift } from 'src/app/models/IShift';
 import { AuthProcessService } from '../authentication/auth-service';
 import { ICase } from 'src/app/models/ICase';
 import { MatSelectChange } from '@angular/material';
-import { fadeInUpStaggerAnimation } from 'src/@fury/animations/fade-in-up.animation';
-import { fadeInRightAnimation } from 'src/@fury/animations/fade-in-right.animation';
+import { fadeInUpStaggerAnimation } from 'src/@sar/animations/fade-in-up.animation';
+import { fadeInRightAnimation } from 'src/@sar/animations/fade-in-right.animation';
 
 @Component({
-  selector: 'fury-incident-report',
+  selector: 'sar-incident-report',
   templateUrl: './incident-report.component.html',
   styleUrls: ['./incident-report.component.scss'],
   animations: [fadeInUpStaggerAnimation, fadeInRightAnimation]

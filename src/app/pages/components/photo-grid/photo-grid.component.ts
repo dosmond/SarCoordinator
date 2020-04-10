@@ -3,7 +3,7 @@ import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation, NgxGalleryOrde
 import { PhotoGridService } from './photo-grid.service';
 
 @Component({
-  selector: 'fury-photo-grid',
+  selector: 'sar-photo-grid',
   templateUrl: './photo-grid.component.html',
   styleUrls: ['./photo-grid.component.scss']
 })

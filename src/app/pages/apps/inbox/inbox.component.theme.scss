@@ -1,9 +1,9 @@
-fury-inbox {
+sar-inbox {
   .drawer-content > .header {
     background: $theme-color-accent url('/assets/img/backgrounds/inbox.png');
   }
 
-  fury-inbox-navigation {
+  sar-inbox-navigation {
 
     .mat-list-item {
       &.active {
@@ -17,14 +17,14 @@ fury-inbox {
     }
   }
 
-  fury-inbox-mail {
+  sar-inbox-mail {
 
     .vertical-divider {
       background: $theme-divider;
     }
   }
 
-  fury-inbox-mail-list {
+  sar-inbox-mail-list {
 
     .mail {
       &:hover {

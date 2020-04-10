@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'fury-page-layout-card',
+  selector: 'sar-page-layout-card',
   templateUrl: './page-layout-card.component.html',
   styleUrls: ['./page-layout-card.component.scss']
 })

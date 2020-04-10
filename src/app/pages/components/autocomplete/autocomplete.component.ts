@@ -5,7 +5,7 @@ import { map, startWith } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'fury-autocomplete',
+  selector: 'sar-autocomplete',
   templateUrl: './autocomplete.component.html',
   styleUrls: ['./autocomplete.component.scss']
 })

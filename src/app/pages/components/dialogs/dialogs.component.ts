@@ -3,7 +3,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import escape from 'lodash-es/escape';
 
 @Component({
-  selector: 'fury-dialogs',
+  selector: 'sar-dialogs',
   templateUrl: './dialogs.component.html',
   styleUrls: ['./dialogs.component.scss']
 })
@@ -29,7 +29,7 @@ export class DialogsComponent {
 }
 
 @Component({
-  selector: 'fury-demo-dialog',
+  selector: 'sar-demo-dialog',
   template: `
     <div mat-dialog-title fxLayout="row" fxLayoutAlign="space-between center">
       <div>Question</div>

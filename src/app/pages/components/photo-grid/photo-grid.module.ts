@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { BreadcrumbsModule } from '../../../../@fury/shared/breadcrumbs/breadcrumbs.module';
-import { MaterialModule } from '../../../../@fury/shared/material-components.module';
-import { FurySharedModule } from '../../../../@fury/fury-shared.module';
+import { BreadcrumbsModule } from '../../../../@sar/shared/breadcrumbs/breadcrumbs.module';
+import { MaterialModule } from '../../../../@sar/shared/material-components.module';
+import { SarSharedModule } from '../../../../@sar/sar-shared.module';
 import { PhotoGridComponent } from './photo-grid.component';
 import { NgxGalleryModule } from 'ngx-gallery';
 import { PhotoGridService } from './photo-grid.service';
@@ -10,7 +10,7 @@ import { PhotoGridService } from './photo-grid.service';
 @NgModule({
   imports: [
     CommonModule,
-    FurySharedModule,
+    SarSharedModule,
     MaterialModule,
 
     // Core

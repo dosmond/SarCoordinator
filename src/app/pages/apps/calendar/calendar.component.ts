@@ -8,7 +8,7 @@ import { Subject } from 'rxjs';
 import { CalendarEditComponent } from './calendar-edit/calendar-edit.component';
 
 @Component({
-  selector: 'fury-calendar',
+  selector: 'sar-calendar',
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.scss']
 })

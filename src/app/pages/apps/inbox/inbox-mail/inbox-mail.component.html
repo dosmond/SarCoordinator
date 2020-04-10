@@ -23,20 +23,20 @@
 
     <mat-divider [matMenuTriggerFor]="mailOptions" fxHide fxShow.gt-xs></mat-divider>
 
-    <fury-inbox-mail-label-list class="button" [availableLabels]="availableLabels"
+    <sar-inbox-mail-label-list class="button" [availableLabels]="availableLabels"
                                 [labels]="(mail$ | async).labels"
                                 (addLabel)="addLabel($event)"
                                 (removeLabel)="removeLabel($event)"
                                 icon="folder"
                                 matTooltip="Move to"
-                                fxHide fxShow.gt-xs></fury-inbox-mail-label-list>
+                                fxHide fxShow.gt-xs></sar-inbox-mail-label-list>
 
-    <fury-inbox-mail-label-list class="button" [availableLabels]="availableLabels"
+    <sar-inbox-mail-label-list class="button" [availableLabels]="availableLabels"
                                 [labels]="(mail$ | async).labels"
                                 (addLabel)="addLabel($event)"
                                 (removeLabel)="removeLabel($event)"
                                 matTooltip="Labels"
-                                fxHide fxShow.gt-xs></fury-inbox-mail-label-list>
+                                fxHide fxShow.gt-xs></sar-inbox-mail-label-list>
 
     <mat-divider fxHide fxShow.gt-xs></mat-divider>
 
@@ -45,26 +45,26 @@
     </button>
   </div>
 
-  <fury-scrollbar>
+  <sar-scrollbar>
     <div class="mail-content" fxLayout="column">
       <div class="head border-bottom" fxFlex="noshrink" fxLayout="row" fxLayoutAlign="space-between start">
         <div fxLayout="column" fxLayoutAlign="start start">
           <div class="subject">{{ (mail$ | async).subject }}</div>
           <div class="labels" fxLayout="row" fxLayoutGap="8px">
-            <fury-inbox-mail-label *ngFor="let label of (mail$ | async).labels" [color]="label.color">
+            <sar-inbox-mail-label *ngFor="let label of (mail$ | async).labels" [color]="label.color">
               {{ label.name }}
-            </fury-inbox-mail-label>
+            </sar-inbox-mail-label>
           </div>
         </div>
 
         <div class="actions" fxLayoutAlign="end center">
-          <fury-inbox-mail-star [isStarred]="(mail$ | async).starred"
-                                (starred)="toggleStarred()"></fury-inbox-mail-star>
+          <sar-inbox-mail-star [isStarred]="(mail$ | async).starred"
+                                (starred)="toggleStarred()"></sar-inbox-mail-star>
 
-          <fury-inbox-mail-label-list [availableLabels]="availableLabels"
+          <sar-inbox-mail-label-list [availableLabels]="availableLabels"
                                       [labels]="(mail$ | async).labels"
                                       (addLabel)="addLabel($event)"
-                                      (removeLabel)="removeLabel($event)"></fury-inbox-mail-label-list>
+                                      (removeLabel)="removeLabel($event)"></sar-inbox-mail-label-list>
         </div>
       </div>
 
@@ -125,7 +125,7 @@
         </div>
       </div>
     </div>
-  </fury-scrollbar>
+  </sar-scrollbar>
 </div>
 
 <mat-menu #mailOptions="matMenu">

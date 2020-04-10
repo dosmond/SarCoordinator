@@ -1,15 +1,15 @@
-<fury-card>
+<sar-card>
   <mat-tab-group>
     <mat-tab label="Dashboard">
-      <fury-card-header>
-        <fury-card-header-heading>{{ options.title }}</fury-card-header-heading>
-        <fury-card-header-subheading *ngIf="options.id">{{ options.id }}</fury-card-header-subheading>
-        <fury-card-header-subheading *ngIf="options.mp">{{ options.mp }}</fury-card-header-subheading>
-        <fury-card-header-subheading *ngIf="options.rp">{{ options.rp }}</fury-card-header-subheading>
-        <fury-card-header-subheading *ngIf="options.rpPhone">{{ options.rpPhone }}</fury-card-header-subheading>
-        <fury-card-header-subheading *ngIf="options.subTitle">{{ options.subTitle }}</fury-card-header-subheading>
+      <sar-card-header>
+        <sar-card-header-heading>{{ options.title }}</sar-card-header-heading>
+        <sar-card-header-subheading *ngIf="options.id">{{ options.id }}</sar-card-header-subheading>
+        <sar-card-header-subheading *ngIf="options.mp">{{ options.mp }}</sar-card-header-subheading>
+        <sar-card-header-subheading *ngIf="options.rp">{{ options.rp }}</sar-card-header-subheading>
+        <sar-card-header-subheading *ngIf="options.rpPhone">{{ options.rpPhone }}</sar-card-header-subheading>
+        <sar-card-header-subheading *ngIf="options.subTitle">{{ options.subTitle }}</sar-card-header-subheading>
 
-        <fury-card-header-actions>
+        <sar-card-header-actions>
           <button mat-icon-button (click)="openAddVolunteersDialog()">
             <mat-icon>group_add</mat-icon>
           </button>
@@ -19,17 +19,17 @@
           <button mat-icon-button [matMenuTriggerFor]="menu">
             <mat-icon>more_vert</mat-icon>
           </button>
-        </fury-card-header-actions>
-      </fury-card-header>
+        </sar-card-header-actions>
+      </sar-card-header>
 
-      <fury-card-content class="card-content">
+      <sar-card-content class="card-content">
         <case-data-widget-table [data]="tableData" [columns]="tableOptions?.columns"
                                         [pageSize]="tableOptions?.pageSize"
                                         (deleteRow)="deleteRow($event)"
                                         [caseId]="caseId"
                                         [caseName]="caseName"></case-data-widget-table>
 
-      </fury-card-content>
+      </sar-card-content>
 
       <mat-menu #menu="matMenu">
         <button (click)="closeCase()" mat-menu-item>
@@ -42,21 +42,21 @@
         </button>
       </mat-menu>
 
-      <fury-loading-overlay [isLoading]="isLoading"></fury-loading-overlay>
+      <sar-loading-overlay [isLoading]="isLoading"></sar-loading-overlay>
     </mat-tab>
 
 
     <mat-tab label="Map">
       <div fxFill fxLayout="column" fxLayoutAlign='end' [fxLayoutGap]="gap" [fxFlex]="col(2)" >
         <div fxFlex="grow">
-          <fury-google-maps [caseId]="caseId" [zoom]="mapOptions.zoom"></fury-google-maps>
+          <sar-google-maps [caseId]="caseId" [zoom]="mapOptions.zoom"></sar-google-maps>
         </div>
       </div>
     </mat-tab>
 
 
     <mat-tab label="Images">
-      <fury-photo-grid [caseId]="caseId"></fury-photo-grid>
+      <sar-photo-grid [caseId]="caseId"></sar-photo-grid>
     </mat-tab>
   </mat-tab-group>
-</fury-card>
+</sar-card>

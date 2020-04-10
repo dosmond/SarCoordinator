@@ -1,4 +1,4 @@
-<fury-list [hideHeader]="true" class="list" fxFlex="grow" fxLayout="column">
+<sar-list [hideHeader]="true" class="list" fxFlex="grow" fxLayout="column">
   <mat-form-field>
     <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
   </mat-form-field>
@@ -46,6 +46,6 @@
     
   </table>
   <mat-paginator [pageSize]="pageSize" class="paginator"></mat-paginator>
-</fury-list>
+</sar-list>
 
 

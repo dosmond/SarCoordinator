@@ -12,7 +12,7 @@ import { AppComponent } from './app.component';
 import { LayoutModule } from './layout/layout.module';
 import { AgmCoreModule } from '@agm/core';
 import { environment } from '../environments/environment';
-import { PendingInterceptorModule } from '../@fury/shared/loading-indicator/pending-interceptor.module';
+import { PendingInterceptorModule } from '../@sar/shared/loading-indicator/pending-interceptor.module';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldDefaultOptions } from '@angular/material/form-field';
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
@@ -29,7 +29,7 @@ import { HomeModule } from './pages/landing-page/home/home.module';
     BrowserAnimationsModule,
     HttpClientModule,
 
-    // Fury Core Modules
+    // sar Core Modules
     AppRoutingModule,
 
     // Layout Module (Sidenav, Toolbar, Quickpanel, Content)

@@ -119,13 +119,13 @@
     "directive-selector": [
       true,
       "attribute",
-      "fury",
+      "sar",
       "camelCase"
     ],
     "component-selector": [
       true,
       "element",
-      "fury",
+      "sar",
       "kebab-case"
     ],
     "no-output-on-prefix": true,

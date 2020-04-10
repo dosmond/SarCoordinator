@@ -1,11 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { MaterialModule } from '../../../../@fury/shared/material-components.module';
+import { MaterialModule } from '../../../../@sar/shared/material-components.module';
 import { MatDialogModule } from '@angular/material/dialog';
 import { VehicleListComponent } from './vehicle-list.component';
 import { MatListModule } from '@angular/material/list';
-import { FuryCardModule } from '../../../../@fury/shared/card/card.module';
+import { sarCardModule } from '../../../../@sar/shared/card/card.module';
 
 @NgModule({
   imports: [
@@ -14,7 +14,7 @@ import { FuryCardModule } from '../../../../@fury/shared/card/card.module';
     FormsModule,
     MatDialogModule,
     MatListModule,
-    FuryCardModule,
+    sarCardModule,
     
   ],
   declarations: [VehicleListComponent],

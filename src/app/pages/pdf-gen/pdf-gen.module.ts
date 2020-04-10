@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { PdfGenComponent } from './pdf-gen.component';
 import { ReactiveFormsModule } from '@angular/forms'
-import { MaterialModule } from 'src/@fury/shared/material-components.module';
+import { MaterialModule } from 'src/@sar/shared/material-components.module';
 import { PdfService } from './pdf-gen.service';
 
 

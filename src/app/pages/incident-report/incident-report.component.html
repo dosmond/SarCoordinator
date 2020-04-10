@@ -1,17 +1,17 @@
-<fury-page-layout mode="card">
-    <fury-page-layout-header>
-        <fury-breadcrumbs [@fadeInRight] current="Reports"></fury-breadcrumbs>
-    </fury-page-layout-header>
+<sar-page-layout mode="card">
+    <sar-page-layout-header>
+        <sar-breadcrumbs [@fadeInRight] current="Reports"></sar-breadcrumbs>
+    </sar-page-layout-header>
 
-    <fury-page-layout-content [@fadeInUpStagger]
+    <sar-page-layout-content [@fadeInUpStagger]
                             cdkDropListGroup
                             cdkScrollable
                             fxLayout="row"
                             fxLayout.lt-sm="row"
                             fxLayoutAlign="start start"
                             fxLayoutGap="10px">
-        <fury-card>
-            <fury-card-header>
+        <sar-card>
+            <sar-card-header>
                 <div style="padding:10px">
                     <mat-form-field style="margin-right: 10px">
                         <mat-label>Case</mat-label>
@@ -32,8 +32,8 @@
                         printTitle="Incident Report"
                         ngxPrint>Print</button>
                 </div>
-            </fury-card-header>
-            <fury-card-content>
+            </sar-card-header>
+            <sar-card-content>
                 <hr>
                 <div id="print-section">
                     <div id="report-container">
@@ -137,7 +137,7 @@
                     </div>
                     
                 </div>
-            </fury-card-content>
-        </fury-card>
-    </fury-page-layout-content>
-</fury-page-layout>
+            </sar-card-content>
+        </sar-card>
+    </sar-page-layout-content>
+</sar-page-layout>

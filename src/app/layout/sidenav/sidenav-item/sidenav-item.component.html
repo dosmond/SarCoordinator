@@ -46,6 +46,6 @@
 
 
   <div [@dropdownOpen]="dropdownOpen$ | async" class="dropdown" fxLayout="column">
-    <fury-sidenav-item *ngFor="let subItem of item.subItems" [item]="subItem" [level]="level+1"></fury-sidenav-item>
+    <sar-sidenav-item *ngFor="let subItem of item.subItems" [item]="subItem" [level]="level+1"></sar-sidenav-item>
   </div>
 </div>

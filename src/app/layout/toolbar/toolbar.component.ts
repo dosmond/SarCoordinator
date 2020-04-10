@@ -1,9 +1,9 @@
 import { Component, EventEmitter, HostBinding, Input, OnInit, Output } from '@angular/core';
 import { map } from 'rxjs/operators';
-import { ThemeService } from '../../../@fury/services/theme.service';
+import { ThemeService } from '../../../@sar/services/theme.service';
 
 @Component({
-  selector: 'fury-toolbar',
+  selector: 'sar-toolbar',
   templateUrl: './toolbar.component.html',
   styleUrls: ['./toolbar.component.scss']
 })

@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { InboxComposeComponent } from './inbox-compose/inbox-compose.component';
 
 @Component({
-  selector: 'fury-inbox',
+  selector: 'sar-inbox',
   templateUrl: './inbox.component.html',
   styleUrls: ['./inbox.component.scss']
 })

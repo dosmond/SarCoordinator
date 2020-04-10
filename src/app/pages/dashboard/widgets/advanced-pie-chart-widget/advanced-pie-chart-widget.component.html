@@ -1,19 +1,19 @@
-<fury-card>
-  <fury-card-header>
-    <fury-card-header-heading>{{ options?.title }}</fury-card-header-heading>
-    <fury-card-header-subheading *ngIf="options?.subTitle">{{ options?.subTitle }}</fury-card-header-subheading>
+<sar-card>
+  <sar-card-header>
+    <sar-card-header-heading>{{ options?.title }}</sar-card-header-heading>
+    <sar-card-header-subheading *ngIf="options?.subTitle">{{ options?.subTitle }}</sar-card-header-subheading>
 
-    <fury-card-header-actions>
+    <sar-card-header-actions>
       <button mat-icon-button (click)="reload()">
         <mat-icon>refresh</mat-icon>
       </button>
       <button mat-icon-button [matMenuTriggerFor]="menu">
         <mat-icon>more_vert</mat-icon>
       </button>
-    </fury-card-header-actions>
-  </fury-card-header>
+    </sar-card-header-actions>
+  </sar-card-header>
 
-  <fury-card-content>
+  <sar-card-content>
     <div class="content" fxLayout="row">
       <div class="chart" fxFlex="150px">
         <canvas width="150" height="150" #canvas></canvas>
@@ -22,7 +22,7 @@
         <div class="total-value">{{ total }}</div>
         <div class="total-label">Total Sales</div>
 
-        <fury-scrollbar class="legend-items">
+        <sar-scrollbar class="legend-items">
           <div fxLayout="row" fxLayoutAlign="space-between stretch">
             <div class="legend-item" *ngFor="let value of legendData; let i = index" fxLayout="row">
               <div class="item-color" [style.background-color]="getLegendBackground(i)"></div>
@@ -33,11 +33,11 @@
               </div>
             </div>
           </div>
-        </fury-scrollbar>
+        </sar-scrollbar>
         <div class="fade-out-overlay"></div>
       </div>
     </div>
-  </fury-card-content>
+  </sar-card-content>
 
   <mat-menu #menu="matMenu">
     <button mat-menu-item>
@@ -53,4 +53,4 @@
       <span> Remove Widget </span>
     </button>
   </mat-menu>
-</fury-card>
+</sar-card>

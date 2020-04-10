@@ -1,14 +1,14 @@
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
-import { fadeInUpStaggerAnimation } from '../../../@fury/animations/fade-in-up.animation';
-import { fadeInRightAnimation } from '../../../@fury/animations/fade-in-right.animation';
+import { fadeInUpStaggerAnimation } from '../../../@sar/animations/fade-in-up.animation';
+import { fadeInRightAnimation } from '../../../@sar/animations/fade-in-right.animation';
 
 export interface Task {
   name: string;
 }
 
 @Component({
-  selector: 'fury-drag-and-drop',
+  selector: 'sar-drag-and-drop',
   templateUrl: './drag-and-drop.component.html',
   styleUrls: ['./drag-and-drop.component.scss'],
   animations: [fadeInUpStaggerAnimation, fadeInRightAnimation]

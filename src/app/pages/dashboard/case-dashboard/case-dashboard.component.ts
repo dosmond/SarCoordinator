@@ -6,8 +6,8 @@ import { CaseDashboardService } from './case-dashboard.service';
 import { ICase } from 'src/app/models/ICase';
 import { CaseDataWidgetOptions } from '../widgets/case-data-widget/case-data-widget-options.interface';
 import { AuthProcessService } from '../../authentication/auth-service';
-import { fadeInUpStaggerAnimation } from 'src/@fury/animations/fade-in-up.animation';
-import { fadeInRightAnimation } from 'src/@fury/animations/fade-in-right.animation';
+import { fadeInUpStaggerAnimation } from 'src/@sar/animations/fade-in-up.animation';
+import { fadeInRightAnimation } from 'src/@sar/animations/fade-in-right.animation';
 import { MatDialog } from '@angular/material';
 import { CreateCaseFormDialogComponent } from '../../forms/create-case-form/create-case-form.component';
 

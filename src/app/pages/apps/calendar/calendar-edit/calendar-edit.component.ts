@@ -5,7 +5,7 @@ import { CalendarEvent } from 'angular-calendar';
 import merge from 'lodash-es/merge';
 
 @Component({
-  selector: 'fury-calendar-edit',
+  selector: 'sar-calendar-edit',
   templateUrl: './calendar-edit.component.html',
   styleUrls: ['./calendar-edit.component.scss']
 })

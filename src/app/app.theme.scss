@@ -41,11 +41,11 @@ $theme-background: mat-palette($custom-primary, 300);
 // $theme-warn: mat-palette($mat-red, $theme-warn-hue);
 
 
-.fury-default {
+.sar-default {
   $theme: mat-light-theme($theme-primary, $theme-accent, $theme-warn);
   @include angular-material-theme($theme);
 
-  @import "../@fury/styles/themes/default";
+  @import "../@sar/styles/themes/default";
 
   background: $theme-background;
   color: $theme-text;
@@ -55,11 +55,11 @@ $theme-background: mat-palette($custom-primary, 300);
   @import "./layout/config-panel/config-panel.component.theme";
 }
 
-.fury-light {
+.sar-light {
   $theme: mat-light-theme($theme-primary, $theme-accent, $theme-warn);
   @include angular-material-theme($theme);
 
-  @import "../@fury/styles/themes/light";
+  @import "../@sar/styles/themes/light";
 
   background: $theme-background;
   color: $theme-text;
@@ -69,11 +69,11 @@ $theme-background: mat-palette($custom-primary, 300);
   @import "./layout/config-panel/config-panel.component.theme";
 }
 
-.fury-dark {
+.sar-dark {
   $theme: mat-dark-theme($theme-primary, $theme-accent, $theme-warn);
   @include angular-material-theme($theme);
 
-  @import "../@fury/styles/themes/dark";
+  @import "../@sar/styles/themes/dark";
 
   background: $theme-background;
   color: $theme-text;
@@ -83,11 +83,11 @@ $theme-background: mat-palette($custom-primary, 300);
   @import "./layout/config-panel/config-panel.component.theme";
 }
 
-.fury-flat {
+.sar-flat {
   $theme: mat-light-theme($theme-primary, $theme-accent, $theme-warn);
   @include angular-material-theme($theme);
 
-  @import "../@fury/styles/themes/flat";
+  @import "../@sar/styles/themes/flat";
 
   background: $theme-background;
   color: $theme-text;

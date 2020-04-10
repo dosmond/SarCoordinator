@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthProcessService } from '../../../pages/authentication/auth-service';
 
 @Component({
-  selector: 'fury-toolbar-user',
+  selector: 'sar-toolbar-user',
   templateUrl: './toolbar-user.component.html',
   styleUrls: ['./toolbar-user.component.scss']
 })

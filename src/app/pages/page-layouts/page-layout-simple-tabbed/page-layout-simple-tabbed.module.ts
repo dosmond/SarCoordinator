@@ -5,7 +5,7 @@ import { PageLayoutSimpleTabbedRoutingModule } from './page-layout-simple-tabbed
 import { PageLayoutSimpleTabbedComponent } from './page-layout-simple-tabbed.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { PageLayoutDemoContentModule } from '../components/page-layout-content/page-layout-demo-content.module';
-import { FurySharedModule } from '../../../../@fury/fury-shared.module';
+import { SarSharedModule } from '../../../../@sar/sar-shared.module';
 
 @NgModule({
   declarations: [PageLayoutSimpleTabbedComponent],
@@ -13,7 +13,7 @@ import { FurySharedModule } from '../../../../@fury/fury-shared.module';
     CommonModule,
     PageLayoutSimpleTabbedRoutingModule,
     MatTabsModule,
-    FurySharedModule,
+    SarSharedModule,
     PageLayoutDemoContentModule
   ]
 })

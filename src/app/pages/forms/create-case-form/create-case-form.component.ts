@@ -1,16 +1,16 @@
 import { ChangeDetectorRef, Component, OnInit, Inject, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { fadeInUpStaggerAnimation } from '../../../../@fury/animations/fade-in-up.animation';
-import { fadeInRightAnimation } from '../../../../@fury/animations/fade-in-right.animation';
-import { scaleInAnimation } from '../../../../@fury/animations/scale-in.animation';
+import { fadeInUpStaggerAnimation } from '../../../../@sar/animations/fade-in-up.animation';
+import { fadeInRightAnimation } from '../../../../@sar/animations/fade-in-right.animation';
+import { scaleInAnimation } from '../../../../@sar/animations/scale-in.animation';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog'
 import { AuthProcessService } from '../../authentication/auth-service';
 import { DashboardService } from '../../dashboard/dashboard.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
-  selector: 'fury-create-case-form',
+  selector: 'sar-create-case-form',
   templateUrl: './create-case-form.component.html',
   styleUrls: ['./create-case-form.component.scss'],
   animations: [fadeInUpStaggerAnimation, fadeInRightAnimation, scaleInAnimation]

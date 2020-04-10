@@ -1,27 +1,27 @@
-<fury-page-layout mode="card">
-  <fury-page-layout-header>
-    <fury-breadcrumbs [@fadeInRight] [crumbs]="['Case Dashboard']" current="Shift Logs"></fury-breadcrumbs>
-  </fury-page-layout-header>
+<sar-page-layout mode="card">
+  <sar-page-layout-header>
+    <sar-breadcrumbs [@fadeInRight] [crumbs]="['Case Dashboard']" current="Shift Logs"></sar-breadcrumbs>
+  </sar-page-layout-header>
 
-  <fury-page-layout-content [@fadeInUp]
+  <sar-page-layout-content [@fadeInUp]
                             cdkDropListGroup fxLayout="row"
                             fxLayout.lt-sm="row"
                             fxLayoutAlign="start start"
                             fxLayoutGap="24px">
-    <fury-card fxFill>
-      <fury-card-header class="container">
-        <fury-card-header-heading>Volunteer: {{volunteerName}}</fury-card-header-heading>
-        <fury-card-header-subheading>Case: {{ caseName }}</fury-card-header-subheading>
-        <fury-card-header-subheading>Total Shift Miles: {{ totalMiles }}</fury-card-header-subheading>
-        <fury-card-header-subheading>Total Shift Hours: {{ totalHours }}</fury-card-header-subheading>
-        <fury-card-header-actions>
+    <sar-card fxFill>
+      <sar-card-header class="container">
+        <sar-card-header-heading>Volunteer: {{volunteerName}}</sar-card-header-heading>
+        <sar-card-header-subheading>Case: {{ caseName }}</sar-card-header-subheading>
+        <sar-card-header-subheading>Total Shift Miles: {{ totalMiles }}</sar-card-header-subheading>
+        <sar-card-header-subheading>Total Shift Hours: {{ totalHours }}</sar-card-header-subheading>
+        <sar-card-header-actions>
           <button mat-icon-button (click)="refreshShifts()">
             <mat-icon>refresh</mat-icon>
           </button>
-        </fury-card-header-actions>
-      </fury-card-header>
-      <fury-card-content class="card-content">
-        <fury-list [hideHeader]="true" class="list" fxFlex="grow" fxLayout="column">
+        </sar-card-header-actions>
+      </sar-card-header>
+      <sar-card-content class="card-content">
+        <sar-list [hideHeader]="true" class="list" fxFlex="grow" fxLayout="column">
           <table [dataSource]="dataSource" mat-table matSort>
 
             <!--- Note that these columns can be defined in any order.
@@ -72,10 +72,10 @@
           </table>
           
           <mat-paginator [pageSize]="pageSize" class="paginator"></mat-paginator>
-        </fury-list>
-      </fury-card-content>
-    <fury-loading-overlay [isLoading]="shiftsLoading"></fury-loading-overlay>
+        </sar-list>
+      </sar-card-content>
+    <sar-loading-overlay [isLoading]="shiftsLoading"></sar-loading-overlay>
 
-    </fury-card>
-  </fury-page-layout-content>
-</fury-page-layout>
+    </sar-card>
+  </sar-page-layout-content>
+</sar-page-layout>

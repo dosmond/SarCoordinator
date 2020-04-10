@@ -1,37 +1,37 @@
 <div class="config-panel">
-  <fury-title class="heading">
+  <sar-title class="heading">
     <mat-icon>settings</mat-icon>
     <span>Configuration</span>
-  </fury-title>
+  </sar-title>
 
   <div class="section">
     <h5 class="subheading">THEME STYLE</h5>
 
     <div class="styles">
-      <div (click)="setActiveTheme('fury-default')" class="style" matRipple>
+      <div (click)="setActiveTheme('sar-default')" class="style" matRipple>
         <div class="color default">
-          <mat-icon *ngIf="(activeTheme$ | async) === 'fury-default'">check</mat-icon>
+          <mat-icon *ngIf="(activeTheme$ | async) === 'sar-default'">check</mat-icon>
         </div>
         <div class="style-name">Default</div>
       </div>
 
-      <div (click)="setActiveTheme('fury-light')" class="style" matRipple>
+      <div (click)="setActiveTheme('sar-light')" class="style" matRipple>
         <div class="color light">
-          <mat-icon *ngIf="(activeTheme$ | async) === 'fury-light'">check</mat-icon>
+          <mat-icon *ngIf="(activeTheme$ | async) === 'sar-light'">check</mat-icon>
         </div>
         <div class="style-name">Light</div>
       </div>
 
-      <div (click)="setActiveTheme('fury-dark')" class="style" matRipple>
+      <div (click)="setActiveTheme('sar-dark')" class="style" matRipple>
         <div class="color dark">
-          <mat-icon *ngIf="(activeTheme$ | async) === 'fury-dark'">check</mat-icon>
+          <mat-icon *ngIf="(activeTheme$ | async) === 'sar-dark'">check</mat-icon>
         </div>
         <div class="style-name">Dark</div>
       </div>
 
-      <div (click)="setActiveTheme('fury-flat')" class="style" matRipple>
+      <div (click)="setActiveTheme('sar-flat')" class="style" matRipple>
         <div class="color flat">
-          <mat-icon *ngIf="(activeTheme$ | async) === 'fury-flat'">check</mat-icon>
+          <mat-icon *ngIf="(activeTheme$ | async) === 'sar-flat'">check</mat-icon>
         </div>
         <div class="style-name">Flat</div>
       </div>

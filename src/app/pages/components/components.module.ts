@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BreadcrumbsModule } from '../../../@fury/shared/breadcrumbs/breadcrumbs.module';
-import { HighlightModule } from '../../../@fury/shared/highlightjs/highlight.module';
-import { MaterialModule } from '../../../@fury/shared/material-components.module';
-import { ScrollbarModule } from '../../../@fury/shared/scrollbar/scrollbar.module';
+import { BreadcrumbsModule } from '../../../@sar/shared/breadcrumbs/breadcrumbs.module';
+import { HighlightModule } from '../../../@sar/shared/highlightjs/highlight.module';
+import { MaterialModule } from '../../../@sar/shared/material-components.module';
+import { ScrollbarModule } from '../../../@sar/shared/scrollbar/scrollbar.module';
 import { AutocompleteComponent } from './autocomplete/autocomplete.component';
 import { ButtonsComponent } from './buttons/buttons.component';
 import { CardsComponent } from './cards/cards.component';
@@ -23,7 +23,7 @@ import { SlideToggleComponent } from './slide-toggle/slide-toggle.component';
 import { SliderComponent } from './slider/slider.component';
 import { SnackBarComponent } from './snack-bar/snack-bar.component';
 import { TooltipComponent } from './tooltip/tooltip.component';
-import { FurySharedModule } from '../../../@fury/fury-shared.module';
+import { SarSharedModule } from '../../../@sar/sar-shared.module';
 import { ConfirmationComponent } from './confirmation/confirmation.component';
 import { PhotoGridComponent } from './photo-grid/photo-grid.component';
 
@@ -32,7 +32,7 @@ import { PhotoGridComponent } from './photo-grid/photo-grid.component';
     CommonModule,
     ComponentsRoutingModule,
     FormsModule,
-    FurySharedModule,
+    SarSharedModule,
     ReactiveFormsModule,
     MaterialModule,
 

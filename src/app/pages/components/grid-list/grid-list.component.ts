@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import escape from 'lodash-es/escape';
 
 @Component({
-  selector: 'fury-grid-list',
+  selector: 'sar-grid-list',
   templateUrl: './grid-list.component.html',
   styleUrls: ['./grid-list.component.scss']
 })

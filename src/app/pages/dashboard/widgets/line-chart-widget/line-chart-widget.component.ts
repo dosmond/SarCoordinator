@@ -2,11 +2,11 @@ import { AfterViewInit, Component, ElementRef, Input, ViewChild } from '@angular
 import * as Chart from 'chart.js';
 import { ChartConfiguration, ChartData, ChartDataSets } from 'chart.js';
 import defaultsDeep from 'lodash-es/defaultsDeep';
-import { defaultChartOptions } from '../../../../../@fury/shared/chart-widget/chart-widget-defaults';
+import { defaultChartOptions } from '../../../../../@sar/shared/chart-widget/chart-widget-defaults';
 import { LineChartWidgetOptions } from './line-chart-widget-options.interface';
 
 @Component({
-  selector: 'fury-line-chart-widget',
+  selector: 'sar-line-chart-widget',
   templateUrl: './line-chart-widget.component.html',
   styleUrls: ['./line-chart-widget.component.scss']
 })

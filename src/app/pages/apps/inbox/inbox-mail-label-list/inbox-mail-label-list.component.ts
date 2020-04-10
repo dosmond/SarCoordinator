@@ -7,7 +7,7 @@ import { Color } from '../shared/color.interface';
 import { MailLabel } from '../shared/mail-label.interface';
 
 @Component({
-  selector: 'fury-inbox-mail-label-list',
+  selector: 'sar-inbox-mail-label-list',
   templateUrl: './inbox-mail-label-list.component.html',
   styleUrls: ['./inbox-mail-label-list.component.scss']
 })

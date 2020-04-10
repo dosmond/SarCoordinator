@@ -1,39 +1,39 @@
-<fury-page-layout mode="card">
+<sar-page-layout mode="card">
 
-  <fury-page-layout-header>
-    <fury-breadcrumbs [@fadeInRight] current="Drag & Drop"></fury-breadcrumbs>
-  </fury-page-layout-header>
+  <sar-page-layout-header>
+    <sar-breadcrumbs [@fadeInRight] current="Drag & Drop"></sar-breadcrumbs>
+  </sar-page-layout-header>
 
-  <fury-page-layout-content [@fadeInUpStagger]
+  <sar-page-layout-content [@fadeInUpStagger]
                             cdkDropListGroup
                             fxLayout="row"
                             fxLayout.lt-sm="column"
                             fxLayoutAlign="start start"
                             fxLayoutGap="24px">
-    <fury-card class="basic-forms" fadeInUpStaggerElement fxFlex="auto">
-      <fury-card-header>
-        <fury-card-header-heading>To-Do Tasks</fury-card-header-heading>
-        <fury-card-header-subheading>Simply Drag & Drop items in your order</fury-card-header-subheading>
-      </fury-card-header>
-      <fury-card-content (cdkDropListDropped)="drop($event)" [cdkDropListData]="todo" cdkDropList>
+    <sar-card class="basic-forms" fadeInUpStaggerElement fxFlex="auto">
+      <sar-card-header>
+        <sar-card-header-heading>To-Do Tasks</sar-card-header-heading>
+        <sar-card-header-subheading>Simply Drag & Drop items in your order</sar-card-header-subheading>
+      </sar-card-header>
+      <sar-card-content (cdkDropListDropped)="drop($event)" [cdkDropListData]="todo" cdkDropList>
         <div *ngFor="let task of todo" cdkDrag class="task card" fxLayout="column" fxLayoutAlign="center start">
           <div class="heading">{{ task.name }}</div>
           <div class="caption secondary-text">{{ task.due }}</div>
         </div>
-      </fury-card-content>
-    </fury-card>
+      </sar-card-content>
+    </sar-card>
 
-    <fury-card class="basic-forms" fadeInUpStaggerElement fxFlex="auto">
-      <fury-card-header>
-        <fury-card-header-heading>Done Tasks</fury-card-header-heading>
-        <fury-card-header-subheading>Drag between lists and inside lists</fury-card-header-subheading>
-      </fury-card-header>
-      <fury-card-content (cdkDropListDropped)="drop($event)" [cdkDropListData]="done" cdkDropList>
+    <sar-card class="basic-forms" fadeInUpStaggerElement fxFlex="auto">
+      <sar-card-header>
+        <sar-card-header-heading>Done Tasks</sar-card-header-heading>
+        <sar-card-header-subheading>Drag between lists and inside lists</sar-card-header-subheading>
+      </sar-card-header>
+      <sar-card-content (cdkDropListDropped)="drop($event)" [cdkDropListData]="done" cdkDropList>
         <div *ngFor="let task of done" cdkDrag class="task card" fxLayout="row" fxLayoutAlign="space-between center">
           <div>{{ task.name }}</div>
           <mat-icon>done</mat-icon>
         </div>
-      </fury-card-content>
-    </fury-card>
-  </fury-page-layout-content>
-</fury-page-layout>
+      </sar-card-content>
+    </sar-card>
+  </sar-page-layout-content>
+</sar-page-layout>

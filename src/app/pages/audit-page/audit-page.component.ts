@@ -6,8 +6,8 @@ import { AuditPageWidgetOptions } from './audit-page-widget/audit-page-widget-op
 import { Observable, of } from 'rxjs';
 import { DatePipe } from '@angular/common'
 import { ICaseId } from 'src/app/models/ICaseId';
-import { fadeInUpStaggerAnimation } from 'src/@fury/animations/fade-in-up.animation';
-import { fadeInRightAnimation } from 'src/@fury/animations/fade-in-right.animation';
+import { fadeInUpStaggerAnimation } from 'src/@sar/animations/fade-in-up.animation';
+import { fadeInRightAnimation } from 'src/@sar/animations/fade-in-right.animation';
 
 @Component({
   selector: 'audit-page',

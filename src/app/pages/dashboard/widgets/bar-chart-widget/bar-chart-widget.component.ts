@@ -2,11 +2,11 @@ import { Component, ElementRef, Input, ViewChild, OnChanges } from '@angular/cor
 import * as Chart from 'chart.js';
 import { ChartConfiguration, ChartData } from 'chart.js';
 import defaultsDeep from 'lodash-es/defaultsDeep';
-import { defaultChartOptions, barChartOptions } from '../../../../../@fury/shared/chart-widget/chart-widget-defaults';
+import { defaultChartOptions, barChartOptions } from '../../../../../@sar/shared/chart-widget/chart-widget-defaults';
 import { BarChartWidgetOptions } from './bar-chart-widget-options.interface';
 
 @Component({
-  selector: 'fury-bar-chart-widget',
+  selector: 'sar-bar-chart-widget',
   templateUrl: './bar-chart-widget.component.html',
   styleUrls: ['./bar-chart-widget.component.scss']
 })

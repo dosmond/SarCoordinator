@@ -5,7 +5,7 @@ import { AuthProcessService } from '../../authentication/auth-service';
 import { ICase } from 'src/app/models/ICase';
 import { AuditPageWidgetOptions } from './audit-page-widget-options';
 import { ChartData } from 'chart.js';
-import { ListColumn } from 'src/@fury/shared/list/list-column.model';
+import { ListColumn } from 'src/@sar/shared/list/list-column.model';
 
 @Component({
   selector: 'audit-page-widget',

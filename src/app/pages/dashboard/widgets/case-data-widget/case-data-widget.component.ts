@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild, EventEmitter, Output } from '@angular/core';
 import * as Chart from 'chart.js';
 import { ChartData } from 'chart.js';
-import { ListColumn } from '../../../../../@fury/shared/list/list-column.model';
+import { ListColumn } from '../../../../../@sar/shared/list/list-column.model';
 import { CaseDataWidgetOptions } from './case-data-widget-options.interface';
 import { CaseDashboardService } from '../../case-dashboard/case-dashboard.service';
 import { ICase } from 'src/app/models/ICase';

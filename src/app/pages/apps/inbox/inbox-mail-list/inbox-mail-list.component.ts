@@ -2,12 +2,12 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { componentDestroyed } from '../../../../../@fury/shared/component-destroyed';
+import { componentDestroyed } from '../../../../../@sar/shared/component-destroyed';
 import { InboxService } from '../inbox.service';
 import { Mail } from '../shared/mail.interface';
 
 @Component({
-  selector: 'fury-inbox-mail-list',
+  selector: 'sar-inbox-mail-list',
   templateUrl: './inbox-mail-list.component.html',
   styleUrls: ['./inbox-mail-list.component.scss']
 })

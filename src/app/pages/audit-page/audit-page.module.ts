@@ -1,7 +1,7 @@
-import { ScrollbarModule } from './../../../@fury/shared/scrollbar/scrollbar.module';
+import { ScrollbarModule } from './../../../@sar/shared/scrollbar/scrollbar.module';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-import { FuryCardModule } from './../../../@fury/shared/card/card.module';
-import { BreadcrumbsModule } from './../../../@fury/shared/breadcrumbs/breadcrumbs.module';
+import { sarCardModule } from './../../../@sar/shared/card/card.module';
+import { BreadcrumbsModule } from './../../../@sar/shared/breadcrumbs/breadcrumbs.module';
 import { BarChartWidgetModule } from './../dashboard/widgets/bar-chart-widget/bar-chart-widget.module';
 import { AuditPageService } from './audit-page.service';
 import { AuditPageWidgetModule } from './audit-page-widget/audit-page-widget.module';
@@ -10,9 +10,9 @@ import { AuditPageComponent } from './audit-page.component';
 import { CommonModule, DatePipe } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { LoadingIndicatorModule } from '../../../@fury/shared/loading-indicator/loading-indicator.module';
-import { MaterialModule } from '../../../@fury/shared/material-components.module';
-import { FurySharedModule } from '../../../@fury/fury-shared.module';
+import { LoadingIndicatorModule } from '../../../@sar/shared/loading-indicator/loading-indicator.module';
+import { MaterialModule } from '../../../@sar/shared/material-components.module';
+import { SarSharedModule } from '../../../@sar/sar-shared.module';
 
 @NgModule({
   imports: [
@@ -20,12 +20,12 @@ import { FurySharedModule } from '../../../@fury/fury-shared.module';
     RouterModule,
     MaterialModule,
     LoadingIndicatorModule,
-    FurySharedModule,
+    SarSharedModule,
     AuditPageRoutingModule,
     AuditPageWidgetModule,
     BarChartWidgetModule,
     BreadcrumbsModule,
-    FuryCardModule,
+    sarCardModule,
     DragDropModule,
     ScrollbarModule
   ],

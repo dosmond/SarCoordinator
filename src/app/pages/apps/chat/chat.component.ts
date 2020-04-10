@@ -2,14 +2,14 @@ import { ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild } from '@ang
 import { FormControl } from '@angular/forms';
 import sortBy from 'lodash-es/sortBy';
 import * as moment from 'moment';
-import { ScrollbarDirective } from '../../../../@fury/shared/scrollbar/scrollbar.directive';
+import { ScrollbarDirective } from '../../../../@sar/shared/scrollbar/scrollbar.directive';
 import { chatDemoData } from './chat.demo';
 import { MediaObserver } from '@angular/flex-layout';
 import { map, takeUntil } from 'rxjs/operators';
-import { componentDestroyed } from '../../../../@fury/shared/component-destroyed';
+import { componentDestroyed } from '../../../../@sar/shared/component-destroyed';
 
 @Component({
-  selector: 'fury-chat',
+  selector: 'sar-chat',
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.scss']
 })

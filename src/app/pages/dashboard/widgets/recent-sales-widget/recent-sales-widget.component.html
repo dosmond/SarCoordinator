@@ -1,9 +1,9 @@
-<fury-card> 
-  <fury-card-header class="container">
-    <fury-card-header-heading>{{ options.title }}</fury-card-header-heading>
-    <fury-card-header-subheading *ngIf="options.subTitle">{{ options.subTitle }}</fury-card-header-subheading>
+<sar-card> 
+  <sar-card-header class="container">
+    <sar-card-header-heading>{{ options.title }}</sar-card-header-heading>
+    <sar-card-header-subheading *ngIf="options.subTitle">{{ options.subTitle }}</sar-card-header-subheading>
 
-    <fury-card-header-actions>
+    <sar-card-header-actions>
       <button *ngIf="options.title=='Volunteers'" mat-icon-button (click)="openVolunteerDialog()">
         <mat-icon> person_add</mat-icon>
       </button>
@@ -13,14 +13,14 @@
       <button mat-icon-button (click)="reload()">
         <mat-icon>refresh</mat-icon>
       </button>
-    </fury-card-header-actions>
-  </fury-card-header>
+    </sar-card-header-actions>
+  </sar-card-header>
 
-  <fury-card-content class="card-content">
-    <fury-recent-sales-widget-table [data]="tableData" [columns]="tableOptions?.columns"
-                                    [pageSize]="tableOptions?.pageSize" [clickable]="tableOptions?.clickable"></fury-recent-sales-widget-table>
+  <sar-card-content class="card-content">
+    <sar-recent-sales-widget-table [data]="tableData" [columns]="tableOptions?.columns"
+                                    [pageSize]="tableOptions?.pageSize" [clickable]="tableOptions?.clickable"></sar-recent-sales-widget-table>
 
-  </fury-card-content>
+  </sar-card-content>
 
-  <fury-loading-overlay [isLoading]="isLoading"></fury-loading-overlay>
-</fury-card>
+  <sar-loading-overlay [isLoading]="isLoading"></sar-loading-overlay>
+</sar-card>

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import escape from 'lodash-es/escape';
 
 @Component({
-  selector: 'fury-menu',
+  selector: 'sar-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss']
 })
