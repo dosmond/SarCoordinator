@@ -17,6 +17,6 @@ export class LandingLayoutComponent implements OnInit {
     document.body.classList.remove('py-sm-0');
 
 
-    document.getElementById('theme_id').classList.add('theme-blue');
+    //document.getElementById('theme_id').classList.add('theme-blue');
   }
 }

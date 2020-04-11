@@ -122,6 +122,14 @@
    .height-100vh {
      height: 100vh;
    }
+
+   .height-50vh {
+     height: 50vh;
+   }
+
+   .height-60vh {
+    height: 60vh;
+  }
    
    .vertical-content {
      display: -webkit-flex;
@@ -453,6 +461,7 @@
      line-height: 60px;
      margin-top: 10px;
      text-align: center;
+     transition: all 250ms linear;
    }
    
    .play-shadow {

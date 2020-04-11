@@ -10,6 +10,8 @@ import { FeatureComponent } from '../feature/feature.component';
 import { ContactComponent } from '../contact/contact.component';
 import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
 import { ParticlesModule } from 'angular-particle';
+import { VideoModalComponent } from './video/video-modal/video-modal.component';
+import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,8 @@ import { ParticlesModule } from 'angular-particle';
     ContactComponent,
     FeatureComponent,
     HomeComponent,
-    GetstartComponent
+    GetstartComponent,
+    VideoModalComponent
   ],
   imports: [
     CommonModule,
@@ -26,7 +29,8 @@ import { ParticlesModule } from 'angular-particle';
     HomeRoutingModule,
     ParticlesModule,
     MaterialModule
-  ]
+  ],
+  entryComponents: [VideoModalComponent]
 })
 export class HomeModule { }
 

@@ -1,0 +1,7 @@
+<section #content>
+    <div class="modal-body" style="height: 100%;">
+        <youtube-player [videoId]="id" (ready)="savePlayer($event)" height="450" width="780" (change)="onStateChange($event)"
+            [playerVars]="playerVars">
+        </youtube-player>
+    </div>
+</section>
