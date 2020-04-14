@@ -10,13 +10,13 @@
         <sar-card-header-subheading *ngIf="options.subTitle">{{ options.subTitle }}</sar-card-header-subheading>
 
         <sar-card-header-actions>
-          <button mat-icon-button (click)="openAddVolunteersDialog()">
+          <button mat-icon-button matTooltip="Assign Volunteers" (click)="openAddVolunteersDialog()">
             <mat-icon>group_add</mat-icon>
           </button>
-          <button mat-icon-button (click)="reload()">
+          <button mat-icon-button matTooltip="Refresh" (click)="reload()">
             <mat-icon>refresh</mat-icon>
           </button>
-          <button mat-icon-button [matMenuTriggerFor]="menu">
+          <button mat-icon-button matTooltip="More Options" [matMenuTriggerFor]="menu">
             <mat-icon>more_vert</mat-icon>
           </button>
         </sar-card-header-actions>

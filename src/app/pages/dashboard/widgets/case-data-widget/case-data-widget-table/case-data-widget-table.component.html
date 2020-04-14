@@ -13,8 +13,9 @@
         </div>
         
         <ng-template #actions>
-          <td *matCellDef="let row" mat-cell>
-            <button mat-raised-button color="warn" (click)="removeVolunteer(row)"> Remove </button>
+          <td class='action-btns' *matCellDef="let row" mat-cell>
+            <button mat-raised-button class="shifts-btn" color="primary" (click)="navigate(row)">View Shifts</button>
+            <button mat-raised-button class="remove-btn" color="warn" (click)="removeVolunteer(row)"> Remove </button>
           </td>
         </ng-template>
 
@@ -24,7 +25,7 @@
 
     <tr *matHeaderRowDef="visibleColumns" mat-header-row></tr>
     <!--suppress UnnecessaryLabelJS -->
-    <tr *matRowDef="let row; columns: visibleColumns;" mat-row (click)='navigate(row)'></tr>
+    <tr *matRowDef="let row; columns: visibleColumns;" mat-row></tr>
   </table>
 
   <mat-paginator [pageSize]="pageSize" class="paginator"></mat-paginator>
