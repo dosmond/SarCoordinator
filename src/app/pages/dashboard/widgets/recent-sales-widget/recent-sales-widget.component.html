@@ -4,13 +4,17 @@
     <sar-card-header-subheading *ngIf="options.subTitle">{{ options.subTitle }}</sar-card-header-subheading>
 
     <sar-card-header-actions>
-      <button *ngIf="options.title=='Volunteers'" mat-icon-button (click)="openVolunteerDialog()">
+      <button *ngIf="options.title=='Volunteers'" mat-icon-button 
+                                                  matTooltip="Add Volunteer" 
+                                                  (click)="openVolunteerDialog()">
         <mat-icon> person_add</mat-icon>
       </button>
-      <button *ngIf="options.title=='Cases'" mat-icon-button (click)="openCreateCaseDialog()">
+      <button *ngIf="options.title=='Cases'" mat-icon-button
+                                             matTooltip="Add Case" 
+                                             (click)="openCreateCaseDialog()">
         <mat-icon> note_add</mat-icon>
       </button>
-      <button mat-icon-button (click)="reload()">
+      <button mat-icon-button matTooltip="Refresh" (click)="reload()">
         <mat-icon>refresh</mat-icon>
       </button>
     </sar-card-header-actions>
