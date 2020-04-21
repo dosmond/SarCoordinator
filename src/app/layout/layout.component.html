@@ -1,6 +1,12 @@
 <sar-loading-indicator></sar-loading-indicator>
 <sar-backdrop #backdrop="sarBackdrop"></sar-backdrop>
 
+<sar-sidebar #configPanel="sarSidebar" [backdrop]="backdrop" [invisibleBackdrop]="true" position="right">
+  <sar-config-panel></sar-config-panel>
+</sar-sidebar>
+
+<sar-config-panel-toggle></sar-config-panel-toggle>
+
 <div class="container" fxLayout="column">
   <ng-container *ngIf="(toolbarPosition$ | async) === 'above-fixed'">
     <ng-container *ngTemplateOutlet="toolbar"></ng-container>
