@@ -90,6 +90,7 @@ export class CaseDataWidgetComponent implements OnInit {
       }});
 
     dialogRef.afterClosed().subscribe(result => {
+      this.reload();
     });
   }
 
