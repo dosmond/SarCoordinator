@@ -86,12 +86,21 @@ export class CaseDataWidgetComponent implements OnInit {
       width: '80vw',
       height: '60vh',
       data: {
-        caseId : this.caseId
+        caseId : this.caseId,
+        addedVolunteers : this.getAddedUsers()
       }});
 
     dialogRef.afterClosed().subscribe(result => {
       this.reload();
     });
+  }
+
+  getAddedUsers() {
+    let addedIds = new Set();
+    this.tableData.forEach(volunteer => {
+      addedIds.add(volunteer.userId);
+    });
+    return addedIds;
   }
 
   closeCase(){

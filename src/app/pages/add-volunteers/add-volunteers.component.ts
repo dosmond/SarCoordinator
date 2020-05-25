@@ -1,6 +1,6 @@
 import { AddVolunteersWidgetOptions } from './../dashboard/widgets/add-volunteers-widget/add-volunteers-widget-options.interface';
 import { MatTableDataSource } from '@angular/material/table';
-import { IUser } from './../../models/IUser';
+import { IVolunteer } from './../../models/IVolunteer';
 import { Component, OnInit, Inject } from '@angular/core';
 import { fadeInUpStaggerAnimation } from '../../../@sar/animations/fade-in-up.animation';
 import { fadeInRightAnimation } from '../../../@sar/animations/fade-in-right.animation';
@@ -50,7 +50,12 @@ export class AddVolunteersComponent implements OnInit {
     this.auth.getIdToken().then(token => {
       let countyId = localStorage.getItem('currentCounty')
       this.addVolunteersService.getVolunteers(countyId, token).subscribe(res => {
-        let data$ = {volunteers: res}
+        // Don't show volunteers in the list of they're already on the case.
+        let volunteers = res as Array<Object>;
+        let unadded = volunteers.filter((volunteer : IVolunteer) =>
+         !this.data.addedVolunteers.has(volunteer.userDocId))
+
+        let data$ = {volunteers: unadded}
         this.volunteerDataObservable$ = of(data$.volunteers);
       })
     })
