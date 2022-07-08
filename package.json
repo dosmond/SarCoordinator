@@ -41,7 +41,7 @@
     "html2canvas": "^1.0.0-rc.5",
     "jspdf": "^1.5.3",
     "lodash-es": "~4.17.5",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "ng2-pdf-viewer": "^6.0.2",
     "ng2-pdfjs-viewer": "^5.0.5",
     "ngx-auth-firebaseui": "^3.4.1",
